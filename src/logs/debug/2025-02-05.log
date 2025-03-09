@@ -1,0 +1,29 @@
+2025-02-05 19:37:10 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-05 19:38:02 error: [POST] /api/margin/order >> StatusCode:: 422, Message:: Invalid type for keys: body.balance: Expected integer, received float
+2025-02-05 19:38:02 info: [0mPOST /api/margin/order [33m422[0m 30.692 ms - 81[0m
+2025-02-05 19:38:21 error: [POST] /api/margin/order >> StatusCode:: 605, Message:: La ou les cryptos suivantes ne sont pas reconnues => ETHUSTDT
+2025-02-05 19:38:21 info: [0mPOST /api/margin/order [31m605[0m 946.805 ms - 73[0m
+2025-02-05 19:38:40 error: MarginServiceFile.placeOrder =>  Request failed with status code 400
+2025-02-05 19:38:40 error: [POST] /api/margin/order >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-05 19:38:40 info: [0mPOST /api/margin/order [31m505[0m 2011.711 ms - 35[0m
+2025-02-05 19:39:14 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-05 19:43:41 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-05 19:43:45 error: MarginServiceFile.placeOrder =>  Request failed with status code 400
+2025-02-05 19:43:45 error: [POST] /api/margin/order >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-05 19:43:45 info: [0mPOST /api/margin/order [31m505[0m 410.097 ms - 35[0m
+2025-02-05 19:48:28 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-05 19:48:53 error: MarginServiceFile.placeOrder =>  Request failed with status code 400
+2025-02-05 19:48:53 error: [POST] /api/margin/order >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-05 19:48:53 info: [0mPOST /api/margin/order [31m505[0m 426.058 ms - 35[0m
+2025-02-05 19:49:12 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-05 19:49:25 info: [0mPOST /api/margin/order [32m200[0m 416.341 ms - 4[0m
+2025-02-05 19:49:59 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-05 19:52:02 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-05 19:52:15 info: [0mPOST /api/margin/order [32m200[0m 3666.921 ms - 4[0m

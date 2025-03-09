@@ -1,0 +1,107 @@
+2025-02-15 19:52:30 error: TokenServiceFile.metadata =>  Request failed with status code 400
+2025-02-15 19:52:30 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 19:52:30 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 19:53:15 error: TokenServiceFile.metadata =>  Request failed with status code 400
+2025-02-15 19:53:15 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 19:53:15 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 19:54:12 error: TokenServiceFile.metadata =>  Request failed with status code 400
+2025-02-15 19:54:12 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 19:54:12 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 19:56:35 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 19:56:35 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 19:56:35 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:00:14 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 20:00:14 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 20:00:14 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:01:46 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 20:01:46 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 20:01:46 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:02:04 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 20:02:04 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 20:02:04 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:06:42 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/utils/axiosGates.ts[0m:[93m111[0m:[93m21[0m - [91merror[0m[90m TS1135: [0mArgument expression expected.
+
+[7m111[0m         console.log(?);
+[7m   [0m [91m                    ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/utils/axiosGates.ts[0m:[93m111[0m:[93m21[0m - [91merror[0m[90m TS1135: [0mArgument expression expected.
+
+[7m111[0m         console.log(?);
+[7m   [0m [91m                    ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-02-15 20:08:36 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/utils/axiosGates.ts[0m:[93m112[0m:[93m23[0m - [91merror[0m[90m TS1135: [0mArgument expression expected.
+
+[7m112[0m           console.log(?);
+[7m   [0m [91m                      ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/utils/axiosGates.ts[0m:[93m112[0m:[93m23[0m - [91merror[0m[90m TS1135: [0mArgument expression expected.
+
+[7m112[0m           console.log(?);
+[7m   [0m [91m                      ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-02-15 20:10:15 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 20:10:15 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 20:10:15 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:19:11 error: SpotServiceFile.getAvailableList =>  Cannot read properties of undefined (reading 'includes')
+2025-02-15 20:19:11 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:19:36 error: SpotServiceFile.getAvailableList =>  Cannot read properties of undefined (reading 'symbol')
+2025-02-15 20:19:36 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:19:53 error: SpotServiceFile.getAvailableList =>  Cannot read properties of undefined (reading 'symbol')
+2025-02-15 20:19:53 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:20:14 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 20:20:14 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 20:20:14 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:20:38 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 20:20:38 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 20:20:38 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:20:52 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 20:20:52 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 20:20:52 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:21:23 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 20:21:23 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 20:21:23 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 21:59:49 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 21:59:49 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 21:59:49 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 21:59:57 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 21:59:57 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 21:59:57 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 22:00:05 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 22:00:05 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 22:00:05 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 22:00:28 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 22:00:28 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 22:00:28 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 22:00:36 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 22:00:36 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 22:00:36 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 22:00:45 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 22:00:45 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 22:00:45 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 22:00:54 error: MarketCapAPI.quotes =>  Request failed with status code 429
+2025-02-15 22:00:54 error: TokenServiceFile.quotes =>  Echec de la requete API
+2025-02-15 22:00:54 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API

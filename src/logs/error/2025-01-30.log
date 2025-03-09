@@ -1,0 +1,1098 @@
+2025-01-30 00:31:19 error: AuthControllerFile.spotList =>  Converting circular structure to JSON
+    --> starting at object with constructor 'ClientRequest'
+    |     property 'res' -> object with constructor 'IncomingMessage'
+    --- property 'req' closes the circle
+2025-01-30 00:31:19 error: [GET] /api/spot/list >> StatusCode:: 500, Message:: Converting circular structure to JSON
+    --> starting at object with constructor 'ClientRequest'
+    |     property 'res' -> object with constructor 'IncomingMessage'
+    --- property 'req' closes the circle
+2025-01-30 00:34:53 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m54[0m:[93m5[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m54[0m     })
+[7m  [0m [91m    ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m54[0m:[93m5[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m54[0m     })
+[7m  [0m [91m    ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 00:35:20 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m56[0m:[93m7[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m56[0m       }
+[7m  [0m [91m      ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m56[0m:[93m7[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m56[0m       }
+[7m  [0m [91m      ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 01:00:45 error: uncaughtException: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-limit\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+Error [ERR_REQUIRE_ESM]: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-limit\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+    at require.extensions.<computed> [as .js] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:851:20)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts:7:43)
+    at m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:857:29)
+2025-01-30 01:01:22 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/utils/axiosGates.ts[0m:[93m78[0m:[93m3[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m78[0m   }
+[7m  [0m [91m  ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/utils/axiosGates.ts[0m:[93m78[0m:[93m3[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m78[0m   }
+[7m  [0m [91m  ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 01:01:29 error: uncaughtException: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-limit\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+Error [ERR_REQUIRE_ESM]: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-limit\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+    at require.extensions.<computed> [as .js] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:851:20)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts:7:43)
+    at m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:857:29)
+2025-01-30 01:02:13 error: uncaughtException: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-limit\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+Error [ERR_REQUIRE_ESM]: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-limit\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+    at require.extensions.<computed> [as .js] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:851:20)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts:7:43)
+    at m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:857:29)
+2025-01-30 01:02:39 error: uncaughtException: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-limit\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+Error [ERR_REQUIRE_ESM]: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-limit\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+    at require.extensions.<computed> [as .js] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:851:20)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts:7:43)
+    at m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:857:29)
+2025-01-30 01:03:05 error: uncaughtException: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-limit\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+Error [ERR_REQUIRE_ESM]: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-limit\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+    at require.extensions.<computed> [as .js] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:851:20)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts:7:43)
+    at m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:857:29)
+2025-01-30 01:03:12 error: uncaughtException: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-limit\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+Error [ERR_REQUIRE_ESM]: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-limit\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+    at require.extensions.<computed> [as .js] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:851:20)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts:7:43)
+    at m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:857:29)
+2025-01-30 01:03:15 error: uncaughtException: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-limit\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+Error [ERR_REQUIRE_ESM]: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-limit\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+    at require.extensions.<computed> [as .js] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:851:20)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts:7:43)
+    at m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:857:29)
+2025-01-30 01:03:17 error: uncaughtException: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-limit\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+Error [ERR_REQUIRE_ESM]: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-limit\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+    at require.extensions.<computed> [as .js] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:851:20)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts:7:43)
+    at m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:857:29)
+2025-01-30 01:08:09 error: uncaughtException: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-queue\dist\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+Error [ERR_REQUIRE_ESM]: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-queue\dist\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+    at require.extensions.<computed> [as .js] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:851:20)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts:7:43)
+    at m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:857:29)
+2025-01-30 01:08:52 error: uncaughtException: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-queue\dist\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+Error [ERR_REQUIRE_ESM]: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-queue\dist\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+    at require.extensions.<computed> [as .js] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:851:20)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts:7:43)
+    at m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:857:29)
+2025-01-30 01:10:44 error: uncaughtException: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-queue\dist\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+Error [ERR_REQUIRE_ESM]: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-queue\dist\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+    at require.extensions.<computed> [as .js] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:851:20)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts:7:43)
+    at m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:857:29)
+2025-01-30 01:10:52 error: uncaughtException: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-queue\dist\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+Error [ERR_REQUIRE_ESM]: require() of ES Module C:\Users\alexa\CodeVStudio\investiX\node_modules\p-queue\dist\index.js from C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts not supported.
+Instead change the require of index.js in C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts to a dynamic import() which is available in all CommonJS modules.
+    at require.extensions.<computed> [as .js] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:851:20)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\utils\axiosGates.ts:7:43)
+    at m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\dist\index.js:857:29)
+2025-01-30 01:14:45 error: AuthControllerFile.spotList =>  Request failed with status code 405
+2025-01-30 01:14:45 error: [GET] /api/spot/list >> StatusCode:: 405, Message:: Request failed with status code 405
+2025-01-30 01:15:23 error: AuthControllerFile.spotList =>  Request failed with status code 405
+2025-01-30 01:15:23 error: [GET] /api/spot/list >> StatusCode:: 405, Message:: Request failed with status code 405
+2025-01-30 01:16:09 error: AuthControllerFile.spotList =>  Converting circular structure to JSON
+    --> starting at object with constructor 'ClientRequest'
+    |     property 'res' -> object with constructor 'IncomingMessage'
+    --- property 'req' closes the circle
+2025-01-30 01:16:09 error: [GET] /api/spot/list >> StatusCode:: 500, Message:: Converting circular structure to JSON
+    --> starting at object with constructor 'ClientRequest'
+    |     property 'res' -> object with constructor 'IncomingMessage'
+    --- property 'req' closes the circle
+2025-01-30 01:29:45 error: uncaughtException: Missing initializer in destructuring declaration
+C:\Users\alexa\CodeVStudio\investiX\src\services\tokens.ts:63
+            const {};
+                  ^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at wrapSafe (node:internal/modules/cjs/loader:1281:20)
+    at Module._compile (node:internal/modules/cjs/loader:1321:27)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+    at require (node:internal/modules/helpers:179:18)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\controllers\spot.ts:3:1)
+2025-01-30 15:39:25 error: ApiServiceFile.getBallance =>  Cannot read properties of undefined (reading '0')
+2025-01-30 15:39:25 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-30 15:39:49 error: ApiServiceFile.getBallance =>  Cannot read properties of undefined (reading '0')
+2025-01-30 15:39:49 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-30 15:42:54 error: ApiServiceFile.getBallance =>  Cannot destructure property 'Symbol(Symbol.iterator)' of 'prices.find(...)' as it is undefined.
+2025-01-30 15:42:54 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-30 15:46:48 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m49[0m:[93m102[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m49[0m     return raw.map(v => ({ fullName: v.name.replace(" Tocken", "")?.trim(), logo: v.logo, Tsupply: v.}))
+[7m  [0m [91m                                                                                                     ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m49[0m:[93m102[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m49[0m     return raw.map(v => ({ fullName: v.name.replace(" Tocken", "")?.trim(), logo: v.logo, Tsupply: v.}))
+[7m  [0m [91m                                                                                                     ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 16:12:00 error: uncaughtException: Identifier 'value' has already been declared
+C:\Users\alexa\CodeVStudio\investiX\src\controllers\spot.ts:15
+                const value = cryptoList.reduce((acc, item) => {
+                      ^
+
+SyntaxError: Identifier 'value' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1281:20)
+    at Module._compile (node:internal/modules/cjs/loader:1321:27)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+    at require (node:internal/modules/helpers:179:18)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\routes\spot.ts:3:1)
+2025-01-30 16:17:55 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 16:18:35 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m82[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m82[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m82[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m82[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m82[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m82[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m82[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m82[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m82[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m82[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m82[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m82[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 16:19:43 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m82[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m82[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m82[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m82[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m82[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m82[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m82[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m82[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m82[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m82[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m82[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m82[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 16:29:35 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m82[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m82[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m82[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m82[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m82[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m82[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m82[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m82[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m82[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m82[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m82[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m82[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 16:29:46 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 16:29:58 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 16:30:19 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m83[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m83[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 16:30:40 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m84[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m84[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m84[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m84[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m84[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m84[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m84[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m84[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m84[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m84[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m84[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m84[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 16:30:59 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m85[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m85[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m85[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m85[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m85[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m85[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m85[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m85[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m85[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m85[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m85[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m85[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 16:31:13 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m87[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m87[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m87[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m87[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m87[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m87[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m87[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m87[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m87[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m87[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m87[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m87[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 16:31:36 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 16:35:06 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 16:35:20 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 16:36:19 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m17[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                ~[0m
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m31[0m - [91merror[0m[90m TS1005: [0m',' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                              ~[0m
+[96msrc/services/tokens.ts[0m:[93m89[0m:[93m34[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m89[0m         fullName: trc20_tokens[0].name.replace(" Tocken", "")?.trim(),
+[7m  [0m [91m                                 ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 16:53:04 error: uncaughtException: Missing initializer in destructuring declaration
+C:\Users\alexa\CodeVStudio\investiX\src\services\tokens.ts:67
+            const {};
+                  ^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at wrapSafe (node:internal/modules/cjs/loader:1281:20)
+    at Module._compile (node:internal/modules/cjs/loader:1321:27)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+    at require (node:internal/modules/helpers:179:18)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\controllers\spot.ts:3:1)
+2025-01-30 16:53:09 error: uncaughtException: Missing initializer in destructuring declaration
+C:\Users\alexa\CodeVStudio\investiX\src\services\tokens.ts:67
+            const { market_info: {} };
+                  ^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Missing initializer in destructuring declaration
+    at wrapSafe (node:internal/modules/cjs/loader:1281:20)
+    at Module._compile (node:internal/modules/cjs/loader:1321:27)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+    at require (node:internal/modules/helpers:179:18)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\controllers\spot.ts:3:1)
+2025-01-30 19:39:02 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m15[0m:[93m29[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m15[0m         symbolKey.find(v => )
+[7m  [0m [91m                            ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m15[0m:[93m29[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m15[0m         symbolKey.find(v => )
+[7m  [0m [91m                            ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 19:56:01 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m17[0m:[93m49[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m17[0m       const { contractAddress } = currentCrypto.
+[7m  [0m [91m                                                [0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m17[0m:[93m49[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m17[0m       const { contractAddress } = currentCrypto.
+[7m  [0m [91m                                                [0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 20:22:31 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/spot.ts[0m:[93m35[0m:[93m26[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m35[0m         return acc.set(v.)
+[7m  [0m [91m                         ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/spot.ts[0m:[93m35[0m:[93m26[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m35[0m         return acc.set(v.)
+[7m  [0m [91m                         ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 20:23:02 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/spot.ts[0m:[93m35[0m:[93m26[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m35[0m         return acc.set(v.)
+[7m  [0m [91m                         ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/spot.ts[0m:[93m35[0m:[93m26[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m35[0m         return acc.set(v.)
+[7m  [0m [91m                         ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 21:54:21 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m39[0m:[93m7[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m39[0m       })
+[7m  [0m [91m      ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m39[0m:[93m7[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m39[0m       })
+[7m  [0m [91m      ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 21:54:44 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m40[0m:[93m7[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m40[0m       })
+[7m  [0m [91m      ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m40[0m:[93m7[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m40[0m       })
+[7m  [0m [91m      ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 21:54:50 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m40[0m:[93m7[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m40[0m       })
+[7m  [0m [91m      ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m40[0m:[93m7[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m40[0m       })
+[7m  [0m [91m      ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 21:55:45 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m40[0m:[93m7[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m40[0m       })
+[7m  [0m [91m      ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m40[0m:[93m7[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m40[0m       })
+[7m  [0m [91m      ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 21:55:50 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m40[0m:[93m7[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m40[0m       })
+[7m  [0m [91m      ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m40[0m:[93m7[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m40[0m       })
+[7m  [0m [91m      ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 21:55:56 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m40[0m:[93m7[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m40[0m       })
+[7m  [0m [91m      ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m40[0m:[93m7[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m40[0m       })
+[7m  [0m [91m      ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 21:56:01 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m40[0m:[93m7[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m40[0m       })
+[7m  [0m [91m      ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m40[0m:[93m7[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m40[0m       })
+[7m  [0m [91m      ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 21:56:05 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m40[0m:[93m7[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m40[0m       })
+[7m  [0m [91m      ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m40[0m:[93m7[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m40[0m       })
+[7m  [0m [91m      ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-30 21:58:28 error: AuthControllerFile.spotList =>  Cannot destructure property 'logo' of 'props.get(...)' as it is undefined.
+2025-01-30 21:58:28 error: [GET] /api/spot/list >> StatusCode:: 500, Message:: Cannot destructure property 'logo' of 'props.get(...)' as it is undefined.
+2025-01-30 22:07:13 error: AuthControllerFile.spotList =>  Request failed with status code 400
+2025-01-30 22:07:13 error: [GET] /api/spot/list >> StatusCode:: 400, Message:: Request failed with status code 400
+2025-01-30 22:10:44 error: 
+2025-01-30 22:10:44 error: TokenServiceFile.metadata =>  Cannot convert undefined or null to object
+2025-01-30 22:10:44 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-30 22:13:13 error: TokenServiceFile.metadata =>  Request failed with status code 400
+2025-01-30 22:13:13 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-01-30 22:13:13 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-30 22:14:12 error: TokenServiceFile.metadata =>  Request failed with status code 400
+2025-01-30 22:14:12 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-01-30 22:14:12 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-30 22:14:38 error: TokenServiceFile.metadata =>  Request failed with status code 400
+2025-01-30 22:14:38 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-01-30 22:14:38 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-30 22:15:11 error: TokenServiceFile.metadata =>  Request failed with status code 400
+2025-01-30 22:15:11 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-01-30 22:15:11 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-30 22:15:24 error: TokenServiceFile.metadata =>  Request failed with status code 400
+2025-01-30 22:15:24 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-01-30 22:15:24 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-30 22:15:36 error: TokenServiceFile.metadata =>  Request failed with status code 400
+2025-01-30 22:15:36 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-01-30 22:15:36 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-30 22:16:07 error: TokenServiceFile.metadata =>  Request failed with status code 400
+2025-01-30 22:16:07 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-01-30 22:16:07 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-30 22:16:46 error: TokenServiceFile.metadata =>  Request failed with status code 400
+2025-01-30 22:16:46 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-01-30 22:16:46 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-30 23:49:27 error: TokenServiceFile.metadata =>  Request failed with status code 400
+2025-01-30 23:49:27 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-01-30 23:49:27 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-30 23:56:31 error: TokenServiceFile.metadata =>  Request failed with status code 400
+2025-01-30 23:56:31 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-01-30 23:56:31 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-30 23:57:35 error: TokenServiceFile.metadata =>  Request failed with status code 400
+2025-01-30 23:57:35 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-01-30 23:57:35 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API

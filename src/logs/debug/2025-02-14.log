@@ -1,0 +1,133 @@
+2025-02-14 21:29:14 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:31:55 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:32:39 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:34:15 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:34:45 error: [POST] /api/margin/repay >> StatusCode:: 422, Message:: Invalid type for keys: body.symbols: Expected array, received string - body.balance: Required number - body.weekPeriod: Required number
+2025-02-14 21:34:45 info: [0mPOST /api/margin/repay [33m422[0m 25.949 ms - 147[0m
+2025-02-14 21:35:03 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:35:05 error: MarginServiceFile.getSymbol =>  Cannot read properties of undefined (reading 'toLocaleLowerCase')
+2025-02-14 21:35:05 error: [POST] /api/margin/repay >> StatusCode:: 605, Message:: La ou les cryptos suivantes ne sont pas reconnues => undefined
+2025-02-14 21:35:05 info: [0mPOST /api/margin/repay [31m605[0m 413.529 ms - 74[0m
+2025-02-14 21:35:17 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:35:21 error: MarginServiceFile.repaySymbol =>  Request failed with status code 400
+2025-02-14 21:35:21 info: [0mPOST /api/margin/repay [32m200[0m 931.294 ms - 17[0m
+2025-02-14 21:35:41 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:35:59 error: MarginServiceFile.repaySymbol =>  Request failed with status code 400
+2025-02-14 21:35:59 info: [0mPOST /api/margin/repay [32m200[0m 953.111 ms - 17[0m
+2025-02-14 21:36:26 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:36:48 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:36:52 error: MarginServiceFile.repaySymbol =>  Request failed with status code 400
+2025-02-14 21:36:52 info: [0mPOST /api/margin/repay [32m200[0m 926.260 ms - 17[0m
+2025-02-14 21:38:34 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:38:42 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:38:50 info: [0mPOST /api/margin/repay [32m200[0m 1353.867 ms - 16[0m
+2025-02-14 21:39:41 info: [0mPOST /api/margin/repay [32m200[0m 1208.713 ms - 16[0m
+2025-02-14 21:41:58 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:42:14 info: [0mPOST /api/margin/repay [32m200[0m 1274.540 ms - 16[0m
+2025-02-14 21:42:32 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:42:43 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:42:47 info: [0mPOST /api/margin/repay [32m200[0m 1341.756 ms - 16[0m
+2025-02-14 21:43:25 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:45:17 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:45:21 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:46:34 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:47:49 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:47:52 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 21:49:13 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:02:15 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:02:51 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:03:23 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:03:55 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:05:32 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:05:50 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:06:08 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:06:13 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:06:20 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:06:26 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:06:33 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:06:59 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:07:03 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:07:07 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:07:10 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:07:14 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:07:20 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:07:46 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:08:43 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:09:17 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:10:03 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:10:27 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:12:35 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:12:39 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:13:09 info: [0mGET /api/account/margin-asset [32m200[0m 405.547 ms - -[0m
+2025-02-14 23:17:43 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:17:46 info: [0mGET /api/account/margin-asset [32m200[0m 397.287 ms - -[0m
+2025-02-14 23:23:48 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:24:06 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:24:10 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:24:36 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:24:55 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:25:22 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:25:49 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:25:59 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:26:58 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:27:20 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:27:44 info: [0mGET /api/margin/risk [33m404[0m 3.294 ms - 76[0m
+2025-02-14 23:27:54 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-14 23:27:56 info: [0mGET /api/margin/risk [32m200[0m 530.409 ms - 232[0m

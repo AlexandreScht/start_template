@@ -1,0 +1,73 @@
+2025-02-04 00:36:58 error: uncaughtException: Cannot destructure property 'body' of 'undefined' as it is undefined.
+TypeError: Cannot destructure property 'body' of 'undefined' as it is undefined.
+    at Validator (C:\Users\alexa\CodeVStudio\investiX\src\middlewares\validator.ts:6:22)
+    at AccountRouter.initializeRoutes (C:\Users\alexa\CodeVStudio\investiX\src\routes\account.ts:26:47)
+    at new AccountRouter (C:\Users\alexa\CodeVStudio\investiX\src\routes\account.ts:21:10)
+    at App.initializeRoutes (C:\Users\alexa\CodeVStudio\investiX\src\routes\index.ts:16:33)
+    at App.initializeAppRoutes (C:\Users\alexa\CodeVStudio\investiX\src\server\config.ts:103:11)
+    at App.initialize (C:\Users\alexa\CodeVStudio\investiX\src\server\config.ts:45:10)
+    at start (C:\Users\alexa\CodeVStudio\investiX\src\server\index.ts:4:13)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\server\index.ts:7:1)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1618:23)
+2025-02-04 00:44:24 error: uncaughtException: ScrappingRouter is not defined
+ReferenceError: ScrappingRouter is not defined
+    at App.initializeRoutes (C:\Users\alexa\CodeVStudio\investiX\src\routes\index.ts:19:36)
+    at App.initializeAppRoutes (C:\Users\alexa\CodeVStudio\investiX\src\server\config.ts:103:11)
+    at App.initialize (C:\Users\alexa\CodeVStudio\investiX\src\server\config.ts:45:10)
+    at start (C:\Users\alexa\CodeVStudio\investiX\src\server\index.ts:4:13)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\server\index.ts:7:1)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+2025-02-04 00:44:41 error: uncaughtException: ScrappingRouter is not defined
+ReferenceError: ScrappingRouter is not defined
+    at App.initializeRoutes (C:\Users\alexa\CodeVStudio\investiX\src\routes\index.ts:19:36)
+    at App.initializeAppRoutes (C:\Users\alexa\CodeVStudio\investiX\src\server\config.ts:103:11)
+    at App.initialize (C:\Users\alexa\CodeVStudio\investiX\src\server\config.ts:45:10)
+    at start (C:\Users\alexa\CodeVStudio\investiX\src\server\index.ts:4:13)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\server\index.ts:7:1)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+2025-02-04 00:45:10 error: [POST] /api/margin/order >> StatusCode:: 422, Message:: Invalid type for keys: body.symbols: Required array - body.balance: Required number - body.weekPeriod: Required number
+2025-02-04 00:48:58 error: ApiServiceFile.getBallance =>  Request failed with status code 400
+2025-02-04 00:48:58 error: [POST] /api/margin/order >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-04 00:50:02 error: ApiServiceFile.getBallance =>  Request failed with status code 400
+2025-02-04 00:50:02 error: [POST] /api/margin/order >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-04 00:50:30 error: ApiServiceFile.transferBallance =>  Request failed with status code 400
+2025-02-04 00:50:30 error: [POST] /api/margin/order >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-04 00:54:24 error: ApiServiceFile.transferBallance =>  Request failed with status code 400
+2025-02-04 00:54:24 error: [POST] /api/margin/order >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-04 00:56:15 error: [POST] /api/margin/order >> StatusCode:: 500, Message:: Fond insuffisant, depot requis sur le compte spot
+2025-02-04 01:04:48 error: AuthControllerFile.register =>  Request failed with status code 400
+2025-02-04 01:04:48 error: [POST] /api/margin/order >> StatusCode:: 400, Message:: Request failed with status code 400
+2025-02-04 01:05:07 error: AuthControllerFile.register =>  Request failed with status code 400
+2025-02-04 01:05:07 error: [POST] /api/margin/order >> StatusCode:: 400, Message:: Request failed with status code 400
+2025-02-04 01:05:34 error: [POST] /api/margin/order >> StatusCode:: 605, Message:: La ou les cryptos suivantes ne sont pas reconnues => ETHUSTD
+2025-02-04 01:21:54 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/controllers/margin.ts[0m:[93m44[0m:[93m35[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m44[0m         await this.isolatedMargin.(valueByCrypto, "spot", verifiedSymbol)
+[7m  [0m [91m                                  ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/controllers/margin.ts[0m:[93m44[0m:[93m35[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m44[0m         await this.isolatedMargin.(valueByCrypto, "spot", verifiedSymbol)
+[7m  [0m [91m                                  ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)

@@ -1,0 +1,217 @@
+2025-02-17 20:56:51 error: AccountControllerFile.transfer =>  Cannot read properties of undefined (reading 'push')
+2025-02-17 20:56:51 error: [GET] /api/margin/risk >> StatusCode:: 500, Message:: Cannot read properties of undefined (reading 'push')
+2025-02-17 20:57:10 error: AccountControllerFile.transfer =>  acc.push is not a function
+2025-02-17 20:57:10 error: [GET] /api/margin/risk >> StatusCode:: 500, Message:: acc.push is not a function
+2025-02-17 20:57:29 error: AccountControllerFile.transfer =>  (acc || []).push is not a function
+2025-02-17 20:57:29 error: [GET] /api/margin/risk >> StatusCode:: 500, Message:: (acc || []).push is not a function
+2025-02-17 20:58:02 error: AccountControllerFile.transfer =>  acc.push is not a function
+2025-02-17 20:58:02 error: [GET] /api/margin/risk >> StatusCode:: 500, Message:: acc.push is not a function
+2025-02-17 21:32:10 error: uncaughtException: Identifier 'assets' has already been declared
+C:\Users\alexa\CodeVStudio\investiX\src\controllers\margin.ts:75
+                const assets = await this.MarginService.riskRatio();
+                      ^
+
+SyntaxError: Identifier 'assets' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1281:20)
+    at Module._compile (node:internal/modules/cjs/loader:1321:27)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+    at require (node:internal/modules/helpers:179:18)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\routes\margin.ts:2:1)
+2025-02-17 21:33:18 error: uncaughtException: Identifier 'assets' has already been declared
+C:\Users\alexa\CodeVStudio\investiX\src\controllers\margin.ts:75
+                const assets = await this.MarginService.riskRatio();
+                      ^
+
+SyntaxError: Identifier 'assets' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1281:20)
+    at Module._compile (node:internal/modules/cjs/loader:1321:27)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+    at require (node:internal/modules/helpers:179:18)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\routes\margin.ts:2:1)
+2025-02-17 21:34:42 error: uncaughtException: Identifier 'assets' has already been declared
+C:\Users\alexa\CodeVStudio\investiX\src\controllers\margin.ts:75
+                const assets = await this.MarginService.riskRatio();
+                      ^
+
+SyntaxError: Identifier 'assets' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1281:20)
+    at Module._compile (node:internal/modules/cjs/loader:1321:27)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+    at require (node:internal/modules/helpers:179:18)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\routes\margin.ts:2:1)
+2025-02-17 21:35:02 error: uncaughtException: Identifier 'assets' has already been declared
+C:\Users\alexa\CodeVStudio\investiX\src\controllers\margin.ts:75
+                const assets = await this.MarginService.riskRatio();
+                      ^
+
+SyntaxError: Identifier 'assets' has already been declared
+    at wrapSafe (node:internal/modules/cjs/loader:1281:20)
+    at Module._compile (node:internal/modules/cjs/loader:1321:27)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+    at require (node:internal/modules/helpers:179:18)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\routes\margin.ts:2:1)
+2025-02-17 21:37:50 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/margin.ts[0m:[93m77[0m:[93m5[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m77[0m     } catch (error) {
+[7m  [0m [91m    ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/margin.ts[0m:[93m77[0m:[93m5[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m77[0m     } catch (error) {
+[7m  [0m [91m    ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-02-17 21:44:48 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m100[0m:[93m37[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m100[0m       const { data: { data: [{res : }] } } = await BitGetAPI.get(`/api/v2/spot/market/tickers?symbol=${symbol.toLocaleLowerCase()}`);
+[7m   [0m [91m                                    ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m100[0m:[93m37[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m100[0m       const { data: { data: [{res : }] } } = await BitGetAPI.get(`/api/v2/spot/market/tickers?symbol=${symbol.toLocaleLowerCase()}`);
+[7m   [0m [91m                                    ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-02-17 21:46:18 error: MarginServiceFile.getSymbol =>  Cannot read properties of undefined (reading 'lastPr')
+2025-02-17 21:56:08 error: uncaughtException: async is not defined
+ReferenceError: async is not defined
+    at new MarginControllerFile (C:\Users\alexa\CodeVStudio\investiX\src\controllers\margin.ts:93:11)
+    at new MarginRouter (C:\Users\alexa\CodeVStudio\investiX\src\routes\margin.ts:14:5)
+    at App.initializeRoutes (C:\Users\alexa\CodeVStudio\investiX\src\routes\index.ts:20:32)
+    at App.initializeAppRoutes (C:\Users\alexa\CodeVStudio\investiX\src\server\config.ts:103:11)
+    at App.initialize (C:\Users\alexa\CodeVStudio\investiX\src\server\config.ts:45:10)
+    at start (C:\Users\alexa\CodeVStudio\investiX\src\server\index.ts:4:13)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\server\index.ts:7:1)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2025-02-17 22:04:31 error: uncaughtException: async is not defined
+ReferenceError: async is not defined
+    at new MarginControllerFile (C:\Users\alexa\CodeVStudio\investiX\src\controllers\margin.ts:102:11)
+    at new MarginRouter (C:\Users\alexa\CodeVStudio\investiX\src\routes\margin.ts:14:5)
+    at App.initializeRoutes (C:\Users\alexa\CodeVStudio\investiX\src\routes\index.ts:20:32)
+    at App.initializeAppRoutes (C:\Users\alexa\CodeVStudio\investiX\src\server\config.ts:103:11)
+    at App.initialize (C:\Users\alexa\CodeVStudio\investiX\src\server\config.ts:45:10)
+    at start (C:\Users\alexa\CodeVStudio\investiX\src\server\index.ts:4:13)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\investiX\src\server\index.ts:7:1)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+2025-02-17 22:05:11 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/controllers/margin.ts[0m:[93m99[0m:[93m5[0m - [91merror[0m[90m TS1131: [0mProperty or signature expected.
+
+[7m99[0m     this.queue = this.queue.then(
+[7m  [0m [91m    ~~~~[0m
+[96msrc/controllers/margin.ts[0m:[93m103[0m:[93m3[0m - [91merror[0m[90m TS1128: [0mDeclaration or statement expected.
+
+[7m103[0m   };
+[7m   [0m [91m  ~[0m
+[96msrc/controllers/margin.ts[0m:[93m106[0m:[93m3[0m - [91merror[0m[90m TS1128: [0mDeclaration or statement expected.
+
+[7m106[0m   protected marginRisk: ExpressHandler<assetMethod> = async ({
+[7m   [0m [91m  ~~~~~~~~~[0m
+[96msrc/controllers/margin.ts[0m:[93m141[0m:[93m1[0m - [91merror[0m[90m TS1128: [0mDeclaration or statement expected.
+
+[7m141[0m }
+[7m   [0m [91m~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/controllers/margin.ts[0m:[93m99[0m:[93m5[0m - [91merror[0m[90m TS1131: [0mProperty or signature expected.
+
+[7m99[0m     this.queue = this.queue.then(
+[7m  [0m [91m    ~~~~[0m
+[96msrc/controllers/margin.ts[0m:[93m103[0m:[93m3[0m - [91merror[0m[90m TS1128: [0mDeclaration or statement expected.
+
+[7m103[0m   };
+[7m   [0m [91m  ~[0m
+[96msrc/controllers/margin.ts[0m:[93m106[0m:[93m3[0m - [91merror[0m[90m TS1128: [0mDeclaration or statement expected.
+
+[7m106[0m   protected marginRisk: ExpressHandler<assetMethod> = async ({
+[7m   [0m [91m  ~~~~~~~~~[0m
+[96msrc/controllers/margin.ts[0m:[93m141[0m:[93m1[0m - [91merror[0m[90m TS1128: [0mDeclaration or statement expected.
+
+[7m141[0m }
+[7m   [0m [91m~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-02-17 23:06:23 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/controllers/margin.ts[0m:[93m130[0m:[93m19[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m130[0m           borrow: ,
+[7m   [0m [91m                  ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/controllers/margin.ts[0m:[93m130[0m:[93m19[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m130[0m           borrow: ,
+[7m   [0m [91m                  ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-02-17 23:29:30 error: MarginServiceFile.repaySymbol =>  Request failed with status code 400
+2025-02-17 23:29:30 error: [GET] /api/margin/risk >> StatusCode:: 505, Message:: Failed to repay symbol
+2025-02-17 23:29:58 error: MarginServiceFile.repaySymbol =>  Request failed with status code 400
+2025-02-17 23:29:58 error: [GET] /api/margin/risk >> StatusCode:: 505, Message:: Failed to repay symbol
+2025-02-17 23:41:32 error: MarginServiceFile.repaySymbol =>  Request failed with status code 400
+2025-02-17 23:41:32 error: [GET] /api/margin/risk >> StatusCode:: 505, Message:: Failed to repay symbol
+2025-02-17 23:42:12 error: MarginServiceFile.repaySymbol =>  Request failed with status code 400
+2025-02-17 23:42:12 error: [GET] /api/margin/risk >> StatusCode:: 505, Message:: Failed to repay symbol

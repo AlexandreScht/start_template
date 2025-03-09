@@ -1,0 +1,6 @@
+2025-02-21 17:41:26 error: AccountControllerFile.ballance =>  Invalid status code: 0
+2025-02-21 17:41:26 error: [GET] /api/account/ballance >> StatusCode:: 500, Message:: Invalid status code: 0
+2025-02-21 17:42:28 error: AccountControllerFile.ballance =>  Invalid status code: 0
+2025-02-21 17:42:28 error: [GET] /api/account/ballance >> StatusCode:: 500, Message:: Invalid status code: 0
+2025-02-21 17:43:25 error: AccountControllerFile.ballance =>  Invalid status code: 0
+2025-02-21 17:43:25 error: [GET] /api/account/ballance >> StatusCode:: 500, Message:: Invalid status code: 0

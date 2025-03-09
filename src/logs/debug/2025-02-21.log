@@ -1,0 +1,68 @@
+2025-02-21 00:48:54 info: [0mGET /api/spot/list [32m200[0m 12488.966 ms - -[0m
+2025-02-21 02:06:25 info: [0mGET /api/spot/list [32m200[0m 28560.531 ms - -[0m
+2025-02-21 17:25:14 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-21 17:26:28 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-21 17:29:16 info: [0mGET /api/spot/list [32m200[0m 10460.426 ms - -[0m
+2025-02-21 17:41:18 info: [0mGET /api/spot/list [32m200[0m 10492.170 ms - -[0m
+2025-02-21 17:41:26 error: AccountControllerFile.ballance =>  Invalid status code: 0
+2025-02-21 17:41:26 error: [GET] /api/account/ballance >> StatusCode:: 500, Message:: Invalid status code: 0
+2025-02-21 17:41:26 info: [0mGET /api/account/ballance [31m500[0m 306.295 ms - 34[0m
+2025-02-21 17:42:12 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-21 17:42:28 error: AccountControllerFile.ballance =>  Invalid status code: 0
+2025-02-21 17:42:28 error: [GET] /api/account/ballance >> StatusCode:: 500, Message:: Invalid status code: 0
+2025-02-21 17:42:28 info: [0mGET /api/account/ballance [31m500[0m 397.962 ms - 34[0m
+2025-02-21 17:42:50 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-21 17:43:02 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-21 17:43:06 info: [0mGET /api/account/ballance [0m0[0m 379.609 ms - 2[0m
+2025-02-21 17:43:22 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-21 17:43:25 error: AccountControllerFile.ballance =>  Invalid status code: 0
+2025-02-21 17:43:25 error: [GET] /api/account/ballance >> StatusCode:: 500, Message:: Invalid status code: 0
+2025-02-21 17:43:25 info: [0mGET /api/account/ballance [31m500[0m 345.409 ms - 34[0m
+2025-02-21 17:44:09 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-21 17:44:12 info: [0mGET /api/account/ballance [32m200[0m 397.602 ms - 9[0m
+2025-02-21 17:44:26 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-21 17:45:03 info: [0mGET /api/account/ballance [32m200[0m 362.546 ms - 10[0m
+2025-02-21 17:45:15 info: [0mGET /api/account/ballance [36m304[0m 293.094 ms - -[0m
+2025-02-21 17:45:44 info: [0mGET /api/account/ballance [36m304[0m 295.608 ms - -[0m
+2025-02-21 17:46:07 info: [0mGET /api/account/ballance [36m304[0m 285.916 ms - -[0m
+2025-02-21 17:46:56 info: [0mGET /api/spot/list [32m200[0m 11084.734 ms - -[0m
+2025-02-21 17:47:03 info: [0mGET /api/account/ballance [36m304[0m 287.003 ms - -[0m
+2025-02-21 17:47:36 info: [0mGET /api/account/ballance [36m304[0m 278.764 ms - -[0m
+2025-02-21 17:48:00 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-21 17:48:04 info: [0mGET /api/account/ballance [32m200[0m 345.640 ms - 9[0m
+2025-02-21 17:48:07 info: [0mGET /api/account/ballance [36m304[0m 269.115 ms - -[0m
+2025-02-21 17:49:30 info: [0mGET /api/account/ballance [36m304[0m 280.118 ms - -[0m
+2025-02-21 17:49:32 info: [0mGET /api/account/ballance [36m304[0m 310.650 ms - -[0m
+2025-02-21 17:49:34 info: [0mGET /api/account/ballance [36m304[0m 256.580 ms - -[0m
+2025-02-21 17:49:55 info: [0mGET /api/account/ballance [36m304[0m 292.110 ms - -[0m
+2025-02-21 17:50:00 info: [0mGET /api/account/ballance [36m304[0m 285.636 ms - -[0m
+2025-02-21 17:50:05 info: [0mGET /api/account/ballance [36m304[0m 273.424 ms - -[0m
+2025-02-21 17:54:38 info: [0mGET /api/margin/risk [32m200[0m 1690.952 ms - -[0m
+2025-02-21 17:55:31 info: [0mGET /api/margin/risk [32m200[0m 1697.011 ms - -[0m
+2025-02-21 17:55:35 info: [0mGET /api/margin/risk [32m200[0m 1654.288 ms - -[0m
+2025-02-21 17:55:39 info: [0mGET /api/margin/risk [32m200[0m 1640.979 ms - -[0m
+2025-02-21 17:57:10 info: [0mGET /api/account/ballance [36m304[0m 286.951 ms - -[0m
+2025-02-21 17:57:10 info: [0mGET /api/account/ballance [36m304[0m 280.205 ms - -[0m
+2025-02-21 17:57:10 info: [0mGET /api/account/ballance [36m304[0m 290.919 ms - -[0m
+2025-02-21 17:57:10 info: [0mGET /api/account/ballance [36m304[0m 287.681 ms - -[0m
+2025-02-21 17:57:10 info: [0mGET /api/account/ballance [36m304[0m 316.068 ms - -[0m
+2025-02-21 17:58:20 info: [0mGET /api/account/ballance [36m304[0m 291.112 ms - -[0m
+2025-02-21 17:58:23 info: [0mGET /api/account/ballance [36m304[0m 259.867 ms - -[0m
+2025-02-21 17:58:46 info: [0mGET /api/margin/risk [32m200[0m 1717.623 ms - -[0m
+2025-02-21 17:59:04 info: [0mGET /api/margin/risk [32m200[0m 1671.702 ms - -[0m
+2025-02-21 18:03:54 info: [0mGET /api/margin/risk [32m200[0m 1693.491 ms - -[0m
+2025-02-21 19:48:51 info: [0mGET /api/account/ballance [36m304[0m 319.673 ms - -[0m
+2025-02-21 19:48:54 info: [0mGET /api/margin/risk [32m200[0m 1634.775 ms - -[0m
+2025-02-21 19:49:38 info: [0mGET /api/margin/risk [32m200[0m 1656.120 ms - -[0m
+2025-02-21 19:49:43 info: [0mGET /api/margin/risk [32m200[0m 2156.770 ms - -[0m
+2025-02-21 20:58:22 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀

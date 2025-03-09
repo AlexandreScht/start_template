@@ -1,0 +1,153 @@
+2025-01-28 02:45:41 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 02:47:39 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 02:48:13 info: [0mGET / [33m404[0m 2.536 ms - 61[0m
+2025-01-28 02:48:29 info: [0mGET /account/ballance [33m404[0m 0.632 ms - 77[0m
+2025-01-28 02:48:56 error: [GET] /api/account/ballance >> StatusCode:: 500, Message:: Cannot read properties of undefined (reading 'uuid')
+2025-01-28 02:48:56 info: [0mGET /api/account/ballance [31m500[0m 2.719 ms - 64[0m
+2025-01-28 02:49:47 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 02:49:49 error: [GET] /api/account/ballance >> StatusCode:: 500, Message:: Cannot read properties of undefined (reading 'uuid')
+2025-01-28 02:49:49 info: [0mGET /api/account/ballance [31m500[0m 4.768 ms - 64[0m
+2025-01-28 02:49:59 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 02:50:01 info: [0mGET /api/account/ballance [32m200[0m 7.692 ms - 15[0m
+2025-01-28 02:50:23 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 02:50:28 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 02:51:34 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 02:51:39 info: [0mGET /api/account/ballance [32m200[0m 10.766 ms - 36[0m
+2025-01-28 02:51:51 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 02:52:06 info: [0mGET /api/account/ballance [32m200[0m 10.560 ms - 8[0m
+2025-01-28 02:52:41 info: [0mGET /api/account/ballance [32m200[0m 3.423 ms - 8[0m
+2025-01-28 02:52:43 info: [0mGET /api/account/ballance [32m200[0m 2.491 ms - 8[0m
+2025-01-28 02:52:46 info: [0mGET /api/account/ballance [32m200[0m 2.329 ms - 8[0m
+2025-01-28 02:52:47 info: [0mGET /api/account/ballance [32m200[0m 2.688 ms - 8[0m
+2025-01-28 02:52:49 info: [0mGET /api/account/ballance [32m200[0m 2.575 ms - 8[0m
+2025-01-28 02:52:50 info: [0mGET /api/account/ballance [32m200[0m 2.118 ms - 8[0m
+2025-01-28 02:52:51 info: [0mGET /api/account/ballance [32m200[0m 2.274 ms - 8[0m
+2025-01-28 02:52:53 info: [0mGET /api/account/ballance [32m200[0m 2.607 ms - 8[0m
+2025-01-28 02:52:54 info: [0mGET /api/account/ballance [32m200[0m 2.288 ms - 8[0m
+2025-01-28 02:52:55 info: [0mGET /api/account/ballance [32m200[0m 2.730 ms - 8[0m
+2025-01-28 16:25:40 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 16:43:57 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 16:44:25 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 16:44:48 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 17:03:03 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 17:03:05 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 17:16:37 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 17:17:15 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 17:17:40 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 17:19:08 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:11:51 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:13:40 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:14:37 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:16:28 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:16:48 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:17:00 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:18:36 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:19:51 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:20:28 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:21:05 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:21:16 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:21:41 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:21:49 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:22:01 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:22:13 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:22:18 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:23:27 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:24:28 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:24:42 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:24:52 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:26:07 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:28:34 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:29:01 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:30:38 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:31:19 info: [0mGET /api/account/ballance [32m200[0m 55.175 ms - -[0m
+2025-01-28 19:31:55 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:31:56 info: [0mGET /api/account/ballance [32m200[0m 54.917 ms - -[0m
+2025-01-28 19:32:50 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:33:34 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:33:37 info: [0mGET /api/account/ballance [32m200[0m 363.344 ms - -[0m
+2025-01-28 19:33:51 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:34:00 info: [0mGET /api/account/ballance [32m200[0m 378.595 ms - -[0m
+2025-01-28 19:34:20 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:34:26 info: [0mGET /api/account/ballance [32m200[0m 379.955 ms - 10[0m
+2025-01-28 19:36:19 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:36:22 error: AuthControllerFile.register =>  Invalid status code: 0
+2025-01-28 19:36:22 error: [GET] /api/account/ballance >> StatusCode:: 500, Message:: Invalid status code: 0
+2025-01-28 19:36:22 info: [0mGET /api/account/ballance [31m500[0m 399.735 ms - 34[0m
+2025-01-28 19:36:34 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:36:35 error: AuthControllerFile.register =>  Invalid status code: 0
+2025-01-28 19:36:35 error: [GET] /api/account/ballance >> StatusCode:: 500, Message:: Invalid status code: 0
+2025-01-28 19:36:35 info: [0mGET /api/account/ballance [31m500[0m 401.744 ms - 34[0m
+2025-01-28 19:37:05 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 19:37:06 info: [0mGET /api/account/ballance [32m200[0m 358.463 ms - 14[0m
+2025-01-28 19:37:20 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 23:26:35 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 23:26:37 error: ApiServiceFile.getBallance =>  Request failed with status code 403
+2025-01-28 23:26:37 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la connexion avec la base de donnees
+2025-01-28 23:26:37 info: [0mGET /api/spot/list [31m505[0m 137.370 ms - 57[0m
+2025-01-28 23:27:16 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 23:27:42 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 23:27:44 error: ApiServiceFile.getBallance =>  Request failed with status code 403
+2025-01-28 23:27:44 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-28 23:27:44 info: [0mGET /api/spot/list [31m505[0m 148.663 ms - 35[0m
+2025-01-28 23:27:53 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 23:28:22 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 23:28:24 info: [0mGET /api/spot/list [32m200[0m 386.743 ms - -[0m
+2025-01-28 23:29:51 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-01-28 23:30:06 info: [0mGET /api/spot/list [32m200[0m 381.450 ms - -[0m

@@ -1,0 +1,194 @@
+2025-02-17 00:57:54 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 00:59:53 info: [0mGET /api/spot/list [32m200[0m 10693.581 ms - -[0m
+2025-02-17 01:22:01 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 20:56:37 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 20:56:51 error: AccountControllerFile.transfer =>  Cannot read properties of undefined (reading 'push')
+2025-02-17 20:56:51 error: [GET] /api/margin/risk >> StatusCode:: 500, Message:: Cannot read properties of undefined (reading 'push')
+2025-02-17 20:56:51 info: [0mGET /api/margin/risk [31m500[0m 709.258 ms - 64[0m
+2025-02-17 20:57:06 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 20:57:10 error: AccountControllerFile.transfer =>  acc.push is not a function
+2025-02-17 20:57:10 error: [GET] /api/margin/risk >> StatusCode:: 500, Message:: acc.push is not a function
+2025-02-17 20:57:10 info: [0mGET /api/margin/risk [31m500[0m 659.774 ms - 38[0m
+2025-02-17 20:57:24 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 20:57:29 error: AccountControllerFile.transfer =>  (acc || []).push is not a function
+2025-02-17 20:57:29 error: [GET] /api/margin/risk >> StatusCode:: 500, Message:: (acc || []).push is not a function
+2025-02-17 20:57:29 info: [0mGET /api/margin/risk [31m500[0m 643.123 ms - 46[0m
+2025-02-17 20:57:42 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 20:58:02 error: AccountControllerFile.transfer =>  acc.push is not a function
+2025-02-17 20:58:02 error: [GET] /api/margin/risk >> StatusCode:: 500, Message:: acc.push is not a function
+2025-02-17 20:58:02 info: [0mGET /api/margin/risk [31m500[0m 646.210 ms - 38[0m
+2025-02-17 20:58:34 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 20:58:35 info: [0mGET /api/margin/risk [32m200[0m 681.123 ms - 676[0m
+2025-02-17 21:00:06 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:00:08 info: [0mGET /api/margin/risk [32m200[0m 660.882 ms - 581[0m
+2025-02-17 21:02:26 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:02:27 info: [0mGET /api/margin/risk [32m200[0m 644.996 ms - 580[0m
+2025-02-17 21:05:20 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:05:31 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:05:34 info: [0mGET /api/margin/risk [32m200[0m 393.088 ms - -[0m
+2025-02-17 21:08:02 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:08:16 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:08:52 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:09:02 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:09:03 info: [0mGET /api/margin/risk [32m200[0m 385.311 ms - -[0m
+2025-02-17 21:25:07 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:25:10 info: [0mGET /api/margin/risk [32m200[0m 390.333 ms - 499[0m
+2025-02-17 21:26:43 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:26:44 info: [0mGET /api/margin/risk [32m200[0m 369.287 ms - 444[0m
+2025-02-17 21:30:46 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:30:48 info: [0mGET /api/margin/risk [32m200[0m 449.303 ms - 110[0m
+2025-02-17 21:35:18 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:35:23 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:35:29 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:35:29 info: [0mGET /api/margin/risk [32m200[0m 368.915 ms - 137[0m
+2025-02-17 21:37:58 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:39:29 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:39:30 info: [0mGET /api/margin/risk [32m200[0m 634.093 ms - 577[0m
+2025-02-17 21:41:27 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:43:17 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:44:32 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:45:16 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:45:51 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:46:14 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:46:18 error: MarginServiceFile.getSymbol =>  Cannot read properties of undefined (reading 'lastPr')
+2025-02-17 21:46:18 info: [0mGET /api/margin/risk [32m200[0m 367.140 ms - 5[0m
+2025-02-17 21:46:35 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:46:37 info: [0mGET /api/margin/risk [32m200[0m 340.211 ms - 356[0m
+2025-02-17 21:46:47 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:46:51 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:46:52 info: [0mGET /api/margin/risk [32m200[0m 343.991 ms - 8[0m
+2025-02-17 21:47:06 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:47:10 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:47:23 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:47:56 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:48:41 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:56:16 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 21:56:57 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 22:03:40 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 22:05:04 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 22:05:29 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 22:05:56 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 22:06:15 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 22:06:34 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 22:08:25 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 22:09:52 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 22:10:18 info: [0mGET /api/margin/risk [32m200[0m 1827.992 ms - 683[0m
+2025-02-17 22:11:10 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 22:11:40 info: [0mGET /api/margin/risk [32m200[0m 1772.550 ms - 834[0m
+2025-02-17 23:05:19 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:07:48 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:08:09 info: [0mGET /api/margin/risk [32m200[0m 1340.437 ms - 469[0m
+2025-02-17 23:08:22 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:08:54 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:09:07 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:09:09 info: [0mGET /api/margin/risk [32m200[0m 1232.547 ms - 454[0m
+2025-02-17 23:28:33 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:28:55 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:29:07 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:29:23 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:29:28 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:29:30 error: MarginServiceFile.repaySymbol =>  Request failed with status code 400
+2025-02-17 23:29:30 error: [GET] /api/margin/risk >> StatusCode:: 505, Message:: Failed to repay symbol
+2025-02-17 23:29:30 info: [0mGET /api/margin/risk [31m505[0m 376.997 ms - 34[0m
+2025-02-17 23:29:57 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:29:58 error: MarginServiceFile.repaySymbol =>  Request failed with status code 400
+2025-02-17 23:29:58 error: [GET] /api/margin/risk >> StatusCode:: 505, Message:: Failed to repay symbol
+2025-02-17 23:29:58 info: [0mGET /api/margin/risk [31m505[0m 402.288 ms - 34[0m
+2025-02-17 23:33:09 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:33:18 info: [0mGET /api/margin/risk [32m200[0m 391.216 ms - 96[0m
+2025-02-17 23:33:35 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:33:37 info: [0mGET /api/margin/risk [32m200[0m 369.081 ms - 97[0m
+2025-02-17 23:33:46 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:33:50 info: [0mGET /api/margin/risk [32m200[0m 391.231 ms - 96[0m
+2025-02-17 23:37:01 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:37:05 info: [0mGET /api/margin/risk [32m200[0m 363.169 ms - 37[0m
+2025-02-17 23:37:29 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:40:04 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:40:06 info: [0mGET /api/margin/risk [32m200[0m 386.248 ms - 37[0m
+2025-02-17 23:41:16 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:41:26 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:41:32 error: MarginServiceFile.repaySymbol =>  Request failed with status code 400
+2025-02-17 23:41:32 error: [GET] /api/margin/risk >> StatusCode:: 505, Message:: Failed to repay symbol
+2025-02-17 23:41:32 info: [0mGET /api/margin/risk [31m505[0m 425.870 ms - 34[0m
+2025-02-17 23:42:10 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:42:12 error: MarginServiceFile.repaySymbol =>  Request failed with status code 400
+2025-02-17 23:42:12 error: [GET] /api/margin/risk >> StatusCode:: 505, Message:: Failed to repay symbol
+2025-02-17 23:42:12 info: [0mGET /api/margin/risk [31m505[0m 353.126 ms - 34[0m
+2025-02-17 23:42:41 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:48:21 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:48:25 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:48:28 info: [0mGET /api/margin/risk [32m200[0m 399.364 ms - 42[0m
+2025-02-17 23:59:30 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-17 23:59:32 info: [0mGET /api/margin/risk [32m200[0m 368.639 ms - -[0m

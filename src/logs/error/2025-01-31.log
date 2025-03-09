@@ -1,0 +1,108 @@
+2025-01-31 00:12:57 error: SpotServiceFile.getAvailableList =>  Request failed with status code 400
+2025-01-31 00:12:57 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-31 00:13:58 error: SpotServiceFile.getAvailableList =>  Request failed with status code 400
+2025-01-31 00:13:58 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-31 00:30:20 error: SpotServiceFile.getAvailableList =>  Cannot read properties of undefined (reading 'coin')
+2025-01-31 00:30:20 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-31 00:30:28 error: SpotServiceFile.getAvailableList =>  Cannot read properties of undefined (reading 'coin')
+2025-01-31 00:30:28 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-31 00:30:34 error: SpotServiceFile.getAvailableList =>  Cannot read properties of undefined (reading 'coin')
+2025-01-31 00:30:34 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-31 00:31:37 error: SpotServiceFile.getAvailableList =>  Cannot read properties of undefined (reading 'coin')
+2025-01-31 00:31:37 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-01-31 00:36:00 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m24[0m:[93m45[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m24[0m             v?.contract_address.find(a => a.)
+[7m  [0m [91m                                            ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m24[0m:[93m45[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m24[0m             v?.contract_address.find(a => a.)
+[7m  [0m [91m                                            ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-31 00:36:14 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m24[0m:[93m65[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m24[0m             v?.contract_address.find(a => a.platform.name === v.)
+[7m  [0m [91m                                                                ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m24[0m:[93m65[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m24[0m             v?.contract_address.find(a => a.platform.name === v.)
+[7m  [0m [91m                                                                ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-31 00:43:42 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/spot.ts[0m:[93m33[0m:[93m92[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m33[0m           contractAddress: ["DOGE", "XRP"].includes(data.coin) ? data.coin === "DOGE" ? "" true,
+[7m  [0m [91m                                                                                           ~~~~[0m
+[96msrc/services/spot.ts[0m:[93m33[0m:[93m96[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m33[0m           contractAddress: ["DOGE", "XRP"].includes(data.coin) ? data.coin === "DOGE" ? "" true,
+[7m  [0m [91m                                                                                               ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/spot.ts[0m:[93m33[0m:[93m92[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m33[0m           contractAddress: ["DOGE", "XRP"].includes(data.coin) ? data.coin === "DOGE" ? "" true,
+[7m  [0m [91m                                                                                           ~~~~[0m
+[96msrc/services/spot.ts[0m:[93m33[0m:[93m96[0m - [91merror[0m[90m TS1005: [0m':' expected.
+
+[7m33[0m           contractAddress: ["DOGE", "XRP"].includes(data.coin) ? data.coin === "DOGE" ? "" true,
+[7m  [0m [91m                                                                                               ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+2025-01-31 01:08:47 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m33[0m:[93m28[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m33[0m             if (tokenValue.) {
+[7m  [0m [91m                           ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/services/tokens.ts[0m:[93m33[0m:[93m28[0m - [91merror[0m[90m TS1003: [0mIdentifier expected.
+
+[7m33[0m             if (tokenValue.) {
+[7m  [0m [91m                           ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\investiX\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)

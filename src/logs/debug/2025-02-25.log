@@ -1,0 +1,8 @@
+2025-02-25 19:44:40 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-25 19:48:08 info: [0mGET /api/account/ballance [36m304[0m 369.009 ms - -[0m
+2025-02-25 19:48:10 info: [0mGET /api/account/ballance [36m304[0m 259.541 ms - -[0m
+2025-02-25 19:48:11 info: [0mGET /api/account/ballance [36m304[0m 256.575 ms - -[0m
+2025-02-25 19:54:32 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-25 20:20:03 info: [0mGET /api/spot/list [0m-[0m - ms - -[0m

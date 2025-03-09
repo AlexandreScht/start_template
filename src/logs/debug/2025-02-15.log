@@ -1,0 +1,233 @@
+2025-02-15 18:43:58 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 19:52:30 error: TokenServiceFile.metadata =>  Request failed with status code 400
+2025-02-15 19:52:30 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 19:52:30 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 19:52:30 info: [0mGET /api/spot/list [31m505[0m 1959.492 ms - 35[0m
+2025-02-15 19:53:13 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 19:53:15 error: TokenServiceFile.metadata =>  Request failed with status code 400
+2025-02-15 19:53:15 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 19:53:15 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 19:53:15 info: [0mGET /api/spot/list [31m505[0m 1208.201 ms - 35[0m
+2025-02-15 19:53:41 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 19:54:10 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 19:54:12 error: TokenServiceFile.metadata =>  Request failed with status code 400
+2025-02-15 19:54:12 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 19:54:12 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 19:54:12 info: [0mGET /api/spot/list [31m505[0m 1373.011 ms - 35[0m
+2025-02-15 19:56:30 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 19:56:35 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 19:56:35 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 19:56:35 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 19:56:35 info: [0mGET /api/spot/list [31m505[0m 1145.687 ms - 35[0m
+2025-02-15 20:00:03 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:00:14 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 20:00:14 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 20:00:14 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:00:14 info: [0mGET /api/spot/list [31m505[0m 1731.295 ms - 35[0m
+2025-02-15 20:01:35 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:01:42 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:01:46 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 20:01:46 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 20:01:46 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:01:46 info: [0mGET /api/spot/list [31m505[0m 1809.595 ms - 35[0m
+2025-02-15 20:02:01 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:02:04 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 20:02:04 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 20:02:04 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:02:04 info: [0mGET /api/spot/list [31m505[0m 1249.298 ms - 35[0m
+2025-02-15 20:09:44 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:09:52 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:10:01 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:10:08 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:10:15 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 20:10:15 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 20:10:15 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:10:15 info: [0mGET /api/spot/list [31m505[0m 1513.748 ms - 35[0m
+2025-02-15 20:11:50 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:14:54 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:15:31 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:16:07 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:16:37 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:18:28 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:18:40 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:18:59 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:19:09 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:19:11 error: SpotServiceFile.getAvailableList =>  Cannot read properties of undefined (reading 'includes')
+2025-02-15 20:19:11 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:19:11 info: [0mGET /api/spot/list [31m505[0m 369.189 ms - 35[0m
+2025-02-15 20:19:33 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:19:36 error: SpotServiceFile.getAvailableList =>  Cannot read properties of undefined (reading 'symbol')
+2025-02-15 20:19:36 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:19:36 info: [0mGET /api/spot/list [31m505[0m 730.461 ms - 35[0m
+2025-02-15 20:19:51 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:19:53 error: SpotServiceFile.getAvailableList =>  Cannot read properties of undefined (reading 'symbol')
+2025-02-15 20:19:53 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:19:53 info: [0mGET /api/spot/list [31m505[0m 744.799 ms - 35[0m
+2025-02-15 20:20:02 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:20:14 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 20:20:14 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 20:20:14 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:20:14 info: [0mGET /api/spot/list [31m505[0m 1937.594 ms - 35[0m
+2025-02-15 20:20:16 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:20:38 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 20:20:38 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 20:20:38 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:20:38 info: [0mGET /api/spot/list [31m505[0m 1285.594 ms - 35[0m
+2025-02-15 20:20:40 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:20:52 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 20:20:52 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 20:20:52 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:20:52 info: [0mGET /api/spot/list [31m505[0m 1184.182 ms - 35[0m
+2025-02-15 20:20:54 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:21:20 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:21:23 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 20:21:23 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 20:21:23 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 20:21:23 info: [0mGET /api/spot/list [31m505[0m 1175.622 ms - 35[0m
+2025-02-15 20:21:25 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:21:37 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:21:52 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:22:01 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:22:06 info: [0mGET /api/spot/list [32m200[0m 4272.857 ms - -[0m
+2025-02-15 20:24:17 info: [0mGET /api/spot/list [32m200[0m 2261.037 ms - -[0m
+2025-02-15 20:29:56 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:57:52 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 20:58:16 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 21:32:58 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 21:38:04 info: [0mGET /api/spot/list [32m200[0m 5156.595 ms - -[0m
+2025-02-15 21:38:32 info: [0mGET /api/spot/list [32m200[0m 2706.354 ms - -[0m
+2025-02-15 21:46:06 info: [0mGET /api/spot/list [32m200[0m 4004.293 ms - -[0m
+2025-02-15 21:51:31 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 21:58:06 info: [0mGET /api/spot/list [32m200[0m 5614.716 ms - -[0m
+2025-02-15 21:59:46 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 21:59:49 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 21:59:49 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 21:59:49 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 21:59:49 info: [0mGET /api/spot/list [31m505[0m 903.127 ms - 35[0m
+2025-02-15 21:59:51 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 21:59:57 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 21:59:57 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 21:59:57 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 21:59:57 info: [0mGET /api/spot/list [31m505[0m 1939.230 ms - 35[0m
+2025-02-15 21:59:59 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 22:00:05 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 22:00:05 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 22:00:05 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 22:00:05 info: [0mGET /api/spot/list [31m505[0m 4446.378 ms - 35[0m
+2025-02-15 22:00:07 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 22:00:28 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 22:00:28 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 22:00:28 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 22:00:28 info: [0mGET /api/spot/list [31m505[0m 3657.358 ms - 35[0m
+2025-02-15 22:00:30 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 22:00:36 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 22:00:36 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 22:00:36 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 22:00:36 info: [0mGET /api/spot/list [31m505[0m 2913.209 ms - 35[0m
+2025-02-15 22:00:38 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 22:00:45 error: MarketCapAPI.metadata =>  Request failed with status code 400
+2025-02-15 22:00:45 error: TokenServiceFile.metadata =>  Echec de la requete API
+2025-02-15 22:00:45 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 22:00:45 info: [0mGET /api/spot/list [31m505[0m 3952.915 ms - 35[0m
+2025-02-15 22:00:47 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 22:00:54 error: MarketCapAPI.quotes =>  Request failed with status code 429
+2025-02-15 22:00:54 error: TokenServiceFile.quotes =>  Echec de la requete API
+2025-02-15 22:00:54 error: [GET] /api/spot/list >> StatusCode:: 505, Message:: Echec de la requete API
+2025-02-15 22:00:54 info: [0mGET /api/spot/list [31m505[0m 5172.120 ms - 35[0m
+2025-02-15 22:01:45 info: [0mGET /api/spot/list [32m200[0m 8413.075 ms - -[0m
+2025-02-15 22:03:21 info: [0mGET /api/spot/list [32m200[0m 4559.276 ms - -[0m
+2025-02-15 22:09:46 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 22:10:51 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 22:12:01 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 22:12:23 info: [0mGET /api/spot/list [32m200[0m 12534.379 ms - -[0m
+2025-02-15 22:12:47 info: [0mGET /api/spot/list [32m200[0m 5110.553 ms - -[0m
+2025-02-15 22:15:28 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 22:15:35 info: [0mGET /api/spot/list [32m200[0m 6085.851 ms - -[0m
+2025-02-15 22:16:01 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 22:16:07 info: [0mGET /api/spot/list [32m200[0m 4953.264 ms - -[0m
+2025-02-15 22:16:53 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 22:17:01 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 22:17:13 info: [0mGET /api/spot/list [32m200[0m 4814.742 ms - -[0m
+2025-02-15 22:18:10 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 22:18:25 info: [0mGET /api/spot/list [32m200[0m 9833.062 ms - -[0m
+2025-02-15 22:18:39 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 22:18:48 info: [0mGET /api/spot/list [32m200[0m 4924.699 ms - -[0m
+2025-02-15 22:19:15 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 22:19:22 info: [0mGET /api/spot/list [32m200[0m 5386.453 ms - -[0m
+2025-02-15 22:20:19 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 22:20:32 info: [0mGET /api/spot/list [32m200[0m 9570.897 ms - -[0m
+2025-02-15 22:53:52 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 22:53:59 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 22:54:17 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 23:01:37 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 23:01:43 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 23:01:57 info: [0mGET /api/spot/list [32m200[0m 9986.631 ms - -[0m
+2025-02-15 23:03:34 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀
+2025-02-15 23:09:02 info: [0mGET /api/spot/list [32m200[0m 13603.999 ms - -[0m
+2025-02-15 23:10:56 info: [0mGET /api/spot/list [32m200[0m 9451.242 ms - -[0m
+2025-02-15 23:12:02 info: [0mGET /api/spot/list [36m304[0m 6517.034 ms - -[0m
+2025-02-15 23:13:02 info: [0mGET /api/spot/list [32m200[0m 6603.821 ms - -[0m
+2025-02-15 23:21:43 info: ======= Version: development =======
+          🚀 server listening port: 3000 🚀

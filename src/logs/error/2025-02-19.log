@@ -1,0 +1,8 @@
+2025-02-19 21:13:59 error: uncaughtException: listen EADDRINUSE: address already in use :::3000
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1898:16)
+    at listenInCluster (node:net:1946:12)
+    at Server.listen (node:net:2044:7)
+    at App.listen (C:\Users\alexa\CodeVStudio\investiX\src\server\config.ts:51:15)
+    at start (C:\Users\alexa\CodeVStudio\investiX\src\server\index.ts:5:7)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
