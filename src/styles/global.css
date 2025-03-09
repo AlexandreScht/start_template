@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .light {
+    /* light theme */
+    --content: 0 0% 100%;
+  }
+
+  /*  dark theme*/
+  .dark {
+    --content: 218.57 73.68% 7.45%;
+  }
+}
+
+@layer utilities {
+  @layer components {
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .animation-slide-left {
+      animation: Slide 1s ease-in-out forwards;
+    }
+  }
+}
