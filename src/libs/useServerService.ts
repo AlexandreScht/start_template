@@ -2,10 +2,10 @@ import { Services } from '@/interfaces/services';
 import PrepareServices from '@/services';
 
 const configureCache = (
-  cacheOption: Services.serviceOption = { key: undefined, enabled: true, store: 'redis' },
+  cacheOption: Services.Cache.option = { key: undefined, enabled: true, store: 'redis' },
   defaultKeyName?: string,
 ): Services.serviceOption => {
-  const { key, enabled, store } = cacheOption;
+  const { key, enabled, storage } = cacheOption;
   if (!defaultKeyName && !key) {
     throw new Error('cache key do not exist');
   }

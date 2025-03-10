@@ -16,7 +16,7 @@ const AxiosRequest = ({ token }: { token?: string } = {}) => {
   });
 };
 
-const AxiosInstance = ({ token, cache }: { token?: string; cache?: Services.cacheServerOptions }) => {
+const AxiosInstance = ({ token, cache }: { token?: string; cache?: Services.Cache.option }) => {
   const serverRequest = typeof window === 'undefined';
   const instance = AxiosRequest({ token });
   if (serverRequest) setupCache(instance, cacheConfig(cache?.key as string));

@@ -12,15 +12,20 @@ declare namespace Services {
     code?: number | string;
   }
 
-  type cacheServerOptions = {
-    key: string;
-    enabled: CacheOptions['cachePredicate'];
-    time: number;
-    persist: boolean;
-    debug: CacheOptions['debug'];
-  };
+  export type serviceOption = Partial<Cache.option>;
 
-  export type serviceOption = Partial<cacheServerOptions>;
+  namespace Cache {
+    export type storage = 'redis' | 'ram';
+
+    interface option {
+      key: string;
+      enabled: CacheOptions['cachePredicate'];
+      lifeTime: number;
+      storage: storage;
+      persist: boolean;
+      debug: CacheOptions['debug'];
+    }
+  }
 
   namespace Index {
     export type returnType = ReturnType<typeof PrepareServices>;

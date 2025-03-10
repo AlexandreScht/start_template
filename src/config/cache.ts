@@ -1,6 +1,7 @@
+import { Services } from '@/interfaces/services';
 import RedisInstance from '@/libs/redis';
 import { buildMemoryStorage, buildStorage, canStale, type CacheOptions } from 'axios-cache-interceptor';
-const cacheConfig = (key: string, storage: 'redis' | 'ram' = 'redis') =>
+const cacheConfig = (key: string, storage: Services.Cache.storage = 'redis') =>
   ({
     storage:
       storage === 'ram'
