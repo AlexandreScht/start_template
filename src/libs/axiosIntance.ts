@@ -2,7 +2,7 @@ import cacheConfig from '@/config/cache';
 import { ExpiredSessionError, InvalidRoleAccessError } from '@/exceptions/errors';
 import { Services } from '@/interfaces/services';
 import axios from 'axios';
-import { setupCache } from 'axios-cache-interceptor';
+import { CacheAxiosResponse, setupCache } from 'axios-cache-interceptor';
 import { serialize } from 'cookie';
 import { getRequestCookies, getServerUri, setRequestCookies } from '../utils/cookies';
 

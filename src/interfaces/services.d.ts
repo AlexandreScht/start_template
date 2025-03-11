@@ -16,14 +16,20 @@ declare namespace Services {
 
   namespace Cache {
     export type storage = 'redis' | 'ram';
-
-    interface option {
+    type params = Partial<{
       key: string;
-      enabled: CacheOptions['cachePredicate'];
+      enabled: CacheOptions['cachePredicate'] | boolean;
       lifeTime: number;
       storage: storage;
       persist: boolean;
+      eTag: CacheOptions['etag'];
+      acceptServerConfig: CacheOptions['interpretHeader'];
+      ModifiedSince: CacheOptions['ModifiedSince'];
       debug: CacheOptions['debug'];
+    }>;
+    interface option {
+      cache?: params;
+      header?: AxiosRequestHeaders;
     }
   }
 

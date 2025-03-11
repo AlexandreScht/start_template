@@ -1,10 +1,10 @@
 import { Services } from '@/interfaces/services';
 import RedisInstance from '@/libs/redis';
 import { buildMemoryStorage, buildStorage, canStale, type CacheOptions } from 'axios-cache-interceptor';
-const cacheConfig = (key: string, storage: Services.Cache.storage = 'redis') =>
+const cacheConfig = (cache: Required<Pick<Services.Cache.params, 'key'>> & Partial<Omit<Services.Cache.params, 'key'>>) =>
   ({
     storage:
-      storage === 'ram'
+      cache?.storage === 'ram'
         ? buildMemoryStorage(/* cloneData default=*/ false, /* cleanupInterval default=*/ false, /* maxEntries default=*/ false)
         : buildStorage({
             async find(key: string) {
@@ -33,8 +33,9 @@ const cacheConfig = (key: string, storage: Services.Cache.storage = 'redis') =>
       const { params, data } = req;
       const paramsString = params ? JSON.stringify(params) : null;
       const dataString = data ? JSON.stringify(data) : null;
-      return `${key}:values_${paramsString}_${dataString}`;
+      return `${cache.key}:values_${paramsString}_${dataString}`;
     },
+    ...()
     debug: ({ id, msg, data }) => console.log({ id, msg, data }),
     headerInterpreter: headers => {
       if (headers && headers['x-cache-option']) {
