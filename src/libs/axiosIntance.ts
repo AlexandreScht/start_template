@@ -1,25 +1,41 @@
-import cacheConfig from '@/config/cache';
+import cacheDefaultConfig, { cacheConfig } from '@/config/cache';
 import { ExpiredSessionError, InvalidRoleAccessError } from '@/exceptions/errors';
 import { Services } from '@/interfaces/services';
-import axios from 'axios';
-import { CacheAxiosResponse, setupCache } from 'axios-cache-interceptor';
+import { serializeCookies } from '@/utils/serialize';
+import axios, { type RawAxiosRequestHeaders } from 'axios';
+import { type CacheOptions, setupCache } from 'axios-cache-interceptor';
 import { serialize } from 'cookie';
 import { getRequestCookies, getServerUri, setRequestCookies } from '../utils/cookies';
 
-const AxiosRequest = ({ token }: { token?: string } = {}) => {
+const AxiosRequest = (headersOption: RawAxiosRequestHeaders & { withCredentials?: boolean }) => {
+  const { Authorization, 'Content-Type': ContentType, withCredentials, ...headers } = headersOption ?? {};
   return axios.create({
     headers: {
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-      'Content-Type': 'application/json',
+      ...(Authorization ? { Authorization: `Bearer ${Authorization}` } : {}),
+      ...(ContentType ? { 'Content-Type': ContentType } : { 'Content-Type': 'application/json' }),
+      ...headers,
     },
-    withCredentials: true,
+    withCredentials: withCredentials ?? true,
   });
 };
 
-const AxiosInstance = ({ token, cache }: { token?: string; cache?: Services.Cache.option }) => {
+const configureCache = (cacheOptions: Services.Cache.options = {}) => {
+  const { key, storage, serverConfig, lifeTime: ttl, persist, enabled: cachePredicate, ...other } = cacheOptions;
+  const { persistTimeLife, defaultTimeLife } = cacheConfig;
+  return {
+    ...cacheDefaultConfig({ key, storage }),
+    ...(typeof serverConfig === 'function' ? { serverConfig } : { interpretHeader: serverConfig ?? true }),
+    ttl: persist ? persistTimeLife : (ttl ?? defaultTimeLife),
+    ...(typeof cachePredicate === 'function' ? { cachePredicate } : {}),
+    ...other,
+  } satisfies CacheOptions;
+};
+
+const AxiosInstance = ({ headers, cache }: Services.headerOption = {}) => {
   const serverRequest = typeof window === 'undefined';
-  const instance = AxiosRequest({ token });
-  if (serverRequest) setupCache(instance, cacheConfig(cache?.key as string));
+  const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
+  const instance = AxiosRequest(otherHeaders);
+  if (serverRequest && !!cache?.enabled) setupCache(instance, configureCache(cache));
   instance.interceptors.response.use(
     async response => {
       const cookies = response.headers['set-cookie'];
@@ -38,7 +54,8 @@ const AxiosInstance = ({ token, cache }: { token?: string; cache?: Services.Cach
   instance.interceptors.request.use(async request => {
     if (serverRequest) {
       const cookies = await setRequestCookies();
-      const formattedCookies = cookies
+      const mappedCookies = setCookies ? [...cookies, ...serializeCookies(setCookies)] : cookies;
+      const formattedCookies = mappedCookies
         ?.map(cookie => {
           const { name, value, ...options } = cookie;
           return serialize(name, value, options);

@@ -1,8 +1,10 @@
 'use server';
 import config from '@/config';
 import serverConfig from '@/config/server';
+import { Services } from '@/interfaces/services';
 import { parse } from 'cookie';
 import { cookies } from 'next/headers';
+import { serializeCookies } from './serialize';
 
 export default async function getSessionCookie(cookieName?: string) {
   try {
@@ -44,37 +46,13 @@ export async function getRequestCookies(apiCookies: string[]): Promise<void> {
 /**
  * function to get cookie in client side from server side
  */
-export async function setRequestCookies(): Promise<
-  {
-    name: string;
-    value: string;
-    path?: string;
-    domain?: string;
-    secure: boolean;
-    sameSite?: 'strict';
-    httpOnly: boolean;
-  }[]
-> {
+export async function setRequestCookies(): Promise<Services.Axios.Cookie[]> {
   try {
-    return cookies()
-      .getAll()
-      .filter(cookie => !cookie.name.startsWith('next-auth.'))
-      .map(cookie => {
-        const signedCookie = cookie.value.startsWith('s:');
-        return {
-          name: cookie.name,
-          value: cookie.value,
-          httpOnly: true,
-          ...(signedCookie
-            ? {}
-            : {
-                path: '/',
-                domain: new URL(config.SERVER_URI).hostname,
-                sameSite: 'strict',
-              }),
-          secure: config.SERVER_URI.startsWith('https'),
-        };
-      });
+    return serializeCookies(
+      cookies()
+        .getAll()
+        .filter(cookie => !cookie.name.startsWith('next-auth.')),
+    );
   } catch (error) {
     console.error('Error retrieving server cookies:', error);
     return [];
