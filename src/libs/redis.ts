@@ -1,4 +1,4 @@
-import config from '@/config';
+import env from '@/config';
 import { ClientException } from '@/exceptions/errors';
 import Redis, { Redis as RedisClient } from 'ioredis';
 
@@ -7,12 +7,12 @@ class RedisInstance {
   protected redisClient: RedisClient;
 
   private constructor() {
-    const { PASSWORD, PORT, HOST } = config.redis;
+    const { REDIS_PASSWORD, REDIS_HOST, REDIS_PORT } = env;
 
     this.redisClient = new Redis({
-      host: HOST,
-      port: Number(PORT),
-      ...(PASSWORD ? { password: PASSWORD } : {}),
+      host: REDIS_HOST,
+      port: REDIS_PORT,
+      ...(REDIS_PASSWORD ? { password: REDIS_PASSWORD } : {}),
       enableReadyCheck: false,
       maxRetriesPerRequest: null,
     });

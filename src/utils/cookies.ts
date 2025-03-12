@@ -1,5 +1,5 @@
 'use server';
-import config from '@/config';
+import env from '@/config';
 import serverConfig from '@/config/server';
 import { Services } from '@/interfaces/services';
 import { parse } from 'cookie';
@@ -8,7 +8,7 @@ import { serializeCookies } from './serialize';
 
 export default async function getSessionCookie(cookieName?: string) {
   try {
-    return cookies().get(cookieName ? cookieName : (config?.COOKIE as string))?.value;
+    return cookies().get(cookieName ? cookieName : (env?.COOKIE as string))?.value;
   } catch (error) {
     return undefined;
   }
@@ -30,10 +30,10 @@ export async function getRequestCookies(apiCookies: string[]): Promise<void> {
           value: cookieValue,
           httpOnly: true,
           sameSite,
-          domain: new URL(config.SERVER_URI).hostname,
+          domain: new URL(env.SERVER_URI).hostname,
           maxAge: parseInt(parsedCookie['Max-Age'] || serverConfig.maxAge),
           path: parsedCookie['Path'],
-          secure: config.SERVER_URI.startsWith('https'),
+          secure: env.SERVER_URI.startsWith('https'),
           expires,
         });
       }
@@ -60,5 +60,5 @@ export async function setRequestCookies(): Promise<Services.Axios.Cookie[]> {
 }
 
 export async function getServerUri() {
-  return config.SERVER_URI;
+  return env.SERVER_URI;
 }

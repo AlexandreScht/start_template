@@ -3,7 +3,7 @@
 import { InvalidArgumentError } from '@/exceptions/errors';
 import { Services } from '@/interfaces/services';
 import PrepareServices from '@/services';
-import React, { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import React, { createContext, useCallback, useContext, useMemo } from 'react';
 import { mutate, type MutatorOptions } from 'swr';
 
 interface ServiceContextProvider {
@@ -16,10 +16,10 @@ const ServiceContext = createContext<ServiceContextProvider | undefined>(undefin
 export function ServiceProvider({ children, token }: { children: React.ReactNode; token?: string }) {
   // const selectCacheStore = useState();
   const services = useMemo(() => {
-    const services = PrepareServices({ token });
+    const services = PrepareServices();
     return Object.entries(services).reduce((acc, [key, fn]) => {
-      const typedKey = key as keyof Services.returnType;
-      const typedFn = fn as Services.returnType[typeof typedKey] & ((arg: any, customKey?: string) => any);
+      const typedKey = key as keyof Services.Index.returnType;
+      const typedFn = fn as Services.Index.returnType[typeof typedKey] & ((arg: any, customKey?: string) => any);
 
       acc[typedKey] = ((...args: any[]): Services.Index.WrappedServiceOutput<typeof typedFn, Parameters<typeof typedFn>[0]> => {
         const [first, second] = args;
@@ -28,11 +28,11 @@ export function ServiceProvider({ children, token }: { children: React.ReactNode
           service: typedFn,
           arg: first,
         };
-      }) as Services.Index.WrappedServices<Services.returnType>[typeof typedKey];
+      }) as Services.Index.WrappedServices<Services.Index.returnType>[typeof typedKey];
 
       return acc;
-    }, {} as Services.Index.WrappedServices<Services.returnType>);
-  }, [token]);
+    }, {} as Services.Index.WrappedServices<Services.Index.returnType>);
+  }, []);
 
   const revalidate = useCallback((services: Services.Revalidate.argsType[], options?: MutatorOptions): void => {
     const isValidService = (obj: any): obj is { key: string; service: (arg: unknown) => unknown; arg: (cache: any) => any } =>

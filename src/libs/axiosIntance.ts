@@ -35,7 +35,7 @@ const AxiosInstance = ({ headers, cache }: Services.headerOption = {}) => {
   const serverRequest = typeof window === 'undefined';
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
   const instance = AxiosRequest(otherHeaders);
-  if (serverRequest && cache?.enabled !== false) setupCache(instance, configureCache(cache));
+  if (cache?.enabled !== false) setupCache(instance, configureCache(cache));
   instance.interceptors.response.use(
     async response => {
       const cookies = response.headers['set-cookie'];

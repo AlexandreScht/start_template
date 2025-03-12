@@ -1,4 +1,4 @@
-import config from '@/config';
+import env from '@/config';
 import type { Services } from '@/interfaces/services';
 
 export function serializeCookies(cookies: { name: string; value: unknown }[]): Services.Axios.Cookie[] {
@@ -13,10 +13,10 @@ export function serializeCookies(cookies: { name: string; value: unknown }[]): S
         ? {}
         : {
             path: '/',
-            domain: new URL(config.SERVER_URI).hostname,
+            domain: new URL(env.SERVER_URI).hostname,
             sameSite: 'strict',
           }),
-      secure: config.SERVER_URI.startsWith('https'),
+      secure: env.SERVER_URI.startsWith('https'),
     };
   });
 }
