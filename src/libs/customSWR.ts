@@ -25,5 +25,6 @@ export default function useClientSWR<K extends string, R extends (arg: A) => any
   };
 
   const serviceKey = allowedService ? key : null;
-  return useSWR(serviceKey, safeFetcher(arg), swrOptions);
+
+  return useSWR(`${serviceKey}:${JSON.stringify(arg)}`, safeFetcher(arg), swrOptions);
 }
