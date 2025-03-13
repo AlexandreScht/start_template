@@ -13,7 +13,7 @@ interface ServiceContextProvider {
 
 const ServiceContext = createContext<ServiceContextProvider | undefined>(undefined);
 
-export function ServiceProvider({ children, token }: { children: React.ReactNode; token?: string }) {
+export function ServiceProvider({ children }: { children: React.ReactNode; redisCache?: Map<string, unknown> }) {
   // const selectCacheStore = useState();
   const services = useMemo(() => {
     const services = PrepareServices();
