@@ -1,39 +1,12 @@
-import { Services } from '@/interfaces/services';
-import RedisInstance from '@/libs/redis';
-import { buildMemoryStorage, buildStorage, canStale, type CacheInstance } from 'axios-cache-interceptor';
+import { buildMemoryStorage, type CacheInstance } from 'axios-cache-interceptor';
 
 export const cacheConfig = {
   defaultTimeLife: 1000 * 60 * 3, // 3 min
   persistTimeLife: 1000 * 60 * 60 * 24 * 365, // 1 year,
 };
-export default function cacheDefaultConfig({ key, storage }: Pick<Services.Cache.options, 'key' | 'storage'>): Partial<CacheInstance> {
+export default function cacheDefaultConfig(key: string): Partial<CacheInstance> {
   return {
-    storage:
-      storage === 'ram'
-        ? buildMemoryStorage(/* cloneData default=*/ false, /* cleanupInterval default=*/ false, /* maxEntries default=*/ false)
-        : buildStorage({
-            async find(key: string) {
-              return await RedisInstance.get(`cache:${key}`);
-            },
-            async set(key: string, value: any, req?: any) {
-              let expireTime: number | undefined;
-
-              if (value.state === 'loading') {
-                expireTime = Date.now() + (req?.cache?.ttl ?? 60000);
-              } else if ((value.state === 'stale' && value.ttl) || (value.state === 'cached' && !canStale(value))) {
-                expireTime = value.createdAt + value.ttl;
-              }
-
-              if (expireTime) {
-                await RedisInstance.set(`cache:${key}`, JSON.stringify(value), 'PXAT', expireTime);
-              } else {
-                await RedisInstance.set(`cache:${key}`, JSON.stringify(value));
-              }
-            },
-            async remove(key: string) {
-              await RedisInstance.del(`cache:${key}`);
-            },
-          }),
+    storage: buildMemoryStorage(/* cloneData default=*/ false, /* cleanupInterval default=*/ false, /* maxEntries default=*/ false),
     generateKey: req => {
       const { params, data } = req;
       const paramsString = params ? JSON.stringify(params) : null;

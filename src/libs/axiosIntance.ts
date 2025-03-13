@@ -1,5 +1,6 @@
 import cacheDefaultConfig, { cacheConfig } from '@/config/cache';
 import { ExpiredSessionError, InvalidRoleAccessError } from '@/exceptions/errors';
+import { RequiredKey } from '@/interfaces/globa';
 import { Services } from '@/interfaces/services';
 import { serializeCookies } from '@/utils/serialize';
 import axios, { type RawAxiosRequestHeaders } from 'axios';
@@ -19,23 +20,27 @@ const AxiosRequest = (headersOption: RawAxiosRequestHeaders & { withCredentials?
   });
 };
 
-const configureCache = (cacheOptions: Services.Cache.options = {}) => {
-  const { key, storage, serverConfig, lifeTime: ttl, persist, enabled: cachePredicate, ...other } = cacheOptions;
+const configureCache = (cacheOptions: RequiredKey<Services.Cache.options, 'key'>) => {
+  const { key, serverConfig, lifeTime: ttl, persist, enabled: cachePredicate, ...other } = cacheOptions;
   const { persistTimeLife, defaultTimeLife } = cacheConfig;
-  return {
-    ...cacheDefaultConfig({ key, storage }),
-    ...(typeof serverConfig === 'function' ? { serverConfig } : { interpretHeader: serverConfig ?? true }),
-    ttl: persist ? persistTimeLife : (ttl ?? defaultTimeLife),
-    ...(typeof cachePredicate === 'function' ? { cachePredicate } : {}),
-    ...other,
-  } satisfies CacheOptions;
+  return typeof window === 'undefined'
+    ? ({
+        ...cacheDefaultConfig(key),
+        ...(typeof serverConfig === 'function' ? { serverConfig } : { interpretHeader: serverConfig ?? true }),
+        ttl: persist ? persistTimeLife : (ttl ?? defaultTimeLife),
+        ...(typeof cachePredicate === 'function' ? { cachePredicate } : {}),
+        ...other,
+      } satisfies CacheOptions)
+    : {};
 };
 
-const AxiosInstance = ({ headers, cache }: Services.headerOption = {}) => {
-  const serverRequest = typeof window === 'undefined';
+const AxiosInstance = ({ headers, cache, side }: Partial<Services.headerOption> = {}) => {
+  const serverRequest = side === 'server' ? true : side === 'client' ? false : typeof window === 'undefined';
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
   const instance = AxiosRequest(otherHeaders);
-  if (cache?.enabled !== false) setupCache(instance, configureCache(cache));
+  if (serverRequest) {
+    setupCache(instance, configureCache(cache as RequiredKey<Services.Cache.options, 'key'>));
+  }
   instance.interceptors.response.use(
     async response => {
       const cookies = response.headers['set-cookie'];
@@ -54,7 +59,7 @@ const AxiosInstance = ({ headers, cache }: Services.headerOption = {}) => {
   instance.interceptors.request.use(async request => {
     if (serverRequest) {
       const cookies = await setRequestCookies();
-      const mappedCookies = setCookies ? [...cookies, ...serializeCookies(setCookies)] : cookies;
+      const mappedCookies = setCookies ? [...cookies, ...(await serializeCookies(setCookies))] : cookies;
       const formattedCookies = mappedCookies
         ?.map(cookie => {
           const { name, value, ...options } = cookie;

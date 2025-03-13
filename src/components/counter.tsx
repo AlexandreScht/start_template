@@ -11,10 +11,10 @@ import { useCallback } from 'react';
 
 export default function CounterIncrement() {
   // const [allowed, setAllowed] = useState<boolean>(false);
-  const {
-    services: { account },
-    revalidate,
-  } = useAppService();
+  // const {
+  //   services: { account },
+  //   revalidate,
+  // } = useAppService();
   // revalidate([account({ id: 1 })]);
   // useService(s => s.account);
 

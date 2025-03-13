@@ -14,6 +14,7 @@ declare namespace Services {
   interface headerOption {
     cache?: Cache.options;
     headers?: Axios.axiosHeaders;
+    side: 'client' | 'server';
   }
 
   namespace Axios {
@@ -56,14 +57,13 @@ declare namespace Services {
     type storage = 'redis' | 'ram';
     type options = Partial<{
       key: string;
-      enabled: CacheOptions['cachePredicate'] | boolean;
-      lifeTime: CacheOptions['ttl'];
-      storage: storage;
-      persist: boolean;
-      etag: CacheOptions['etag'];
-      serverConfig: boolean | CacheOptions['interpretHeader'];
-      ModifiedSince: CacheOptions['ModifiedSince'];
-      debug: CacheOptions['debug'];
+      enabled?: CacheOptions['cachePredicate'] | boolean;
+      lifeTime?: CacheOptions['ttl'];
+      persist?: boolean;
+      etag?: CacheOptions['etag'];
+      serverConfig?: boolean | CacheOptions['interpretHeader'];
+      ModifiedSince?: CacheOptions['ModifiedSince'];
+      debug?: CacheOptions['debug'];
     }>;
   }
 

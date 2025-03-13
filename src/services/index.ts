@@ -1,4 +1,3 @@
-'use server';
 import { Services } from '@/interfaces/services';
 import AxiosInstance from '@/libs/axiosIntance';
 import { AccountService } from './users';

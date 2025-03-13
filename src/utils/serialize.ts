@@ -1,7 +1,8 @@
+'use server';
 import env from '@/config';
 import type { Services } from '@/interfaces/services';
 
-export function serializeCookies(cookies: { name: string; value: unknown }[]): Services.Axios.Cookie[] {
+export async function serializeCookies(cookies: { name: string; value: unknown }[]): Promise<Services.Axios.Cookie[]> {
   return cookies.map(cookie => {
     const value = typeof cookie.value === 'string' ? cookie.value : JSON.stringify(cookie.value);
     const signedCookie = value.startsWith('s:');

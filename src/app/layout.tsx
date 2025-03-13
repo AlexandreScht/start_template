@@ -1,8 +1,6 @@
 import { ServiceProvider } from '@/hooks/ServiceProvider';
 import { StoreProvider } from '@/hooks/StoreProvider';
-import SwrProviders from '@/hooks/swrConfig';
 import ThemeProvider from '@/hooks/ThemeProvider';
-import redis from '@/libs/redis';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import React from 'react';
@@ -21,17 +19,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const initialCache = await redis.getAll();
-
   return (
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
-          <SwrProviders initialCache={initialCache}>
-            <ServiceProvider redisCache={initialCache}>
-              <StoreProvider initialState={defaultStore}>{children}</StoreProvider>
-            </ServiceProvider>
-          </SwrProviders>
+          <ServiceProvider>
+            <StoreProvider initialState={defaultStore}>{children}</StoreProvider>
+          </ServiceProvider>
         </ThemeProvider>
       </body>
     </html>

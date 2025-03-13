@@ -13,10 +13,10 @@ interface ServiceContextProvider {
 
 const ServiceContext = createContext<ServiceContextProvider | undefined>(undefined);
 
-export function ServiceProvider({ children }: { children: React.ReactNode; redisCache?: Map<string, unknown> }) {
+export function ServiceProvider({ children }: { children: React.ReactNode }) {
   // const selectCacheStore = useState();
   const services = useMemo(() => {
-    const services = PrepareServices();
+    const services = PrepareServices({ side: 'client' });
     return Object.entries(services).reduce((acc, [key, fn]) => {
       const typedKey = key as keyof Services.Index.returnType;
       const typedFn = fn as Services.Index.returnType[typeof typedKey] & ((arg: any, customKey?: string) => any);
