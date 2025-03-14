@@ -70,22 +70,14 @@ declare namespace Services {
   namespace Index {
     type returnType = ReturnType<typeof PrepareServices>;
 
-    interface WrappedServiceOutput<F, A> {
+    interface WrappedServiceOutput<F extends (...args: any[]) => any> {
       key: string;
-      service: F;
-      arg: A;
+      fetcher: () => ReturnType<F>;
     }
 
-    type WrappedFunctionCharge<A> = (arg: A) => [A, MutatorOptions?];
+    type WrappedServiceFunction<F extends (...args: any[]) => any> = (...args: Parameters<F>) => WrappedServiceOutput<F>;
 
-    type WrappedServiceFunction<F> = F extends (arg: infer A) => unknown
-      ? {
-          (arg: A, override?: string): WrappedServiceOutput<F, A>;
-          (arg: WrappedFunctionCharge<A>): WrappedServiceOutput<F, WrappedFunctionCharge<A>>;
-        }
-      : never;
-
-    type WrappedServices<T> = {
+    type WrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
       [K in keyof T]: WrappedServiceFunction<T[K]>;
     };
   }
@@ -94,7 +86,7 @@ declare namespace Services {
     type OverloadedParamUnion<F extends (...args: any[]) => any> = F extends { (...args: infer P): any } ? P[0] : never;
     type AcceptsFunction<F extends (...args: any[]) => any> = Extract<OverloadedParamUnion<F>, (arg: any) => unknown> extends never ? never : F;
     type ValidatedServiceFunction<F extends (...args: any[]) => any> = AcceptsFunction<F>;
-    type argsType = Index.WrappedServiceOutput<any, Index.WrappedFunctionCharge<any>> | ValidatedServiceFunction<(...args: any[]) => any>;
+    type argsType = Index.WrappedServiceOutput<any> | ValidatedServiceFunction<(...args: any[]) => any>;
   }
 
   // Sous-module "User"

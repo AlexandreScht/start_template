@@ -1,9 +1,9 @@
 'use client';
 
-import { useAppService } from '@/hooks/ServiceProvider';
+import { useService } from '@/hooks/ServiceProvider';
 import { useStore } from '@/hooks/StoreProvider';
-import useClientSWR from '@/libs/customSWR';
-import useService from '@/utils/useService';
+import useClientService from '@/libs/useClientService';
+import useClientSWR from '@/libs/useClientService';
 import { useCallback } from 'react';
 // import { useAppStore } from '@/hooks/StoreProvider';
 
@@ -11,12 +11,12 @@ import { useCallback } from 'react';
 
 export default function CounterIncrement() {
   // const [allowed, setAllowed] = useState<boolean>(false);
-  // const {
-  //   services: { account },
-  //   revalidate,
-  // } = useAppService();
+  const {
+    services: { account },
+    revalidate,
+  } = useService();
   // revalidate([account({ id: 1 })]);
-  // useService(s => s.account);
+  useClientService(account, true, { ""});
 
   // revalidate([account], { revalidate: false });
 

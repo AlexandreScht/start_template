@@ -11,7 +11,7 @@ type NotFunction<T> = T extends (arg: unknown) => unknown ? never : T;
  * @param swrOptions SWRConfiguration
  * @returns Object => { data, error, isLoading, isValidating, mutate }
  */
-export default function useClientSWR<K extends string, R extends (arg: A) => any, A>(
+export default function useClientService<K extends string, R extends (arg: A) => any, A>(
   { key, service, arg }: { key: K; service: R; arg: NotFunction<A> },
   allowedService: boolean = true,
   swrOptions?: SWRConfiguration<R, unknown, BareFetcher<R>>,
