@@ -1,28 +1,17 @@
 'use client';
 
-import { InvalidArgumentError } from '@/exceptions/errors';
 import { Services } from '@/interfaces/services';
 import PrepareServices from '@/services';
 import React, { createContext, useCallback, useContext, useMemo } from 'react';
-import useSWR, { mutate, type MutatorOptions } from 'swr';
+import useSWR from 'swr';
 
-interface ServiceContextProvider {
-  services: Services.Index.WrappedServices<Services.Index.returnType>;
-  // revalidate: (services: Services.Revalidate.argsType[], options?: MutatorOptions) => void;
-}
-
-const ServiceContext = createContext<ServiceContextProvider | undefined>(undefined);
+const ServiceContext = createContext<Services.Providers.ServiceContextProvider | undefined>(undefined);
 
 export function ServiceProvider({ children }: { children: React.ReactNode }) {
-  const preparedService = useCallback((arg: Services.Axios.axiosHeaders) => PrepareServices({ ...arg, side: 'client' }), []);
+  const preparedService = useCallback((arg: Services.headerOption) => PrepareServices({ ...arg, side: 'client' }), []);
 
-  const services = useCallback(
-    <K extends keyof Services.Index.returnType>(
-      selector: (
-        s: Services.Index.WrappedServices<Services.Index.returnType>,
-      ) => ReturnType<Services.Index.WrappedServices<Services.Index.returnType>[K]>,
-      options: Services.Axios.axiosHeaders,
-    ) => {
+  const services: Services.Providers.serviceWrapper = useCallback(
+    (selector, options = {}) => {
       const services = preparedService(options);
       const wrappedServices = Object.entries(services).reduce((acc, [key, fn]) => {
         const typedKey = key as keyof Services.Index.returnType;
@@ -31,7 +20,7 @@ export function ServiceProvider({ children }: { children: React.ReactNode }) {
         acc[typedKey] = ((...args: any[]): Services.Index.WrappedServiceOutput<typeof typedFn> => {
           const [first, second] = args;
           return {
-            key: `${String(second ?? typedKey)}:${JSON.stringify(first)}`,
+            key: second ? String(second) : `${String(typedKey)}:${JSON.stringify(first)}`,
             fetcher: () => typedFn(first),
           };
         }) as Services.Index.WrappedServices<Services.Index.returnType>[typeof typedKey];
@@ -77,15 +66,22 @@ export function ServiceProvider({ children }: { children: React.ReactNode }) {
 
   const contextValue = useMemo(() => ({ services }), [services]);
   // const contextValue = useMemo(() => ({ services, revalidate }), [services, revalidate]);
-  // const contextValue = useMemo(() => ({ services, revalidate }), [services, revalidate]);
 
   return <ServiceContext.Provider value={contextValue}>{children}</ServiceContext.Provider>;
 }
 
-export function useService(): any {
+export const useService = <K extends keyof Services.Index.returnType>(
+  ...args: Parameters<Services.Providers.useService.Type<K>>
+): ReturnType<Services.Providers.useService.Type<K>> => {
   const context = useContext(ServiceContext);
   if (!context) {
-    throw new Error('useAppService must be used within a ServiceProvider');
+    throw new Error('useService must be used within a ServiceProvider');
   }
-  return useSWR('/', () => '');
-}
+  const serviceOutput = context.services(...args);
+  return useSWR(serviceOutput.key, async () => {
+    const response = await serviceOutput.fetcher();
+    return response as Services.Providers.useService.ServiceData<Awaited<ReturnType<Services.Index.returnType[K]>>>;
+  });
+};
+
+export function useMutate() {}

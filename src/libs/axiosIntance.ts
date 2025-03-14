@@ -20,7 +20,7 @@ const AxiosRequest = (headersOption: RawAxiosRequestHeaders & { withCredentials?
   });
 };
 
-const configureCache = (cacheOptions: RequiredKey<Services.Cache.options, 'key'>) => {
+const configureCache = (cacheOptions: RequiredKey<Services.Cache.serverOption, 'key'>) => {
   const { key, serverConfig, lifeTime: ttl, persist, enabled: cachePredicate, ...other } = cacheOptions;
   const { persistTimeLife, defaultTimeLife } = cacheConfig;
   return typeof window === 'undefined'
@@ -39,7 +39,7 @@ const AxiosInstance = ({ headers, cache, side }: Partial<Services.headerOption> 
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
   const instance = AxiosRequest(otherHeaders);
   if (serverRequest) {
-    setupCache(instance, configureCache(cache as RequiredKey<Services.Cache.options, 'key'>));
+    setupCache(instance, configureCache(cache as RequiredKey<Services.Cache.serverOption, 'key'>));
   }
   instance.interceptors.response.use(
     async response => {

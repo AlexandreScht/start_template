@@ -1,7 +1,7 @@
 import { Services } from '@/interfaces/services';
 import PrepareServices from '@/services';
 
-const configureRequiredKeyCache = (cacheOption: Services.Cache.options = {}, defaultKeyName?: string): Services.headerOption => {
+const configureRequiredKeyCache = (cacheOption: Services.Cache.serverOption = {}, defaultKeyName?: string): Services.headerOption => {
   const { key, ...options } = cacheOption;
   if (!defaultKeyName && !key) {
     throw new Error('cache key do not exist');
@@ -17,7 +17,7 @@ const configureRequiredKeyCache = (cacheOption: Services.Cache.options = {}, def
 
 export default function useServerService<K extends keyof Services.Index.returnType>(
   serviceCall: (s: Services.Index.returnType) => ReturnType<Services.Index.returnType[K]>,
-  options: Partial<Services.headerOption> = {},
+  options: Partial<Services.ServiceServerOption> = {},
 ): ReturnType<Services.Index.returnType[K]> {
   const { cache, headers } = options;
 

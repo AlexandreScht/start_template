@@ -2,8 +2,7 @@
 
 import { useService } from '@/hooks/ServiceProvider';
 import { useStore } from '@/hooks/StoreProvider';
-import useClientService from '@/libs/useClientService';
-import useClientSWR from '@/libs/useClientService';
+import { default as useClientService, default as useClientSWR } from '@/libs/useClientService';
 import { useCallback } from 'react';
 // import { useAppStore } from '@/hooks/StoreProvider';
 
@@ -11,13 +10,7 @@ import { useCallback } from 'react';
 
 export default function CounterIncrement() {
   // const [allowed, setAllowed] = useState<boolean>(false);
-  const {
-    services: { account },
-    revalidate,
-  } = useService();
-  // revalidate([account({ id: 1 })]);
-  useClientService(account, true, { ""});
-
+  const { data, mutate } = useService(v => v.account({ id: 5 }));
   // revalidate([account], { revalidate: false });
 
   // console.log(account(v => [v, { revalidate: true }]));

@@ -1,6 +1,6 @@
 import type PrepareServices from '@/services';
 import type { CacheOptions } from 'axios-cache-interceptor';
-import type { MutatorOptions } from 'swr';
+import type { MutatorOptions, SWRConfiguration, SWRResponse } from 'swr';
 
 // Déclare un espace de nom global "Service"
 declare namespace Services {
@@ -14,7 +14,12 @@ declare namespace Services {
   interface headerOption {
     cache?: Cache.options;
     headers?: Axios.axiosHeaders;
-    side: 'client' | 'server';
+    side?: 'client' | 'server';
+  }
+
+  interface ServiceServerOption {
+    headers?: Axios.axiosHeaders;
+    cache?: Cache.serverOption;
   }
 
   namespace Axios {
@@ -54,8 +59,7 @@ declare namespace Services {
   }
 
   namespace Cache {
-    type storage = 'redis' | 'ram';
-    type options = Partial<{
+    type serverOption = Partial<{
       key: string;
       enabled?: CacheOptions['cachePredicate'] | boolean;
       lifeTime?: CacheOptions['ttl'];
@@ -65,6 +69,10 @@ declare namespace Services {
       ModifiedSince?: CacheOptions['ModifiedSince'];
       debug?: CacheOptions['debug'];
     }>;
+
+    type clientOption = Partial<SWRConfiguration>;
+
+    type options = serverOption | clientOption;
   }
 
   namespace Index {
@@ -75,7 +83,14 @@ declare namespace Services {
       fetcher: () => ReturnType<F>;
     }
 
-    type WrappedServiceFunction<F extends (...args: any[]) => any> = (...args: Parameters<F>) => WrappedServiceOutput<F>;
+    type WrappedFunctionCharge<A> = (arg: A) => [A, MutatorOptions?];
+
+    type WrappedServiceFunction<F> = F extends (arg: infer A) => unknown
+      ? {
+          (arg: A, override?: string): WrappedServiceOutput<F>;
+          (arg: WrappedFunctionCharge<A>): WrappedServiceOutput<F>;
+        }
+      : never;
 
     type WrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
       [K in keyof T]: WrappedServiceFunction<T[K]>;
@@ -89,7 +104,43 @@ declare namespace Services {
     type argsType = Index.WrappedServiceOutput<any> | ValidatedServiceFunction<(...args: any[]) => any>;
   }
 
-  // Sous-module "User"
+  namespace Providers {
+    type serviceWrapper = <K extends keyof Index.returnType>(
+      selector: (s: Index.WrappedServices<Index.returnType>) => ReturnType<Index.WrappedServices<Index.returnType>[K]>,
+      options?: useService.ServiceOption,
+    ) => ReturnType<Index.WrappedServices<Index.returnType>[K]>;
+
+    interface ServiceContextProvider {
+      services: serviceWrapper;
+    }
+
+    namespace useService {
+      type ServiceData<T> = T extends ResponseType<infer U> ? U : T;
+
+      type RemoveChargeOverload<F> = F extends {
+        (arg: infer A, override?: string): infer R;
+        (arg: any): any;
+      }
+        ? (arg: A, override?: string) => R
+        : never;
+
+      type CleanWrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
+        [K in keyof T]: RemoveChargeOverload<Index.WrappedServiceFunction<T[K]>>;
+      };
+
+      interface ServiceOption {
+        headers?: Axios.axiosHeaders;
+        cache?: Cache.clientOption;
+      }
+
+      type Type<K extends keyof Index.returnType> = (
+        selector: (services: CleanWrappedServices<Index.returnType>) => Index.WrappedServiceOutput<Index.returnType[K]>,
+        options?: ServiceOption,
+      ) => SWRResponse<ServiceData<Awaited<ReturnType<Index.returnType[K]>>>, any>;
+    }
+  }
+
+  //* service functions
   namespace User {
     // Exemple d'interface pour le profil utilisateur
     interface Profile {
