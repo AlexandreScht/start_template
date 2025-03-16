@@ -1,8 +1,8 @@
 export class ClientException extends Error {
-  public status: number;
+  public status: number | string;
   public message: string;
 
-  constructor(status: number = 500, message: string | string[] = "Une erreur s'est produite") {
+  constructor(status: number | string = 500, message: string | string[] = "Une erreur s'est produite") {
     super(Array.isArray(message) ? message.join(' | ') : message);
     this.status = status;
     this.message = Array.isArray(message) ? message.join(' | ') : message;
@@ -60,5 +60,10 @@ export class ExpiredSessionError extends ClientException {
 export class InvalidRoleAccessError extends ClientException {
   constructor(message: string[] | string = 'Veuillez mettre à jour votre abonnement') {
     super(605, message);
+  }
+}
+export class ServiceError extends ClientException {
+  constructor(code: string, message: string) {
+    super(code, message);
   }
 }

@@ -2,16 +2,15 @@
 
 import { useService } from '@/hooks/ServiceProvider';
 import { useStore } from '@/hooks/StoreProvider';
-import { default as useClientService, default as useClientSWR } from '@/libs/useClientService';
-import { useCallback } from 'react';
-// import { useAppStore } from '@/hooks/StoreProvider';
-
-// 4. La signature de revalidate
+import laggy from '@/middlewares/laggy';
+import { type Middleware } from 'swr';
 
 export default function CounterIncrement() {
   // const [allowed, setAllowed] = useState<boolean>(false);
-  const { data, mutate } = useService(v => v.account({ id: 5 }));
-  // revalidate([account], { revalidate: false });
+
+  useService(v => v.account({ id: 5 }));
+
+  // reval idate([account], { revalidate: false });
 
   // console.log(account(v => [v, { revalidate: true }]));
 

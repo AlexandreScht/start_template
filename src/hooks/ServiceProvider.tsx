@@ -1,6 +1,7 @@
 'use client';
 
-import { Services } from '@/interfaces/services';
+import { servicesErrors } from '@/exceptions/messagers';
+import type { Services } from '@/interfaces/services';
 import PrepareServices from '@/services';
 import React, { createContext, useCallback, useContext, useMemo } from 'react';
 import useSWR from 'swr';
@@ -70,18 +71,22 @@ export function ServiceProvider({ children }: { children: React.ReactNode }) {
   return <ServiceContext.Provider value={contextValue}>{children}</ServiceContext.Provider>;
 }
 
-export const useService = <K extends keyof Services.Index.returnType>(
-  ...args: Parameters<Services.Providers.useService.Type<K>>
-): ReturnType<Services.Providers.useService.Type<K>> => {
+export const useService = <K extends keyof Services.Index.returnType, U extends Services.Providers.useService.ServiceOption = NonNullable<unknown>>(
+  ...args: Parameters<Services.Providers.useService.Type<K, U>>
+): ReturnType<Services.Providers.useService.Type<K, U>> => {
   const context = useContext(ServiceContext);
   if (!context) {
     throw new Error('useService must be used within a ServiceProvider');
   }
   const serviceOutput = context.services(...args);
   return useSWR(serviceOutput.key, async () => {
-    const response = await serviceOutput.fetcher();
-    return response as Services.Providers.useService.ServiceData<Awaited<ReturnType<Services.Index.returnType[K]>>>;
-  });
+    try {
+      const response = await serviceOutput.fetcher();
+      return response as Services.Providers.useService.ServiceData<Awaited<ReturnType<Services.Index.returnType[K]>>>;
+    } catch (error: unknown) {
+      throw servicesErrors(error);
+    }
+  }) as ReturnType<Services.Providers.useService.Type<K, U>>;
 };
 
-export function useMutate() {}
+export function serviceMutate() {}

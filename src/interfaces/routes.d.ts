@@ -1,4 +1,4 @@
-import { Socket } from 'socket.io-client';
+import { type Socket } from 'socket.io-client';
 import { codeError } from './error';
 
 type QueryType<T> = T extends Record<string, string | number | boolean | unknown[]> ? T : Record<string, string | number | boolean | unknown[]>;
@@ -16,13 +16,6 @@ type RoutesPropsType = (...args: any[]) => string;
 interface RouteObject {
   [key: string]: RoutesPropsType | RouteObject;
 }
-
-interface errService {
-  err: string;
-  code: codeError;
-}
-
-type ResponseType<T extends object> = { error?: errService } | T;
 
 type IoSocket = Socket & {
   io: {

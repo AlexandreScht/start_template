@@ -1,4 +1,4 @@
-import { Services } from '@/interfaces/services';
+import type { Services } from '@/interfaces/services';
 import AxiosInstance from '@/libs/axiosIntance';
 import { AccountService } from './users';
 

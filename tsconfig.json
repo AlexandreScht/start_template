@@ -27,6 +27,6 @@
       "@@/*": ["./src/app/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "tailwind.config.ts", "logger.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "tailwind.config.ts", "logger.ts", "src/interfaces/.d.ts"],
   "exclude": ["node_modules", ".next"]
 }
