@@ -4,7 +4,7 @@ import { servicesErrors } from '@/exceptions/messagers';
 import type { Services } from '@/interfaces/services';
 import PrepareServices from '@/services';
 import React, { createContext, useCallback, useContext, useMemo } from 'react';
-import useSWR from 'swr';
+import useSWR, { preload } from 'swr';
 
 const ServiceContext = createContext<Services.Providers.ServiceContextProvider | undefined>(undefined);
 
@@ -89,4 +89,12 @@ export const useService = <K extends keyof Services.Index.returnType, U extends 
   }) as ReturnType<Services.Providers.useService.Type<K, U>>;
 };
 
+export function usePrefetch<K extends keyof Services.Index.returnType>(selector: Services.Providers.useService.selector<K>): void {
+  const context = useContext(ServiceContext);
+  if (!context) {
+    throw new Error('usePrefetch must be used within a ServiceProvider');
+  }
+  const { key, fetcher } = context.services(selector);
+  preload(key, fetcher);
+}
 export function serviceMutate() {}

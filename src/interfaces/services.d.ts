@@ -136,8 +136,12 @@ declare namespace Services {
           : NonNullable<unknown>
         : NonNullable<unknown>;
 
+      type selector<K extends keyof Index.returnType> = (
+        services: CleanWrappedServices<Index.returnType>,
+      ) => Index.WrappedServiceOutput<Index.returnType[K]>;
+
       type Type<K extends keyof Index.returnType, U extends ServiceOption = NonNullable<unknown>> = (
-        selector: (services: CleanWrappedServices<Index.returnType>) => Index.WrappedServiceOutput<Index.returnType[K]>,
+        selector: selector<K>,
         options?: U,
       ) => SWRResponse<ServiceData<Awaited<ReturnType<Index.returnType[K]>>>, Error.messageReturn> & ExtractMiddlewareFromConfig<U>;
     }
