@@ -33,45 +33,13 @@ export function ServiceProvider({ children }: { children: React.ReactNode }) {
     [preparedService],
   );
 
-  // const revalidate = useCallback((services: Services.Revalidate.argsType[], options?: MutatorOptions): void => {
-  //   const isValidService = (obj: any): obj is { key: string; service: (arg: unknown) => unknown; arg: (cache: any) => any } =>
-  //     obj && typeof obj === 'object' && ['key', 'service', 'arg'].every(key => key in obj);
-
-  //   services.forEach(service => {
-  //     const isFnService = typeof service === 'function';
-  //     const serviceObj = isFnService ? service() : service;
-
-  //     if (!isValidService(serviceObj)) {
-  //       throw new InvalidArgumentError('Service array include an invalid function');
-  //     }
-  //     const { key, arg: updater } = serviceObj;
-
-  //     if (isFnService) {
-  //       mutate(key, v => v, options);
-  //     } else {
-  //       if (typeof updater !== 'function') {
-  //         throw new InvalidArgumentError('Service arguments only accept functions');
-  //       }
-  //       const serviceOptions = updater(undefined)[1];
-  //       mutate(
-  //         key,
-  //         currentCache => {
-  //           const [newValues] = updater(currentCache);
-  //           return newValues;
-  //         },
-  //         serviceOptions ?? options,
-  //       );
-  //     }
-  //   });
-  // }, []);
-
   const contextValue = useMemo(() => ({ services }), [services]);
   return <ServiceContext.Provider value={contextValue}>{children}</ServiceContext.Provider>;
 }
 
-export const useService = <K extends keyof Services.Index.returnType, U extends Services.Providers.useService.ServiceOption = NonNullable<unknown>>(
+export function useService<K extends keyof Services.Index.returnType, U extends Services.Providers.useService.ServiceOption = NonNullable<unknown>>(
   ...args: Parameters<Services.Providers.useService.Type<K, U>>
-): ReturnType<Services.Providers.useService.Type<K, U>> => {
+): ReturnType<Services.Providers.useService.Type<K, U>> {
   const context = useContext(ServiceContext);
   if (!context) {
     throw new Error('useService must be used within a ServiceProvider');
@@ -85,7 +53,7 @@ export const useService = <K extends keyof Services.Index.returnType, U extends 
       throw servicesErrors(error);
     }
   }) as ReturnType<Services.Providers.useService.Type<K, U>>;
-};
+}
 
 export function usePrefetch<K extends keyof Services.Index.returnType>(selector: Services.Providers.useService.selector<K>): void {
   const context = useContext(ServiceContext);
@@ -95,9 +63,9 @@ export function usePrefetch<K extends keyof Services.Index.returnType>(selector:
   const { key, fetcher } = context.services(selector);
   preload(key, fetcher);
 }
-export const useMutation: Services.Revalidate.serviceMutate = (services, option) => {
-  const context = useContext(ServiceContext);
-  if (!context) {
-    throw new Error('usePrefetch must be used within a ServiceProvider');
-  }
-};
+
+export function useMutation<U extends Services.Providers.useMutation.globalMutationOptions = NonNullable<unknown>>(
+  ...args: Parameters<Services.Providers.useMutation.Type<U>>
+): ReturnType<Services.Providers.useMutation.Type<U>> {
+  // Implémentation ici...
+}
