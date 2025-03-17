@@ -78,12 +78,12 @@ declare namespace Services {
       fetcher: () => ReturnType<F>;
     }
 
-    type WrappedFunctionCharge<A> = (arg: A) => [A, MutatorOptions?];
+    type WrappedFunctionCharge<A> = (arg: A) => [A, string?];
 
     type WrappedServiceFunction<F> = F extends (arg: infer A) => unknown
       ? {
           (arg: A, override?: string): WrappedServiceOutput<F>;
-          (arg: WrappedFunctionCharge<A>): WrappedServiceOutput<F>;
+          (arg: WrappedFunctionCharge<A>, options?: MutatorOptions): WrappedServiceOutput<F>;
         }
       : never;
 
@@ -97,7 +97,42 @@ declare namespace Services {
   //   type AcceptsFunction<F extends (...args: any[]) => any> = Extract<OverloadedParamUnion<F>, (arg: any) => unknown> extends never ? never : F;
   //   type ValidatedServiceFunction<F extends (...args: any[]) => any> = AcceptsFunction<F>;
   //   type argsType = Index.WrappedServiceOutput<any> | ValidatedServiceFunction<(...args: any[]) => any>;
+
+  //   type RemoveChargeOverload<F> = F extends {
+  //     (arg: infer A, override?: string): infer R;
+  //     (arg: any): any;
+  //   }
+  //     ? (arg: A, override?: string) => R
+  //     : never;
+  //   type CleanWrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
+  //     [K in keyof T]: RemoveChargeOverload<Index.WrappedServiceFunction<T[K]>>;
+  //   };
+
+  //   type selector = (services: CleanWrappedServices<Index.returnType>[]) => void;
+
+  //   type serviceMutate = (services: selector[], options?: MutatorOptions) => void;
   // }
+
+  namespace Revalidate {
+    type OverloadedParamUnion<F extends (...args: any[]) => any> = F extends { (...args: infer P): any } ? P[0] : never;
+    type AcceptsFunction<F extends (...args: any[]) => any> = Extract<OverloadedParamUnion<F>, (arg: any) => unknown> extends never ? never : F;
+    type ValidatedServiceFunction<F extends (...args: any[]) => any> = AcceptsFunction<F>;
+    type argsType = Index.WrappedServiceOutput<any> | ValidatedServiceFunction<(...args: any[]) => any>;
+
+    type RemoveChargeOverload<F> = F extends {
+      (arg: infer A, override?: string): infer R;
+      (arg: Index.WrappedFunctionCharge<A>, options?: infer O): infer R;
+    }
+      ? (arg: A, override?: string | O) => R
+      : never;
+    type CleanWrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
+      [K in keyof T]: RemoveChargeOverload<Index.WrappedServiceFunction<T[K]>>;
+    };
+
+    type selector = (services: CleanWrappedServices<Index.returnType>[]) => void;
+
+    type serviceMutate = (services: selector[], options?: MutatorOptions) => void;
+  }
 
   namespace Providers {
     type serviceWrapper = <K extends keyof Index.returnType>(

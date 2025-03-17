@@ -66,8 +66,6 @@ export function ServiceProvider({ children }: { children: React.ReactNode }) {
   // }, []);
 
   const contextValue = useMemo(() => ({ services }), [services]);
-  // const contextValue = useMemo(() => ({ services, revalidate }), [services, revalidate]);
-
   return <ServiceContext.Provider value={contextValue}>{children}</ServiceContext.Provider>;
 }
 
@@ -97,4 +95,9 @@ export function usePrefetch<K extends keyof Services.Index.returnType>(selector:
   const { key, fetcher } = context.services(selector);
   preload(key, fetcher);
 }
-export function serviceMutate() {}
+export const useMutation: Services.Revalidate.serviceMutate = (services, option) => {
+  const context = useContext(ServiceContext);
+  if (!context) {
+    throw new Error('usePrefetch must be used within a ServiceProvider');
+  }
+};

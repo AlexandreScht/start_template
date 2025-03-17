@@ -1,6 +1,6 @@
 'use client';
 
-import { useService } from '@/hooks/ServiceProvider';
+import { useMutation, useService } from '@/hooks/ServiceProvider';
 import { useStore } from '@/hooks/StoreProvider';
 import laggy from '@/middlewares/laggy';
 import { type Middleware } from 'swr';
@@ -8,16 +8,10 @@ import { type Middleware } from 'swr';
 export default function CounterIncrement() {
   // const [allowed, setAllowed] = useState<boolean>(false);
 
-  useService(v => v.account({ id: 5 }));
+  // useService(v => v.account({ id: 5 }));
 
-  // reval idate([account], { revalidate: false });
+  useMutation(v => [v.account(p => [p, "customKey"] { isValid: true, ...mutatorObject })], {merge: "combined" | "none" | "force", ...mutatorObject});
 
-  // console.log(account(v => [v, { revalidate: true }]));
-
-  // revalidate([account(v => [v])]);
-  // revalidate([account, { service: user, cache: (v) => v, options: ...mutateOptions }, score], { ...mutateOptions)])
-
-  // swc(account(1), { cache: (v) => v, revalidate: true, allowService: false });
   return (
     <div>
       {/* <p>isLoading : {loading}</p>
