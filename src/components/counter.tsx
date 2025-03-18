@@ -9,7 +9,8 @@ export default function CounterIncrement() {
   // const [allowed, setAllowed] = useState<boolean>(false);
 
   const { data, error, isLagging } = useService(v => v.account({ id: 5 }), { cache: { use: [laggy] } });
-  useMutation(v => [v.account(v => [v, 'key'], { isValid: true })]);
+  // TODO => type cacheOption pas bien mis, les keys ne me sont pas preésenter par TS dans l'exemple ci dessous:
+  useMutation(v => [v.account({ isValid: true, "" })]);
   // useMutation(v => [v.account({ id: 5 })]);
   return (
     <div>
