@@ -8,8 +8,9 @@ import { type Middleware } from 'swr';
 export default function CounterIncrement() {
   // const [allowed, setAllowed] = useState<boolean>(false);
 
-  const { data, error, isLagging } = useService(v => v.account({ id: 5 }), { cache: { use: [laggy] } });
-  useMutation(v => [v.account({ id: 5 }), v.account]);
+  // const { data, error, isLagging } = useService(v => v.account({ id: 5 }), { cache: { use: [laggy] } });
+  useMutation(v => [v.account({ isValid: true })]);
+  // useMutation(v => [v.account]);
 
   return (
     <div>
