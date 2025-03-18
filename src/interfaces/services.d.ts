@@ -101,7 +101,7 @@ declare namespace Services {
     ) => ReturnType<Index.WrappedServices<Index.returnType>[K]>;
 
     interface ServiceContextProvider {
-      services: serviceWrapper;
+      callServices: serviceWrapper;
     }
 
     namespace useMutation {
@@ -109,7 +109,7 @@ declare namespace Services {
 
       interface WrappedServiceOutput<F extends (...args: any[]) => any> {
         key: string;
-        fetcher: () => ReturnType<F>;
+        arg: Parameters<F>;
       }
 
       type WrappedFunctionCharge<A> = (arg: A) => [A, string?];
@@ -118,11 +118,13 @@ declare namespace Services {
 
       // On conserve uniquement l'overload "charge" qui attend une fonction lambda,
       // ce qui empêche l'appel direct avec un objet.
+      type mutateOption = MutatorOptions & { isValid?: boolean };
       interface WrappedServiceFunction<F> {
-        <T extends ParamType<F> = ParamType<F>>(
-          arg: (v: T) => [T, string?],
-          options?: MutatorOptions & { isValid?: boolean },
-        ): WrappedServiceOutput<F>;
+        // Overload pour le cas où on passe une fonction lambda de "charge"
+        <T extends ParamType<F> = ParamType<F>>(arg: (v: T) => [T, string?], options?: mutateOption): WrappedServiceOutput<F>;
+
+        // Overload pour le cas où on passe directement l'objet d'options
+        (arg: mutateOption): WrappedServiceOutput<F>;
       }
 
       type WrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
@@ -143,8 +145,6 @@ declare namespace Services {
       type selector = (
         services: CleanWrappedServices<returnType>,
       ) => Array<WrappedServiceOutput<returnType[keyof returnType]> | WrappedServiceFunction<returnType[keyof returnType]>>;
-
-      type Type<U extends globalMutationOptions = NonNullable<unknown>> = (selector: selector, options?: U) => void;
     }
 
     namespace useService {

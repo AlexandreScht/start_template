@@ -9,8 +9,8 @@ export default function CounterIncrement() {
   // const [allowed, setAllowed] = useState<boolean>(false);
 
   const { data, error, isLagging } = useService(v => v.account({ id: 5 }), { cache: { use: [laggy] } });
-  useMutation(v => [v.account(v => [{ ...v }, 'key'], { isValid: true }), v.account]);
-  useMutation(v => [v.account({ id: 5 })]);
+  useMutation(v => [v.account(v => [v, 'key'], { isValid: true })]);
+  // useMutation(v => [v.account({ id: 5 })]);
   return (
     <div>
       {/* <p>isLoading : {loading}</p>

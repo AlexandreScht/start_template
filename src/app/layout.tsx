@@ -14,19 +14,17 @@ export const metadata: Metadata = {
 };
 const defaultStore = {};
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
-          <ServiceProvider>
-            <StoreProvider initialState={defaultStore}>{children}</StoreProvider>
-          </ServiceProvider>
-        </ThemeProvider>
+    <html lang="en" className={inter.className} suppressHydrationWarning>
+      <body>
+        <ServiceProvider>
+          <StoreProvider initialState={defaultStore}>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
+              {children}
+            </ThemeProvider>
+          </StoreProvider>
+        </ServiceProvider>
       </body>
     </html>
   );
