@@ -94,6 +94,34 @@ declare namespace Services {
     };
   }
 
+  namespace Wrap {
+    interface WrappedServiceOutput<F extends (...args: any[]) => any> {
+      key: string;
+      updater?: (v: Parameters<F>) => ReturnType<F>;
+      cacheOptions?: Providers.useService.mutateOption;
+    }
+
+    interface ExtendedWrappedOutput extends Services.Wrap.WrappedServiceOutput<any> {
+      updater?: (currentCache: any) => [object?, string?];
+      cacheOptions?: Providers.useService.mutateOption;
+    }
+
+    type WrappedFunctionCharge<A> = (arg: A) => [A, string?];
+
+    type ParamType<F> = F extends (arg: infer A) => unknown ? A : never;
+
+    type WrappedServiceFunction<F> = F extends (arg: infer A) => unknown
+      ? {
+          (arg: ParamType<F>, override?: string): WrappedServiceOutput<F>;
+          (arg: WrappedFunctionCharge<A>, options?: MutatorOptions & { isValid?: boolean }): WrappedServiceOutput<F>;
+        }
+      : never;
+
+    type WrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
+      [K in keyof T]: WrappedServiceFunction<T[K]>;
+    };
+  }
+
   namespace Providers {
     type serviceWrapper = <K extends keyof Index.returnType>(
       selector: (s: Index.WrappedServices<Index.returnType>) => ReturnType<Index.WrappedServices<Index.returnType>[K]>,
@@ -102,6 +130,7 @@ declare namespace Services {
 
     interface ServiceContextProvider {
       callServices: serviceWrapper;
+      wrappedServices: Wrap.WrappedServices<Services.Index.returnType>;
     }
 
     namespace useMutation {
@@ -116,14 +145,10 @@ declare namespace Services {
 
       type ParamType<F> = F extends (arg: infer A) => unknown ? A : never;
 
-      // On conserve uniquement l'overload "charge" qui attend une fonction lambda,
-      // ce qui empêche l'appel direct avec un objet.
       type mutateOption = MutatorOptions & { isValid?: boolean };
       interface WrappedServiceFunction<F> {
-        // Overload pour le cas où on passe une fonction lambda de "charge"
         <T extends ParamType<F> = ParamType<F>>(arg: (v: T) => [T, string?], options?: mutateOption): WrappedServiceOutput<F>;
 
-        // Overload pour le cas où on passe directement l'objet d'options
         (arg: mutateOption): WrappedServiceOutput<F>;
       }
 
@@ -135,13 +160,10 @@ declare namespace Services {
         merge?: 'combined' | 'none' | 'force';
       };
 
-      // On utilise directement WrappedServiceFunction pour CleanWrappedServices.
       type CleanWrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
         [K in keyof T]: WrappedServiceFunction<T[K]>;
       };
 
-      // Le selector accepte un tableau contenant soit un WrappedServiceOutput (résultat d'un appel "charge"),
-      // soit la référence à la fonction (sans appel)
       type selector = (
         services: CleanWrappedServices<returnType>,
       ) => Array<WrappedServiceOutput<returnType[keyof returnType]> | WrappedServiceFunction<returnType[keyof returnType]>>;

@@ -8,25 +8,16 @@ import React, { createContext, useCallback, useContext, useMemo } from 'react';
 import useSWR, { mutate, preload } from 'swr';
 
 const ServiceContext = createContext<Services.Providers.ServiceContextProvider | undefined>(undefined);
-interface ExtendedServiceContext {
-  callServices: Services.Providers.serviceWrapper;
-  wrappedServices: Services.Index.WrappedServices<Services.Index.returnType>;
-}
 
-interface ExtendedWrappedOutput extends Services.Index.WrappedServiceOutput<any> {
-  updater?: (currentCache: any) => [any, string?];
-  cacheOptions?: any;
-}
 export function ServiceProvider({ children }: { children: React.ReactNode }) {
   const preparedService = useCallback((arg: Services.headerOption = {}) => PrepareServices({ ...arg, side: 'client' }), []);
 
-  // TODO: => useRef a la place de useMemo
   const wrappedServices = useMemo(() => {
     const svc = preparedService();
     return Object.entries(svc).reduce((acc, [key]) => {
       const typedKey = key as keyof Services.Index.returnType;
       // On crée la fonction wrapper
-      const wrappedFn = ((...args: any[]): ExtendedWrappedOutput => {
+      const wrappedFn = ((...args: any[]): Services.Wrap.ExtendedWrappedOutput => {
         const [first, second] = args;
         console.log({ args });
 
@@ -60,13 +51,13 @@ export function ServiceProvider({ children }: { children: React.ReactNode }) {
         } else {
           throw new InvalidArgumentError(`Selector arguments for the << ${typedKey} >> service are not allowed.`);
         }
-      }) as Services.Index.WrappedServices<Services.Index.returnType>[typeof typedKey];
+      }) as Services.Wrap.WrappedServices<Services.Index.returnType>[typeof typedKey];
 
       // CAS 2 : attacher la clé par défaut sur la fonction elle-même
       (wrappedFn as any).defaultKey = `${String(typedKey)}`;
       acc[typedKey] = wrappedFn;
       return acc;
-    }, {} as Services.Index.WrappedServices<Services.Index.returnType>);
+    }, {} as Services.Wrap.WrappedServices<Services.Index.returnType>);
   }, [preparedService]);
 
   const callServices: Services.Providers.serviceWrapper = useCallback(
