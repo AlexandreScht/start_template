@@ -16,8 +16,8 @@ const defaultStore = {};
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.className} suppressHydrationWarning>
-      <body>
+    <html lang="en" className="w-full h-full">
+      <body className="w-full h-full">
         <ServiceProvider>
           <StoreProvider initialState={defaultStore}>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>

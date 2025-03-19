@@ -1,7 +1,7 @@
 import cacheDefaultConfig, { cacheConfig } from '@/config/cache';
 import { ExpiredSessionError, InvalidRoleAccessError } from '@/exceptions/errors';
-import { RequiredKey } from '@/interfaces/globa';
-import { Services } from '@/interfaces/services';
+import { type RequiredKey } from '@/interfaces/globa';
+import { type Services } from '@/interfaces/services';
 import { serializeCookies } from '@/utils/serialize';
 import axios, { type RawAxiosRequestHeaders } from 'axios';
 import { type CacheOptions, setupCache } from 'axios-cache-interceptor';
@@ -38,9 +38,9 @@ const AxiosInstance = ({ headers, cache, side }: Partial<Services.headerOption> 
   const serverRequest = side === 'server' ? true : side === 'client' ? false : typeof window === 'undefined';
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
   const instance = AxiosRequest(otherHeaders);
-  if (serverRequest) {
-    setupCache(instance, configureCache(cache as RequiredKey<Services.Cache.serverOption, 'key'>));
-  }
+  // if (serverRequest) {
+  //   setupCache(instance, configureCache(cache as RequiredKey<Services.Cache.serverOption, 'key'>));
+  // }
   instance.interceptors.response.use(
     async response => {
       const cookies = response.headers['set-cookie'];

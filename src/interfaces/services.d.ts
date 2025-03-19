@@ -146,11 +146,13 @@ declare namespace Services {
       type ParamType<F> = F extends (arg: infer A) => unknown ? A : never;
 
       type mutateOption = MutatorOptions & { isValid?: boolean };
-      interface WrappedServiceFunction<F> {
-        <T extends ParamType<F> = ParamType<F>>(arg: (v: T) => [T, string?], options?: mutateOption): WrappedServiceOutput<F>;
 
-        (arg: mutateOption): WrappedServiceOutput<F>;
-      }
+      type WrappedServiceFunction<F> = F extends (arg: infer A) => unknown
+        ? {
+            <T extends ParamType<F> = ParamType<F>>(arg: (v: T) => [T, string?], options?: mutateOption): WrappedServiceOutput<F>;
+            (arg: mutateOption): WrappedServiceOutput<F>;
+          }
+        : never;
 
       type WrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
         [K in keyof T]: WrappedServiceFunction<T[K]>;
