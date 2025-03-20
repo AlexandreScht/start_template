@@ -10,7 +10,7 @@ declare namespace Services {
   export type WrappedFunctionCharge<A> = (arg: A) => [A, string?];
   interface prepareArg {
     headers?: Axios.axiosHeaders;
-    cache?: Cache.options;
+    cache?: Cache.options & { side: 'client' | 'server' };
   }
   /* =======================
      Déclarations Axios
@@ -62,10 +62,9 @@ declare namespace Services {
       serverConfig?: boolean | CacheOptions['interpretHeader'];
       ModifiedSince?: CacheOptions['ModifiedSince'];
       debug?: CacheOptions['debug'];
-      side: 'server';
     }>;
 
-    export type clientOption = Partial<SWRConfiguration> & { side: 'client' };
+    export type clientOption = Partial<SWRConfiguration>;
     export type options = serverOption | clientOption;
   }
 

@@ -2,7 +2,10 @@ import { servicesErrors } from '@/exceptions/messagers';
 import { type Services } from '@/interfaces/services';
 import PrepareServices from '@/services';
 
-const configureRequiredKeyCache = (cacheOption: Services.Cache.serverOption = {}, defaultKeyName?: string): Services.Cache.serverOption => {
+const configureRequiredKeyCache = (
+  cacheOption: Services.Cache.serverOption = {},
+  defaultKeyName?: string,
+): Services.Cache.serverOption & { side: 'server' } => {
   const { key, ...options } = cacheOption;
   if (!defaultKeyName && !key) {
     throw new Error('cache key do not exist');
