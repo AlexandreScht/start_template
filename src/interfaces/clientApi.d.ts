@@ -1,7 +1,7 @@
 import type { AxiosInstance } from 'axios';
 
 declare namespace ApiRequests {
-  type setRequest<P, R> = (instance: { axios: AxiosInstance }) => (params: P) => Promise<R>;
+  type setRequest<P, R> = (params: P) => (instance: { axios: AxiosInstance }) => Promise<R>;
 
   namespace User {
     type Account = setRequest<{ id: number }, { user: string }>;

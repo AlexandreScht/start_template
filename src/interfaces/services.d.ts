@@ -8,9 +8,10 @@ declare namespace Services {
   ========================== */
   export type ParamType<F> = F extends (arg: infer A) => unknown ? A : never;
   export type WrappedFunctionCharge<A> = (arg: A) => [A, string?];
-  interface prepareArg {
+  interface axiosInstance {
     headers?: Axios.axiosHeaders;
-    cache?: Cache.options & { side: 'client' | 'server' };
+    cache?: Cache.options;
+    side: 'server' | 'client';
   }
   /* =======================
      Déclarations Axios

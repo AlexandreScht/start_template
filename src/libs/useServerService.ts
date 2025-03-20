@@ -40,6 +40,21 @@ export default function useServerService<K extends keyof Services.Index.returnTy
       return acc;
     }, {} as Services.Index.returnType);
 
+    // const accountService = args => axios => {
+    //   console.log({ axios, args });
+    // };
+
+    // const prepareService = {
+    //   account: accountService,
+    // };
+
+    // const useService = selector => {
+    //   const axios = 'axiosInstance';
+    //   selector(prepareService)(axios);
+    // };
+
+    // useServerService(v => v.account({ a: 1, b: 2 }));
+
     return serviceCall(interceptedService);
   } catch (error) {
     return servicesErrors(error);
