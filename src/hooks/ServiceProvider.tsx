@@ -10,13 +10,18 @@ import useSWR, { mutate, preload } from 'swr';
 const ServiceContext = createContext<Services.Providers.ServiceContextProvider | undefined>(undefined);
 
 export function ServiceProvider({ children }: { children: React.ReactNode }) {
-  const preparedService = useCallback((arg: Services.headerOption = {}) => PrepareServices({ ...arg, side: 'client' }), []);
+  const preparedService = useCallback(
+    (arg: Services.Providers.useService.ServiceOption = {}) => PrepareServices({ ...arg, cache: { ...arg.cache, side: 'client' } }),
+    [],
+  );
 
+  // Construction des services wrapés pour les mutations (updater)
   const wrappedServices = useMemo(() => {
     const svc = preparedService();
     return Object.entries(svc).reduce((acc, [key]) => {
       const typedKey = key as keyof Services.Index.returnType;
-      const wrappedFn = ((...args: any[]): Services.Wrap.ExtendedWrappedOutput => {
+      // On construit la fonction wrapper en se basant sur le type générique WrappedServiceFunction
+      const wrappedFn = ((...args: any[]): Services.Wrap.ExtendedWrappedOutput<any> => {
         const [first, second] = args;
         if (typeof first === 'function') {
           const result = first();
@@ -24,44 +29,37 @@ export function ServiceProvider({ children }: { children: React.ReactNode }) {
             !Array.isArray(result) ||
             result.length === 0 ||
             result.length > 2 ||
-            !['undefined', 'object'].includes(typeof result[0]) ||
+            typeof result[0] !== 'object' ||
             (result.length === 2 && typeof result[1] !== 'string')
           ) {
             throw new InvalidArgumentError(`Selector arguments for the << ${typedKey} >> service are not allowed.`);
           }
           const [selArgs, customKey] = result;
-
-          const updaterFn = (v: any) => {
-            return { ...v, ...selArgs };
-          };
-
+          const updaterFn = (v: any) => ({ ...v, ...selArgs });
           return {
             key: customKey ?? typedKey,
             updater: updaterFn,
             cacheOptions: second,
           };
         } else if (typeof first === 'object') {
-          return {
-            key: typedKey,
-            cacheOptions: first,
-          };
-        } else {
-          throw new InvalidArgumentError(`Selector arguments for the << ${typedKey} >> service are not allowed.`);
+          return { key: typedKey, cacheOptions: first };
         }
+        throw new InvalidArgumentError(`Selector arguments for the << ${typedKey} >> service are not allowed.`);
       }) as Services.Wrap.WrappedServices<Services.Index.returnType>[typeof typedKey];
-      (wrappedFn as any).defaultKey = `${String(typedKey)}`;
+      (wrappedFn as any).defaultKey = String(typedKey);
       acc[typedKey] = wrappedFn;
       return acc;
     }, {} as Services.Wrap.WrappedServices<Services.Index.returnType>);
   }, [preparedService]);
 
+  // Fonction qui retourne les services "fetcher" pour useService
   const callServices: Services.Providers.serviceWrapper = useCallback(
     (selector, options = {}) => {
       const svc = preparedService(options);
       const wrappedServices = Object.entries(svc).reduce((acc, [key, fn]) => {
         const typedKey = key as keyof Services.Index.returnType;
         const typedFn = fn as Services.Index.returnType[typeof typedKey] & ((arg: any, customKey?: string) => any);
-        acc[typedKey] = (...args: any[]): Services.Index.WrappedServiceOutput<typeof typedFn> => {
+        acc[typedKey] = (...args: any[]): Services.FetchWrappedServiceOutput<typeof typedFn> => {
           const [first, second] = args;
           return {
             key: second ? String(second) : `${String(typedKey)}:${JSON.stringify(first)}`,
@@ -79,7 +77,7 @@ export function ServiceProvider({ children }: { children: React.ReactNode }) {
   return <ServiceContext.Provider value={contextValue}>{children}</ServiceContext.Provider>;
 }
 
-export function useService<K extends keyof Services.Index.returnType, U extends Services.Providers.useService.ServiceOption = NonNullable<unknown>>(
+export function useService<K extends keyof Services.Index.returnType, U extends Services.Providers.useService.ServiceOption>(
   ...args: Parameters<Services.Providers.useService.Type<K, U>>
 ): ReturnType<Services.Providers.useService.Type<K, U>> {
   const context = useContext(ServiceContext);
@@ -106,32 +104,30 @@ export function usePrefetch<K extends keyof Services.Index.returnType>(selector:
   preload(key, fetcher);
 }
 
-export function useMutation<U extends Services.Providers.useMutation.globalMutationOptions = NonNullable<unknown>>(
+export function useMutation(
   callback: Services.Providers.useMutation.selector,
-  defaultOption?: U,
+  defaultOption?: Services.Providers.useMutation.globalMutationOptions,
 ): void {
   const context = useContext(ServiceContext);
   if (!context) {
     throw new ClientException('useMutation must be used within a ServiceProvider');
   }
 
-  // Exécution de la callback avec les fonctions extraites
+  // Exécution de la callback avec les fonctions extraites pour les mutations
   const mutationsArray = callback(
     context.wrappedServices as unknown as Services.Providers.useMutation.CleanWrappedServices<Services.Index.returnType>,
   );
 
-  const isWrappedServiceOutput = <F extends (...args: any[]) => any>(item: any): item is Services.Providers.useMutation.WrappedServiceOutput<F> => {
-    if (item && typeof item === 'object' && 'key' in item) {
-      return true;
-    }
-    throw new InvalidArgumentError(`useMutation is called with wrong arguments`);
+  // On utilise un type guard qui retourne le type ExtendedWrappedOutput qui possède updater et cacheOptions
+  const isExtendedWrappedOutput = <F extends (...args: any[]) => any>(item: any): item is Services.Wrap.ExtendedWrappedOutput<F> => {
+    return item && typeof item === 'object' && 'key' in item;
   };
 
-  const setMutateOptions = (defaultOption?: U, options?: Services.Providers.useMutation.mutateOption) => {
-    if (!options) {
-      return defaultOption ?? {};
-    }
-
+  const setMutateOptions = (
+    defaultOption?: Services.Providers.useMutation.globalMutationOptions,
+    options?: Services.Providers.useService.MutateOption,
+  ) => {
+    if (!options) return defaultOption ?? {};
     switch (defaultOption?.merge) {
       case 'combined':
         return { ...defaultOption, ...options };
@@ -145,11 +141,10 @@ export function useMutation<U extends Services.Providers.useMutation.globalMutat
   mutationsArray.forEach(item => {
     if (typeof item === 'function') {
       const key = (item as any).defaultKey;
-      if (!key) throw new InvalidArgumentError(`useMutation is called with wrong arguments`);
+      if (!key) throw new InvalidArgumentError('useMutation is called with wrong arguments');
       mutate(k => typeof k === 'string' && k.startsWith(key), undefined, defaultOption ?? {});
-    } else if (isWrappedServiceOutput(item)) {
-      const { key, updater, cacheOptions } = item as Services.Wrap.WrappedServiceOutput<any>;
-
+    } else if (isExtendedWrappedOutput(item)) {
+      const { key, updater, cacheOptions } = item as any;
       const mutateOption = setMutateOptions(defaultOption, cacheOptions);
       if (updater && typeof updater === 'function') {
         mutate(

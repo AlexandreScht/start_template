@@ -2,23 +2,21 @@ import { servicesErrors } from '@/exceptions/messagers';
 import { type Services } from '@/interfaces/services';
 import PrepareServices from '@/services';
 
-const configureRequiredKeyCache = (cacheOption: Services.Cache.serverOption = {}, defaultKeyName?: string): Services.headerOption => {
+const configureRequiredKeyCache = (cacheOption: Services.Cache.serverOption = {}, defaultKeyName?: string): Services.Cache.serverOption => {
   const { key, ...options } = cacheOption;
   if (!defaultKeyName && !key) {
     throw new Error('cache key do not exist');
   }
   return {
-    cache: {
-      key: key ?? defaultKeyName!,
-      ...options,
-    },
+    key: key ?? defaultKeyName!,
     side: 'server',
+    ...options,
   };
 };
 
 export default function useServerService<K extends keyof Services.Index.returnType>(
   serviceCall: (s: Services.Index.returnType) => ReturnType<Services.Index.returnType[K]>,
-  options: Partial<Services.ServiceServerOption> = {},
+  options: Partial<Services.Providers.useService.ServiceServerOption> = {},
 ): ReturnType<Services.Index.returnType[K]> {
   try {
     const { cache, headers } = options;
@@ -29,7 +27,7 @@ export default function useServerService<K extends keyof Services.Index.returnTy
 
     const requiredCacheOption = configureRequiredKeyCache(cache, defaultKeyName);
 
-    const service = PrepareServices({ headers, ...requiredCacheOption });
+    const service = PrepareServices({ headers, cache: requiredCacheOption });
 
     const interceptedService: Services.Index.returnType = Object.keys(service).reduce((acc, key) => {
       const typedKey = key as keyof Services.Index.returnType;

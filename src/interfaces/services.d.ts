@@ -2,23 +2,21 @@ import type PrepareServices from '@/services';
 import type { CacheOptions } from 'axios-cache-interceptor';
 import type { MutatorOptions, SWRConfiguration, SWRHook, SWRResponse } from 'swr';
 
-// Déclare un espace de nom global "Service"
 declare namespace Services {
-  // Sous-module "Index
-
-  interface headerOption {
+  /* =======================
+     Types utilitaires communs
+  ========================== */
+  export type ParamType<F> = F extends (arg: infer A) => unknown ? A : never;
+  export type WrappedFunctionCharge<A> = (arg: A) => [A, string?];
+  interface prepareArg {
+    headers?: Axios.axiosHeaders;
     cache?: Cache.options;
-    headers?: Axios.axiosHeaders;
-    side?: 'client' | 'server';
   }
-
-  interface ServiceServerOption {
-    headers?: Axios.axiosHeaders;
-    cache?: Cache.serverOption;
-  }
-
-  namespace Axios {
-    interface Cookie {
+  /* =======================
+     Déclarations Axios
+  ========================== */
+  export namespace Axios {
+    export interface Cookie {
       name: string;
       value: string;
       path?: string;
@@ -27,18 +25,16 @@ declare namespace Services {
       sameSite?: 'strict';
       httpOnly: boolean;
     }
-    interface SetCookie {
+    export interface SetCookie {
       name: string;
       value: unknown;
     }
-
-    type CommonRequestHeadersList = 'Accept' | 'Content-Length' | 'User-Agent' | 'Content-Encoding' | 'Authorization';
-
+    export type CommonRequestHeadersList = 'Accept' | 'Content-Length' | 'User-Agent' | 'Content-Encoding' | 'Authorization';
     export type AxiosHeaderValue = string | string[] | number | boolean | null;
-    interface RawAxiosHeaders {
+    export interface RawAxiosHeaders {
       [key: string]: AxiosHeaderValue;
     }
-    type axiosHeaders = Partial<
+    export type axiosHeaders = Partial<
       {
         ContentType:
           | 'text/html'
@@ -53,8 +49,11 @@ declare namespace Services {
     >;
   }
 
-  namespace Cache {
-    type serverOption = Partial<{
+  /* =======================
+     Déclarations Cache
+  ========================== */
+  export namespace Cache {
+    export type serverOption = Partial<{
       key: string;
       enabled?: CacheOptions['cachePredicate'] | boolean;
       lifeTime?: CacheOptions['ttl'];
@@ -63,155 +62,165 @@ declare namespace Services {
       serverConfig?: boolean | CacheOptions['interpretHeader'];
       ModifiedSince?: CacheOptions['ModifiedSince'];
       debug?: CacheOptions['debug'];
+      side: 'server';
     }>;
 
-    type clientOption = Partial<SWRConfiguration>;
-
-    type options = serverOption | clientOption;
+    export type clientOption = Partial<SWRConfiguration> & { side: 'client' };
+    export type options = serverOption | clientOption;
   }
 
-  namespace Index {
-    type returnType = ReturnType<typeof PrepareServices>;
+  interface BaseWrappedServiceOutput {
+    key: string;
+  }
 
-    interface WrappedServiceOutput<F extends (...args: any[]) => any> {
-      key: string;
-      fetcher: () => ReturnType<F>;
-    }
+  // Pour les services utilisés avec useService (fetcher)
+  export interface FetchWrappedServiceOutput<F extends (...args: any[]) => any> extends BaseWrappedServiceOutput {
+    fetcher: () => ReturnType<F>;
+  }
 
-    type WrappedFunctionCharge<A> = (arg: A) => [A, string?];
+  // Pour les services utilisés avec useMutation (updater et options de cache)
+  export interface UpdatableWrappedServiceOutput<F extends (...args: any[]) => any> extends BaseWrappedServiceOutput {
+    updater?: (v: Parameters<F>) => ReturnType<F>;
+    cacheOptions?: Providers.useService.MutateOption;
+  }
 
-    type ParamType<F> = F extends (arg: infer A) => unknown ? A : never;
+  // Type générique pour définir la signature d'une fonction « wrapped »
+  type WrappedServiceFunctionGeneric<F, Output> = F extends (arg: infer A) => unknown
+    ? {
+        (arg: ParamType<F>, override?: string): Output;
+        (arg: WrappedFunctionCharge<A>, options?: MutatorOptions & { isValid?: boolean }): Output;
+      }
+    : never;
 
-    type WrappedServiceFunction<F> = F extends (arg: infer A) => unknown
-      ? {
-          (arg: ParamType<F>, override?: string): WrappedServiceOutput<F>;
-          (arg: WrappedFunctionCharge<A>, options?: MutatorOptions & { isValid?: boolean }): WrappedServiceOutput<F>;
-        }
-      : never;
+  /* =======================
+     Namespace Index (cas fetcher)
+  ========================== */
+  export namespace Index {
+    export type returnType = ReturnType<typeof PrepareServices>;
 
-    type WrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
+    export type WrappedServiceFunction<F> = WrappedServiceFunctionGeneric<F, FetchWrappedServiceOutput<F>>;
+
+    export type WrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
       [K in keyof T]: WrappedServiceFunction<T[K]>;
     };
   }
 
-  namespace Wrap {
-    interface WrappedServiceOutput<F extends (...args: any[]) => any> {
-      key: string;
-      updater?: (v: Parameters<F>) => ReturnType<F>;
-      cacheOptions?: Providers.useService.mutateOption;
-    }
+  /* =======================
+     Namespace Wrap (cas updater)
+  ========================== */
+  export namespace Wrap {
+    export type WrappedServiceFunction<F> = WrappedServiceFunctionGeneric<F, UpdatableWrappedServiceOutput<F>>;
 
-    interface ExtendedWrappedOutput extends Services.Wrap.WrappedServiceOutput<any> {
+    export type WrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
+      [K in keyof T]: WrappedServiceFunction<T[K]>;
+    };
+
+    // Optionnel : output étendu pour mutation
+    export interface ExtendedWrappedOutput<F extends (...args: any[]) => any> extends UpdatableWrappedServiceOutput<F> {
       updater?: (currentCache: any) => [object?, string?];
-      cacheOptions?: Providers.useService.mutateOption;
+      cacheOptions?: Providers.useService.MutateOption;
     }
-
-    type WrappedFunctionCharge<A> = (arg: A) => [A, string?];
-
-    type ParamType<F> = F extends (arg: infer A) => unknown ? A : never;
-
-    type WrappedServiceFunction<F> = F extends (arg: infer A) => unknown
-      ? {
-          (arg: ParamType<F>, override?: string): WrappedServiceOutput<F>;
-          (arg: WrappedFunctionCharge<A>, options?: MutatorOptions & { isValid?: boolean }): WrappedServiceOutput<F>;
-        }
-      : never;
-
-    type WrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
-      [K in keyof T]: WrappedServiceFunction<T[K]>;
-    };
   }
 
-  namespace Providers {
-    type serviceWrapper = <K extends keyof Index.returnType>(
+  /* =======================
+     Namespace Providers
+  ========================== */
+  export namespace Providers {
+    export type serviceWrapper = <K extends keyof Index.returnType>(
       selector: (s: Index.WrappedServices<Index.returnType>) => ReturnType<Index.WrappedServices<Index.returnType>[K]>,
       options?: useService.ServiceOption,
     ) => ReturnType<Index.WrappedServices<Index.returnType>[K]>;
 
-    interface ServiceContextProvider {
+    export interface ServiceContextProvider {
       callServices: serviceWrapper;
-      wrappedServices: Wrap.WrappedServices<Services.Index.returnType>;
+      wrappedServices: Wrap.WrappedServices<Index.returnType>;
     }
 
-    namespace useMutation {
-      type returnType = ReturnType<typeof PrepareServices>;
+    // Utilitaire pour supprimer l'overload de la charge (pour useService)
+    export type RemoveChargeOverload<F> = F extends {
+      (arg: infer A, override?: string): infer R;
+      (arg: any): any;
+    }
+      ? (arg: A, override?: string) => R
+      : never;
 
-      interface WrappedServiceOutput<F extends (...args: any[]) => any> {
+    /* --------- useService --------- */
+    export namespace useService {
+      export type ServiceData<T> = T;
+      export type CleanWrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
+        [K in keyof T]: RemoveChargeOverload<Index.WrappedServiceFunction<T[K]>>;
+      };
+
+      export interface ServiceOption {
+        headers?: Axios.axiosHeaders;
+        cache?: Cache.clientOption;
+      }
+      export interface ServiceServerOption {
+        headers?: Axios.axiosHeaders;
+        cache?: Cache.serverOption;
+      }
+
+      export type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never;
+
+      export type ExtractMiddlewareFromConfig<P> = P extends { cache: { use: infer U } }
+        ? U extends Array<(hook: SWRHook) => infer Fn>
+          ? UnionToIntersection<Fn extends (...args: any[]) => infer R ? R : never>
+          : unknown
+        : unknown;
+
+      export type selector<K extends keyof Index.returnType> = (
+        services: CleanWrappedServices<Index.returnType>,
+      ) => FetchWrappedServiceOutput<Index.returnType[K]>;
+
+      export type Type<K extends keyof Index.returnType, U extends ServiceOption = unknown> = (
+        selector: selector<K>,
+        options?: U,
+      ) => SWRResponse<ServiceData<Awaited<ReturnType<Index.returnType[K]>>>, Error.messageReturn> & ExtractMiddlewareFromConfig<U>;
+
+      // Alias pour les options de mutation
+      export type MutateOption = MutatorOptions & { isValid?: boolean };
+    }
+
+    /* --------- useMutation --------- */
+    export namespace useMutation {
+      export type returnType = ReturnType<typeof PrepareServices>;
+
+      export interface WrappedServiceOutput<F extends (...args: any[]) => any> {
         key: string;
         arg: Parameters<F>;
       }
 
-      type WrappedFunctionCharge<A> = (arg: A) => [A, string?];
-
-      type ParamType<F> = F extends (arg: infer A) => unknown ? A : never;
-
-      type mutateOption = MutatorOptions & { isValid?: boolean };
-
-      type WrappedServiceFunction<F> = F extends (arg: infer A) => unknown
+      // Fonction wrapper pour mutation
+      export type WrappedServiceFunction<F> = F extends (arg: infer A) => unknown
         ? {
-            <T extends ParamType<F> = ParamType<F>>(arg: (v: T) => [T, string?], options?: mutateOption): WrappedServiceOutput<F>;
-            (arg: mutateOption): WrappedServiceOutput<F>;
+            (arg: useService.MutateOption): WrappedServiceOutput<F>;
+            <T extends ParamType<F> = ParamType<F>>(arg: (v: T) => [T, string?], options?: useService.MutateOption): WrappedServiceOutput<F>;
           }
         : never;
 
-      type WrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
+      export type WrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
         [K in keyof T]: WrappedServiceFunction<T[K]>;
       };
 
-      type globalMutationOptions = MutatorOptions & {
+      export type globalMutationOptions = MutatorOptions & {
         merge?: 'combined' | 'none' | 'force';
       };
 
-      type CleanWrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
+      export type CleanWrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
         [K in keyof T]: WrappedServiceFunction<T[K]>;
       };
 
-      type selector = (
+      export type selector = (
         services: CleanWrappedServices<returnType>,
       ) => Array<WrappedServiceOutput<returnType[keyof returnType]> | WrappedServiceFunction<returnType[keyof returnType]>>;
     }
-
-    namespace useService {
-      type ServiceData<T> = T extends infer U ? U : T;
-
-      type RemoveChargeOverload<F> = F extends {
-        (arg: infer A, override?: string): infer R;
-        (arg: any): any;
-      }
-        ? (arg: A, override?: string) => R
-        : never;
-
-      type CleanWrappedServices<T extends { [K in keyof T]: (...args: any[]) => any }> = {
-        [K in keyof T]: RemoveChargeOverload<Index.WrappedServiceFunction<T[K]>>;
-      };
-
-      interface ServiceOption {
-        headers?: Axios.axiosHeaders;
-        cache?: Cache.clientOption;
-      }
-
-      type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never;
-
-      type ExtractMiddlewareFromConfig<P> = P extends { cache: { use: infer U } }
-        ? U extends Array<(hook: SWRHook) => infer Fn>
-          ? UnionToIntersection<Fn extends (...args: any[]) => infer R ? R : never>
-          : NonNullable<unknown>
-        : NonNullable<unknown>;
-
-      type selector<K extends keyof Index.returnType> = (
-        services: CleanWrappedServices<Index.returnType>,
-      ) => Index.WrappedServiceOutput<Index.returnType[K]>;
-
-      type Type<K extends keyof Index.returnType, U extends ServiceOption = NonNullable<unknown>> = (
-        selector: selector<K>,
-        options?: U,
-      ) => SWRResponse<ServiceData<Awaited<ReturnType<Index.returnType[K]>>>, Error.messageReturn> & ExtractMiddlewareFromConfig<U>;
-    }
   }
 
-  //* service functions
-  namespace Error {
-    interface messageReturn {
+  /* =======================
+     Namespace Error
+  ========================== */
+  export namespace Error {
+    export interface messageReturn {
       err: string;
       code: string;
     }
