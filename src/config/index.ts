@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { cleanEnv, host, port, str, url } from 'envalid';
+import { cleanEnv, port, str, url } from 'envalid';
 dotenv.config();
 
 const env = cleanEnv(process.env, {
@@ -10,10 +10,6 @@ const env = cleanEnv(process.env, {
   PORT: port({ default: 3000 }),
   SERVER_URI: url(),
   COOKIE: str(),
-  //? Redis
-  REDIS_PORT: port({ default: 6379 }),
-  REDIS_PASSWORD: str({ default: '' }),
-  REDIS_HOST: host(),
 });
 
 export default env;

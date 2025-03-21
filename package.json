@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "env": "ts-node src/commands/valideNode.ts",
+    "reset": "ts-node src/commands/resetNext.ts",
     "dev": "npm run env && next dev",
     "build": "next build",
     "start": "npm run env && next start",

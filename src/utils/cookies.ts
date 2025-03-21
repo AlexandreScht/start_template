@@ -1,7 +1,7 @@
 'use server';
 import env from '@/config';
 import serverConfig from '@/config/server';
-import { Services } from '@/interfaces/services';
+import { type Services } from '@/interfaces/services';
 import { parse } from 'cookie';
 import { cookies } from 'next/headers';
 import { serializeCookies } from './serialize';
