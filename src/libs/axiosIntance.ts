@@ -34,7 +34,7 @@ const configureCache = (cacheOptions: RequiredKey<Services.Cache.serverOption, '
     : {};
 };
 
-const AxiosInstance = ({ headers, cache, side }: Partial<Services.headerOption> = {}) => {
+const AxiosInstance = ({ headers, cache, side }: Partial<Services.axiosInstance> = {}) => {
   const serverRequest = side === 'server' ? true : side === 'client' ? false : typeof window === 'undefined';
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
   const instance = AxiosRequest(otherHeaders);

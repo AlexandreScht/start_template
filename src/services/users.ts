@@ -9,9 +9,9 @@ const {
 } = apiRoutes;
 
 export const AccountService: ApiRequests.User.Account =
-  ({ axios }) =>
-  async ({ id }) => {
-    console.log(typeof id);
+  ({ id }) =>
+  async axios => {
+    console.log(axios);
     console.log(id);
     // throw new Error("I'm an error");
 
