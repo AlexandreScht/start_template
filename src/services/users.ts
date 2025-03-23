@@ -1,4 +1,3 @@
-import { ServiceError } from '@/exceptions/errors';
 import type { ApiRequests } from '@/interfaces/clientApi';
 import validator from '@/middlewares/validator';
 import apiRoutes from '@/router/api';
@@ -11,13 +10,7 @@ const {
 export const AccountService: ApiRequests.User.Account =
   ({ id }) =>
   async axios => {
-    console.log(axios);
-    console.log(id);
-    // throw new Error("I'm an error");
-
-    // validator(userSchema, { id });
-
-    // const { data } = await axios.get(router.account([id]));
-    // return data;
-    return { user: 'Rodrigo' };
+    validator(userSchema, { id });
+    const { data } = await axios.get(router.account([id]));
+    return data;
   };

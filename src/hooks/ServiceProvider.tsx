@@ -1,157 +1,86 @@
 'use client';
 
-import { ClientException, InvalidArgumentError } from '@/exceptions/errors';
-import { servicesErrors } from '@/exceptions/messagers';
+import { InvalidArgumentError } from '@/exceptions/errors';
 import type { Services } from '@/interfaces/services';
-import AxiosInstance from '@/libs/axiosIntance';
 import PrepareServices from '@/services';
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef } from 'react';
-import useSWR, { mutate, preload } from 'swr';
+import React, { createContext, useCallback, useMemo, useRef } from 'react';
 
-const ServiceContext = createContext<Services.Providers.ServiceContextProvider | undefined>(undefined);
+export const CallServicesContext = createContext<Services.Provider.WrappedServices<typeof PrepareServices> | undefined>(undefined);
+
+export const MutationServicesContext = createContext<{
+  mutationServices: {
+    [K in keyof typeof PrepareServices]: Services.useMutation.MutationService<(typeof PrepareServices)[K]> & { defaultKey: string };
+  };
+} | null>(null);
 
 export function ServiceProvider({ children }: { children: React.ReactNode }) {
+  // Référence pour PrepareServices
   const prepareServicesRef = useRef(PrepareServices);
 
-  const callServices: Services.Providers.serviceWrapper = useCallback((selector, options = {}) => {
-    const axiosInstance = AxiosInstance({ ...options, side: 'client' });
+  // Mémorisation du service d'appel
+  const callServices: Services.Provider.WrappedServices<typeof PrepareServices> = useMemo(() => {
     const svc = prepareServicesRef.current;
-    const wrappedServices = Object.entries(svc).reduce((acc, [key, fn]) => {
-      const typedKey = key as keyof Services.Index.returnType;
-      const typedFn = fn as Services.Index.returnType[typeof typedKey] & ((arg: any, customKey?: string) => any);
-      acc[typedKey] = (...args: any[]): Services.FetchWrappedServiceOutput<typeof typedFn> => {
-        const [first, second] = args;
-        return {
-          key: second ? String(second) : `${String(typedKey)}:${JSON.stringify(first)}`,
-          fetcher: () => typedFn(first)(axiosInstance),
-        };
-      };
-      return acc;
-    }, {} as Services.Index.WrappedServices<Services.Index.returnType>);
-    return selector(wrappedServices);
-  }, []);
-
-  const mutationServices = useMemo(() => {
-    const svc = prepareServicesRef.current;
-    return Object.entries(svc).reduce((acc, [key]) => {
-      const typedKey = key as keyof Services.Index.returnType;
-      const wrappedFn = ((...args: any[]): Services.Wrap.ExtendedWrappedOutput<any> => {
-        const [first, second] = args;
-        if (typeof first === 'function') {
-          const result = first();
-          if (
-            !Array.isArray(result) ||
-            result.length === 0 ||
-            result.length > 2 ||
-            (!!result[0] && typeof result[0] !== 'object') ||
-            (result.length === 2 && typeof result[1] !== 'string')
-          ) {
-            throw new InvalidArgumentError(`Selector arguments for the << ${typedKey} >> service are not allowed.`);
-          }
-          const [selArgs, customKey] = result;
-          const updaterFn = (v: any) => ({ ...v, ...selArgs });
+    return Object.entries(svc).reduce(
+      (acc, [key, fn]) => {
+        acc[key as keyof typeof svc] = (...args: any[]) => {
+          const [first, second] = args;
           return {
-            key: customKey ?? typedKey,
-            updater: updaterFn,
-            cacheOptions: second,
+            key: second ? String(second) : `${String(key)}:${JSON.stringify(first)}`,
+            fetcher: axiosInstance => fn(first)(axiosInstance),
           };
-        } else if (typeof first === 'object') {
-          return { key: typedKey, cacheOptions: first };
-        }
-        throw new InvalidArgumentError(`Selector arguments for the << ${typedKey} >> service are not allowed.`);
-      }) as Services.Wrap.WrappedServices<Services.Index.returnType>[typeof typedKey];
-      (wrappedFn as any).defaultKey = String(typedKey);
-      acc[typedKey] = wrappedFn;
-      return acc;
-    }, {} as Services.Wrap.WrappedServices<Services.Index.returnType>);
+        };
+        return acc;
+      },
+      {} as Services.Provider.WrappedServices<typeof PrepareServices>,
+    );
   }, []);
 
-  const contextValue = useMemo(() => ({ callServices, mutationServices }), [callServices, mutationServices]);
-  return <ServiceContext.Provider value={contextValue}>{children}</ServiceContext.Provider>;
-}
-
-export function useService<K extends keyof Services.Index.returnType, U extends Services.Providers.useService.ServiceOption>(
-  ...args: Parameters<Services.Providers.useService.Type<K, U>>
-): ReturnType<Services.Providers.useService.Type<K, U>> {
-  const context = useContext(ServiceContext);
-  if (!context) {
-    throw new ClientException('useService must be used within a ServiceProvider');
-  }
-  const serviceOutput = context.callServices(...args);
-  return useSWR(serviceOutput.key, async () => {
-    try {
-      const response = await serviceOutput.fetcher();
-      return response as Services.Providers.useService.ServiceData<Awaited<ReturnType<Services.Index.returnType[K]>>>;
-    } catch (error: unknown) {
-      throw servicesErrors(error);
+  // Fonction de validation mémorisée
+  const validateResult = useCallback((result: unknown, typedKey: string): [any, string?] => {
+    if (!Array.isArray(result) || result.length === 0 || result.length > 2 || (result.length === 2 && typeof result[1] !== 'string')) {
+      throw new InvalidArgumentError(`Les arguments pour le service << ${typedKey} >> ne sont pas autorisés.`);
     }
-  }) as ReturnType<Services.Providers.useService.Type<K, U>>;
-}
+    return result as [unknown, string?];
+  }, []);
 
-export function usePrefetch<K extends keyof Services.Index.returnType>(selector: Services.Providers.useService.selector<K>): void {
-  const context = useContext(ServiceContext);
-  if (!context) {
-    throw new ClientException('usePrefetch must be used within a ServiceProvider');
-  }
-  const { key, fetcher } = context.callServices(selector);
-  preload(key, fetcher);
-}
+  // Mémorisation des services de mutation
+  const mutationServices = useMemo(() => {
+    const svc = PrepareServices;
+    return Object.entries(svc).reduce(
+      (acc, [key]) => {
+        const createWrappedFn = <F extends (arg: any) => any>(typedKey: string): Services.useMutation.MutationService<F> & { defaultKey: string } => {
+          const wrappedFn = ((...args: any[]): Services.useMutation.MutationDefinition => {
+            const [first, second] = args;
+            if (typeof first === 'function') {
+              const [, customKey] = validateResult(first(), typedKey);
+              return {
+                key: customKey ?? typedKey,
+                updater: (prev: Services.useMutation.ParamType<F>) => {
+                  const [newVal] = first(prev);
+                  return newVal;
+                },
+                cacheOptions: second ?? {},
+              };
+            } else if (typeof first === 'object') {
+              return { key: typedKey, cacheOptions: first };
+            }
+            throw new InvalidArgumentError(`Les arguments pour le service << ${typedKey} >> ne sont pas autorisés.`);
+          }) as Services.useMutation.MutationService<F> & { defaultKey: string };
+          wrappedFn.defaultKey = typedKey;
+          return wrappedFn;
+        };
+        acc[key as keyof typeof svc] = createWrappedFn(key) as any;
+        return acc;
+      },
+      {} as {
+        [K in keyof typeof svc]: Services.useMutation.MutationService<(typeof svc)[K]> & { defaultKey: string };
+      },
+    );
+  }, [validateResult]);
 
-export function useMutation(
-  callback: Services.Providers.useMutation.selector,
-  defaultOption?: Services.Providers.useMutation.globalMutationOptions,
-): void {
-  const context = useContext(ServiceContext);
-  if (!context) {
-    throw new ClientException('useMutation must be used within a ServiceProvider');
-  }
-
-  // Exécution de la callback avec les fonctions extraites pour les mutations
-  const mutationsArray = callback(
-    context.mutationServices as unknown as Services.Providers.useMutation.CleanWrappedServices<Services.Index.returnType>,
+  return (
+    <CallServicesContext.Provider value={callServices}>
+      <MutationServicesContext.Provider value={{ mutationServices }}>{children}</MutationServicesContext.Provider>
+    </CallServicesContext.Provider>
   );
-
-  // On utilise un type guard qui retourne le type ExtendedWrappedOutput qui possède updater et cacheOptions
-  const isExtendedWrappedOutput = <F extends (...args: any[]) => any>(item: any): item is Services.Wrap.ExtendedWrappedOutput<F> => {
-    return item && typeof item === 'object' && 'key' in item;
-  };
-
-  const setMutateOptions = (
-    defaultOption?: Services.Providers.useMutation.globalMutationOptions,
-    options?: Services.Providers.useService.MutateOption,
-  ) => {
-    // TODO: rename key merge to onMerge in defaultOption object and create key merge for options object
-    // TODO: remove key onMerge and isValid and merge
-    if (!options) return defaultOption ?? {};
-    switch (defaultOption?.merge) {
-      case 'combined':
-        return { ...defaultOption, ...options };
-      case 'force':
-        return { ...options, ...defaultOption };
-      default:
-        return options ?? defaultOption ?? {};
-    }
-  };
-
-  useEffect(() => {
-    mutationsArray.forEach(item => {
-      // Appel à mutate ici, ce qui évite de le faire lors du rendu
-      if (typeof item === 'function') {
-        const key = (item as any).defaultKey;
-        mutate(k => typeof k === 'string' && k.startsWith(key), undefined, defaultOption ?? {});
-      } else if (isExtendedWrappedOutput(item)) {
-        const { key, updater, cacheOptions } = item as any;
-        const mutateOption = setMutateOptions(defaultOption, cacheOptions);
-        if (updater && typeof updater === 'function') {
-          mutate(
-            k => typeof k === 'string' && k.startsWith(key),
-            (currentCache: any) => updater(currentCache),
-            mutateOption,
-          );
-        } else {
-          mutate(k => typeof k === 'string' && k.startsWith(key), undefined, mutateOption);
-        }
-      }
-    });
-  }, [mutationsArray, defaultOption]);
 }
