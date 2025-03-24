@@ -34,7 +34,7 @@ const configureCache = (cacheOptions: RequiredKey<Services.Cache.serverOption, '
     : {};
 };
 
-const AxiosInstance = ({ headers, cache, side }: Partial<Services.axiosInstance> = {}) => {
+const AxiosInstance = ({ headers, cache, side, revalidate }: Partial<Services.axiosInstance> = {}) => {
   const serverRequest = side === 'server' ? true : side === 'client' ? false : typeof window === 'undefined';
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
   const instance = AxiosRequest(otherHeaders);
@@ -57,24 +57,34 @@ const AxiosInstance = ({ headers, cache, side }: Partial<Services.axiosInstance>
     },
   );
   instance.interceptors.request.use(async request => {
-    if (serverRequest) {
-      const cookies = await setRequestCookies();
-      const mappedCookies = setCookies ? [...cookies, ...(await serializeCookies(setCookies))] : cookies;
-      const formattedCookies = mappedCookies
-        ?.map(cookie => {
-          const { name, value, ...options } = cookie;
-          return serialize(name, value, options);
-        })
-        .join('; ');
+    if (revalidate) {
+      if (serverRequest) {
+        const cookies = await setRequestCookies();
+        const mappedCookies = setCookies ? [...cookies, ...(await serializeCookies(setCookies))] : cookies;
+        const formattedCookies = mappedCookies
+          ?.map(cookie => {
+            const { name, value, ...options } = cookie;
+            return serialize(name, value, options);
+          })
+          .join('; ');
 
-      if (formattedCookies?.length) {
-        request.headers['Cookie'] = formattedCookies;
+        if (formattedCookies?.length) {
+          request.headers['Cookie'] = formattedCookies;
+        }
       }
-    }
-    const baseURI = await getServerUri();
-    request.baseURL = `${baseURI}/api`;
+      const baseURI = await getServerUri();
+      request.baseURL = `${baseURI}/api`;
 
-    return request;
+      return request;
+    }
+    return Promise.resolve({
+      data: undefined,
+      status: 200,
+      statusText: 'OK',
+      headers: headers,
+      config: request,
+      request: {},
+    });
   });
 
   return instance;

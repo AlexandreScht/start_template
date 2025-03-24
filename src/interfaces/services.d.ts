@@ -7,6 +7,24 @@ export namespace Services {
   export namespace Index {
     export type returnType<F> = F extends (params: any) => (instance: AxiosInstance) => Promise<infer R> ? R : never;
   }
+
+  export namespace serverService {
+    export type dateRes<R> = R;
+
+    export interface response<R> {
+      data?: dateRes<R>;
+      error?: Error.messageReturn;
+    }
+
+    export type SimpleWrappedServiceFunction<P, R> = (params: P) => (axios: AxiosInstance) => Promise<R>;
+
+    export type WrappedServerServices<T extends Record<string, any>> = {
+      [K in keyof T]: T[K] extends (params: infer P) => (instance: AxiosInstance) => Promise<infer R> ? SimpleWrappedServiceFunction<P, R> : never;
+    };
+
+    export type ServerServiceSelector<R> = (services: WrappedServerServices<typeof PrepareServices>) => (axios: AxiosInstance) => Promise<dateRes<R>>;
+  }
+
   export namespace useService {
     export type ServiceData<T> = T;
 
@@ -52,6 +70,11 @@ export namespace Services {
       headers?: Axios.AxiosHeaderValue;
       cache?: Partial<SWRConfiguration>;
       isDisabled?: boolean;
+    };
+
+    export type ServerServiceOption = {
+      headers?: Axios.AxiosHeaderValue;
+      cache?: Partial<CacheOptions> & { customKey?: string };
     };
 
     export type globalMutationOptions = MutatorOptions & {

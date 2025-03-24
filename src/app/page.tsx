@@ -1,8 +1,8 @@
 import CounterIncrement from '@/components/counter';
-// import useServerService from '@/libs/useServerService';
+import serverService from '@/libs/serverService';
 
-export default function Home() {
-  // useServerService(s => s.account({ id: 5 }), { cache: { ""}});
+export default async function Home() {
+  const { data, error } = await serverService(v => v.account);
   return (
     <main className="flex min-h-screen w-full bg-red-500 flex-col items-center justify-between p-24">
       {/* <p>Initial counter {score}</p> */}
