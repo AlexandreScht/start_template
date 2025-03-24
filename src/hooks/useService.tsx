@@ -5,13 +5,13 @@ import { servicesErrors } from '@/exceptions/messagers';
 import type { Services } from '@/interfaces/services';
 import AxiosInstance from '@/libs/axiosIntance';
 import { useCallback, useContext, useMemo } from 'react';
-import useSWR from 'swr';
+import useSWR, { type SWRResponse } from 'swr';
 import { CallServicesContext } from './ServiceProvider';
 
 export function useService<U extends Services.Config.ServiceOption = Services.Config.ServiceOption, R = any>(
   selector: Services.Provider.ServiceSelector<R>,
   options?: U,
-): Services.useService.useServiceResponse<any, U> {
+): SWRResponse<R, Services.Error.messageReturn> & Services.useService.ExtractMiddlewareFromConfig<U> {
   const callServices = useContext(CallServicesContext);
   if (!callServices) {
     throw new ClientException('useService doit être utilisé dans un ServiceProvider');
@@ -30,5 +30,6 @@ export function useService<U extends Services.Config.ServiceOption = Services.Co
     }
   }, [axiosInstance, fetcher]);
 
-  return useSWR(swrKey, fetcherFn, cache) as Services.useService.useServiceResponse<any, U>;
+  return useSWR<R, Services.Error.messageReturn>(swrKey, fetcherFn, cache) as SWRResponse<R, Services.Error.messageReturn> &
+    Services.useService.ExtractMiddlewareFromConfig<U>;
 }

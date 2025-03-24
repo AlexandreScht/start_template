@@ -7,10 +7,21 @@ const {
   api: { user: router },
 } = apiRoutes;
 
-export const AccountService: ApiRequests.User.Account =
-  ({ id }) =>
-  async axios => {
-    validator(userSchema, { id });
-    const { data } = await axios.get(router.account([id]));
-    return data;
-  };
+// export const AccountService: ApiRequests.User.Account =
+//   ({ id }) =>
+//   async axios => {
+//     const { data } = await validator(userSchema, { id }, axios.get(router.account([id])));
+//     return data;
+//   };
+
+// export const AccountService: ApiRequests.User.Account =
+//   ({ id }) =>
+//   async axios => {
+//     const { data } = await validator({
+//       schema: userSchema,
+//       payload: { id },
+//       axios,
+//       request: axios => axios.get(router.account([id])),
+//     });
+//     return data;
+//   };

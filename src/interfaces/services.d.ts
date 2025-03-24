@@ -1,7 +1,7 @@
 import type PrepareServices from '@/services';
 import { type AxiosInstance } from 'axios';
 import type { CacheOptions } from 'axios-cache-interceptor';
-import type { MutatorOptions, SWRConfiguration, SWRHook, SWRResponse } from 'swr';
+import type { MutatorOptions, SWRConfiguration, SWRHook } from 'swr';
 
 export namespace Services {
   export namespace Index {
@@ -37,12 +37,6 @@ export namespace Services {
           : unknown
         : unknown
       : unknown;
-
-    export type useServiceResponse<K, U extends Config.ServiceOption = Config.ServiceOption> = SWRResponse<
-      ServiceData<Awaited<Index.returnType<(typeof PrepareServices)[K]>>>,
-      Error.messageReturn
-    > &
-      ExtractMiddlewareFromConfig<U>;
   }
   export namespace useMutation {
     export type MutationDefinition = {

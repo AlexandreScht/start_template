@@ -1,8 +1,10 @@
 'use client';
 
+import { useService } from '@/hooks/useService';
+
 export default function CounterIncrement() {
   // usePrefetch(v => v.account({ id: 5 }));
-  // const { data } = useService(v => v.account({ id: 5 }));
+  const { data } = useService(v => v.account({ id: 5 }));
 
   // useMutation(v => [v.account({ revalidate: true })]);
   // useMutation(v => [v.account(v => [`prefix:${v}:suffix-maValue`])]);

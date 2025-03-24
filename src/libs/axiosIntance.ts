@@ -34,13 +34,15 @@ const configureCache = (cacheOptions: RequiredKey<Services.Cache.serverOption, '
     : {};
 };
 
-const AxiosInstance = ({ headers, cache, side, revalidate }: Partial<Services.axiosInstance> = {}) => {
+const AxiosInstance = ({ headers, cache, side, revalidate = true }: Partial<Services.axiosInstance> = {}) => {
   const serverRequest = side === 'server' ? true : side === 'client' ? false : typeof window === 'undefined';
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
   const instance = AxiosRequest(otherHeaders);
   // if (serverRequest) {
   //   setupCache(instance, configureCache(cache as RequiredKey<Services.Cache.serverOption, 'key'>));
   // }
+  console.log('here');
+
   instance.interceptors.response.use(
     async response => {
       const cookies = response.headers['set-cookie'];
@@ -57,7 +59,8 @@ const AxiosInstance = ({ headers, cache, side, revalidate }: Partial<Services.ax
     },
   );
   instance.interceptors.request.use(async request => {
-    if (revalidate) {
+    console.log('axios here');
+    if (!revalidate) {
       if (serverRequest) {
         const cookies = await setRequestCookies();
         const mappedCookies = setCookies ? [...cookies, ...(await serializeCookies(setCookies))] : cookies;
@@ -77,6 +80,8 @@ const AxiosInstance = ({ headers, cache, side, revalidate }: Partial<Services.ax
 
       return request;
     }
+    console.log('axios here');
+
     return Promise.resolve({
       data: undefined,
       status: 200,
