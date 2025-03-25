@@ -3,8 +3,8 @@ import { ExpiredSessionError, InvalidRoleAccessError } from '@/exceptions/errors
 import { type RequiredKey } from '@/interfaces/globa';
 import { type Services } from '@/interfaces/services';
 import { serializeCookies } from '@/utils/serialize';
-import axios, { type RawAxiosRequestHeaders } from 'axios';
-import { type CacheOptions, setupCache } from 'axios-cache-interceptor';
+import axios, { type InternalAxiosRequestConfig, type RawAxiosRequestHeaders } from 'axios';
+import { AxiosStorage, type CacheOptions, setupCache } from 'axios-cache-interceptor';
 import { serialize } from 'cookie';
 import { getRequestCookies, getServerUri, setRequestCookies } from '../utils/cookies';
 
@@ -35,14 +35,15 @@ const configureCache = (cacheOptions: RequiredKey<Services.Cache.serverOption, '
 };
 
 const AxiosInstance = ({ headers, cache, side, revalidate = true }: Partial<Services.axiosInstance> = {}) => {
+  console.log(side);
+
   const serverRequest = side === 'server' ? true : side === 'client' ? false : typeof window === 'undefined';
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
   const instance = AxiosRequest(otherHeaders);
-  // if (serverRequest) {
-  //   setupCache(instance, configureCache(cache as RequiredKey<Services.Cache.serverOption, 'key'>));
-  // }
-  console.log('here');
-
+  if (serverRequest) {
+    setupCache(instance);
+    // setupCache(instance, configureCache(cache as RequiredKey<Services.Cache.serverOption, 'key'>));
+  }
   instance.interceptors.response.use(
     async response => {
       const cookies = response.headers['set-cookie'];
@@ -59,41 +60,80 @@ const AxiosInstance = ({ headers, cache, side, revalidate = true }: Partial<Serv
     },
   );
   instance.interceptors.request.use(async request => {
-    console.log('axios here');
-    if (!revalidate) {
-      if (serverRequest) {
-        const cookies = await setRequestCookies();
-        const mappedCookies = setCookies ? [...cookies, ...(await serializeCookies(setCookies))] : cookies;
-        const formattedCookies = mappedCookies
-          ?.map(cookie => {
-            const { name, value, ...options } = cookie;
-            return serialize(name, value, options);
-          })
-          .join('; ');
+    console.log('here');
+    if (serverRequest) {
+      console.log('here');
+      if (revalidate) {
+        console.log('here');
 
-        if (formattedCookies?.length) {
-          request.headers['Cookie'] = formattedCookies;
-        }
+        await revalidateCache(request, instance as Services.Axios.instanceStorage);
+        return Promise.resolve({
+          data: undefined,
+          status: 200,
+          statusText: 'OK',
+          headers: headers,
+          config: request,
+          request: {},
+        });
       }
-      const baseURI = await getServerUri();
-      request.baseURL = `${baseURI}/api`;
+      const cookies = await setRequestCookies();
+      const mappedCookies = setCookies ? [...cookies, ...(await serializeCookies(setCookies))] : cookies;
+      const formattedCookies = mappedCookies
+        ?.map(cookie => {
+          const { name, value, ...options } = cookie;
+          return serialize(name, value, options);
+        })
+        .join('; ');
 
-      return request;
+      if (formattedCookies?.length) {
+        request.headers['Cookie'] = formattedCookies;
+      }
     }
-    console.log('axios here');
+    const baseURI = await getServerUri();
+    request.baseURL = `${baseURI}/api`;
 
-    return Promise.resolve({
-      data: undefined,
-      status: 200,
-      statusText: 'OK',
-      headers: headers,
-      config: request,
-      request: {},
-    });
+    return request;
   });
-
+  instance.revalidate = revalidate;
   return instance;
 };
+
+function generateCacheKey(request: InternalAxiosRequestConfig<any>) {
+  const { method, url, params, data } = request;
+  let key = method.toUpperCase() + url;
+  if (params) {
+    key += JSON.stringify(params);
+  }
+  if (data) {
+    key += JSON.stringify(data);
+  }
+  return key;
+}
+
+async function revalidateCache(request: InternalAxiosRequestConfig<any>, { storage: cacheStore }: Services.Axios.instanceStorage) {
+  const cacheKey = generateCacheKey(request);
+  console.log(cacheKey);
+
+  console.log(cacheStore);
+  // const keys = await cacheStore?.keys();
+  cacheStore?.forEach((entry, key) => {
+    // if (key.startsWith(prefix)) {
+    //   axios.storage.remove(key);
+    // }
+    console.log(key);
+  });
+  // if (request.params || request.data) {
+  //   await cacheStore.remove(cacheKey);
+  // } else {
+  //   const keys = await cacheStore.keys();
+  //   const prefix = request.method.toUpperCase() + request.url;
+  //   for (const key of keys) {
+  //     if (key.startsWith(prefix)) {
+  //       await cacheStore.delete(key);
+  //     }
+  //   }
+  // }
+}
 
 function prepareAxiosError(err: any) {
   const {

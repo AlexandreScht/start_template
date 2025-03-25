@@ -1,8 +1,6 @@
 import type { ApiRequests } from '@/interfaces/clientApi';
-import { type Services } from '@/interfaces/services';
 import { httpGateway } from '@/middlewares/gateway';
 import apiRoutes from '@/router/api';
-import type schemaValidator from '@/validators';
 
 const {
   api: { user: router },
@@ -13,8 +11,8 @@ export const AccountService: ApiRequests.User.Account =
   async axios => {
     const { data } = await httpGateway<ApiRequests.User.Account>(
       {
-        validator: (schema: typeof schemaValidator) => schema.userSchema({ id }),
-        request: (axios: Services.Axios.instance) => axios.get(router.account([id])),
+        validator: schema => schema.userSchema({ id }),
+        request: axios => axios.get(router.account([id])),
       },
       [axios],
     );

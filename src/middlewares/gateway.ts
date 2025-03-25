@@ -15,6 +15,8 @@ export async function httpGateway<Req extends ApiRequests.setRequest<any, any> =
     if (!request) {
       throw new InvalidArgumentError('Request argument is required !');
     }
+    console.log(axios?.revalidate);
+
     if (validator && !axios?.revalidate) {
       validator(schemaValidator);
     }

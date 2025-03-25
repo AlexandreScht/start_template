@@ -1,6 +1,6 @@
 import type PrepareServices from '@/services';
 import { type AxiosInstance } from 'axios';
-import type { CacheOptions } from 'axios-cache-interceptor';
+import type { AxiosStorage, CacheOptions } from 'axios-cache-interceptor';
 import type { MutatorOptions, SWRConfiguration, SWRHook } from 'swr';
 
 export namespace Services {
@@ -84,6 +84,9 @@ export namespace Services {
   }
 
   export namespace Axios {
+    export interface instanceStorage extends AxiosInstance {
+      storage: AxiosStorage;
+    }
     export type instance = AxiosInstance & { revalidate?: boolean };
     export interface Cookie {
       name: string;
