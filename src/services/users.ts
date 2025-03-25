@@ -1,27 +1,22 @@
 import type { ApiRequests } from '@/interfaces/clientApi';
-import validator from '@/middlewares/validator';
+import { type Services } from '@/interfaces/services';
+import { httpGateway } from '@/middlewares/gateway';
 import apiRoutes from '@/router/api';
-import { userSchema } from '@/validators/users';
+import type schemaValidator from '@/validators';
 
 const {
   api: { user: router },
 } = apiRoutes;
 
-// export const AccountService: ApiRequests.User.Account =
-//   ({ id }) =>
-//   async axios => {
-//     const { data } = await validator(userSchema, { id }, axios.get(router.account([id])));
-//     return data;
-//   };
-
-// export const AccountService: ApiRequests.User.Account =
-//   ({ id }) =>
-//   async axios => {
-//     const { data } = await validator({
-//       schema: userSchema,
-//       payload: { id },
-//       axios,
-//       request: axios => axios.get(router.account([id])),
-//     });
-//     return data;
-//   };
+export const AccountService: ApiRequests.User.Account =
+  ({ id }) =>
+  async axios => {
+    const { data } = await httpGateway<ApiRequests.User.Account>(
+      {
+        validator: (schema: typeof schemaValidator) => schema.userSchema({ id }),
+        request: (axios: Services.Axios.instance) => axios.get(router.account([id])),
+      },
+      [axios],
+    );
+    return data;
+  };

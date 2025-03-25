@@ -5,7 +5,7 @@ import type { MutatorOptions, SWRConfiguration, SWRHook } from 'swr';
 
 export namespace Services {
   export namespace Index {
-    export type returnType<F> = F extends (params: any) => (instance: AxiosInstance) => Promise<infer R> ? R : never;
+    export type returnType<F> = F extends (params: any) => (instance: Axios.instance) => Promise<infer R> ? R : never;
   }
 
   export namespace serverService {
@@ -16,13 +16,15 @@ export namespace Services {
       error?: Error.messageReturn;
     }
 
-    export type SimpleWrappedServiceFunction<P, R> = (params: P) => (axios: AxiosInstance) => Promise<R>;
+    export type SimpleWrappedServiceFunction<P, R> = (params: P) => (axios: Axios.instance) => Promise<R>;
 
     export type WrappedServerServices<T extends Record<string, any>> = {
-      [K in keyof T]: T[K] extends (params: infer P) => (instance: AxiosInstance) => Promise<infer R> ? SimpleWrappedServiceFunction<P, R> : never;
+      [K in keyof T]: T[K] extends (params: infer P) => (instance: Axios.instance) => Promise<infer R> ? SimpleWrappedServiceFunction<P, R> : never;
     };
 
-    export type ServerServiceSelector<R> = (services: WrappedServerServices<typeof PrepareServices>) => (axios: AxiosInstance) => Promise<dateRes<R>>;
+    export type ServerServiceSelector<R> = (
+      services: WrappedServerServices<typeof PrepareServices>,
+    ) => (axios: Axios.instance) => Promise<dateRes<R>>;
   }
 
   export namespace useService {
@@ -82,6 +84,7 @@ export namespace Services {
   }
 
   export namespace Axios {
+    export type instance = AxiosInstance & { revalidate?: boolean };
     export interface Cookie {
       name: string;
       value: string;
@@ -121,16 +124,16 @@ export namespace Services {
       override?: string,
     ) => {
       key: string;
-      fetcher: (axiosInstance: AxiosInstance) => Promise<R>;
+      fetcher: (axiosInstance: Axios.instance) => Promise<R>;
     };
 
     export type WrappedServices<T extends Record<string, any>> = {
-      [K in keyof T]: T[K] extends (params: infer P) => (instance: AxiosInstance) => Promise<infer R> ? WrappedServiceFunction<P, R> : never;
+      [K in keyof T]: T[K] extends (params: infer P) => (instance: Axios.instance) => Promise<infer R> ? WrappedServiceFunction<P, R> : never;
     };
 
     export type ServiceSelector<R> = (services: WrappedServices<typeof PrepareServices>) => {
       key: string;
-      fetcher: (axiosInstance: AxiosInstance) => Promise<R>;
+      fetcher: (axiosInstance: Axios.instance) => Promise<R>;
     };
 
     export interface returnProvider {
