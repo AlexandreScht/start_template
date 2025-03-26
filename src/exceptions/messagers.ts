@@ -1,11 +1,11 @@
-import type { errService } from '@/interfaces/routes';
+import { type Services } from '@/interfaces/services';
 import { AxiosError } from 'axios';
 import { ZodError } from 'zod';
 import { ExpiredSessionError, InvalidRoleAccessError } from './errors';
 
 const unknownError = "Une erreur inconnue s'est produite.";
 
-export function servicesErrors(err: unknown): errService {
+export function servicesErrors(err: unknown): Services.Error.messageReturn {
   if (err instanceof ExpiredSessionError) {
     return {
       err: "Problème d'authentification, vous allez être déconnecté.",

@@ -14,10 +14,8 @@ export const MutationServicesContext = createContext<{
 } | null>(null);
 
 export function ServiceProvider({ children }: { children: React.ReactNode }) {
-  // Référence pour PrepareServices
   const prepareServicesRef = useRef(PrepareServices);
 
-  // Mémorisation du service d'appel
   const callServices: Services.Provider.WrappedServices<typeof PrepareServices> = useMemo(() => {
     const svc = prepareServicesRef.current;
     return Object.entries(svc).reduce(
@@ -35,7 +33,6 @@ export function ServiceProvider({ children }: { children: React.ReactNode }) {
     );
   }, []);
 
-  // Fonction de validation mémorisée
   const validateResult = useCallback((result: unknown, typedKey: string): [any, string?] => {
     if (!Array.isArray(result) || result.length === 0 || result.length > 2 || (result.length === 2 && typeof result[1] !== 'string')) {
       throw new InvalidArgumentError(`Les arguments pour le service << ${typedKey} >> ne sont pas autorisés.`);
@@ -43,7 +40,6 @@ export function ServiceProvider({ children }: { children: React.ReactNode }) {
     return result as [unknown, string?];
   }, []);
 
-  // Mémorisation des services de mutation
   const mutationServices = useMemo(() => {
     const svc = PrepareServices;
     return Object.entries(svc).reduce(
