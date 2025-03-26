@@ -1,12 +1,13 @@
-import cacheDefaultConfig, { cacheConfig } from '@/config/cache';
+import { default as cacheConfig } from '@/config/cache';
 import { ExpiredSessionError, InvalidRoleAccessError } from '@/exceptions/errors';
 import { type RequiredKey } from '@/interfaces/globa';
 import { type Services } from '@/interfaces/services';
-import { serializeCookies } from '@/utils/serialize';
+import { generateCacheKey } from '@/utils/serialize';
 import axios, { type InternalAxiosRequestConfig, type RawAxiosRequestHeaders } from 'axios';
-import { AxiosStorage, type CacheOptions, setupCache } from 'axios-cache-interceptor';
+import { type AxiosStorage, type CacheOptions, setupCache } from 'axios-cache-interceptor';
 import { serialize } from 'cookie';
-import { getRequestCookies, getServerUri, setRequestCookies } from '../utils/cookies';
+import { getRequestCookies, getServerUri, serializeCookies, setRequestCookies } from '../utils/cookies';
+import cacheDefaultConfig from './cacheOption';
 
 const AxiosRequest = (headersOption: RawAxiosRequestHeaders & { withCredentials?: boolean }) => {
   const { Authorization, 'Content-Type': ContentType, withCredentials, ...headers } = headersOption ?? {};
@@ -21,28 +22,29 @@ const AxiosRequest = (headersOption: RawAxiosRequestHeaders & { withCredentials?
 };
 
 const configureCache = (cacheOptions: RequiredKey<Services.Cache.serverOption, 'key'>) => {
-  const { key, serverConfig, lifeTime: ttl, persist, enabled: cachePredicate, ...other } = cacheOptions;
-  const { persistTimeLife, defaultTimeLife } = cacheConfig;
+  const { serverConfig, lifeTime: ttl, persist, enabled: cachePredicate, ...other } = cacheOptions;
+  const { PERSIST_TIME_LIFE, DEFAULT_TIME_LIFE } = cacheConfig;
+  const timeCache = persist ? PERSIST_TIME_LIFE : (ttl ?? DEFAULT_TIME_LIFE);
+
   return typeof window === 'undefined'
     ? ({
-        ...cacheDefaultConfig(key),
+        ...cacheDefaultConfig(timeCache),
         ...(typeof serverConfig === 'function' ? { serverConfig } : { interpretHeader: serverConfig ?? true }),
-        ttl: persist ? persistTimeLife : (ttl ?? defaultTimeLife),
+        ttl: timeCache * 1000,
         ...(typeof cachePredicate === 'function' ? { cachePredicate } : {}),
         ...other,
       } satisfies CacheOptions)
     : {};
 };
 
-const AxiosInstance = ({ headers, cache, side, revalidate = false }: Partial<Services.axiosInstance> = {}) => {
+const AxiosInstance = ({ headers, cache, side, revalidate = false }: Partial<> = {}): Services.Axios.instance => {
   console.log(side);
 
   const serverRequest = side === 'server' ? true : side === 'client' ? false : typeof window === 'undefined';
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
-  const instance = AxiosRequest(otherHeaders);
+  const instance: Services.Axios.instance = AxiosRequest(otherHeaders);
   if (serverRequest) {
-    setupCache(instance, { generateKey: req => 'accountTest' });
-    // setupCache(instance, configureCache(cache as RequiredKey<Services.Cache.serverOption, 'key'>));
+    setupCache(instance, configureCache(cache as RequiredKey<Services.Cache.serverOption, 'key'>));
   }
   instance.interceptors.response.use(
     async response => {
@@ -51,11 +53,6 @@ const AxiosInstance = ({ headers, cache, side, revalidate = false }: Partial<Ser
       if (cookies?.length && serverRequest) {
         getRequestCookies(cookies);
       }
-
-      console.log(instance.storage);
-      // { 'is-storage': 1, data: { myKey: {}}}
-      const v = await instance.storage.get('accountTest');
-      console.log(v);
       return response;
     },
 
@@ -67,12 +64,8 @@ const AxiosInstance = ({ headers, cache, side, revalidate = false }: Partial<Ser
     },
   );
   instance.interceptors.request.use(async request => {
-    console.log('here');
     if (serverRequest) {
-      console.log('here');
       if (revalidate) {
-        console.log('here');
-
         await revalidateCache(request, instance as Services.Axios.instanceStorage);
         return Promise.resolve({
           data: undefined,
@@ -104,41 +97,20 @@ const AxiosInstance = ({ headers, cache, side, revalidate = false }: Partial<Ser
   return instance;
 };
 
-function generateCacheKey(request: InternalAxiosRequestConfig<any>) {
-  const { method, url, params, data } = request;
-  let key = method.toUpperCase() + url;
-  if (params) {
-    key += JSON.stringify(params);
-  }
-  if (data) {
-    key += JSON.stringify(data);
-  }
-  return key;
-}
-
 async function revalidateCache(request: InternalAxiosRequestConfig<any>, { storage: cacheStore }: Services.Axios.instanceStorage) {
   const cacheKey = generateCacheKey(request);
-  console.log(cacheKey);
-
-  console.log(cacheStore);
-  // const keys = await cacheStore?.keys();
-  cacheStore?.forEach((entry, key) => {
-    // if (key.startsWith(prefix)) {
-    //   axios.storage.remove(key);
-    // }
-    console.log(key);
-  });
-  // if (request.params || request.data) {
-  //   await cacheStore.remove(cacheKey);
-  // } else {
-  //   const keys = await cacheStore.keys();
-  //   const prefix = request.method.toUpperCase() + request.url;
-  //   for (const key of keys) {
-  //     if (key.startsWith(prefix)) {
-  //       await cacheStore.delete(key);
-  //     }
-  //   }
-  // }
+  if (request.params || request.data) {
+    await (cacheStore as AxiosStorage).remove(cacheKey);
+  } else {
+    const { data, 'is-storage': storageLength } = cacheStore as Services.Axios.CacheStorage;
+    if (storageLength) {
+      Promise.all(
+        Object.keys(data)
+          .filter(key => key.startsWith(cacheKey))
+          .map(key => (cacheStore as AxiosStorage).remove(key)),
+      );
+    }
+  }
 }
 
 function prepareAxiosError(err: any) {

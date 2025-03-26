@@ -1,23 +1,13 @@
-'use server';
-import env from '@/config';
-import type { Services } from '@/interfaces/services';
+import { type CacheRequestConfig } from 'axios-cache-interceptor';
 
-export async function serializeCookies(cookies: { name: string; value: unknown }[]): Promise<Services.Axios.Cookie[]> {
-  return cookies.map(cookie => {
-    const value = typeof cookie.value === 'string' ? cookie.value : JSON.stringify(cookie.value);
-    const signedCookie = value.startsWith('s:');
-    return {
-      name: cookie.name,
-      value: value,
-      httpOnly: true,
-      ...(signedCookie
-        ? {}
-        : {
-            path: '/',
-            domain: new URL(env.SERVER_URI).hostname,
-            sameSite: 'strict',
-          }),
-      secure: env.SERVER_URI.startsWith('https'),
-    };
-  });
+export function generateCacheKey(request: CacheRequestConfig<unknown, unknown>) {
+  const { method = 'req', url, params, data } = request;
+  let key = `${method.toUpperCase()}:${url}_`;
+  if (params) {
+    key += JSON.stringify(params);
+  }
+  if (data) {
+    key += JSON.stringify(data);
+  }
+  return key;
 }
