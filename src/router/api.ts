@@ -1,4 +1,4 @@
-import { ParamsType } from '@/interfaces/routes';
+import { type ParamsType } from '@/interfaces/routes';
 import { createRoutes, createRouteWithParams } from '.';
 
 const apiRoutes = createRoutes({

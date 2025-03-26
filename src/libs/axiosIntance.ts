@@ -34,14 +34,14 @@ const configureCache = (cacheOptions: RequiredKey<Services.Cache.serverOption, '
     : {};
 };
 
-const AxiosInstance = ({ headers, cache, side, revalidate = true }: Partial<Services.axiosInstance> = {}) => {
+const AxiosInstance = ({ headers, cache, side, revalidate = false }: Partial<Services.axiosInstance> = {}) => {
   console.log(side);
 
   const serverRequest = side === 'server' ? true : side === 'client' ? false : typeof window === 'undefined';
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
   const instance = AxiosRequest(otherHeaders);
   if (serverRequest) {
-    setupCache(instance);
+    setupCache(instance, { generateKey: req => 'accountTest' });
     // setupCache(instance, configureCache(cache as RequiredKey<Services.Cache.serverOption, 'key'>));
   }
   instance.interceptors.response.use(
@@ -52,9 +52,16 @@ const AxiosInstance = ({ headers, cache, side, revalidate = true }: Partial<Serv
         getRequestCookies(cookies);
       }
 
+      console.log(instance.storage);
+      // { 'is-storage': 1, data: { myKey: {}}}
+      const v = await instance.storage.get('accountTest');
+      console.log(v);
       return response;
     },
+
     error => {
+      console.log(error);
+
       prepareAxiosError(error);
       return Promise.reject(error);
     },
@@ -89,8 +96,7 @@ const AxiosInstance = ({ headers, cache, side, revalidate = true }: Partial<Serv
         request.headers['Cookie'] = formattedCookies;
       }
     }
-    const baseURI = await getServerUri();
-    request.baseURL = `${baseURI}/api`;
+    request.baseURL = await getServerUri();
 
     return request;
   });
