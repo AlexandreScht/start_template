@@ -1,3 +1,4 @@
+import logsConfig from '@/config/logs';
 import config from '@config';
 // import MemoryServerCache from '@libs/memoryCache';
 // import SocketManager from '@libs/socketManager';
@@ -16,12 +17,13 @@ import morgan from 'morgan';
 import 'reflect-metadata';
 import { Server } from 'socket.io';
 const {
-  logs: { FORMAT },
   security: {
     cookie: { COOKIE_SECRET },
   },
   server: { ORIGIN },
 } = config;
+
+const { format } = logsConfig;
 
 export default class App extends ApiRouter {
   public app: express.Application;
@@ -56,7 +58,7 @@ export default class App extends ApiRouter {
   }
 
   private initializeMiddlewares() {
-    if (config.NODE_ENV !== 'test') this.app.use(morgan(FORMAT, { stream }));
+    if (config.NODE_ENV !== 'test') this.app.use(morgan(format, { stream }));
     this.app.use(
       cors({
         origin: '*',

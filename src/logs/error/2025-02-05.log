@@ -1,8 +1,0 @@
-2025-02-05 19:38:02 error: [POST] /api/margin/order >> StatusCode:: 422, Message:: Invalid type for keys: body.balance: Expected integer, received float
-2025-02-05 19:38:21 error: [POST] /api/margin/order >> StatusCode:: 605, Message:: La ou les cryptos suivantes ne sont pas reconnues => ETHUSTDT
-2025-02-05 19:38:40 error: MarginServiceFile.placeOrder =>  Request failed with status code 400
-2025-02-05 19:38:40 error: [POST] /api/margin/order >> StatusCode:: 505, Message:: Echec de la requete API
-2025-02-05 19:43:45 error: MarginServiceFile.placeOrder =>  Request failed with status code 400
-2025-02-05 19:43:45 error: [POST] /api/margin/order >> StatusCode:: 505, Message:: Echec de la requete API
-2025-02-05 19:48:53 error: MarginServiceFile.placeOrder =>  Request failed with status code 400
-2025-02-05 19:48:53 error: [POST] /api/margin/order >> StatusCode:: 505, Message:: Echec de la requete API

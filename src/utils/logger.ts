@@ -1,4 +1,4 @@
-import config from '@config';
+import logsConfig from '@/config/logs';
 import chalk from 'chalk'; // Importez chalk pour la coloration de la console
 import { existsSync, mkdirSync } from 'fs';
 import moment from 'moment-timezone';
@@ -6,12 +6,12 @@ import { join } from 'path';
 import winston from 'winston';
 import winstonDaily from 'winston-daily-rotate-file';
 
-const { logs } = config;
+const { dir } = logsConfig;
 
 const isTestEnv = process.env.NODE_ENV === 'test';
 
 // logs dir
-const logDir: string = join(__dirname, logs.DIR);
+const logDir: string = join(__dirname, dir);
 
 if (!isTestEnv) {
   if (!existsSync(logDir)) {

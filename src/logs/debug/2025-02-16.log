@@ -1,5 +1,0 @@
-2025-02-16 22:14:52 info: ======= Version: development =======
-          🚀 server listening port: 3000 🚀
-2025-02-16 22:15:13 info: [0mGET /api/spot/list [32m200[0m 11050.239 ms - -[0m
-2025-02-16 22:20:40 info: [0mGET /api/spot/list [32m200[0m 9891.794 ms - -[0m
-2025-02-16 22:24:32 info: [0mGET /api/spot/list [32m200[0m 5922.717 ms - -[0m

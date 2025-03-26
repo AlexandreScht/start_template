@@ -10,10 +10,6 @@ try {
     COOKIE_SECRET: str(),
     COOKIE_NAME: str(),
     ORIGIN: str(),
-    API_KEY: str(),
-    API_SECRET: str(),
-    API_Passphrase: str(),
-    API_MARKET: str(),
   });
 } catch (error: unknown) {
   process.exit(1);

@@ -5,15 +5,11 @@
 // import mw from '@/middlewares/mw';
 // import slowDown from '@/middlewares/slowDown';
 import config from '@/config';
-import AccountControllerFile from '@/controllers/account';
-import cookies from '@/middlewares/cookies';
+import UserControllerFile from '@/controllers/user';
 import mw from '@/middlewares/mw';
-import Validator from '@/middlewares/validator';
-import { assetSchema } from '@/validators.ts/account';
-// import { stringValidator } from '@/utils/zodValidate';
 import { Router } from 'express';
 
-export class AccountRouter extends AccountControllerFile {
+export class UserRouter extends UserControllerFile {
   public router = Router();
 
   constructor() {
@@ -22,8 +18,7 @@ export class AccountRouter extends AccountControllerFile {
   }
 
   initializeRoutes() {
-    this.router.get('/ballance', mw([this.ballance]));
-    this.router.get('/margin-asset', mw([Validator({ params: assetSchema }), this.marginAsset]));
+    this.router.get('/account/:id', mw([this.account]));
   }
 
   getRouter() {
