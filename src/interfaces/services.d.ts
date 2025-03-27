@@ -4,6 +4,7 @@ import type { AxiosStorage, CacheOptions, CacheRequestConfig, StorageValue } fro
 import type { MutatorOptions, SWRConfiguration, SWRHook } from 'swr';
 
 export namespace Services {
+  export type ParamType<F> = F extends (arg: infer A) => unknown ? A : never;
   export namespace Index {
     export type returnType<F> = F extends (params: any) => (instance: Axios.instance) => Promise<infer R> ? R : never;
   }
@@ -47,8 +48,6 @@ export namespace Services {
       cacheOptions?: Config.MutationOptions;
     };
 
-    export type ParamType<F> = F extends (arg: infer A) => unknown ? A : never;
-
     export type MutationService<F> = F extends (arg: infer A) => unknown
       ? {
           (arg: Config.MutationOptions): unknown;
@@ -62,12 +61,9 @@ export namespace Services {
   }
 
   export namespace serverRevalidate {
-    export type ParamType<F> = F extends (arg: infer A) => unknown ? A : never;
-
     export type MutationService<F> = F extends (arg: infer A) => unknown
       ? {
-          (arg: Config.MutationOptions): unknown;
-          (arg: (v: ParamType<F>) => [ParamType<F>, string?], options?: Config.MutationOptions): unknown;
+          (arg: ParamType<F>, update?: (v: ParamType<F>) => ParamType<F>): unknown;
         }
       : never;
 
@@ -120,6 +116,7 @@ export namespace Services {
       cache?: Partial<SWRConfiguration> | Partial<CacheOptions>;
       side: 'server' | 'client';
       revalidate?: boolean;
+      revalidateArgs?: unknown;
     }
 
     export type instance = AxiosInstance & { revalidate?: boolean };

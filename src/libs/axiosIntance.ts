@@ -36,7 +36,7 @@ const configureCache = (cacheOptions: Services.Config.serverCache | undefined) =
     : {};
 };
 
-const AxiosInstance = ({ headers, cache, side, revalidate }: Services.Axios.axiosApi): Services.Axios.instance => {
+const AxiosInstance = ({ headers, cache, side, revalidate, revalidateArgs }: Services.Axios.axiosApi): Services.Axios.instance => {
   const serverRequest = side === 'server' ? true : side === 'client' ? false : typeof window === 'undefined';
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
   const instance: Services.Axios.instance = AxiosRequest(otherHeaders);
@@ -63,7 +63,7 @@ const AxiosInstance = ({ headers, cache, side, revalidate }: Services.Axios.axio
   instance.interceptors.request.use(async request => {
     if (serverRequest) {
       if (revalidate) {
-        await revalidateCache(request, instance as Services.Axios.instanceStorage);
+        await revalidateCache(request, instance as Services.Axios.instanceStorage, revalidateArgs);
         request.adapter = async (config): Promise<AxiosResponse> => {
           return {
             data: undefined,
@@ -97,10 +97,23 @@ const AxiosInstance = ({ headers, cache, side, revalidate }: Services.Axios.axio
   return instance;
 };
 
-async function revalidateCache(request: InternalAxiosRequestConfig<any>, { storage: cacheStore }: Services.Axios.instanceStorage) {
+async function revalidateCache(
+  request: InternalAxiosRequestConfig<any>,
+  { storage: cacheStore }: Services.Axios.instanceStorage,
+  revalidateArgs?: unknown,
+) {
   const cacheKey = generateCacheKey(request);
-  if (request.params || request.data) {
-    await (cacheStore as AxiosStorage).remove(cacheKey);
+  if (request?.params || request?.data) {
+    if (revalidateArgs !== undefined) {
+      if (typeof revalidateArgs === 'function') {
+        const oldValues = await (cacheStore as AxiosStorage).get(cacheKey);
+        await (cacheStore as AxiosStorage).set(cacheKey, revalidateArgs(oldValues));
+      } else {
+        await (cacheStore as AxiosStorage).set(cacheKey, revalidateArgs as any);
+      }
+    } else {
+      await (cacheStore as AxiosStorage).remove(cacheKey);
+    }
   } else {
     const { data, 'is-storage': storageLength } = cacheStore as Services.Axios.CacheStorage;
     if (storageLength) {
