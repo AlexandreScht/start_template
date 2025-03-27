@@ -1,6 +1,6 @@
 import type PrepareServices from '@/services';
 import { type AxiosInstance } from 'axios';
-import type { AxiosStorage, CacheOptions, StorageValue } from 'axios-cache-interceptor';
+import type { AxiosStorage, CacheOptions, CacheRequestConfig, StorageValue } from 'axios-cache-interceptor';
 import type { MutatorOptions, SWRConfiguration, SWRHook } from 'swr';
 
 export namespace Services {
@@ -61,16 +61,31 @@ export namespace Services {
     };
   }
 
+  export namespace serverRevalidate {
+    export type ParamType<F> = F extends (arg: infer A) => unknown ? A : never;
+
+    export type MutationService<F> = F extends (arg: infer A) => unknown
+      ? {
+          (arg: Config.MutationOptions): unknown;
+          (arg: (v: ParamType<F>) => [ParamType<F>, string?], options?: Config.MutationOptions): unknown;
+        }
+      : never;
+
+    export type MutationServices<S extends Record<string, (...args: any[]) => any>> = {
+      [K in keyof S]: MutationService<S[K]>;
+    };
+  }
+
   export namespace Config {
     export type ServiceOption = {
-      headers?: Axios.AxiosHeaderValue;
+      headers?: Axios.axiosHeaders;
       cache?: Partial<SWRConfiguration>;
       isDisabled?: boolean;
     };
 
     export type ServerServiceOption = {
-      headers?: Axios.AxiosHeaderValue;
-      cache?: Partial<CacheOptions> & { customKey?: string };
+      headers?: Axios.axiosHeaders;
+      cache?: serverCache;
     };
 
     export type globalMutationOptions = MutatorOptions & {
@@ -81,6 +96,12 @@ export namespace Services {
       allowedMerge?: boolean;
       allowedMutation?: boolean;
     };
+    export interface serverCache extends Partial<Omit<CacheOptions, 'ttl' | 'interpretHeader' | 'persist' | 'cachePredicate'>> {
+      lifeTime?: number | ((request: CacheRequestConfig) => number | Promise<number>);
+      persist?: boolean;
+      enabled?: CacheOptions['cachePredicate'];
+      serverConfig?: CacheOptions['interpretHeader'];
+    }
   }
 
   export namespace Axios {
@@ -93,6 +114,14 @@ export namespace Services {
     export interface instanceStorage extends AxiosInstance {
       storage: AxiosStorage | CacheStorage;
     }
+
+    export interface axiosApi {
+      headers?: axiosHeaders;
+      cache?: Partial<SWRConfiguration> | Partial<CacheOptions>;
+      side: 'server' | 'client';
+      revalidate?: boolean;
+    }
+
     export type instance = AxiosInstance & { revalidate?: boolean };
     export interface Cookie {
       name: string;
