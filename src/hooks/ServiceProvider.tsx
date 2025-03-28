@@ -51,7 +51,7 @@ export function ServiceProvider({ children }: { children: React.ReactNode }) {
               const [, customKey] = validateResult(first(), typedKey);
               return {
                 key: customKey ?? typedKey,
-                updater: (prev: Services.useMutation.ParamType<F>) => {
+                updater: (prev: Services.ParamType<F>) => {
                   const [newVal] = first(prev);
                   return newVal;
                 },

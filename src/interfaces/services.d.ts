@@ -63,9 +63,15 @@ export namespace Services {
   export namespace serverRevalidate {
     export type MutationService<F> = F extends (arg: infer A) => unknown
       ? {
-          (arg: ParamType<F>, update?: (v: ParamType<F>) => ParamType<F>): unknown;
+          (arg: ParamType<F>, update?: ((v: ParamType<F>) => ParamType<F>) | ParamType<F>): unknown;
         }
       : never;
+
+    export type WrappedServiceFunction<P, R> = (params: P, updater?: P) => () => Promise<R>;
+
+    export type WrappedServices<T extends Record<string, any>> = {
+      [K in keyof T]: T[K] extends (params: infer P) => (instance: Axios.instance) => Promise<infer R> ? WrappedServiceFunction<P, R> : never;
+    };
 
     export type MutationServices<S extends Record<string, (...args: any[]) => any>> = {
       [K in keyof S]: MutationService<S[K]>;
