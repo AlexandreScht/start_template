@@ -1,17 +1,15 @@
 import { ServerException } from '@/exceptions';
 import { logger } from '@/utils/logger';
-import { assetMethod, ControllerMethods, ExpressHandler } from '@interfaces/controllers';
-import AccountServiceFile from '@services/account';
-import Container from 'typedi';
+import { ControllerMethods, ExpressHandler } from '@interfaces/controllers';
 
-export default class UserControllerFile implements ControllerMethods<UserControllerFile> {
+export default class TestControllerFile implements ControllerMethods<TestControllerFile> {
   // private AccountService: AccountServiceFile;
 
   constructor() {
     // this.AccountService = Container.get(AccountServiceFile);
   }
 
-  protected account: ExpressHandler = async ({ res, next }) => {
+  protected params_module: ExpressHandler = async ({ res, next }) => {
     try {
       // const ballance = await this.AccountService.getBallance();
       res.status(200).send({ user: 'Alex' });

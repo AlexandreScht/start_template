@@ -61,7 +61,7 @@ export default class App extends ApiRouter {
     if (config.NODE_ENV !== 'test') this.app.use(morgan(format, { stream }));
     this.app.use(
       cors({
-        origin: '*',
+        origin: ORIGIN,
         credentials: true,
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         allowedHeaders: 'Content-Type,Authorization',
