@@ -4,7 +4,8 @@ import { useService } from '@/hooks/useService';
 
 export default function CounterIncrement() {
   // usePrefetch(v => v.account({ id: 5 }));
-  const { data } = useService(v => v.account({ id: 5 }));
+  const { data } = useService(v => v.testParams({ id: 6 }));
+  console.log(data);
 
   // useMutation(v => [v.account({ revalidate: true })]);
   // useMutation(v => [v.account(v => [`prefix:${v}:suffix-maValue`])]);

@@ -1,8 +1,8 @@
-import { AccountService } from './users';
+import { TestParamsService } from './users';
 
 const PrepareServices = {
-  //* users
-  account: AccountService,
+  //* test
+  testParams: TestParamsService,
 };
 
 export default PrepareServices;

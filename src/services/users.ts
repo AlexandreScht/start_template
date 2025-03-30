@@ -3,16 +3,16 @@ import { httpGateway } from '@/middlewares/gateway';
 import apiRoutes from '@/router/api';
 
 const {
-  api: { user: router },
+  api: { test: router },
 } = apiRoutes;
 
-export const AccountService: ApiRequests.User.Account =
+export const TestParamsService: ApiRequests.Test.Params =
   ({ id }) =>
   async axios => {
-    const { data } = await httpGateway<ApiRequests.User.Account>(
+    const { data } = await httpGateway<ApiRequests.Test.Params>(
       {
         validator: schema => schema.userSchema({ id }),
-        request: axios => axios.get(router.account([id])),
+        request: axios => axios.get(router.params([id])),
       },
       [axios],
     );

@@ -1,10 +1,16 @@
-import { type ParamsType } from '@/interfaces/routes';
-import { createRoutes, createRouteWithParams } from '.';
+import { type ParamsType, type QueryType } from '@/interfaces/routes';
+import { createRoutes, createRouteWithParams, createRouteWithQueries } from '.';
 
 const apiRoutes = createRoutes({
   api: {
-    user: {
-      account: (params: ParamsType<unknown>) => createRouteWithParams('/account', params),
+    test: {
+      query: (query: QueryType<unknown>) => createRouteWithQueries('/query', query),
+      params: (params: ParamsType<unknown>) => createRouteWithParams('/params', params),
+      body: () => '/body',
+      // mix params et query
+      // mix params et body
+      // mix query et body
+      // mix all
     },
   },
 });

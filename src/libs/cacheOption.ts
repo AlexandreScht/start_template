@@ -10,8 +10,8 @@ export default function cacheDefaultConfig(timeLife: Services.Config.serverCache
       find(key) {
         return cache.get(key);
       },
-      set(key, value, currentRequest) {
-        cache.set(key, value, setLifeTime(currentRequest as CacheRequestConfig<any, any>, timeLife, true));
+      async set(key, value, currentRequest) {
+        cache.set(key, value, await setLifeTime(currentRequest as CacheRequestConfig<any, any>, timeLife, true));
       },
       remove(key) {
         cache.del(key);

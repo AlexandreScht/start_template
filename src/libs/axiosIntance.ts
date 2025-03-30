@@ -7,6 +7,7 @@ import { type AxiosStorage, type CacheOptions, type CacheRequestConfig, setupCac
 import { serialize } from 'cookie';
 import { getRequestCookies, getServerUri, serializeCookies, setRequestCookies } from '../utils/cookies';
 import cacheDefaultConfig from './cacheOption';
+import CacheSingleton from './nodeCache';
 
 const AxiosRequest = (headersOption: RawAxiosRequestHeaders & { withCredentials?: boolean }) => {
   const { Authorization, 'Content-Type': ContentType, withCredentials, ...headers } = headersOption ?? {};
@@ -61,6 +62,8 @@ const AxiosInstance = ({ headers, cache, side, revalidate, revalidateArgs }: Ser
     },
   );
   instance.interceptors.request.use(async request => {
+    console.log(request);
+
     if (serverRequest) {
       if (revalidate) {
         await revalidateCache(request, instance as Services.Axios.instanceStorage, revalidateArgs);
@@ -102,27 +105,50 @@ async function revalidateCache(
   { storage: cacheStore }: Services.Axios.instanceStorage,
   revalidateArgs?: unknown,
 ) {
+  const { url } = request as { url: string };
   const cacheKey = generateCacheKey(request);
-  if (request?.params || request?.data) {
+
+  const hasParams = url.split('/').length - 1 > 3;
+  const hasQuery = url.includes('?');
+
+  if (hasParams || hasQuery || request?.data) {
     if (revalidateArgs !== undefined) {
       if (typeof revalidateArgs === 'function') {
         const oldValues = await (cacheStore as AxiosStorage).get(cacheKey);
-        await (cacheStore as AxiosStorage).set(cacheKey, revalidateArgs(oldValues));
+        const newValues = {
+          ...oldValues,
+          createdAt: Date.now(),
+          data: {
+            ...oldValues.data,
+            data: revalidateArgs(oldValues.data?.data),
+          },
+        };
+        await (cacheStore as AxiosStorage).set(cacheKey, newValues as any);
       } else {
         await (cacheStore as AxiosStorage).set(cacheKey, revalidateArgs as any);
       }
     } else {
+      (request as any).cache = false;
       await (cacheStore as AxiosStorage).remove(cacheKey);
     }
   } else {
+    (request as any).cache = false;
+
+    const cache = CacheSingleton.getInstance();
+
+    const nodeCache = cache.keys();
     const { data, 'is-storage': storageLength } = cacheStore as Services.Axios.CacheStorage;
-    if (storageLength) {
-      Promise.all(
-        Object.keys(data)
-          .filter(key => key.startsWith(cacheKey))
-          .map(key => (cacheStore as AxiosStorage).remove(key)),
-      );
-    }
+
+    console.log(data);
+    console.log(nodeCache);
+
+    // if (storageLength) {
+    //   Promise.all(
+    //     Object.keys(data)
+    //       .filter(key => key.startsWith(cacheKey))
+    //       .map(key => (cacheStore as AxiosStorage).remove(key)),
+    //   );
+    // }
   }
 }
 
