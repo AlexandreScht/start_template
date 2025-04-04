@@ -32,6 +32,14 @@ export default [
       ...tsPlugin.configs.recommended.rules,
       ...prettierPlugin.configs.recommended.rules,
       '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/consistent-type-imports': [
+        'warn',
+        {
+          prefer: 'type-imports',
+          disallowTypeAnnotations: false,
+          fixStyle: 'inline-type-imports',
+        },
+      ],
       // '@typescript-eslint/explicit-member-accessibility': 0,
       // '@typescript-eslint/explicit-function-return-type': 0,
       // '@typescript-eslint/no-parameter-properties': 0,

@@ -1,16 +1,12 @@
-import config from '@/config';
+import env from '@/config';
 import { ExpiredSessionError } from '@/exceptions';
+import { Session } from '@/interfaces/session';
 import { decryptSessionApiKey } from '@/utils/token';
 import type { ctx } from '@interfaces/middlewares';
-import type { TokenUser } from '@interfaces/session';
 import deepmerge from 'deepmerge';
 import type { NextFunction, Request, Response } from 'express';
 
-const {
-  security: {
-    cookie: { COOKIE_NAME },
-  },
-} = config;
+const { COOKIE_NAME } = env;
 const getAuthorization = (req: Request) => {
   const coockie = req.signedCookies[COOKIE_NAME];
 
@@ -28,7 +24,7 @@ const mw =
 
     const locals = {};
     const onErrors = [];
-    const session: Partial<TokenUser> = {};
+    const session: Partial<Session.TokenUser> = {};
     let handlerIndex = 0;
     const ctx: ctx = {
       req,
@@ -80,7 +76,7 @@ const mw =
       const Authorization = getAuthorization(req);
 
       if (Authorization) {
-        const [err, user] = decryptSessionApiKey<TokenUser>(Authorization);
+        const [err, user] = decryptSessionApiKey<Session.TokenUser>(Authorization);
 
         if (err || !user) {
           throw new ExpiredSessionError();

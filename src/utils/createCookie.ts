@@ -1,14 +1,9 @@
-import config from '@/config';
+import env from '@/config';
 import cookie from 'cookie';
 import signCookie from 'cookie-signature';
 import type { Response } from 'express';
 import { createSessionToken } from './token';
-const {
-  server: { ORIGIN },
-  security: {
-    cookie: { COOKIE_NAME },
-  },
-} = config;
+const { ORIGIN, COOKIE_NAME } = env;
 export default function createSessionCookie<T extends object>(res: Response, values: T & { cookieName: string }, timer: string = '15m'): void {
   const { cookieName, ...other } = values;
   const sessionToken = createSessionToken<T>(other as T, timer);

@@ -2,62 +2,52 @@ export class ServerException extends Error {
   public status: number;
   public message: string;
 
-  constructor(status: number = 500, message: string | string[] = "Une erreur s'est produite") {
-    super(Array.isArray(message) ? message.join(' | ') : message);
+  constructor(status: number = 500, message: string | string[] = 'An error occurred') {
+    const finalMessage = Array.isArray(message) ? message.join(' | ') : message;
+    super(finalMessage);
     this.status = status;
-    this.message = Array.isArray(message) ? message.join(' | ') : message;
+    this.message = finalMessage;
   }
 }
 
 export class NotFoundError extends ServerException {
-  constructor(message: string[] | string = 'Ressource non trouvée') {
+  constructor(message: string | string[] = 'Resource not found') {
     super(404, message);
   }
 }
 
 export class InvalidArgumentError extends ServerException {
-  constructor(message: string[] | string = 'Arguments invalides') {
+  constructor(message: string | string[] = 'Invalid arguments') {
     super(422, message);
   }
 }
 
-export class InsufficientFund extends ServerException {
-  constructor(message: string[] | string = 'Fond insuffisant, depot requis sur le compte spot') {
+export class InsufficientFundError extends ServerException {
+  constructor(message: string | string[] = 'Insufficient funds, deposit required on the spot account') {
     super(500, message);
   }
 }
 
 export class InvalidCredentialsError extends ServerException {
-  constructor(message: string[] | string = 'Identifiants invalides') {
+  constructor(message: string | string[] = 'Invalid credentials') {
     super(401, message);
   }
 }
 
 export class InvalidSessionError extends ServerException {
-  constructor(message: string[] | string = 'Session invalide') {
+  constructor(message: string | string[] = 'Invalid session') {
     super(403, message);
   }
 }
 
 export class ExpiredSessionError extends ServerException {
-  constructor(message: string[] | string = 'Session expired') {
+  constructor(message: string | string[] = 'Session expired') {
     super(999, message);
   }
 }
 
 export class InvalidAccessError extends ServerException {
-  constructor(message: string[] | string = 'Accès refusé') {
+  constructor(message: string | string[] = 'Access denied') {
     super(403, message);
-  }
-}
-export class InvalidToken extends ServerException {
-  constructor(message: string[] | string) {
-    super(605, `La ou les cryptos suivantes ne sont pas reconnues => ${message}`);
-  }
-}
-
-export class ServicesError extends ServerException {
-  constructor(message: string[] | string = 'Echec de la requete API') {
-    super(505, message);
   }
 }

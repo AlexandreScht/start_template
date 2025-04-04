@@ -1,25 +1,20 @@
-import { DeepStringify } from '@/interfaces/config';
 import dotenv from 'dotenv';
+import { cleanEnv, port, str, url } from 'envalid';
 dotenv.config();
 
-const config = makeDeepStringify({
-  security: {
-    cookie: {
-      COOKIE_SECRET: process.env.COOKIE_SECRET,
-      COOKIE_NAME: process.env.COOKIE_NAME,
-    },
-    session: {
-      SESSION_SECRET: process.env.SESSION_SECRET,
-    },
-  },
-  server: {
-    ORIGIN: process.env.ORIGIN,
-  },
-  NODE_ENV: process.env.NODE_ENV,
-  PORT: process.env.PORT,
+const env = cleanEnv(process.env, {
+  NODE_ENV: str({
+    choices: ['development', 'production', 'test'],
+    default: 'development',
+  }),
+  PORT: port({ default: 3000 }),
+  SIGNATURE: str(),
+  COOKIE_SECRET: str(),
+  COOKIE_NAME: str(),
+  REDIS_PASSWORD: str(),
+  REDIS_PORT: port({ default: 3000 }),
+  SESSION_SECRET: str(),
+  ORIGIN: url(),
 });
 
-function makeDeepStringify<T>(obj: T): DeepStringify<T> {
-  return obj as DeepStringify<T>;
-}
-export default config;
+export default env;

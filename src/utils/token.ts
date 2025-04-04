@@ -1,18 +1,18 @@
-import config from '@config';
+import { type Session } from '@/interfaces/session';
+import env from '@config';
 import { signedCookie } from 'cookie-parser';
 import { decode, sign, TokenExpiredError, verify, type Secret, type SignOptions } from 'jsonwebtoken';
 import { jwtDecode } from 'jwt-decode';
 import speakeasy from 'speakeasy';
-
+import { logger } from './logger';
+const { SESSION_SECRET, COOKIE_SECRET } = env;
 export function createSessionToken<T extends object>(values: T, expiresIn: string | number) {
-  const { security } = config;
-  return sign(values, security.session.SESSION_SECRET as Secret, { expiresIn } as SignOptions);
+  return sign(values, SESSION_SECRET as Secret, { expiresIn } as SignOptions);
 }
 
 export const decryptSessionApiKey = <T>(Token: string, allowExpiredToken?: boolean): [boolean | Error, T?] => {
-  const { security } = config;
   try {
-    const data = verify(Token, security.session.SESSION_SECRET) as T;
+    const data = verify(Token, SESSION_SECRET) as T;
     return [false, data];
   } catch (error) {
     if (error instanceof TokenExpiredError && allowExpiredToken) {
@@ -26,16 +26,16 @@ export const decryptSessionApiKey = <T>(Token: string, allowExpiredToken?: boole
   }
 };
 
-export function getSignedCookieValue<T>(cookie: string): T | undefined {
+export function getSignedCookieValue<T extends Session.JWT<unknown>>(cookie: T): T extends Session.JWT<infer U> ? U : undefined {
   try {
     if (cookie) {
       const [tokenValue] = cookie.split(';');
-      const { security } = config;
-      const parsedToken = tokenValue.startsWith('s:') ? (signedCookie(tokenValue.substring(2), security.cookie.COOKIE_SECRET) as string) : tokenValue;
-      return jwtDecode(parsedToken);
+      const parsedToken = tokenValue.startsWith('s:') ? (signedCookie(tokenValue.substring(2), COOKIE_SECRET) as string) : tokenValue;
+      return jwtDecode(parsedToken) as any;
     }
     return undefined;
   } catch (error) {
+    logger.error('token.getSignedCookieValue => ', error);
     return undefined;
   }
 }

@@ -1,6 +1,6 @@
-import Config from '@/server/config';
+import Server from '@/server/app';
 const start = async () => {
-  const app = new Config();
+  const app = new Server();
   await app.initialize();
   app.listen();
 };
