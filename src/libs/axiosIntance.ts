@@ -1,11 +1,12 @@
 import { default as cacheConfig } from '@/config/cache';
-import { ExpiredSessionError, InvalidRoleAccessError } from '@/exceptions/errors';
+import { ExpiredSessionError, InvalidArgumentError, InvalidRoleAccessError } from '@/exceptions/errors';
 import { type Services } from '@/interfaces/services';
 import { generateCacheKey, setLifeTime } from '@/utils/serialize';
 import axios, { type AxiosResponse, type InternalAxiosRequestConfig, type RawAxiosRequestHeaders } from 'axios';
 import { type AxiosStorage, type CacheOptions, type CacheRequestConfig, setupCache } from 'axios-cache-interceptor';
 import { serialize } from 'cookie';
-import { getRequestCookies, getServerUri, serializeCookies, setRequestCookies } from '../utils/cookies';
+import { v4 as uuid } from 'uuid';
+import { getRequestCookies, getServerUri, serializeCookies, setRequestCookies, verifySignature } from '../utils/cookies';
 import cacheDefaultConfig from './cacheOption';
 import CacheSingleton from './nodeCache';
 
@@ -44,9 +45,16 @@ const AxiosInstance = ({ headers, cache, side, revalidate, revalidateArgs }: Ser
   if (serverRequest) {
     setupCache(instance, configureCache(cache as Services.Config.serverCache | undefined));
   }
+
+  const signature = uuid();
   instance.interceptors.response.use(
     async response => {
+      if (revalidate) return response;
+
       const cookies = response.headers['set-cookie'];
+      const resSignature = response.headers['x-signature'];
+      const checkSignature = await verifySignature(signature, resSignature);
+      if (!checkSignature) throw new InvalidArgumentError('Invalid signature');
 
       if (cookies?.length && serverRequest) {
         getRequestCookies(cookies);
@@ -55,15 +63,11 @@ const AxiosInstance = ({ headers, cache, side, revalidate, revalidateArgs }: Ser
     },
 
     error => {
-      console.log(error);
-
       prepareAxiosError(error);
       return Promise.reject(error);
     },
   );
   instance.interceptors.request.use(async request => {
-    console.log(request);
-
     if (serverRequest) {
       if (revalidate) {
         await revalidateCache(request, instance as Services.Axios.instanceStorage, revalidateArgs);
@@ -92,10 +96,12 @@ const AxiosInstance = ({ headers, cache, side, revalidate, revalidateArgs }: Ser
         request.headers['Cookie'] = formattedCookies;
       }
     }
+    if (!revalidate) request.headers['Signature'] = signature;
     request.baseURL = await getServerUri();
 
     return request;
   });
+
   instance.revalidate = revalidate;
   return instance;
 };

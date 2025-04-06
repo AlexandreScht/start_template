@@ -9,6 +9,7 @@ const env = cleanEnv(process.env, {
   }),
   PORT: port({ default: 3000 }),
   SERVER_URI: url(),
+  SIGNATURE: str(),
   COOKIE: str(),
 });
 

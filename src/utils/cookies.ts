@@ -3,6 +3,7 @@ import env from '@/config';
 import serverConfig from '@/config/server';
 import { type Services } from '@/interfaces/services';
 import { parse } from 'cookie';
+import CryptoJS from 'crypto-js';
 import { cookies } from 'next/headers';
 
 export default async function getSessionCookie(cookieName?: string) {
@@ -40,6 +41,11 @@ export async function getRequestCookies(apiCookies: string[]): Promise<void> {
   } catch (error) {
     console.error('Error setting response cookies:', error);
   }
+}
+
+export async function verifySignature(signature: string, signed: string): Promise<boolean> {
+  const signatureResolved = CryptoJS.HmacSHA256(signature, env.SIGNATURE).toString(CryptoJS.enc.Hex);
+  return signed === signatureResolved;
 }
 
 /**

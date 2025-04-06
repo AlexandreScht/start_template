@@ -27,7 +27,11 @@ export default async function serverRevalidate<U extends Services.Config.ServerS
     );
 
     const services = selector(wrappedServices);
-    services.forEach(service => service());
+    services.forEach(service => {
+      const s = service();
+      if (typeof s === 'function') return s();
+      return s;
+    });
   } catch (error) {
     throw servicesErrors(error);
   }

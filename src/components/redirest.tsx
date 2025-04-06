@@ -2,9 +2,7 @@
 
 import Link from 'next/link';
 
-export default function ComponentName({ data }) {
-  console.log(data);
-
+export default function Redirecting() {
   return (
     <Link href="/dashboard" legacyBehavior>
       <a>Aller à la dashboard</a>
