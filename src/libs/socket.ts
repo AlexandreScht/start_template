@@ -1,98 +1,58 @@
 // socketManager.ts
 
 import { ServerException } from '@/exceptions';
+import { type Events } from '@/interfaces/events';
 import { type WebSocket } from '@/interfaces/websocket';
 import socketMiddleware from '@/middlewares/websocket';
 import { logger } from '@utils/logger';
-import type Redis from 'ioredis';
 import { type Server } from 'socket.io';
+import EventsList from './events';
 import RedisInstance from './redis';
 
-export default class SocketManager {
+export default class SocketManager extends EventsList {
   private static instance: SocketManager;
   private io: WebSocket.wslServer;
-  private redisClient: typeof RedisInstance;
+  private socketMap: WebSocket.socketMap;
 
   constructor(io: WebSocket.wslServer) {
+    super(RedisInstance);
     this.io = io;
-    this.redisClient = RedisInstance;
     this.initializeSocket();
   }
 
   private async initializeSocket() {
-    this.io.use(socketMiddleware(this.redisClient));
+    this.io.use(socketMiddleware(this.socketMap));
     this.io.on('connection', async socket => {
-      if (GetAllEvents.size > 0) {
-        GetAllEvents.forEach(async (eventData, userId) => {
-          if (this.socketList.has(userId)) {
-            await this.redisClient.del(`Event.${userId}`);
-            this.ioSendTo(userId, eventData);
-          }
-        });
+      const { user } = socket.data;
+      if (user) {
+        const events = await this.checkMissingEvents(user.sessionId);
+        if (events.length > 0) {
+          events.forEach(event => {
+            const { eventName, data } = event;
+            socket.emit(eventName, data);
+          });
+        }
       }
+
       socket.on('disconnect', () => {
-        for (const [userId, value] of this.socketList.entries()) {
-          if (value.socketId === socket.id) {
-            this.socketList.delete(userId);
-            break;
-          }
+        if (user) {
+          const { sessionId } = user;
+          this.socketMap.delete(sessionId);
         }
       });
     });
   }
 
-  private async getUserEvent(userId: number): Promise<Map<string, eventData>> {
+  public async ioSendToUser(userId: number, values: Events.values) {
     try {
-      let cursor = '0';
-      const streams = new Map<string, eventData>();
-
-      do {
-        const [newCursor, keys] = await this.redisClient.scan(cursor, 'MATCH', `Event.${userId}`, 'COUNT', '100');
-        cursor = newCursor;
-
-        if (keys.length > 0) {
-          const values = await this.redisClient.mget(...keys);
-
-          keys.reduce((acc, key, index) => {
-            const value = values[index];
-            if (value) {
-              acc.set(key.replace(/^Event\./, ''), JSON.parse(value));
-            }
-            return acc;
-          }, streams);
-        }
-      } while (cursor !== '0');
-
-      return streams;
-    } catch (error) {
-      logger.error('SocketManager.getUserEvent => ', error);
-      throw new ServerException(500, 'Could not fetch all streams');
-    }
-  }
-
-  private async setUserEvent(userId: string, eventData: eventData) {
-    await this.redisClient.set(`Event.${userId}`, JSON.stringify(eventData));
-  }
-
-  public ioSendTo(idUser: string | number, eventData: eventData) {
-    try {
-      const userId = typeof idUser === 'number' ? String(idUser) : idUser;
-      const user = this.socketList.get(userId);
+      const user = this.socketMap.get(userId);
       if (!user) {
-        this.setUserEvent(userId, eventData);
+        await this.setUserEvent(userId, values);
         return;
       }
-      const { socketId, secret_key } = user;
-      const { eventName, ...res } = eventData;
-      this.io.to(socketId).emit(eventName, { res, auth: { secret_key } });
-    } catch (error) {
-      logger.error('SocketManager.ioSendTo => ', error);
-    }
-  }
-
-  public async ioSendToAll(eventName: string, eventData: eventData) {
-    try {
-      this.io.emit(eventName, eventData);
+      const { socketId } = user;
+      const { eventName, data } = values;
+      this.io.to(socketId).emit(eventName, data);
     } catch (error) {
       logger.error('SocketManager.ioSendToAll => ', error);
     }

@@ -5,11 +5,10 @@ import { InvalidArgumentError } from '@/exceptions';
 import { type WebSocket } from '@/interfaces/websocket';
 import { logger } from '@/utils/logger';
 import { getSignedCookieValue } from '@/utils/token';
-import type RedisInstance from '@libs/redis';
 import { createHmac } from 'crypto';
 import type { Socket } from 'socket.io';
 
-const socketMiddleware = (redisClient: typeof RedisInstance) => async (socket: Socket, next: (err?: Error) => void) => {
+const socketMiddleware = (socketMap: WebSocket.socketMap) => (socket: Socket, next: (err?: Error) => void) => {
   try {
     const { token, signature } = socket.handshake.auth as WebSocket.handshakeAuth;
 
@@ -21,20 +20,23 @@ const socketMiddleware = (redisClient: typeof RedisInstance) => async (socket: S
     //TODO parti a vérifier
     const payload = getSignedCookieValue(token);
 
-    socket.data = {
-      signed,
-      ...(payload ? payload : {}),
-    };
-
     if (payload) {
+      socket.data = { ...socket.data, ...payload };
       const { sessionId, refreshToken } = payload;
-      const prevSession = await redisClient.get<WebSocket.socketList>(`wss:${sessionId}`);
+      const prevSession = socketMap.get(sessionId);
       if (prevSession.refreshToken === refreshToken) {
         socket.to(prevSession.socketId).emit('session_double', undefined);
         socket.to(prevSession.socketId).disconnectSockets();
       }
-      await redisClient.set<WebSocket.socketList>(`wss:${sessionId}`, { refreshToken, socketId: socket.id });
+      socketMap.set(sessionId, { refreshToken, socketId: socket.id, signed });
     }
+
+    const originalEmit = socket.emit;
+    socket.emit = function (event, data, ...args) {
+      const finalData = { signed, data };
+      return originalEmit.call(this, event, finalData, ...args);
+    };
+
     next();
   } catch (err) {
     logger.error('socketMiddleware error =>', err);

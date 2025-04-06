@@ -1,8 +1,9 @@
 import env from '@/config';
-import { ExpiredSessionError } from '@/exceptions';
-import { Session } from '@/interfaces/session';
+import { ExpiredSessionError, InvalidArgumentError } from '@/exceptions';
+import { type Session } from '@/interfaces/session';
 import { decryptSessionApiKey } from '@/utils/token';
 import type { ctx } from '@interfaces/middlewares';
+import { createHmac } from 'crypto';
 import deepmerge from 'deepmerge';
 import type { NextFunction, Request, Response } from 'express';
 
@@ -13,6 +14,12 @@ const getAuthorization = (req: Request) => {
   if (coockie) return coockie;
 
   return null;
+};
+
+const computedSignature = (req: Request) => {
+  const signature = req.header('Signature');
+  if (!signature) throw new InvalidArgumentError('Signature value is required');
+  return createHmac('sha256', env.SIGNATURE).update(signature).digest('hex');
 };
 
 const mw =
@@ -84,6 +91,7 @@ const mw =
 
         ctx.session = user;
       }
+      ctx.res.setHeader('X-Signature', computedSignature(req));
 
       await ctx.next();
     } catch (err) {

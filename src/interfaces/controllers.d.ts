@@ -1,4 +1,4 @@
-import { ctx, LocalsCTX } from './middlewares';
+import { type ctx, type LocalsCTX } from './middlewares';
 
 export type ExpressHandler<T extends LocalsCTX = LocalsCTX> = (ctx: ctx<T>) => Promise<void>;
 export type ControllerMethods<T> = {

@@ -1,10 +1,7 @@
 import logsConfig from '@/config/logs';
-import { SkipInTest } from '@/decorators/skipInTest';
+import { type WebSocket } from '@/interfaces/websocket';
 import socket from '@/libs/socket';
 import env from '@config';
-// import MemoryServerCache from '@libs/memoryCache';
-// import SocketManager from '@libs/socketManager';
-import { type WebSocket } from '@/interfaces/websocket';
 import { ErrorMiddleware } from '@middlewares/error';
 import ApiRouter from '@routes/index';
 import { logger, stream } from '@utils/logger';
@@ -56,16 +53,14 @@ export default class App extends ApiRouter {
   }
 
   private initializeMiddlewares() {
-    SkipInTest(() => {
-      this.app.use(morgan(format, { stream }));
-    })();
+    this.app.use(morgan(format, { stream }));
 
     this.app.use(
       cors({
         origin: ORIGIN,
         credentials: true,
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-        allowedHeaders: 'Content-Type,Authorization',
+        allowedHeaders: 'Content-Type,Authorization,Signature',
       }),
     );
     this.app.use(hpp());
@@ -80,7 +75,7 @@ export default class App extends ApiRouter {
         origin: ORIGIN,
         credentials: true,
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-        allowedHeaders: 'Content-Type,Authorization',
+        allowedHeaders: 'Content-Type,Authorization,Signature',
       }),
     );
   }

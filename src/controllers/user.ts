@@ -1,6 +1,6 @@
 import { ServerException } from '@/exceptions';
 import { logger } from '@/utils/logger';
-import { ControllerMethods, ExpressHandler } from '@interfaces/controllers';
+import { type ControllerMethods, type ExpressHandler } from '@interfaces/controllers';
 
 export default class TestControllerFile implements ControllerMethods<TestControllerFile> {
   // private AccountService: AccountServiceFile;
@@ -12,7 +12,8 @@ export default class TestControllerFile implements ControllerMethods<TestControl
   protected params_module: ExpressHandler = async ({ res, next }) => {
     try {
       // const ballance = await this.AccountService.getBallance();
-      res.status(200).send({ user: 'Alex' });
+
+      res.status(200).send({ user: 'AlexPopof' });
     } catch (error) {
       console.log(error);
 

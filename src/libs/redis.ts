@@ -9,10 +9,10 @@ class RedisInstance {
   protected redisClient: RedisClient;
 
   private constructor() {
-    const { REDIS_PASSWORD, REDIS_PORT } = env;
+    const { REDIS_PASSWORD, REDIS_PORT, REDIS_HOST } = env;
 
     this.redisClient = new Redis({
-      host: '127.0.0.1',
+      host: REDIS_HOST,
       port: Number(REDIS_PORT),
       ...(REDIS_PASSWORD ? { password: REDIS_PASSWORD } : {}),
       enableReadyCheck: false,
@@ -83,11 +83,10 @@ class RedisInstance {
    * @param pattern Le pattern de recherche (ex: 'wss:*').
    * @returns Un tableau de valeurs de type T.
    */
-  public async getAll<T>(pattern: string): Promise<T[]> {
+  public async getAll<T>(pattern: string, deleteAfter: boolean = false): Promise<T[]> {
     let cursor = '0';
     const keys: string[] = [];
 
-    // Parcours itératif avec SCAN
     do {
       const [nextCursor, foundKeys] = await this.redisClient.scan(cursor, 'MATCH', pattern, 'COUNT', 100);
       cursor = nextCursor;
@@ -99,6 +98,7 @@ class RedisInstance {
     }
 
     const values = await this.redisClient.mget(...keys);
+    if (deleteAfter) await Promise.all(keys.map(key => this.delete(key)));
     return values.filter((v): v is string => v !== null).map(v => JSON.parse(v) as T);
   }
 

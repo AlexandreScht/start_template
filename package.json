@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "env": "ts-node src/commands/validateEnv.ts",
+    "env": "ts-node src/commands/validateNode.ts",
     "dev": "cross-env NODE_ENV=development npm run env && nodemon",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
