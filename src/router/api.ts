@@ -12,6 +12,9 @@ const apiRoutes = createRoutes({
       // mix query et body
       // mix all
     },
+    auth: {
+      login: () => '/login',
+    },
   },
 });
 

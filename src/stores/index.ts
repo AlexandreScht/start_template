@@ -1,4 +1,4 @@
-import { GetStoreState, SetStoreState } from '@/interfaces/stores';
+import { type GetStoreState, type SetStoreState } from '@/interfaces/stores';
 import { createStore, type StoreApi } from 'zustand';
 import { createJSONStorage, persist, subscribeWithSelector } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';

@@ -1,8 +1,8 @@
 import { type z, type ZodTypeAny } from 'zod';
-import { userSchema } from './users';
+import * as userSchemas from './users';
 
 const prepareSchemas = {
-  userSchema,
+  ...userSchemas,
 };
 
 function createSchemaValidator<T extends Record<string, ZodTypeAny>>(
