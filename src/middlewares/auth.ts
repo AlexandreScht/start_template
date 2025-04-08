@@ -1,9 +1,21 @@
-'use server';
-import nextAuthOptions from '@/config/authOption';
+import hasAccess from '@/config/rolesAccess';
+import { InvalidAccessError } from '@/exceptions/errors';
 import { type User } from '@/interfaces/user';
-import getSessionCookie from '@/utils/cookies';
-import { getServerSession } from 'next-auth';
+import getSession from '@/utils/getSession';
 
-export default async function authMw(role?: User.role | Array<User.role>) {
-  const session = await getServerSession(nextAuthOptions);
+export default async function authMw(requiredRole?: User.role | Array<User.role>) {
+  const session = await getSession();
+  if (!session) throw new InvalidAccessError();
+  if (requiredRole) {
+    if (Array.isArray(requiredRole)) {
+      const accessGranted = requiredRole.some(role => hasAccess(session.sessionRole, role));
+      if (!accessGranted) {
+        throw new InvalidAccessError();
+      }
+    } else {
+      if (!hasAccess(session.sessionRole, requiredRole)) {
+        throw new InvalidAccessError();
+      }
+    }
+  }
 }

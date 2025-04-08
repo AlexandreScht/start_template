@@ -49,7 +49,7 @@ const nextAuthOptions: NextAuthOptions = {
           }
 
           const { login } = PrepareServices;
-          const axios = AxiosInstance({ side: 'server' });
+          const axios = AxiosInstance({ side: 'server', cache: { cachePredicate: () => false } });
 
           const res = await login({ email, password, confirmPassword })(axios);
 
@@ -81,7 +81,7 @@ const nextAuthOptions: NextAuthOptions = {
         const { at_hash } = profile;
 
         const { oAuth } = PrepareServices;
-        const axios = AxiosInstance({ side: 'server' });
+        const axios = AxiosInstance({ side: 'server', cache: { cachePredicate: () => false } });
 
         const res = await oAuth({ id_token, at_hash })(axios);
 
@@ -89,10 +89,9 @@ const nextAuthOptions: NextAuthOptions = {
           throw new ClientException(400, "Une erreur s'est produite");
         }
 
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         user = { ...user, id: user.email || user.id, ...res.payload };
 
-        return true;
+        return !!user;
       }
 
       return false;

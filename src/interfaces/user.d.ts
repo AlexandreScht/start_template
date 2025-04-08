@@ -1,5 +1,7 @@
+import { type Roles } from '@/config/rolesAccess';
+
 export namespace User {
-  export type role = 'member' | 'premium';
+  export type role = keyof typeof Roles;
 
   export interface session {
     sessionId: number;
