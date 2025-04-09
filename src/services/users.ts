@@ -6,13 +6,15 @@ const {
   api: { test: router },
 } = apiRoutes;
 
-export const TestParamsService: ApiRequests.Test.Params = props => async axios => {
-  return await httpGateway<ApiRequests.Test.Params>(
-    ({ id }) => ({
-      middlewares: mw => [mw.logs(), mw.transform((v, { number }) => ({ id: number.increment(v.id, 5) }))],
-      validator: schema => schema.userSchema({ id }),
-      request: axios => axios.get(router.params([id])),
-    }),
-    [props, axios],
-  );
-};
+export const TestParamsService: ApiRequests.Test.Params =
+  (...props) =>
+  async axios => {
+    return await httpGateway<ApiRequests.Test.Params>(
+      ({ id }) => ({
+        middlewares: mw => [mw.logs(), mw.transform((v, { number }) => ({ id: number.increment(v.id, 5) }))],
+        validator: schema => schema.userSchema({ id }),
+        request: axios => axios.get(router.params([id])),
+      }),
+      [axios, props],
+    );
+  };

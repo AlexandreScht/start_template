@@ -35,6 +35,9 @@ declare namespace Middlewares {
         axios: Services.Axios.instance,
       ) => Promise<DataFromRequest<Req>> | [Promise<DataFromRequest<Req>>, (schemas: typeof schemaValidator) => unknown];
     }
-    export type deps<P> = [RequestDataType<P>, Services.Axios.instance];
+    export type deps<P> = [
+      Services.Axios.instance,
+      [params: RequestDataType<P>, revalidateArgs?: (v: RequestDataType<P>) => RequestDataType<P> | RequestDataType<P>],
+    ];
   }
 }

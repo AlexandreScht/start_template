@@ -8,31 +8,23 @@ export default async function serverRevalidate<U extends Services.Config.ServerS
   options?: U,
 ): Promise<void | Error> {
   try {
-    const wrappedServices: Services.serverRevalidate.MutationServices<typeof PrepareServices> = Object.entries(PrepareServices).reduce(
-      (acc, [key, service]) => {
-        (acc as any)[key] = (route: any, revalidateArgs?: (v: unknown) => unknown | unknown) => {
-          return () => {
-            const axios = AxiosInstance({
-              ...options,
-              side: 'server',
-              revalidate: true,
-              revalidateArgs,
-            });
-            return service(route)(axios);
-          };
-        };
-        return acc;
-      },
-      {} as Services.serverRevalidate.MutationServices<typeof PrepareServices>,
-    );
+    const axios = AxiosInstance({
+      ...options,
+      side: 'server',
+      revalidate: true,
+    });
 
-    const services = selector(wrappedServices);
+    const services = selector(PrepareServices);
     services.forEach(service => {
-      const s = service();
-      if (typeof s === 'function') return s();
+      console.log(service);
+
+      const s = service()(axios);
+      if (typeof s === 'function') return s()(axios);
       return s;
     });
   } catch (error) {
+    console.log(error);
+
     throw servicesErrors(error);
   }
 }

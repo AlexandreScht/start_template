@@ -4,8 +4,9 @@ import routes from '@/router/client';
 import PrepareServices from '@/services';
 import { type NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import GoogleProvider from 'next-auth/providers/google';
+// import GoogleProvider from 'next-auth/providers/google';
 import { cookies } from 'next/headers';
+import env from '.';
 
 const deleteCookie = () => {
   if (process.env.COOKIE_NAME) {
@@ -19,17 +20,17 @@ const deleteCookie = () => {
 
 const nextAuthOptions: NextAuthOptions = {
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
-      authorization: {
-        params: {
-          prompt: 'consent',
-          access_type: 'offline',
-          response_type: 'code',
-        },
-      },
-    }),
+    // GoogleProvider({
+    //   clientId: process.env.GOOGLE_CLIENT_ID as string,
+    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    //   authorization: {
+    //     params: {
+    //       prompt: 'consent',
+    //       access_type: 'offline',
+    //       response_type: 'code',
+    //     },
+    //   },
+    // }),
     CredentialsProvider({
       name: 'Credentials',
       credentials: {
@@ -53,7 +54,7 @@ const nextAuthOptions: NextAuthOptions = {
 
           const res = await login({ email, password, confirmPassword })(axios);
 
-          if (!res || res?.payload) {
+          if (!res || !res.payload) {
             throw new ClientException(400, "Une erreur s'est produite");
           }
           return {
@@ -61,6 +62,8 @@ const nextAuthOptions: NextAuthOptions = {
             ...res.payload,
           };
         } catch (error: any) {
+          console.log(error);
+
           console.error(`NextAuth authorize error: ${error.message}`);
           throw error;
         }
@@ -116,10 +119,11 @@ const nextAuthOptions: NextAuthOptions = {
   jwt: {
     maxAge: 30 * 24 * 60 * 60,
   },
+  secret: env.NEXTAUTH_SECRET,
   pages: {
-    signIn: routes.pages.home(),
-    signOut: routes.pages.login(),
-    error: routes.pages.login(),
+    signIn: routes.home(),
+    signOut: routes.login(),
+    error: routes.login(),
   },
   events: {
     async signOut() {

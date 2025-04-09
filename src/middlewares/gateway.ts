@@ -13,7 +13,8 @@ export async function httpGateway<P extends ApiRequests.setRequest<any, any>>(
   deps: Middlewares.httpGateway.deps<P>,
 ): Promise<Middlewares.httpGateway.DataFromRequest<P>> {
   try {
-    const [props, axios] = deps;
+    const [axios, args] = deps;
+    const [props, revalidateProps] = args;
     const { validator, request, middlewares } = options(props);
 
     if (middlewares) {

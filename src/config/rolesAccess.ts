@@ -1,5 +1,5 @@
 import { type User } from '@/interfaces/user';
-import clientRoutes from '@/router/client';
+import router from '@/router/client';
 
 export const Roles = {
   member: 1,
@@ -7,12 +7,11 @@ export const Roles = {
   admin: 3,
 };
 
-const { pages } = clientRoutes;
-
 //* path routes access
 //? An array of routes that dons't requires authentication
 export const publicPaths: Array<string> = [
-  pages.login(),
+  router.login(),
+  router.home(),
   // pages.password(),
   // pages.register(),
   // pages.unauthorized(),
@@ -22,7 +21,7 @@ export const publicPaths: Array<string> = [
 ];
 
 //? An array of routes that requires an authentication
-export const privatePaths: Array<string> = [pages.home()];
+export const privatePaths: Array<string> = [];
 
 //? An array of routes that can only be accessed by the admin role.
 export const adminPaths: Array<string> = [];

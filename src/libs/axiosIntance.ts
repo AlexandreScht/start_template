@@ -38,7 +38,7 @@ const configureCache = (cacheOptions: Services.Config.serverCache | undefined) =
     : {};
 };
 
-const AxiosInstance = ({ headers, cache, side, revalidate, revalidateArgs }: Services.Axios.axiosApi): Services.Axios.instance => {
+const AxiosInstance = ({ headers, cache, side, revalidate }: Services.Axios.axiosApi): Services.Axios.instance => {
   const serverRequest = side === 'server' ? true : side === 'client' ? false : typeof window === 'undefined';
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
   const instance: Services.Axios.instance = AxiosRequest(otherHeaders);

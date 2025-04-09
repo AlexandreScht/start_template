@@ -122,7 +122,6 @@ export namespace Services {
       cache?: Partial<SWRConfiguration> | Partial<CacheOptions>;
       side: 'server' | 'client';
       revalidate?: boolean;
-      revalidateArgs?: unknown;
     }
 
     export type instance = AxiosInstance & { revalidate?: boolean };

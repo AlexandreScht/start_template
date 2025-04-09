@@ -1,10 +1,8 @@
 import { createRoutes } from '.';
 
 const clientRoutes = createRoutes({
-  pages: {
-    home: () => '/dashboard',
-    login: () => '/',
-  },
+  home: () => '/dashboard',
+  login: () => '/',
 });
 
 export default clientRoutes;

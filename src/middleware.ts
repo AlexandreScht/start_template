@@ -15,6 +15,8 @@ export default withAuth(
     if (!!user && !canGo(req.nextUrl.pathname, user.sessionRole)) {
       return NextResponse.redirect(new URL('unauthorized', req.nextUrl.origin).toString());
     }
+
+    return NextResponse.next();
   },
   {
     callbacks: {

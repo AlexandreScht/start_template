@@ -2,7 +2,7 @@ import { type Services } from './services';
 import { type User } from './user';
 
 declare namespace ApiRequests {
-  type setRequest<P, R> = (params: P) => (instance: Services.Axios.instance) => Promise<R>;
+  type setRequest<P, R> = (params: P, revalidateArgs?: any) => (instance: Services.Axios.instance) => Promise<R>;
 
   namespace Test {
     type Params = setRequest<{ id: number }, { user: string }>;
