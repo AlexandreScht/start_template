@@ -16,22 +16,48 @@ export const MutationServicesContext = createContext<{
 export function ServiceProvider({ children }: { children: React.ReactNode }) {
   const prepareServicesRef = useRef(PrepareServices);
 
+  const createWrappedServices = useCallback(
+    <T extends Record<string, (...args: any[]) => any>>(
+      services: T,
+    ): {
+      [K in keyof T]: Services.Provider.WrappedServiceFunction<Services.ParamType<T[K]>, Services.Index.returnType<T[K]>>;
+    } => {
+      const result = {} as {
+        [K in keyof T]: Services.Provider.WrappedServiceFunction<Services.ParamType<T[K]>, Services.Index.returnType<T[K]>>;
+      };
+
+      (Object.keys(services) as (keyof T)[]).forEach(key => {
+        result[key] = ((params: Services.ParamType<T[typeof key]>, override?: string) => ({
+          key: override ? String(override) : `${String(key)}:${JSON.stringify(params)}`,
+          fetcher: (axiosInstance: Services.Axios.instance) => services[key](params)(axiosInstance),
+        })) as Services.Provider.WrappedServiceFunction<Services.ParamType<T[typeof key]>, Services.Index.returnType<T[typeof key]>>;
+      });
+
+      return result;
+    },
+    [],
+  );
+
   const callServices: Services.Provider.WrappedServices<typeof PrepareServices> = useMemo(() => {
-    const svc = prepareServicesRef.current;
-    return Object.entries(svc).reduce(
-      (acc, [key, fn]) => {
-        acc[key as keyof typeof svc] = (...args: any[]) => {
-          const [first, second] = args;
-          return {
-            key: second ? String(second) : `${String(key)}:${JSON.stringify(first)}`,
-            fetcher: axiosInstance => fn(first)(axiosInstance),
-          };
-        };
-        return acc;
-      },
-      {} as Services.Provider.WrappedServices<typeof PrepareServices>,
-    );
-  }, []);
+    return createWrappedServices(prepareServicesRef.current);
+  }, [createWrappedServices]);
+
+  // const callServices: Services.Provider.WrappedServices<typeof PrepareServices> = useMemo(() => {
+  //   const svc = prepareServicesRef.current;
+  //   return Object.entries(svc).reduce(
+  //     (acc, [key, fn]) => {
+  //       acc[key as keyof typeof svc] = (...args: any[]) => {
+  //         const [first, second] = args;
+  //         return {
+  //           key: second ? String(second) : `${String(key)}:${JSON.stringify(first)}`,
+  //           fetcher: axiosInstance => fn(first)(axiosInstance),
+  //         };
+  //       };
+  //       return acc;
+  //     },
+  //     {} as Services.Provider.WrappedServices<typeof PrepareServices>,
+  //   );
+  // }, []);
 
   const validateResult = useCallback((result: unknown, typedKey: string): [any, string?] => {
     if (!Array.isArray(result) || result.length === 0 || result.length > 2 || (result.length === 2 && typeof result[1] !== 'string')) {
