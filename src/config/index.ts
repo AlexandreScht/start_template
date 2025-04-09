@@ -15,7 +15,7 @@ const env = cleanEnv(process.env, {
   REDIS_HOST: str({ default: '127.0.0.1' }),
   REDIS_PORT: port({ default: 6379 }),
   SESSION_SECRET: str(),
-  ORIGIN: url(),
+  ORIGIN: url({ default: 'http://localhost:3000' }),
 });
 
 export default env;
