@@ -1,14 +1,13 @@
 import { default as cacheConfig } from '@/config/cache';
 import { ExpiredSessionError, InvalidArgumentError, InvalidRoleAccessError } from '@/exceptions/errors';
 import { type Services } from '@/interfaces/services';
-import { generateCacheKey, setLifeTime } from '@/utils/serialize';
-import axios, { type AxiosResponse, type InternalAxiosRequestConfig, type RawAxiosRequestHeaders } from 'axios';
-import { type AxiosStorage, type CacheOptions, type CacheRequestConfig, setupCache } from 'axios-cache-interceptor';
+import { setLifeTime } from '@/utils/serialize';
+import axios, { type RawAxiosRequestHeaders } from 'axios';
+import { type CacheOptions, type CacheRequestConfig, setupCache } from 'axios-cache-interceptor';
 import { serialize } from 'cookie';
 import { v4 as uuid } from 'uuid';
 import { getRequestCookies, getServerUri, serializeCookies, setRequestCookies, verifySignature } from '../utils/cookies';
 import cacheDefaultConfig from './cacheOption';
-import CacheSingleton from './nodeCache';
 
 const AxiosRequest = (headersOption: RawAxiosRequestHeaders & { withCredentials?: boolean }) => {
   const { Authorization, 'Content-Type': ContentType, withCredentials, ...headers } = headersOption ?? {};
@@ -46,13 +45,34 @@ const AxiosInstance = ({ headers, cache, side, revalidate }: Services.Axios.axio
     setupCache(instance, configureCache(cache as Services.Config.serverCache | undefined));
   }
 
-  const signature = uuid();
+  instance.interceptors.request.use(async request => {
+    if (serverRequest) {
+      const cookies = await setRequestCookies();
+      const mappedCookies = setCookies ? [...cookies, ...(await serializeCookies(setCookies))] : cookies;
+      const formattedCookies = mappedCookies
+        ?.map(cookie => {
+          const { name, value, ...options } = cookie;
+          return serialize(name, value, options);
+        })
+        .join('; ');
+
+      if (formattedCookies?.length) {
+        request.headers['Cookie'] = formattedCookies;
+      }
+    }
+
+    request.headers['Signature'] = uuid();
+    request.baseURL = await getServerUri();
+
+    return request;
+  });
+
   instance.interceptors.response.use(
     async response => {
-      if (revalidate) return response;
-
       const cookies = response.headers['set-cookie'];
+      const signature = response.headers['signature'];
       const resSignature = response.headers['x-signature'];
+
       const checkSignature = await verifySignature(signature, resSignature);
       if (!checkSignature) throw new InvalidArgumentError('Invalid signature');
 
@@ -67,96 +87,10 @@ const AxiosInstance = ({ headers, cache, side, revalidate }: Services.Axios.axio
       return Promise.reject(error);
     },
   );
-  instance.interceptors.request.use(async request => {
-    if (serverRequest) {
-      if (revalidate) {
-        await revalidateCache(request, instance as Services.Axios.instanceStorage, revalidateArgs);
-        request.adapter = async (config): Promise<AxiosResponse> => {
-          return {
-            data: undefined,
-            status: 200,
-            statusText: 'OK',
-            headers: headers ?? ({} as any),
-            config: config,
-            request: {},
-          };
-        };
-        return request;
-      }
-      const cookies = await setRequestCookies();
-      const mappedCookies = setCookies ? [...cookies, ...(await serializeCookies(setCookies))] : cookies;
-      const formattedCookies = mappedCookies
-        ?.map(cookie => {
-          const { name, value, ...options } = cookie;
-          return serialize(name, value, options);
-        })
-        .join('; ');
-
-      if (formattedCookies?.length) {
-        request.headers['Cookie'] = formattedCookies;
-      }
-    }
-    if (!revalidate) request.headers['Signature'] = signature;
-    request.baseURL = await getServerUri();
-
-    return request;
-  });
 
   instance.revalidate = revalidate;
   return instance;
 };
-
-async function revalidateCache(
-  request: InternalAxiosRequestConfig<any>,
-  { storage: cacheStore }: Services.Axios.instanceStorage,
-  revalidateArgs?: unknown,
-) {
-  const { url } = request as { url: string };
-  const cacheKey = generateCacheKey(request);
-
-  const hasParams = url.split('/').length - 1 > 3;
-  const hasQuery = url.includes('?');
-
-  if (hasParams || hasQuery || request?.data) {
-    if (revalidateArgs !== undefined) {
-      if (typeof revalidateArgs === 'function') {
-        const oldValues = await (cacheStore as AxiosStorage).get(cacheKey);
-        const newValues = {
-          ...oldValues,
-          createdAt: Date.now(),
-          data: {
-            ...oldValues.data,
-            data: revalidateArgs(oldValues.data?.data),
-          },
-        };
-        await (cacheStore as AxiosStorage).set(cacheKey, newValues as any);
-      } else {
-        await (cacheStore as AxiosStorage).set(cacheKey, revalidateArgs as any);
-      }
-    } else {
-      (request as any).cache = false;
-      await (cacheStore as AxiosStorage).remove(cacheKey);
-    }
-  } else {
-    (request as any).cache = false;
-
-    const cache = CacheSingleton.getInstance();
-
-    const nodeCache = cache.keys();
-    const { data, 'is-storage': storageLength } = cacheStore as Services.Axios.CacheStorage;
-
-    console.log(data);
-    console.log(nodeCache);
-
-    // if (storageLength) {
-    //   Promise.all(
-    //     Object.keys(data)
-    //       .filter(key => key.startsWith(cacheKey))
-    //       .map(key => (cacheStore as AxiosStorage).remove(key)),
-    //   );
-    // }
-  }
-}
 
 function prepareAxiosError(err: any) {
   const {

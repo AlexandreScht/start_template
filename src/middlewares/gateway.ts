@@ -2,6 +2,7 @@ import { InvalidArgumentError } from '@/exceptions/errors';
 import { type ApiRequests } from '@/interfaces/clientApi';
 import { type Middlewares } from '@/interfaces/middlewares';
 import { type Services } from '@/interfaces/services';
+import createRevalidateInstance from '@/libs/revalidateInstance';
 import schemaValidator from '@/validators';
 import { ZodError } from 'zod';
 import authMw from './auth';
@@ -14,8 +15,15 @@ export async function httpGateway<P extends ApiRequests.setRequest<any, any>>(
 ): Promise<Middlewares.httpGateway.DataFromRequest<P>> {
   try {
     const [axios, args] = deps;
-    const [props, revalidateProps] = args;
+    const [props, revalidateArgs] = args;
     const { validator, request, middlewares } = options(props);
+
+    console.log(axios?.revalidate);
+
+    if (axios?.revalidate) {
+      const axiosRevalidate = createRevalidateInstance(revalidateArgs);
+      return (await request(axiosRevalidate)) as any;
+    }
 
     if (middlewares) {
       const middlewaresSet: Middlewares.httpGateway.MiddlewaresSet<typeof props> = {
@@ -33,30 +41,32 @@ export async function httpGateway<P extends ApiRequests.setRequest<any, any>>(
       const transformedProps = results.find(result => result !== undefined);
       if (transformedProps) {
         const { validator, request } = options(transformedProps);
-        return await executeRequest(request, validator, axios);
+        return await executeRequest(request, axios, validator);
       }
     }
 
-    return await executeRequest(request, validator, axios);
+    return await executeRequest(request, axios, validator);
   } catch (err: unknown) {
     if (err instanceof ZodError) {
       const issue = err.issues[0];
       throw new InvalidArgumentError(`Keys < ${issue.path.join('.') || 'unknown'} > ${issue.message}`);
     }
+    console.log(err);
+
     throw err;
   }
 }
 
 async function executeRequest<P extends ApiRequests.setRequest<any, any>>(
   request: Middlewares.httpGateway.HttpGatewayConfig<P>['request'],
-  validator: Middlewares.httpGateway.HttpGatewayConfig<P>['validator'],
   axios: Services.Axios.instance,
+  validator: Middlewares.httpGateway.HttpGatewayConfig<P>['validator'],
 ) {
   if (!request) {
     throw new InvalidArgumentError('Request argument is required !');
   }
 
-  if (validator && !axios?.revalidate) {
+  if (validator) {
     validator(schemaValidator);
   }
   const res = request(axios);

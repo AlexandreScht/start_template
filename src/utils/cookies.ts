@@ -3,7 +3,7 @@ import env from '@/config';
 import serverConfig from '@/config/server';
 import { type Services } from '@/interfaces/services';
 import { parse } from 'cookie';
-import CryptoJS from 'crypto-js';
+import { createHmac } from 'crypto';
 import { cookies } from 'next/headers';
 
 export default async function getSessionCookie(cookieName?: string) {
@@ -44,7 +44,8 @@ export async function getRequestCookies(apiCookies: string[]): Promise<void> {
 }
 
 export async function verifySignature(signature: string, signed: string): Promise<boolean> {
-  const signatureResolved = CryptoJS.HmacSHA256(signature, env.SIGNATURE).toString(CryptoJS.enc.Hex);
+  const signatureResolved = createHmac('sha256', env.SIGNATURE).update(signature).digest('hex');
+
   return signed === signatureResolved;
 }
 
