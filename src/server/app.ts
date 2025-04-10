@@ -94,7 +94,7 @@ export default class App extends ApiRouter {
 
   private initializeStoredLibs() {
     // MemoryServerCache;
-    socket.getInstance(this.io);
+    // socket.getInstance(this.io);
   }
 
   private initializeAppRoutes() {

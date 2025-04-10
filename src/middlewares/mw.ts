@@ -19,7 +19,7 @@ const getAuthorization = (req: Request) => {
 const computedSignature = (req: Request) => {
   const signature = req.header('Signature');
   if (!signature) throw new InvalidArgumentError('Signature value is required');
-  return createHmac('sha256', env.SIGNATURE).update(signature).digest('hex');
+  return [createHmac('sha256', env.SIGNATURE).update(signature).digest('hex'), signature];
 };
 
 const mw =
@@ -91,7 +91,9 @@ const mw =
 
         ctx.session = user;
       }
-      ctx.res.setHeader('X-Signature', computedSignature(req));
+      const [xSignature, signature] = computedSignature(req);
+      ctx.res.setHeader('X-Signature', xSignature);
+      ctx.res.setHeader('Signature', signature);
 
       await ctx.next();
     } catch (err) {
