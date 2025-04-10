@@ -19,6 +19,7 @@ declare namespace Middlewares {
   namespace httpGateway {
     type DataFromRequest<T> = T extends ApiRequests.setRequest<any, infer R> ? R : unknown;
     type RequestDataType<T> = T extends ApiRequests.setRequest<infer R, any> ? R : unknown;
+    type ReturnParamType<F> = F extends (arg: any) => Awaited<(v: any) => Promise<infer A>> ? A : never;
 
     type allowedLevel = Array<'info' | 'warn' | 'error'>;
 
@@ -37,7 +38,7 @@ declare namespace Middlewares {
     }
     export type deps<P> = [
       Services.Axios.instance,
-      [params: RequestDataType<P>, revalidateArgs?: (v: RequestDataType<P>) => RequestDataType<P> | RequestDataType<P>],
+      [params: RequestDataType<P>, revalidateArgs?: ((v: ReturnParamType<P>) => ReturnParamType<P>) | ReturnParamType<P>],
     ];
   }
 }

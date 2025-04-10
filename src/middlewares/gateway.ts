@@ -18,8 +18,6 @@ export async function httpGateway<P extends ApiRequests.setRequest<any, any>>(
     const [props, revalidateArgs] = args;
     const { validator, request, middlewares } = options(props);
 
-    console.log(axios?.revalidate);
-
     if (axios?.revalidate) {
       const axiosRevalidate = createRevalidateInstance(revalidateArgs);
       return (await request(axiosRevalidate)) as any;

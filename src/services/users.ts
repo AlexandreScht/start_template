@@ -11,7 +11,7 @@ export const TestParamsService: ApiRequests.Test.Params =
   async axios => {
     return await httpGateway<ApiRequests.Test.Params>(
       ({ id }) => ({
-        middlewares: mw => [mw.logs(), mw.transform((v, { number }) => ({ id: number.increment(v.id, 5) }))],
+        middlewares: mw => [mw.logs()],
         validator: schema => schema.userSchema({ id }),
         request: axios => axios.get(router.params([id])),
       }),

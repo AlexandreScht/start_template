@@ -30,9 +30,11 @@ const createRevalidateInstance = (revalidateArgs?: unknown) => {
         const newValue = {
           ...oldValues,
           createdAt: Date.now(),
-          data: typeof revalidateArgs === 'function' ? revalidateArgs(oldValues?.data) : revalidateArgs,
+          data: {
+            ...oldValues.data,
+            data: typeof revalidateArgs === 'function' ? revalidateArgs(oldValues?.data?.data) : revalidateArgs,
+          },
         };
-
         storage.set(cacheKey, newValue);
       } else {
         storage.del(cacheKey);
@@ -40,12 +42,23 @@ const createRevalidateInstance = (revalidateArgs?: unknown) => {
     } else {
       // (request as any).cache = false;
 
-      const nodeCache = storage.keys();
-      const { data, 'is-storage': storageLength } = (instance as unknown as Services.Axios.CacheStorage) || {};
+      const nodeCacheKeys = storage.keys();
 
-      console.log(data);
-      console.log(nodeCache);
-      console.log(storageLength);
+      console.log(nodeCacheKeys);
+      console.log(cacheKey);
+
+      nodeCacheKeys.forEach(key => {
+        console.log(key);
+
+        if (key.startsWith(cacheKey)) {
+          console.log(key);
+
+          storage.del(key);
+        }
+      });
+
+      console.log(storage);
+      console.log(storage.keys());
     }
 
     request.adapter = async (config: InternalAxiosRequestConfig): Promise<AxiosResponse> => {

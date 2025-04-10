@@ -5,6 +5,7 @@ import type { MutatorOptions, SWRConfiguration, SWRHook } from 'swr';
 
 export namespace Services {
   export type ParamType<F> = F extends (arg: infer A) => unknown ? A : never;
+  export type ReturnParamType<F> = F extends (arg: any) => Awaited<(v: any) => Promise<infer A>> ? A : never;
   export namespace Index {
     export type returnType<F> = F extends (params: any) => (instance: Axios.instance) => Promise<infer R> ? R : never;
   }
@@ -63,7 +64,7 @@ export namespace Services {
   export namespace serverRevalidate {
     export type MutationService<F> = F extends (arg: infer A) => unknown
       ? {
-          (arg: ParamType<F>, update?: ((v: ParamType<F>) => ParamType<F>) | ParamType<F>): unknown;
+          (arg: ParamType<F>, update?: ((v: ReturnParamType<F>) => ReturnParamType<F>) | ReturnParamType<F>): unknown;
         }
       : never;
 
