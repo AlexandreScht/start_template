@@ -4,7 +4,7 @@ import { type CacheRequestConfig } from 'axios-cache-interceptor';
 
 export function generateCacheKey(request: CacheRequestConfig<unknown, unknown>) {
   const { method = 'req', url, data } = request;
-  let key = `${method.toUpperCase()}:${url}_`;
+  let key = `${method.toUpperCase()}:${url}`;
   if (data) {
     key += JSON.stringify(data);
   }

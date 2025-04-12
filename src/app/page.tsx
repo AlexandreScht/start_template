@@ -3,6 +3,7 @@ import serverService from '@/libs/serverService';
 
 export default async function Home() {
   const { data, error } = await serverService(v => v.testParams({ id: 5 }));
+
   console.log({ data, error });
 
   return (

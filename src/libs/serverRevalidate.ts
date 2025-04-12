@@ -1,18 +1,14 @@
 import { servicesErrors } from '@/exceptions/messagers';
 import type { Services } from '@/interfaces/services';
 import PrepareServices from '@/services';
-import AxiosInstance from './axiosIntance';
+import axiosInstance from './revalidateInstance';
 
-export default async function serverRevalidate<U extends Services.Config.ServerServiceOption = Services.Config.ServerServiceOption>(
+export default async function serverRevalidate(
   selector: (services: Services.serverRevalidate.MutationServices<typeof PrepareServices>) => Array<any>,
-  options?: U,
+  options?: Services.Config.serverCache,
 ): Promise<void | Error> {
   try {
-    const axios = AxiosInstance({
-      ...options,
-      side: 'server',
-      revalidate: true,
-    });
+    const axios = axiosInstance(options);
 
     const services = selector(PrepareServices);
     services.forEach(service => {

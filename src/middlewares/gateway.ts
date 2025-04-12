@@ -2,7 +2,6 @@ import { InvalidArgumentError } from '@/exceptions/errors';
 import { type ApiRequests } from '@/interfaces/clientApi';
 import { type Middlewares } from '@/interfaces/middlewares';
 import { type Services } from '@/interfaces/services';
-import createRevalidateInstance from '@/libs/revalidateInstance';
 import schemaValidator from '@/validators';
 import { ZodError } from 'zod';
 import authMw from './auth';
@@ -19,8 +18,8 @@ export async function httpGateway<P extends ApiRequests.setRequest<any, any>>(
     const { validator, request, middlewares } = options(props);
 
     if (axios?.revalidate) {
-      const axiosRevalidate = createRevalidateInstance(revalidateArgs);
-      return (await request(axiosRevalidate)) as any;
+      (axios as Services.Axios.revalidateInstance).revalidateArgs = revalidateArgs;
+      return (await request(axios)) as any;
     }
 
     if (middlewares) {

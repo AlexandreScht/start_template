@@ -122,10 +122,10 @@ export namespace Services {
       headers?: axiosHeaders;
       cache?: Partial<SWRConfiguration> | Partial<CacheOptions>;
       side: 'server' | 'client';
-      revalidate?: boolean;
     }
 
     export type instance = AxiosInstance & { revalidate?: boolean };
+    export type revalidateInstance = instance & { revalidateArgs?: unknown | ((v?: unknown) => unknown) };
     export interface Cookie {
       name: string;
       value: string;

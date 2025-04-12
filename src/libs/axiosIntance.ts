@@ -1,13 +1,11 @@
-import { default as cacheConfig } from '@/config/cache';
 import { ExpiredSessionError, InvalidArgumentError, InvalidRoleAccessError } from '@/exceptions/errors';
 import { type Services } from '@/interfaces/services';
-import { setLifeTime } from '@/utils/serialize';
+import configureCache from '@/utils/configureCache';
 import axios, { type RawAxiosRequestHeaders } from 'axios';
-import { type CacheOptions, type CacheRequestConfig, setupCache } from 'axios-cache-interceptor';
+import { setupCache } from 'axios-cache-interceptor';
 import { serialize } from 'cookie';
 import { v4 as uuid } from 'uuid';
 import { getRequestCookies, getServerUri, serializeCookies, setRequestCookies, verifySignature } from '../utils/cookies';
-import cacheDefaultConfig from './cacheOption';
 
 const AxiosRequest = (headersOption: RawAxiosRequestHeaders & { withCredentials?: boolean }) => {
   const { Authorization, 'Content-Type': ContentType, withCredentials, ...headers } = headersOption ?? {};
@@ -21,23 +19,7 @@ const AxiosRequest = (headersOption: RawAxiosRequestHeaders & { withCredentials?
   });
 };
 
-const configureCache = (cacheOptions: Services.Config.serverCache | undefined) => {
-  const { serverConfig, lifeTime: ttl, persist, enabled: cachePredicate, ...other } = cacheOptions || {};
-  const { PERSIST_TIME_LIFE, DEFAULT_TIME_LIFE } = cacheConfig;
-  const timeCache = persist ? PERSIST_TIME_LIFE : (ttl ?? DEFAULT_TIME_LIFE);
-
-  return typeof window === 'undefined'
-    ? ({
-        ...cacheDefaultConfig(timeCache),
-        ...(typeof serverConfig === 'function' ? { serverConfig } : { interpretHeader: serverConfig ?? true }),
-        ttl: (req: CacheRequestConfig) => setLifeTime(req, timeCache),
-        ...(typeof cachePredicate === 'function' ? { cachePredicate } : {}),
-        ...other,
-      } satisfies CacheOptions)
-    : {};
-};
-
-const AxiosInstance = ({ headers, cache, side, revalidate }: Services.Axios.axiosApi): Services.Axios.instance => {
+const AxiosInstance = ({ headers, cache, side }: Services.Axios.axiosApi): Services.Axios.instance => {
   const serverRequest = side === 'server' ? true : side === 'client' ? false : typeof window === 'undefined';
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
   const instance: Services.Axios.instance = AxiosRequest(otherHeaders);
@@ -88,7 +70,7 @@ const AxiosInstance = ({ headers, cache, side, revalidate }: Services.Axios.axio
     },
   );
 
-  instance.revalidate = revalidate;
+  instance.revalidate = false;
   return instance;
 };
 
