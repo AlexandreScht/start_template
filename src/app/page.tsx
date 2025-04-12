@@ -1,4 +1,3 @@
-import Redirecting from '@/components/redirest';
 import serverService from '@/libs/serverService';
 
 export default async function Home() {
@@ -9,7 +8,6 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen w-full bg-red-500 flex-col items-center justify-between p-24">
       <h1>{data?.user}</h1>
-      <Redirecting />
     </main>
   );
 }
