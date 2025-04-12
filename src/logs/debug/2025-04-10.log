@@ -66,3 +66,25 @@
 2025-04-10 16:17:39 info: ======= Version: development =======
           🚀 server listening port: 3005 🚀
 2025-04-10 16:18:01 info: [0mGET /api/test/params/10 [32m200[0m 21.509 ms - 20[0m
+2025-04-10 22:26:24 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-04-10 22:27:40 info: [0mGET /api/test/params/5 [32m200[0m 4.121 ms - 20[0m
+2025-04-10 22:27:45 info: [0mGET /api/test/params/5 [32m200[0m 0.821 ms - 20[0m
+2025-04-10 22:28:13 info: [0mGET /api/test/params/5 [32m200[0m 0.875 ms - 20[0m
+2025-04-10 22:29:28 info: [0mGET /api/test/params/5 [32m200[0m 0.664 ms - 20[0m
+2025-04-10 22:31:34 info: [0mGET /api/test/params/5 [32m200[0m 0.681 ms - 20[0m
+2025-04-10 22:32:37 info: [0mGET /api/test/params/5 [32m200[0m 0.474 ms - 20[0m
+2025-04-10 22:33:13 info: [0mGET /api/test/params/5 [32m200[0m 0.471 ms - 20[0m
+2025-04-10 22:41:50 info: [0mGET /api/test/params/5 [32m200[0m 0.936 ms - 20[0m
+2025-04-10 22:42:35 info: [0mGET /api/test/params/5 [32m200[0m 0.793 ms - 20[0m
+2025-04-10 22:58:22 info: [0mGET /api/test/params/5 [32m200[0m 0.830 ms - 20[0m
+2025-04-10 22:59:27 info: [0mGET /api/test/params/5 [32m200[0m 1.306 ms - 20[0m
+2025-04-10 23:00:17 info: [0mGET /api/test/params/5 [32m200[0m 0.535 ms - 20[0m
+2025-04-10 23:04:14 info: [0mGET /api/test/params/5 [32m200[0m 0.638 ms - 20[0m
+2025-04-10 23:04:46 info: [0mGET /api/test/params/5 [32m200[0m 0.956 ms - 20[0m
+2025-04-10 23:05:22 info: [0mGET /api/test/params/5 [32m200[0m 0.487 ms - 20[0m
+2025-04-10 23:06:15 info: [0mGET /api/test/params/5 [32m200[0m 0.466 ms - 20[0m
+2025-04-10 23:06:42 info: [0mGET /api/test/params/5 [32m200[0m 0.395 ms - 20[0m
+2025-04-10 23:07:24 info: [0mGET /api/test/params/5 [32m200[0m 0.426 ms - 20[0m
+2025-04-10 23:08:10 info: [0mGET /api/test/params/5 [32m200[0m 0.418 ms - 20[0m
+2025-04-10 23:08:37 info: [0mGET /api/test/params/5 [32m200[0m 0.386 ms - 20[0m
