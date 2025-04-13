@@ -63,6 +63,7 @@ const createRevalidateInstance = (cache?: Services.Config.serverCache): Services
   });
 
   instance.interceptors.response.use(async res => {
+    //! J'ai pas besoins de xTag pour revalider n(importe quelle requete que ce soit du delete ou de la modif ?
     const xTag = res?.headers['x-tag'];
     res.data = { xTag };
     return res;
