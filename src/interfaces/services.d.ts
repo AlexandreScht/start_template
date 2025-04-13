@@ -121,6 +121,7 @@ export namespace Services {
     export interface axiosApi {
       headers?: axiosHeaders;
       cache?: Partial<SWRConfiguration> | Partial<CacheOptions>;
+      xTag?: string;
       side: 'server' | 'client';
     }
 

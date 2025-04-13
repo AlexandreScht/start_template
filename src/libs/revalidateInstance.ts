@@ -24,13 +24,15 @@ const createRevalidateInstance = (cache?: Services.Config.serverCache): Services
 
     if (hasParams || hasQuery || request?.data) {
       if (revalidateArgs !== undefined) {
-        const oldValues = await (storage as unknown as AxiosStorage).get(cacheKey);
+        const cachedValues = await (storage as unknown as AxiosStorage).get(cacheKey);
+        const xTag = cachedValues?.data?.headers['x-tag'];
+        request.headers['xTag'] = xTag;
         const newValue = {
-          ...oldValues,
+          ...cachedValues,
           createdAt: Date.now(),
           data: {
-            ...oldValues?.data,
-            data: typeof revalidateArgs === 'function' ? revalidateArgs(oldValues?.data?.data) : revalidateArgs,
+            ...cachedValues?.data,
+            data: typeof revalidateArgs === 'function' ? revalidateArgs(cachedValues?.data?.data) : revalidateArgs,
           },
         };
         storage.set(cacheKey, newValue);
@@ -52,13 +54,18 @@ const createRevalidateInstance = (cache?: Services.Config.serverCache): Services
         data: {},
         status: 200,
         statusText: 'OK',
-        headers: config.headers || {},
-        config: config,
+        headers: { 'x-tag': (config?.headers?.get('x-Tag') as string) || undefined },
+        config,
         request: {},
       };
     };
-
     return request;
+  });
+
+  instance.interceptors.response.use(async res => {
+    const xTag = res?.headers['x-tag'];
+    res.data = { xTag };
+    return res;
   });
   instance.revalidate = true;
   return instance;

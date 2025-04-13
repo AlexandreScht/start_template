@@ -1,11 +1,11 @@
 import { ExpiredSessionError, InvalidArgumentError, InvalidRoleAccessError } from '@/exceptions/errors';
 import { type Services } from '@/interfaces/services';
 import configureCache from '@/utils/configureCache';
+import { setSignature, verifySignature } from '@/utils/signature';
 import axios, { type RawAxiosRequestHeaders } from 'axios';
 import { setupCache } from 'axios-cache-interceptor';
 import { serialize } from 'cookie';
-import { v4 as uuid } from 'uuid';
-import { getRequestCookies, getServerUri, serializeCookies, setRequestCookies, verifySignature } from '../utils/cookies';
+import { getRequestCookies, getServerUri, serializeCookies, setRequestCookies } from '../utils/cookies';
 
 const AxiosRequest = (headersOption: RawAxiosRequestHeaders & { withCredentials?: boolean }) => {
   const { Authorization, 'Content-Type': ContentType, withCredentials, ...headers } = headersOption ?? {};
@@ -19,7 +19,7 @@ const AxiosRequest = (headersOption: RawAxiosRequestHeaders & { withCredentials?
   });
 };
 
-const AxiosInstance = ({ headers, cache, side }: Services.Axios.axiosApi): Services.Axios.instance => {
+const AxiosInstance = ({ headers, cache, side, xTag }: Services.Axios.axiosApi): Services.Axios.instance => {
   const serverRequest = side === 'server' ? true : side === 'client' ? false : typeof window === 'undefined';
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
   const instance: Services.Axios.instance = AxiosRequest(otherHeaders);
@@ -43,7 +43,9 @@ const AxiosInstance = ({ headers, cache, side }: Services.Axios.axiosApi): Servi
       }
     }
 
-    request.headers['Signature'] = uuid();
+    if (xTag) request.headers['x-Tag'] = xTag;
+
+    request.headers['Signature'] = await setSignature();
     request.baseURL = await getServerUri();
 
     return request;

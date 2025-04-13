@@ -1,32 +1,89 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   .light {
     /* light theme */
-    --content: 0 0% 100%;
+    --bg: 210 20% 96%;
+    --fg: 0 0% 0%;
+    --card: 0 0% 100%;
+    --button: 0 0% 70%;
+    --button_txt: 0 0% 70%;
+    --primary: 220.43 92% 48%;
+    --secondary: 223 100% 28%;
+    --asset: 220 16.67% 78%;
+    --special: 220 100% 55%;
+    --error: 0 100% 91%;
+    --error_txt: 0 78% 39%;
+    --success: 207 97% 88%;
+    --success_txt: 218 100% 43%;
   }
 
-  /*  dark theme*/
   .dark {
-    --content: 218.57 73.68% 7.45%;
+    /* light theme */
+    --bg: 210 20% 96%;
+    --fg: 0 0% 0%;
+    --card: 0 0% 100%;
+    --button: 0 0% 70%;
+    --button_txt: 0 0% 70%;
+    --primary: 220.43 92% 48%;
+    --secondary: 223 100% 28%;
+    --asset: 220 16.67% 78%;
+    --special: 220 100% 55%;
+    --error: 0 100% 91%;
+    --error_txt: 0 78% 39%;
+    --success: 207 97% 88%;
+    --success_txt: 218 100% 43%;
   }
 }
 
+/* 
+  -----------------------------------------------------
+  2. @layer components
+  -----------------------------------------------------
+  Dans cette couche, on définit des styles pour des composants réutilisables 
+  comme des boutons, des cartes, etc. On peut combiner plusieurs classes utilitaires.
+*/
+@layer components {
+  /* Exemple de bouton générique */
+  .btn {
+    @apply px-4 py-2 rounded transition-colors duration-200;
+  }
+
+  /* Composant bouton primaire avec styles pour chaque thème */
+  .btn-primary {
+    /* Mode clair */
+    @apply bg-blue-500 text-white hover:bg-blue-600;
+    /* Mode sombre */
+    @apply dark:bg-blue-700 dark:hover:bg-blue-800;
+  }
+
+  /* Exemple de carte qui change de style selon le thème */
+  .card {
+    @apply p-6 rounded-lg shadow-md;
+    /* Mode clair */
+    @apply bg-gray-100;
+    /* Mode sombre */
+    @apply dark:bg-gray-800;
+  }
+}
+
+/* 
+  -----------------------------------------------------
+  3. @layer utilities
+  -----------------------------------------------------
+  Ici, vous pouvez ajouter ou étendre des classes utilitaires.
+  Par exemple, créer des utilitaires personnalisées pour les bordures
+  qui changent selon le thème.
+*/
 @layer utilities {
-  @layer components {
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
+  /* Classe pour une bordure adaptée au mode clair */
+  .border-light {
+    @apply border-gray-300;
+  }
 
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-    .animation-slide-left {
-      animation: Slide 1s ease-in-out forwards;
-    }
+  /* Classe pour une bordure adaptée au mode sombre */
+  .border-dark {
+    @apply border-gray-700;
   }
 }

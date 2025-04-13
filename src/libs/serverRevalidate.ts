@@ -1,6 +1,8 @@
 import { servicesErrors } from '@/exceptions/messagers';
 import type { Services } from '@/interfaces/services';
 import PrepareServices from '@/services';
+// import { revalidateTag } from 'next/cache';
+import { revalidateTag } from 'next/cache';
 import axiosInstance from './revalidateInstance';
 
 export default async function serverRevalidate(
@@ -11,10 +13,18 @@ export default async function serverRevalidate(
     const axios = axiosInstance(options);
 
     const services = selector(PrepareServices);
-    services.forEach(service => {
+    services.forEach(async service => {
       const s = service(axios);
-      if (typeof s === 'function') return s(axios);
-      return s;
+      if (typeof s === 'function') {
+        s(axios);
+        return;
+      }
+      const { data } = await s;
+
+      if (data?.xTag) {
+        revalidateTag(data?.xTag);
+      }
+      return;
     });
   } catch (error) {
     console.log(error);

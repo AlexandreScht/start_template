@@ -1,9 +1,9 @@
 import { ServiceProvider } from '@/hooks/ServiceProvider';
 import { StoreProvider } from '@/hooks/StoreProvider';
 import ThemeProvider from '@/hooks/ThemeProvider';
+import '@/styles/global.css';
 import type { Metadata } from 'next';
 import React from 'react';
-import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
