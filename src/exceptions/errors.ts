@@ -52,6 +52,12 @@ export class InvalidAccessError extends ClientException {
   }
 }
 
+export class SignatureError extends ClientException {
+  constructor(message: string[] | string = 'Erreur de signature invalide') {
+    super(401, message);
+  }
+}
+
 export class ExpiredSessionError extends ClientException {
   constructor(message: string[] | string = 'Session expired') {
     super(999, message);

@@ -1,5 +1,6 @@
 'use server';
 import env from '@/config';
+import { ClientException } from '@/exceptions/errors';
 import { createHmac } from 'crypto';
 import { parse, stringify, v4 as uuid } from 'uuid';
 
@@ -15,8 +16,12 @@ export async function getSignature(signature: string): Promise<string> {
 }
 
 export async function verifySignature(signatureBuff: string, signed: string): Promise<boolean> {
-  const signature = await getSignature(signatureBuff);
-  const signatureResolved = createHmac('sha256', env.SIGNATURE).update(signature).digest('hex');
+  try {
+    const signature = await getSignature(signatureBuff);
+    const signatureResolved = createHmac('sha256', env.SIGNATURE).update(signature).digest('hex');
 
-  return signed === signatureResolved;
+    return signed === signatureResolved;
+  } catch (error) {
+    throw new ClientException(500, 'Invalid signature');
+  }
 }

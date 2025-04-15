@@ -5,8 +5,6 @@ import axios, { type AxiosResponse, type InternalAxiosRequestConfig } from 'axio
 import { setupCache, type AxiosStorage } from 'axios-cache-interceptor';
 import CacheSingleton from './nodeCache';
 
-type axiosRequest = InternalAxiosRequestConfig & { xTags?: string | string[] };
-
 const createRevalidateInstance = (cache?: Services.Config.serverCache): Services.Axios.revalidateInstance => {
   const instance: Services.Axios.revalidateInstance = axios.create({
     baseURL: '/rev_cache',
@@ -14,7 +12,7 @@ const createRevalidateInstance = (cache?: Services.Config.serverCache): Services
 
   setupCache(instance, configureCache(cache as Services.Config.serverCache | undefined));
 
-  instance.interceptors.request.use(async (request: axiosRequest): Promise<axiosRequest> => {
+  instance.interceptors.request.use(async (request): Promise<InternalAxiosRequestConfig> => {
     const storage = CacheSingleton.getInstance();
     const revalidateArgs = instance.revalidateArgs;
 
@@ -26,28 +24,25 @@ const createRevalidateInstance = (cache?: Services.Config.serverCache): Services
 
     if (hasParams || hasQuery || request?.data) {
       const cachedValues = await (storage as unknown as AxiosStorage).get(cacheKey);
-      if (cachedValues) {
-        const xTag = cachedValues?.data?.headers?.['x-tag'];
-        request.xTags = xTag;
-        if (revalidateArgs !== undefined) {
-          //! Mettre dans le cache le xTag ?
+      if (revalidateArgs !== undefined) {
+        console.log(cachedValues?.data);
+        if (cachedValues?.data?.data) {
           const newValue = {
             ...cachedValues,
             createdAt: Date.now(),
             data: {
               ...cachedValues?.data,
-              data: typeof revalidateArgs === 'function' ? revalidateArgs(cachedValues?.data?.data) : revalidateArgs,
+              data: (typeof revalidateArgs === 'function' ? revalidateArgs(cachedValues?.data?.data) : revalidateArgs) || cachedValues?.data?.data,
             },
           };
 
           console.log(newValue);
-          console.log(request);
-          console.log(xTag);
 
           storage.set(cacheKey, newValue);
-        } else {
-          storage.del(cacheKey);
         }
+      } else {
+        request.headers.set('x-tag', cachedValues.data?.headers?.['x-tag']);
+        storage.del(cacheKey);
       }
     } else {
       const nodeCacheKeys = storage.keys();
@@ -64,26 +59,24 @@ const createRevalidateInstance = (cache?: Services.Config.serverCache): Services
         }),
       );
 
-      request.xTags = xTags.filter(tag => tag !== null) as string[];
+      request.headers.set('x-tag', xTags.filter(tag => tag !== null) as string[]);
     }
 
-    request.adapter = async (config: axiosRequest): Promise<AxiosResponse> => {
-      console.log(config);
-
+    request.adapter = async (config): Promise<AxiosResponse> => {
       return {
-        data: { xTags: config?.xTags },
+        config,
+        data: config.data || {},
         status: 200,
         statusText: 'OK',
-        headers: {},
-        config,
+        headers: config?.headers ?? {},
         request: {},
       };
     };
     return request;
   });
 
-  instance.interceptors.response.use(async (res: AxiosResponse<any, any>) => {
-    console.log(res.data);
+  instance.interceptors.response.use(async (res: Services.Axios.AxiosRevalidateResponse) => {
+    res.xTags = res.headers?.['x-tag'];
     return res;
   });
   instance.revalidate = true;

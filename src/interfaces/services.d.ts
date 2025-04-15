@@ -1,5 +1,5 @@
 import type PrepareServices from '@/services';
-import { type AxiosInstance } from 'axios';
+import { type AxiosInstance, type AxiosResponse } from 'axios';
 import type { AxiosStorage, CacheOptions, CacheRequestConfig, StorageValue } from 'axios-cache-interceptor';
 import type { MutatorOptions, SWRConfiguration, SWRHook } from 'swr';
 
@@ -114,6 +114,11 @@ export namespace Services {
         [key: string]: StorageValue;
       };
     }
+
+    export interface AxiosRevalidateResponse<T = any, D = any> extends AxiosResponse<T, D> {
+      xTags?: string[] | string;
+    }
+
     export interface instanceStorage extends AxiosInstance {
       storage: AxiosStorage | CacheStorage;
     }

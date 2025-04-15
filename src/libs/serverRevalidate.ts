@@ -28,14 +28,11 @@ export default async function serverRevalidate(
   }
 }
 
-function revalidateService(res: { data: { xTags: string | string[] } }) {
-  const { data } = res;
-  if (!data?.xTags) {
+function revalidateService(res: Services.Axios.AxiosRevalidateResponse) {
+  const { xTags } = res;
+  if (!xTags) {
     return;
   }
-  const { xTags } = data;
-  console.log(xTags);
-
   if (Array.isArray(xTags)) {
     xTags.forEach(v => revalidateTag(v));
   } else {

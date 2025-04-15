@@ -17,8 +17,6 @@ export default async function serverService<U extends Services.Config.ServerServ
     //! options?.cache?.persist
 
     const xTag = uuid();
-    console.log(xTag);
-
     const axios = AxiosInstance({ ...options, side: 'server', xTag });
     const res = await selector(PrepareServices)(axios);
     const data = await unstable_cache(

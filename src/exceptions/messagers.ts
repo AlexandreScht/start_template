@@ -1,7 +1,7 @@
 import { type Services } from '@/interfaces/services';
 import { AxiosError } from 'axios';
 import { ZodError } from 'zod';
-import { ExpiredSessionError, InvalidRoleAccessError } from './errors';
+import { ExpiredSessionError, InvalidRoleAccessError, SignatureError } from './errors';
 
 const unknownError = "Une erreur inconnue s'est produite.";
 
@@ -17,6 +17,13 @@ export function servicesErrors(err: unknown): Services.Error.messageReturn {
     return {
       err: err.issues[0]?.message ?? unknownError,
       code: 'VALIDATION_ERROR',
+    };
+  }
+
+  if (err instanceof SignatureError) {
+    return {
+      err: 'Signature de la requete invalide.',
+      code: 'SIGN_ERROR',
     };
   }
 
