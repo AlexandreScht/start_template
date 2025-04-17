@@ -11,7 +11,7 @@ export default function configureCache(cacheOptions?: Services.Config.serverCach
 
   return typeof window === 'undefined'
     ? ({
-        ...cacheDefaultConfig(timeCache),
+        ...cacheDefaultConfig(),
         ...(typeof serverConfig === 'function' ? { serverConfig } : { interpretHeader: serverConfig ?? true }),
         ttl: (req: CacheRequestConfig) => setLifeTime(req, timeCache),
         ...(typeof cachePredicate === 'function' ? { cachePredicate } : {}),

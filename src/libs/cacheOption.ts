@@ -1,25 +1,13 @@
-import { type Services } from '@/interfaces/services';
-import CacheSingleton from '@/libs/nodeCache';
-import { generateCacheKey, setLifeTime } from '@/utils/serialize';
-import { buildStorage, type CacheInstance, type CacheRequestConfig } from 'axios-cache-interceptor';
+// import { type Services } from '@/interfaces/services';
+// import CacheSingleton from '@/libs/nodeCache';
+import { generateCacheKey } from '@/utils/serialize';
+import { buildStorage, type CacheInstance } from 'axios-cache-interceptor';
+import ServerMemory from './serverCache';
 
-export default function cacheDefaultConfig(timeLife: Services.Config.serverCache['lifeTime']): Partial<CacheInstance> {
-  const cache = CacheSingleton.getInstance();
+// import { buildMemoryStorage } from 'axios-cache-interceptor/dist/storage/memory';
+export default function cacheDefaultConfig(): Partial<CacheInstance> {
   return {
-    storage: buildStorage({
-      find(key) {
-        return cache.get(key);
-      },
-      async set(key, value, currentRequest) {
-        cache.set(key, value, await setLifeTime(currentRequest as CacheRequestConfig<any, any>, timeLife, true));
-      },
-      remove(key) {
-        cache.del(key);
-      },
-      async clear() {
-        return cache.flushAll();
-      },
-    }),
+    storage: buildStorage(ServerMemory),
     generateKey: req => generateCacheKey(req),
     debug: ({ id, msg, data }) => console.log({ id, msg, data }),
     headerInterpreter: headers => {

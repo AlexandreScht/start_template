@@ -13,6 +13,7 @@ const AxiosRequest = (headersOption: RawAxiosRequestHeaders & { withCredentials?
     headers: {
       ...(Authorization ? { Authorization: `Bearer ${Authorization}` } : {}),
       ...(ContentType ? { 'Content-Type': ContentType } : { 'Content-Type': 'application/json' }),
+      'x-TagTest': 'test',
       ...headers,
     },
     withCredentials: withCredentials ?? true,
@@ -63,6 +64,7 @@ const AxiosInstance = ({ headers, cache, side, xTag }: Services.Axios.axiosApi):
       if (cookies?.length && serverRequest) {
         getRequestCookies(cookies);
       }
+
       return response;
     },
 
