@@ -1,49 +1,30 @@
 @import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
+@import '@radix-ui/themes/tokens.css';
 
 @layer base {
+  :root {
+    --radius-none: var(--hue-rounded-none);
+    --radius-small: var(--hue-rounded-sm);
+    --radius-medium: var(--hue-rounded-md);
+    --radius-large: var(--hue-rounded-lg);
+    --radius-full: calc(var(--hue-rounded-full) * 2);
+  }
+
   .light {
     /* light theme */
-    --bg: 210 20% 96%;
-    --fg: 0 0% 0%;
-    --card: 0 0% 100%;
-    --button: 0 0% 70%;
-    --button_txt: 0 0% 70%;
-    --primary: 220.43 92% 48%;
-    --secondary: 223 100% 28%;
-    --asset: 220 16.67% 78%;
     --special: 220 100% 55%;
-    --error: 0 100% 91%;
-    --error_txt: 0 78% 39%;
-    --success: 207 97% 88%;
-    --success_txt: 218 100% 43%;
   }
 
   .dark {
     /* light theme */
-    --bg: 210 20% 96%;
-    --fg: 0 0% 0%;
-    --card: 0 0% 100%;
-    --button: 0 0% 70%;
-    --button_txt: 0 0% 70%;
-    --primary: 220.43 92% 48%;
-    --secondary: 223 100% 28%;
-    --asset: 220 16.67% 78%;
     --special: 220 100% 55%;
-    --error: 0 100% 91%;
-    --error_txt: 0 78% 39%;
-    --success: 207 97% 88%;
-    --success_txt: 218 100% 43%;
   }
 }
 
-/* 
-  -----------------------------------------------------
-  2. @layer components
-  -----------------------------------------------------
-  Dans cette couche, on définit des styles pour des composants réutilisables 
-  comme des boutons, des cartes, etc. On peut combiner plusieurs classes utilitaires.
-*/
+@import '@radix-ui/themes/components.css';
+@import '@radix-ui/themes/utilities.css';
+
 @layer components {
   /* Exemple de bouton générique */
   .btn {
@@ -68,21 +49,11 @@
   }
 }
 
-/* 
-  -----------------------------------------------------
-  3. @layer utilities
-  -----------------------------------------------------
-  Ici, vous pouvez ajouter ou étendre des classes utilitaires.
-  Par exemple, créer des utilitaires personnalisées pour les bordures
-  qui changent selon le thème.
-*/
 @layer utilities {
-  /* Classe pour une bordure adaptée au mode clair */
   .border-light {
     @apply border-gray-300;
   }
 
-  /* Classe pour une bordure adaptée au mode sombre */
   .border-dark {
     @apply border-gray-700;
   }

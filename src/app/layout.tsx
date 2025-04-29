@@ -2,6 +2,7 @@ import { ServiceProvider } from '@/hooks/ServiceProvider';
 import { StoreProvider } from '@/hooks/StoreProvider';
 import ThemeProvider from '@/hooks/ThemeProvider';
 import '@/styles/global.css';
+import { Theme as RadixTheme } from '@radix-ui/themes';
 import type { Metadata } from 'next';
 import React from 'react';
 
@@ -18,7 +19,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <ServiceProvider>
           <StoreProvider initialState={defaultStore}>
             <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
-              {children}
+              <RadixTheme accentColor="mint" grayColor="slate" radius="medium" scaling="100%">
+                {children}
+              </RadixTheme>
             </ThemeProvider>
           </StoreProvider>
         </ServiceProvider>
