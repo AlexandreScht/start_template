@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
-@import '@radix-ui/themes/tokens.css';
+@import '@/styles/radix_colors.css';
 
 @layer base {
   :root {

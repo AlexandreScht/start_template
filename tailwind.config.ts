@@ -1,4 +1,3 @@
-// tailwind.config.ts
 import { heroui } from '@heroui/theme';
 
 export default {
@@ -10,6 +9,9 @@ export default {
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
+        primary: 'var(--primary-7)',
+        // secondary: generateScale('secondary'),
+        // special: generateScale('special'),
         special: 'hsl(var(--special) / <alpha-value>)',
       },
     },

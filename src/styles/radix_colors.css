@@ -1,0 +1,21 @@
+@import "@radix-ui/colors/blue.css";  
+@import "@radix-ui/colors/blue-dark.css";
+
+@import "@radix-ui/colors/jade.css"; 
+@import "@radix-ui/colors/jade-dark.css";
+
+@import "@radix-ui/colors/amber.css";
+@import "@radix-ui/colors/amber-dark.css";
+
+@for $i from 1 to 12 {
+  :root {
+    --primary-#{$i}:   var(--blue-#{$i});
+    --secondary-#{$i}: var(--amber-#{$i});
+    --special-#{$i}:   var(--jade-#{$i});
+  }
+  .dark {
+    --primary-#{$i}:   var(--jade-#{$i});
+    --secondary-#{$i}: var(--red-#{$i});
+    --special-#{$i}:   var(--mint-#{$i});
+  }
+}
