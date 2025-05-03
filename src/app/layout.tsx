@@ -1,8 +1,8 @@
 import { ServiceProvider } from '@/hooks/ServiceProvider';
 import { StoreProvider } from '@/hooks/StoreProvider';
 import ThemeProvider from '@/hooks/ThemeProvider';
+import UiProviders from '@/hooks/UiProvider';
 import '@/styles/global.css';
-import { Theme as RadixTheme } from '@radix-ui/themes';
 import type { Metadata } from 'next';
 import React from 'react';
 
@@ -18,10 +18,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className="w-full h-full">
         <ServiceProvider>
           <StoreProvider initialState={defaultStore}>
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem={true}>
-              <RadixTheme accentColor="mint" grayColor="slate" radius="medium" scaling="100%">
-                {children}
-              </RadixTheme>
+            <ThemeProvider attribute="class" defaultTheme="system" themes={['light', 'dark']} enableSystem={true}>
+              <main className="w-full h-full no-scrollbar bg-rootBg">
+                <UiProviders>{children}</UiProviders>
+              </main>
             </ThemeProvider>
           </StoreProvider>
         </ServiceProvider>

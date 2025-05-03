@@ -2,7 +2,6 @@
 const config = {
   plugins: {
     'postcss-import': {},
-    'postcss-for': {},
     '@tailwindcss/postcss': {},
     autoprefixer: {},
   },

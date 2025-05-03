@@ -1,60 +1,28 @@
 @import 'tailwindcss';
+@config "../../tailwind.config.ts";
+
+@source "./safelist.txt";
+
 @custom-variant dark (&:where(.dark, .dark *));
-@import '@/styles/radix_colors.css';
 
 @layer base {
-  :root {
-    --radius-none: var(--hue-rounded-none);
-    --radius-small: var(--hue-rounded-sm);
-    --radius-medium: var(--hue-rounded-md);
-    --radius-large: var(--hue-rounded-lg);
-    --radius-full: calc(var(--hue-rounded-full) * 2);
+  @import '@radix-ui/colors/sage.css';
+  @import '@radix-ui/colors/sage-dark.css';
+  @import '@radix-ui/colors/teal-dark-alpha.css';
+  @import '@radix-ui/colors/blue-alpha.css';
+  @import '@radix-ui/colors/slate-alpha.css';
+  @import '@radix-ui/colors/gray.css';
+  @import '@radix-ui/colors/gray-dark.css';
+  @import '@radix-ui/colors/slate-dark-alpha.css';
+  @import '@radix-ui/colors/amber-alpha.css';
+  @import '@radix-ui/colors/amber-dark-alpha.css';
+  @import '@radix-ui/colors/red-dark-alpha.css';
+  @import '@radix-ui/colors/tomato-alpha.css';
+  @import '@radix-ui/colors/grass-alpha.css';
+  @import '@radix-ui/colors/grass-dark-alpha.css';
+  @import './heroUi.css';
+  @theme {
+    --color-rootBg: var(--sage-1);
   }
-
-  .light {
-    /* light theme */
-    --special: 220 100% 55%;
-  }
-
-  .dark {
-    /* light theme */
-    --special: 220 100% 55%;
-  }
-}
-
-@import '@radix-ui/themes/components.css';
-@import '@radix-ui/themes/utilities.css';
-
-@layer components {
-  /* Exemple de bouton générique */
-  .btn {
-    @apply px-4 py-2 rounded transition-colors duration-200;
-  }
-
-  /* Composant bouton primaire avec styles pour chaque thème */
-  .btn-primary {
-    /* Mode clair */
-    @apply bg-blue-500 text-white hover:bg-blue-600;
-    /* Mode sombre */
-    @apply dark:bg-blue-700 dark:hover:bg-blue-800;
-  }
-
-  /* Exemple de carte qui change de style selon le thème */
-  .card {
-    @apply p-6 rounded-lg shadow-md;
-    /* Mode clair */
-    @apply bg-gray-100;
-    /* Mode sombre */
-    @apply dark:bg-gray-800;
-  }
-}
-
-@layer utilities {
-  .border-light {
-    @apply border-gray-300;
-  }
-
-  .border-dark {
-    @apply border-gray-700;
-  }
+  @import './colors.css';
 }

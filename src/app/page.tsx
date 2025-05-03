@@ -1,9 +1,25 @@
-// import serverService from '@/libs/serverService';
+'use client';
 
-export default async function Home() {
-  // const { data, error } = await serverService(v => v.testParams({ id: 5 }));
+import Button from '@/components/buttons';
 
-  // console.log({ data, error });
-
-  return <main className="flex min-h-screen w-full bg-primary flex-col items-center justify-between p-24">{/* <h1>{data?.user}</h1> */}</main>;
+export default function Home() {
+  return (
+    <div className="flex flex-wrap gap-4 items-center">
+      <Button colorTheme="special" className="w-56">
+        Default
+      </Button>
+      <Button colorTheme="primary" variant="solid">
+        solid
+      </Button>
+      <Button colorTheme="warning" variant="soft">
+        soft
+      </Button>
+      <Button colorTheme="primary" variant="bordered">
+        bordered
+      </Button>
+      <Button colorTheme="danger" variant="ghost">
+        ghost
+      </Button>
+    </div>
+  );
 }
