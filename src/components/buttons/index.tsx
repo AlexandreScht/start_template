@@ -12,8 +12,6 @@ export default function Button({ children, className, disabled, isLoading, spinn
     return [color, isSpecialColored, textColor];
   }, [colorTheme]);
 
-  console.log(isSpecial);
-
   return (
     <UiButton
       color={undefined as any}
@@ -23,7 +21,7 @@ export default function Button({ children, className, disabled, isLoading, spinn
           [`bg-${color}-${isSpecial ? 'v12' : 'v9'} text-${textColor} data-[hover=true]:bg-${color}-${isSpecial ? 'v12' : 'v10'}`]:
             variant === 'solid',
           [`bg-${color}-v3 text-${color}-${isSpecial ? 'v12' : 'v11'} border-1 border-${color}-v3 data-[hover=true]:bg-${color}-v4`]:
-            variant === 'soft',
+            variant === 'surface',
           [`bg-transparent data-[hover=true]:bg-${color}-v2 pb-[0.74rem] pt-[0.7rem] shadow-[inset_0_0_0_1px_var(--color-${color}-${isSpecial ? 'v12' : 'v8'})] text-${color}-${isSpecial ? 'v12' : 'v11'}`]:
             variant === 'bordered',
           [`text-${color}-${isSpecial ? 'v12' : 'v11'} data-[hover=true]:bg-${color}-v3 bg-transparent pb-[0.74rem] pt-[0.7rem]`]:

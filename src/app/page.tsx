@@ -1,25 +1,21 @@
 'use client';
 
-import Button from '@/components/buttons';
+import Card from '@/components/cards';
+import { CardBody } from '@heroui/react';
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="flex flex-wrap gap-4 items-center">
-      <Button colorTheme="special" className="w-56">
-        Default
-      </Button>
-      <Button colorTheme="primary" variant="solid">
-        solid
-      </Button>
-      <Button colorTheme="warning" variant="soft">
-        soft
-      </Button>
-      <Button colorTheme="primary" variant="bordered">
-        bordered
-      </Button>
-      <Button colorTheme="danger" variant="ghost">
-        ghost
-      </Button>
-    </div>
+    <Card>
+      <CardBody>
+        <p>
+          Make beautiful{' '}
+          <Link className="font-normal" href="#">
+            websites
+          </Link>{' '}
+          regardless of your design experience.
+        </p>
+      </CardBody>
+    </Card>
   );
 }
