@@ -28,6 +28,20 @@
   --color-secondary-v11: var(--slate-a11);
   --color-secondary-v12: var(--slate-a12);
 
+  /* asset */
+  --color-asset-v1: var(--sage-a1);
+  --color-asset-v2: var(--sage-a2);
+  --color-asset-v3: var(--sage-a3);
+  --color-asset-v4: var(--sage-a4);
+  --color-asset-v5: var(--sage-a5);
+  --color-asset-v6: var(--sage-a6);
+  --color-asset-v7: var(--sage-a7);
+  --color-asset-v8: var(--sage-a8);
+  --color-asset-v9: var(--sage-a9);
+  --color-asset-v10: var(--sage-a10);
+  --color-asset-v11: var(--sage-a11);
+  --color-asset-v12: var(--sage-a12);
+
   /* success */
   --color-success-v1: var(--grass-a1);
   --color-success-v2: var(--grass-a2);
@@ -72,6 +86,8 @@
 
   /** light shadows */
   --inset-shadow-buttons: inset 0 0 0 1px var(--gray-7), inset 0 0 0 1px var(--gray-9);
+
+  --icon-display: 10%;
 }
 
 .dark {
@@ -106,4 +122,6 @@
 
   /** dark shadows */
   --inset-shadow-buttons: inset 0 0 0 1px var(--gray-7), inset 0 0 0 1px var(--gray-9);
+
+  --icon-display: 90%;
 }

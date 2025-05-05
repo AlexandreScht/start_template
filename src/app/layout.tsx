@@ -1,3 +1,4 @@
+import HeaderBar from '@/components/navigations/headerBar';
 import { ServiceProvider } from '@/hooks/ServiceProvider';
 import { StoreProvider } from '@/hooks/StoreProvider';
 import ThemeProvider from '@/hooks/ThemeProvider';
@@ -20,7 +21,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <StoreProvider initialState={defaultStore}>
             <ThemeProvider attribute="class" defaultTheme="system" themes={['light', 'dark']} enableSystem={true}>
               <main className="w-full h-full no-scrollbar bg-rootBg">
-                <UiProviders>{children}</UiProviders>
+                <UiProviders>
+                  <HeaderBar />
+                  {children}
+                </UiProviders>
               </main>
             </ThemeProvider>
           </StoreProvider>

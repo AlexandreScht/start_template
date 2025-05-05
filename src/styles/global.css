@@ -6,8 +6,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
-  @import '@radix-ui/colors/sage.css';
-  @import '@radix-ui/colors/sage-dark.css';
+  @import '@radix-ui/colors/sage-alpha.css';
+  @import '@radix-ui/colors/sage-dark-alpha.css';
   @import '@radix-ui/colors/teal-dark-alpha.css';
   @import '@radix-ui/colors/blue-alpha.css';
   @import '@radix-ui/colors/slate-alpha.css';
@@ -22,7 +22,8 @@
   @import '@radix-ui/colors/grass-dark-alpha.css';
   @import './heroUi.css';
   @theme {
-    --color-rootBg: var(--sage-1);
+    --color-rootBg: var(--sage-a3);
   }
   @import './colors.css';
+  @import './custom.css';
 }
