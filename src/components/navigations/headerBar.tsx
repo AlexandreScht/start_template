@@ -10,12 +10,12 @@ export default async function HeaderBar() {
       <ul className="list-none p-0 m-0 flex flex-row space-x-5 items-baseline mb-1.5">
         <li>
           <Link href="#" className="px-3 py-1.5 bg-secondary-v12 text-black/90 font-medium cursor-default rounded-md">
-            Nouveau CV
+            Button A
           </Link>
         </li>
         <li>
           <Link href="#" className="px-3 py-1.5 text-secondary-v11 underline-from-center pb-1.5">
-            Templates CV
+            Button B
           </Link>
         </li>
       </ul>
