@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Button from '../buttons';
+import ThemeSwitcher from '../buttons/theme';
 
 export default async function HeaderBar() {
   return (
@@ -18,8 +19,11 @@ export default async function HeaderBar() {
           </Link>
         </li>
       </ul>
-      <div>
-        <Button colorTheme="primary">S'identifier</Button>
+      <div className="flex flex-row gap-5 items-center">
+        <Button colorTheme="primary" className="py-3.5  mb-1.5">
+          Connexion
+        </Button>
+        <ThemeSwitcher className="mb-1.5 w-10 h-10 bg-secondary-v3 border-1 border-secondary-v6 hover:bg-secondary-v4" />
       </div>
     </nav>
   );

@@ -20,9 +20,14 @@
   @import '@radix-ui/colors/tomato-alpha.css';
   @import '@radix-ui/colors/grass-alpha.css';
   @import '@radix-ui/colors/grass-dark-alpha.css';
+  @import '@radix-ui/colors/white-alpha.css';
+  @import '@radix-ui/colors/black-alpha.css';
   @import './heroUi.css';
   @theme {
     --color-rootBg: var(--sage-a3);
+  }
+  body {
+    @apply font-sans;
   }
   @import './colors.css';
   @import './custom.css';

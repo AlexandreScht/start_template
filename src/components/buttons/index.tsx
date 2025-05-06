@@ -8,7 +8,7 @@ export default function Button({ children, className, disabled, isLoading, spinn
   const [color, isSpecial, textColor] = useMemo(() => {
     const color = !colorTheme ? 'primary' : colorTheme === 'special' ? 'primary' : colorTheme === 'foreground' ? 'secondary' : colorTheme;
     const isSpecialColored = colorTheme === 'foreground' || colorTheme === 'special';
-    const textColor = isSpecialColored || colorTheme === 'warning' ? '[var(--sage-5)]' : '[var(--gray-12)]';
+    const textColor = isSpecialColored || colorTheme === 'warning' ? '(--sage-5)' : '(--gray-12)';
     return [color, isSpecialColored, textColor];
   }, [colorTheme]);
 
@@ -26,7 +26,7 @@ export default function Button({ children, className, disabled, isLoading, spinn
             variant === 'bordered',
           [`text-${color}-${isSpecial ? 'v12' : 'v11'} data-[hover=true]:bg-${color}-v3 bg-transparent pb-[0.74rem] pt-[0.7rem]`]:
             variant === 'ghost',
-          [`bg-${color}-${isSpecial ? 'v12' : 'v9'} text-${textColor} inset-shadow-buttons data-[hover=true]:bg-${color}-${isSpecial ? 'v12' : 'v10'}`]:
+          [`bg-${color}-${isSpecial ? 'v12' : 'v9'} text-${textColor} shadow-(--buttons-shadow) data-[hover=true]:bg-${color}-${isSpecial ? 'v12' : 'v10'}`]:
             !variant,
         },
         {

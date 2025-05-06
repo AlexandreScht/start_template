@@ -85,7 +85,9 @@
   --color-danger-v12: var(--tomato-a12);
 
   /** light shadows */
-  --inset-shadow-buttons: inset 0 0 0 1px var(--gray-7), inset 0 0 0 1px var(--gray-9);
+  --shadow-button: inset 0 0 0 1px var(--gray-a4), inset 0 -2px 1px var(--gray-a3);
+  --shadow-top-button: inset 0 0 0 1px var(--gray-a4), inset 0 -2px 1px var(--gray-a3);
+  --buttons-shadow: var(--shadow-top-button), inset 0 0 0 1px var(--color-primary-v9), var(--shadow-button);
 
   --icon-display: 10%;
 }
@@ -121,7 +123,9 @@
   --color-danger-v12: var(--red-a12);
 
   /** dark shadows */
-  --inset-shadow-buttons: inset 0 0 0 1px var(--gray-7), inset 0 0 0 1px var(--gray-9);
-
+  --shadow-button: inset 0 4px 2px -2px var(--white-a9), inset 0 2px 1px -1px var(--white-a9);
+  --shadow-top-button:
+    inset 0 0 0 1px var(--white-a2), inset 0 4px 2px -2px var(--white-a3), inset 0 1px 1px var(--white-a6), inset 0 -1px 1px var(--black-a6);
+  --buttons-shadow: var(--shadow-top-button), inset 0 0 0 1px var(--color-primary-v9), var(--shadow-button);
   --icon-display: 90%;
 }
