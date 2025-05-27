@@ -5,9 +5,9 @@
   "scripts": {
     "isolated-install": "pnpm -w install:client",
     "reset": "ts-node src/commands/resetNext.ts",
-    "dev": "concurrently \"next dev --turbo\" \"open-cli http://localhost:3000/portfolio\"",
+    "dev": "concurrently \"next dev --turbo\" \"open-cli http://localhost:3000\"",
     "build": "next build --turbopack",
-    "start": "concurrently \"next start\" \"open-cli http://localhost:3000/portfolio\"",
+    "start": "concurrently \"next start\" \"open-cli http://localhost:3000\"",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
@@ -20,6 +20,7 @@
     "axios": "^1.8.1",
     "axios-cache-interceptor": "^1.6.2",
     "chalk": "^5.4.1",
+    "client": "^0.0.1",
     "cookie": "^1.0.2",
     "dotenv": "^16.4.7",
     "envalid": "^8.0.0",
@@ -65,7 +66,7 @@
     "globals": "^16.0.0",
     "open-cli": "^8.0.0",
     "postcss": "^8.5.3",
-    "tailwindcss": "^4.1.4",
+    "tailwindcss": "^4.1.7",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.4",
     "typescript-eslint": "^8.26.0"

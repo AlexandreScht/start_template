@@ -1,5 +1,6 @@
 import Button from '../buttons';
 import ThemeSwitcher from '../buttons/theme';
+import UserModal from '../cards/user';
 
 export default async function HeaderBar() {
   return (
@@ -9,9 +10,7 @@ export default async function HeaderBar() {
         <ThemeSwitcher className="bg-secondary-v3 border-1 border-secondary-v6 hover:bg-secondary-v4 mb-1.5 h-10 w-10" />
       </div>
       <div className="flex flex-row items-center gap-5">
-        <Button colorTheme="primary" className="mb-1.5 py-3.5">
-          Connexion
-        </Button>
+        <UserModal />
       </div>
     </nav>
   );

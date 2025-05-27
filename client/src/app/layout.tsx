@@ -1,10 +1,10 @@
 import HeaderBar from '@/components/navigations/headerBar';
 import { ServiceProvider } from '@/hooks/ServiceProvider';
 import { StoreProvider } from '@/hooks/StoreProvider';
-import ThemeProvider from '@/hooks/ThemeProvider';
 import UiProviders from '@/hooks/UiProvider';
 import '@/styles/global.css';
 import type { Metadata } from 'next';
+import { ThemeProvider as NextThemesProvider } from 'next-themes';
 import React from 'react';
 
 export const metadata: Metadata = {
@@ -19,14 +19,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className="h-full w-full">
         <ServiceProvider>
           <StoreProvider initialState={defaultStore}>
-            <ThemeProvider attribute="class" defaultTheme="system" themes={['light', 'dark']} enableSystem={true}>
+            <NextThemesProvider attribute="class" defaultTheme="system" themes={['light', 'dark']} enableSystem={true}>
               <main className="no-scrollbar bg-rootBg h-full w-full">
                 <UiProviders>
                   <HeaderBar />
                   {children}
                 </UiProviders>
               </main>
-            </ThemeProvider>
+            </NextThemesProvider>
           </StoreProvider>
         </ServiceProvider>
       </body>

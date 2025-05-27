@@ -4,9 +4,25 @@ import { type Buttons } from '@/interfaces/buttons';
 import { cn, Spinner, Button as UiButton } from '@heroui/react';
 import { useMemo } from 'react';
 
-export default function Button({ children, className, disabled, isLoading, spinnerClass, spinner, colorTheme, variant, ...other }: Buttons.index) {
+export default function Button({
+  children,
+  className,
+  disabled,
+  isLoading,
+  spinnerClass,
+  spinner,
+  colorTheme,
+  variant,
+  ...other
+}: Buttons.index) {
   const [color, isSpecial, textColor] = useMemo(() => {
-    const color = !colorTheme ? 'primary' : colorTheme === 'special' ? 'primary' : colorTheme === 'foreground' ? 'secondary' : colorTheme;
+    const color = !colorTheme
+      ? 'primary'
+      : colorTheme === 'special'
+        ? 'primary'
+        : colorTheme === 'foreground'
+          ? 'secondary'
+          : colorTheme;
     const isSpecialColored = colorTheme === 'foreground' || colorTheme === 'special';
     const textColor = isSpecialColored || colorTheme === 'warning' ? '(--sage-5)' : '(--gray-12)';
     return [color, isSpecialColored, textColor];
@@ -16,7 +32,7 @@ export default function Button({ children, className, disabled, isLoading, spinn
     <UiButton
       color={undefined as any}
       className={cn(
-        'rounded-md px-5 min-w-0 pb-3 pt-2.5 min-h-0 h-fit text-[0.9rem] font-semibold !opacity-100 gap-2 leading-3.5 tracking-2',
+        'leading-3.5 tracking-2 h-fit min-h-0 min-w-0 gap-2 rounded-md px-5 pb-3 pt-2.5 text-[0.9rem] font-semibold !opacity-100',
         {
           [`bg-${color}-${isSpecial ? 'v12' : 'v9'} text-${textColor} data-[hover=true]:bg-${color}-${isSpecial ? 'v12' : 'v10'}`]:
             variant === 'solid',
