@@ -5,7 +5,13 @@ import React, { createContext, type ReactNode, useContext, useRef } from 'react'
 import { type StoreApi, useStore as useZustandStore } from 'zustand';
 
 const StoreContext = createContext<StoreApi<AppStore> | undefined>(undefined);
-export function StoreProvider({ children, initialState = {} }: { children: ReactNode; initialState: Partial<AppStore> }) {
+export function StoreProvider({
+  children,
+  initialState = {},
+}: {
+  children: ReactNode;
+  initialState: Partial<AppStore>;
+}) {
   const storeRef = useRef<StoreApi<AppStore>>();
   if (!storeRef.current) {
     storeRef.current = prepareStore(initialState);

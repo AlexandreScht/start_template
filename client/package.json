@@ -1,5 +1,5 @@
 {
-  "name": "@starter/client",
+  "name": "@chesser/client",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -43,6 +43,7 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "@chesser/types": "workspace:*",
     "@eslint/js": "^9.21.0",
     "@types/crypto-js": "^4.2.2",
     "@types/express": "^5.0.0",

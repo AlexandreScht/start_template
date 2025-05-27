@@ -108,6 +108,9 @@ importers:
         specifier: ^5.0.3
         version: 5.0.5(@types/react@18.3.22)(immer@10.1.1)(react@19.1.0)(use-sync-external-store@1.5.0(react@19.1.0))
     devDependencies:
+      '@chesser/types':
+        specifier: workspace:*
+        version: link:../types
       '@eslint/js':
         specifier: ^9.21.0
         version: 9.27.0

@@ -1,5 +1,5 @@
 {
-  "name": "@starter/server",
+  "name": "@chesser/server",
   "version": "1.0.0",
   "main": "index.js",
   "private": true,

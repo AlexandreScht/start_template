@@ -39,12 +39,13 @@ export default function Card({ children, className, colorTheme, variant, disable
   return (
     <CardHero
       className={cn(
-        'rounded-md px-3 py-2.5 min-w-0 w-fit min-h-0 text-sm h-fit font-semibold !opacity-100 leading-3.5 tracking-2',
+        'leading-3.5 tracking-2 h-fit min-h-0 w-fit min-w-0 rounded-md px-3 py-2.5 text-sm font-semibold !opacity-100',
         {
           [`bg-${color}-v3 text-${color}-v11 shadow-[inset_0_0_0_1px_var(--color-${color}-v1),inset_0_0_0_1px_var(--color-${color}-v2)]`]:
             variant === 'solid' || !variant,
           [`bg-${color}-v2 text-${color}-v11 shadow-[inset_0_0_0_1px_var(--color-${color}-v6)]`]: variant === 'surface',
-          [`bg-transparent text-${color}-v11 shadow-[inset_0_0_0_1px_var(--color-${color}-v7)]`]: variant === 'bordered',
+          [`bg-transparent text-${color}-v11 shadow-[inset_0_0_0_1px_var(--color-${color}-v7)]`]:
+            variant === 'bordered',
         },
         {
           'cursor-not-allowed': disabled,
