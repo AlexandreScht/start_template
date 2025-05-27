@@ -6,23 +6,33 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
+  /* primary */
+  @import '@radix-ui/colors/cyan-alpha.css';
+  @import '@radix-ui/colors/cyan-dark-alpha.css';
+
+  /* secondary */
+  @import '@radix-ui/colors/indigo-alpha.css';
+  @import '@radix-ui/colors/indigo-dark-alpha.css';
+
+  /* asset */
   @import '@radix-ui/colors/sage-alpha.css';
   @import '@radix-ui/colors/sage-dark-alpha.css';
-  @import '@radix-ui/colors/teal-dark-alpha.css';
-  @import '@radix-ui/colors/blue-alpha.css';
-  @import '@radix-ui/colors/slate-alpha.css';
-  @import '@radix-ui/colors/gray.css';
-  @import '@radix-ui/colors/gray-dark.css';
-  @import '@radix-ui/colors/slate-dark-alpha.css';
-  @import '@radix-ui/colors/amber-alpha.css';
-  @import '@radix-ui/colors/amber-dark-alpha.css';
-  @import '@radix-ui/colors/red-dark-alpha.css';
-  @import '@radix-ui/colors/tomato-alpha.css';
+
+  /* success */
   @import '@radix-ui/colors/grass-alpha.css';
   @import '@radix-ui/colors/grass-dark-alpha.css';
+
+  /* warning */
+  @import '@radix-ui/colors/amber-alpha.css';
+  @import '@radix-ui/colors/amber-dark-alpha.css';
+
+  /* danger */
+  @import '@radix-ui/colors/red-dark-alpha.css';
+  @import '@radix-ui/colors/tomato-alpha.css';
+
+  /* background & foreground */
   @import '@radix-ui/colors/white-alpha.css';
   @import '@radix-ui/colors/black-alpha.css';
-  @import './heroUi.css';
   @theme {
     --color-rootBg: var(--sage-a3);
   }

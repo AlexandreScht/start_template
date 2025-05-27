@@ -15,12 +15,12 @@ const defaultStore = {};
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="w-full h-full" suppressHydrationWarning>
-      <body className="w-full h-full">
+    <html lang="en" className="h-full w-full" suppressHydrationWarning>
+      <body className="h-full w-full">
         <ServiceProvider>
           <StoreProvider initialState={defaultStore}>
             <ThemeProvider attribute="class" defaultTheme="system" themes={['light', 'dark']} enableSystem={true}>
-              <main className="w-full h-full no-scrollbar bg-rootBg">
+              <main className="no-scrollbar bg-rootBg h-full w-full">
                 <UiProviders>
                   <HeaderBar />
                   {children}
