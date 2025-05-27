@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "es2021",
+    "lib": ["es2021", "esnext.asynciterable"],
+    "typeRoots": ["./src/types", "node_modules/@types", "./src/interfaces"],
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "pretty": true,
+    "sourceMap": true,
+    "declaration": true,
+    "outDir": "dist",
+    "allowJs": true,
+    "noEmit": false,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "importHelpers": true,
+    "baseUrl": "src",
+    "paths": {
+      "@/*": ["*"],
+      "@config": ["config"],
+      "@controllers/*": ["controllers/*"],
+      "@database": ["database/*"],
+      "@libs/*": ["libs/*"],
+      "@exceptions": ["exceptions"],
+      "@interfaces/*": ["interfaces/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@models/*": ["models/*"],
+      "@routes/*": ["routes/*"],
+      "@services/*": ["services/*"],
+      "@webhooks/*": ["webhooks/*"],
+      "@utils/*": ["utils/*"]
+    }
+  },
+  "include": ["./src/**/*.ts", "./src/**/*.json", ".env", "src/utils/regionLoc.ts", "src/types/global.d.ts", "knexfile.ts"],
+  "exclude": ["node_modules", "src/logs"]
+}

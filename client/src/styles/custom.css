@@ -1,0 +1,15 @@
+/* 1. Classe principale */
+.underline-from-center {
+  @apply relative inline-block pb-1 text-current;
+}
+/* 2. Pseudo-élément avant pour la barre */
+.underline-from-center::before {
+  content: '';
+  @apply absolute bottom-0 left-0 block w-full h-[2px]
+           bg-current scale-x-0 origin-center
+           transition-transform duration-300;
+}
+/* 3. État au survol pour étendre la barre */
+.underline-from-center:hover::before {
+  @apply scale-x-100;
+}

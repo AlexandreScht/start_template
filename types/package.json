@@ -1,0 +1,10 @@
+{
+  "name": "@stater/types",
+  "version": "1.0.0",
+  "private": true,
+  "license": "ISC",
+
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

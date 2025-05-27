@@ -1,0 +1,34 @@
+@import 'tailwindcss';
+@config "../../tailwind.config.ts";
+
+@source "./safelist.txt";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  @import '@radix-ui/colors/sage-alpha.css';
+  @import '@radix-ui/colors/sage-dark-alpha.css';
+  @import '@radix-ui/colors/teal-dark-alpha.css';
+  @import '@radix-ui/colors/blue-alpha.css';
+  @import '@radix-ui/colors/slate-alpha.css';
+  @import '@radix-ui/colors/gray.css';
+  @import '@radix-ui/colors/gray-dark.css';
+  @import '@radix-ui/colors/slate-dark-alpha.css';
+  @import '@radix-ui/colors/amber-alpha.css';
+  @import '@radix-ui/colors/amber-dark-alpha.css';
+  @import '@radix-ui/colors/red-dark-alpha.css';
+  @import '@radix-ui/colors/tomato-alpha.css';
+  @import '@radix-ui/colors/grass-alpha.css';
+  @import '@radix-ui/colors/grass-dark-alpha.css';
+  @import '@radix-ui/colors/white-alpha.css';
+  @import '@radix-ui/colors/black-alpha.css';
+  @import './heroUi.css';
+  @theme {
+    --color-rootBg: var(--sage-a3);
+  }
+  body {
+    @apply font-sans;
+  }
+  @import './colors.css';
+  @import './custom.css';
+}
