@@ -5,8 +5,6 @@
 
 @config "../../tailwind.config.ts";
 
-@source "./safelist.txt";
-
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
@@ -15,8 +13,8 @@
   @import '@radix-ui/colors/cyan-dark-alpha.css';
 
   /* secondary */
-  @import '@radix-ui/colors/indigo-alpha.css';
-  @import '@radix-ui/colors/indigo-dark-alpha.css';
+  @import '@radix-ui/colors/blue-alpha.css';
+  @import '@radix-ui/colors/blue-dark-alpha.css';
 
   /* asset */
   @import '@radix-ui/colors/sage-alpha.css';

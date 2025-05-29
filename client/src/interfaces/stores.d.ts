@@ -7,3 +7,11 @@ export interface UserStoreType {
     setName: (x?: string) => void;
   };
 }
+
+export interface SubStoreType {
+  subscribe: {
+    trigger: (eventName: string, payload?: any) => void;
+    observer: (eventName: string, callback: (payload: any) => void) => () => void;
+    unsubscribe: (eventName: string) => void;
+  };
+}

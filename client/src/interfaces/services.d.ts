@@ -21,7 +21,9 @@ export namespace Services {
     export type SimpleWrappedServiceFunction<P, R> = (params: P) => (axios: Axios.instance) => Promise<R>;
 
     export type WrappedServerServices<T extends Record<string, any>> = {
-      [K in keyof T]: T[K] extends (params: infer P) => (instance: Axios.instance) => Promise<infer R> ? SimpleWrappedServiceFunction<P, R> : never;
+      [K in keyof T]: T[K] extends (params: infer P) => (instance: Axios.instance) => Promise<infer R>
+        ? SimpleWrappedServiceFunction<P, R>
+        : never;
     };
 
     export type ServerServiceSelector<R> = (
@@ -71,7 +73,9 @@ export namespace Services {
     export type WrappedServiceFunction<P, R> = (params: P, updater?: P) => () => Promise<R>;
 
     export type WrappedServices<T extends Record<string, any>> = {
-      [K in keyof T]: T[K] extends (params: infer P) => (instance: Axios.instance) => Promise<infer R> ? WrappedServiceFunction<P, R> : never;
+      [K in keyof T]: T[K] extends (params: infer P) => (instance: Axios.instance) => Promise<infer R>
+        ? WrappedServiceFunction<P, R>
+        : never;
     };
 
     export type MutationServices<S extends Record<string, (...args: any[]) => any>> = {
@@ -99,7 +103,8 @@ export namespace Services {
       allowedMerge?: boolean;
       allowedMutation?: boolean;
     };
-    export interface serverCache extends Partial<Omit<CacheOptions, 'ttl' | 'interpretHeader' | 'persist' | 'cachePredicate'>> {
+    export interface serverCache
+      extends Partial<Omit<CacheOptions, 'ttl' | 'interpretHeader' | 'persist' | 'cachePredicate'>> {
       lifeTime?: number | ((request: CacheRequestConfig) => number | Promise<number>);
       persist?: boolean;
       enabled?: CacheOptions['cachePredicate'];
@@ -136,7 +141,12 @@ export namespace Services {
       name: string;
       value: unknown;
     }
-    export type CommonRequestHeadersList = 'Accept' | 'Content-Length' | 'User-Agent' | 'Content-Encoding' | 'Authorization';
+    export type CommonRequestHeadersList =
+      | 'Accept'
+      | 'Content-Length'
+      | 'User-Agent'
+      | 'Content-Encoding'
+      | 'Authorization';
     export type AxiosHeaderValue = string | string[] | number | boolean | null;
     export interface RawAxiosHeaders {
       [key: string]: AxiosHeaderValue;
@@ -166,7 +176,9 @@ export namespace Services {
     };
 
     export type WrappedServices<T extends Record<string, any>> = {
-      [K in keyof T]: T[K] extends (params: infer P) => (instance: Axios.instance) => Promise<infer R> ? WrappedServiceFunction<P, R> : never;
+      [K in keyof T]: T[K] extends (params: infer P) => (instance: Axios.instance) => Promise<infer R>
+        ? WrappedServiceFunction<P, R>
+        : never;
     };
 
     export type ServiceSelector<R> = (services: WrappedServices<typeof PrepareServices>) => {

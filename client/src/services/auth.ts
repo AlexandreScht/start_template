@@ -13,6 +13,7 @@ export const login: ApiRequests.Auth.Login =
       ({ email, password, confirmPassword }) => ({
         validator: schema => schema.loginSchema({ email, password, confirmPassword }),
         request: axios => axios.post(router.login(), { email, password }),
+        middlewares: mw => [mw.limit('auth', email)],
       }),
       [axios, props],
     );

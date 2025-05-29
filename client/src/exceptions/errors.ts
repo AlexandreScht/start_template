@@ -29,7 +29,8 @@ export class InvalidCredentialsError extends ClientException {
 
 export class SideError extends ClientException {
   constructor(componentType: 'RSC' | 'RCC' = 'RCC') {
-    const errorMsg = componentType === 'RCC' ? 'The need to run in Client Side Component' : 'The need to run in Server Side Component';
+    const errorMsg =
+      componentType === 'RCC' ? 'The need to run in Client Side Component' : 'The need to run in Server Side Component';
     super(501, errorMsg);
   }
 }

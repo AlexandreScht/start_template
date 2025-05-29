@@ -15,18 +15,18 @@
   --color-primary-v11: var(--cyan-a12);
 
   /* secondary */
-  --color-secondary-v1: var(--indigo-a1);
-  --color-secondary-v2: var(--indigo-a2);
-  --color-secondary-v3: var(--indigo-a3);
-  --color-secondary-v4: var(--indigo-a4);
-  --color-secondary-v5: var(--indigo-a5);
-  --color-secondary-v6: var(--indigo-a6);
-  --color-secondary-v7: var(--indigo-a7);
-  --color-secondary-v8: var(--indigo-a8);
-  --color-secondary-v9: var(--indigo-a9);
-  --color-secondary-v10: var(--indigo-a10);
-  --color-secondary-v11: var(--indigo-a11);
-  --color-secondary-v12: var(--indigo-a12);
+  --color-secondary-v1: var(--blue-a1);
+  --color-secondary-v2: var(--blue-a2);
+  --color-secondary-v3: var(--blue-a3);
+  --color-secondary-v4: var(--blue-a4);
+  --color-secondary-v5: var(--blue-a5);
+  --color-secondary-v6: var(--blue-a6);
+  --color-secondary-v7: var(--blue-a7);
+  --color-secondary-v8: var(--blue-a8);
+  --color-secondary: var(--blue-a9);
+  --color-secondary-v9: var(--blue-a10);
+  --color-secondary-v10: var(--blue-a11);
+  --color-secondary-v11: var(--blue-a12);
 
   /* asset */
   --color-asset-v1: var(--sage-a1);
@@ -79,10 +79,10 @@
   --color-success-v6: var(--grass-a6);
   --color-success-v7: var(--grass-a7);
   --color-success-v8: var(--grass-a8);
-  --color-success-v9: var(--grass-a9);
-  --color-success-v10: var(--grass-a10);
-  --color-success-v11: var(--grass-a11);
-  --color-success-v12: var(--grass-a12);
+  --color-success: var(--grass-a9);
+  --color-success-v9: var(--grass-a10);
+  --color-success-v10: var(--grass-a11);
+  --color-success-v11: var(--grass-a12);
 
   /* warning */
   --color-warning-v1: var(--amber-a1);
@@ -93,10 +93,10 @@
   --color-warning-v6: var(--amber-a6);
   --color-warning-v7: var(--amber-a7);
   --color-warning-v8: var(--amber-a8);
-  --color-warning-v9: var(--amber-a9);
-  --color-warning-v10: var(--amber-a10);
-  --color-warning-v11: var(--amber-a11);
-  --color-warning-v12: var(--amber-a12);
+  --color-warning: var(--amber-a9);
+  --color-warning-v9: var(--amber-a10);
+  --color-warning-v10: var(--amber-a11);
+  --color-warning-v11: var(--amber-a12);
 
   /* danger */
   --color-danger-v1: var(--tomato-a1);
@@ -107,10 +107,10 @@
   --color-danger-v6: var(--tomato-a6);
   --color-danger-v7: var(--tomato-a7);
   --color-danger-v8: var(--tomato-a8);
-  --color-danger-v9: var(--tomato-a9);
-  --color-danger-v10: var(--tomato-a10);
-  --color-danger-v11: var(--tomato-a11);
-  --color-danger-v12: var(--tomato-a12);
+  --color-danger: var(--tomato-a9);
+  --color-danger-v9: var(--tomato-a10);
+  --color-danger-v10: var(--tomato-a11);
+  --color-danger-v11: var(--tomato-a12);
 
   /** light shadows */
   --shadow-button: inset 0 0 0 1px var(--gray-a4), inset 0 -2px 1px var(--gray-a3);
@@ -160,10 +160,10 @@
   --color-danger-v6: var(--red-a6);
   --color-danger-v7: var(--red-a7);
   --color-danger-v8: var(--red-a8);
-  --color-danger-v9: var(--red-a9);
-  --color-danger-v10: var(--red-a10);
-  --color-danger-v11: var(--red-a11);
-  --color-danger-v12: var(--red-a12);
+  --color-danger: var(--red-a9);
+  --color-danger-v9: var(--red-a10);
+  --color-danger-v10: var(--red-a11);
+  --color-danger-v11: var(--red-a12);
 
   /** dark shadows */
   --shadow-button: inset 0 4px 2px -2px var(--white-a9), inset 0 2px 1px -1px var(--white-a9);

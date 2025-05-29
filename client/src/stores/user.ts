@@ -4,7 +4,7 @@ import { type StateCreator } from 'zustand';
 function UserStore(set: SetStoreState<UserStoreType>) {
   return {
     pseudo: {
-      name: undefined,
+      name: '',
       setName: (name: string) =>
         set(state => ({
           ...state,

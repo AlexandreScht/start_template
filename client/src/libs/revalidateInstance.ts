@@ -66,10 +66,12 @@ const createRevalidateInstance = (cache?: Services.Config.serverCache): Services
     return request;
   });
 
-  instance.interceptors.response.use(async (res: Services.Axios.AxiosRevalidateResponse): Promise<Services.Axios.AxiosRevalidateResponse> => {
-    res.xTags = instance?.xTags;
-    return res;
-  });
+  instance.interceptors.response.use(
+    async (res: Services.Axios.AxiosRevalidateResponse): Promise<Services.Axios.AxiosRevalidateResponse> => {
+      res.xTags = instance?.xTags;
+      return res;
+    },
+  );
   instance.revalidate = true;
   return instance;
 };

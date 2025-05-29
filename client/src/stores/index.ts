@@ -2,10 +2,12 @@ import { type GetStoreState, type SetStoreState } from '@/interfaces/stores';
 import { createStore, type StoreApi } from 'zustand';
 import { createJSONStorage, persist, subscribeWithSelector } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
+import SubSlice from './subscribe';
 import UserSlice from './user';
 
 const configureStores = (set: SetStoreState<any>, get: GetStoreState<any>, api: StoreApi<any>) => ({
   ...UserSlice(set, get, api),
+  ...SubSlice(set, get, api),
 });
 
 const storage =

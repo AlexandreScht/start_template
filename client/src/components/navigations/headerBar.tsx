@@ -1,4 +1,3 @@
-import Button from '../buttons';
 import ThemeSwitcher from '../buttons/theme';
 import UserModal from '../cards/user';
 

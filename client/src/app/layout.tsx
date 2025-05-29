@@ -19,14 +19,21 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className="h-full w-full">
         <ServiceProvider>
           <StoreProvider initialState={defaultStore}>
-            <NextThemesProvider attribute="class" defaultTheme="system" themes={['light', 'dark']} enableSystem={true}>
-              <main className="no-scrollbar bg-rootBg h-full w-full">
+            <main className="no-scrollbar !bg-rootBg min-h-screen w-full">
+              <NextThemesProvider
+                attribute="class"
+                defaultTheme="system"
+                themes={['light', 'dark']}
+                enableSystem={true}
+              >
                 <UiProviders>
-                  <HeaderBar />
-                  {children}
+                  <main className="flex min-h-screen w-full flex-col">
+                    <HeaderBar />
+                    <div className="relative flex-1">{children}</div>
+                  </main>
                 </UiProviders>
-              </main>
-            </NextThemesProvider>
+              </NextThemesProvider>
+            </main>
           </StoreProvider>
         </ServiceProvider>
       </body>

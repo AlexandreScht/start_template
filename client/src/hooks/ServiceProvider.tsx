@@ -5,62 +5,60 @@ import type { Services } from '@/interfaces/services';
 import PrepareServices from '@/services';
 import React, { createContext, useCallback, useMemo, useRef } from 'react';
 
-export const CallServicesContext = createContext<Services.Provider.WrappedServices<typeof PrepareServices> | undefined>(undefined);
+export const CallServicesContext = createContext<Services.Provider.WrappedServices<typeof PrepareServices> | undefined>(
+  undefined,
+);
 
 export const MutationServicesContext = createContext<{
   mutationServices: {
-    [K in keyof typeof PrepareServices]: Services.useMutation.MutationService<(typeof PrepareServices)[K]> & { defaultKey: string };
+    [K in keyof typeof PrepareServices]: Services.useMutation.MutationService<(typeof PrepareServices)[K]> & {
+      defaultKey: string;
+    };
   };
 } | null>(null);
+
+const servicesCache = new WeakMap();
 
 export function ServiceProvider({ children }: { children: React.ReactNode }) {
   const prepareServicesRef = useRef(PrepareServices);
 
-  const createWrappedServices = useCallback(
-    <T extends Record<string, (...args: any[]) => any>>(
-      services: T,
-    ): {
-      [K in keyof T]: Services.Provider.WrappedServiceFunction<Services.ParamType<T[K]>, Services.Index.returnType<T[K]>>;
-    } => {
-      const result = {} as {
-        [K in keyof T]: Services.Provider.WrappedServiceFunction<Services.ParamType<T[K]>, Services.Index.returnType<T[K]>>;
-      };
+  const createWrappedServices = useCallback(<T extends Record<string, (...args: any[]) => any>>(services: T) => {
+    if (servicesCache.has(services)) {
+      return servicesCache.get(services);
+    }
 
-      (Object.keys(services) as (keyof T)[]).forEach(key => {
-        result[key] = ((params: Services.ParamType<T[typeof key]>, override?: string) => ({
-          key: override ? String(override) : `${String(key)}:${JSON.stringify(params)}`,
-          fetcher: (axiosInstance: Services.Axios.instance) => services[key](params)(axiosInstance),
-        })) as Services.Provider.WrappedServiceFunction<Services.ParamType<T[typeof key]>, Services.Index.returnType<T[typeof key]>>;
-      });
+    const result = {} as {
+      [K in keyof T]: Services.Provider.WrappedServiceFunction<
+        Services.ParamType<T[K]>,
+        Services.Index.returnType<T[K]>
+      >;
+    };
+    (Object.keys(services) as (keyof T)[]).forEach(key => {
+      result[key] = ((params: Services.ParamType<T[typeof key]>, override?: string) => ({
+        key: override ? String(override) : `${String(key)}:${JSON.stringify(params)}`,
+        fetcher: (axiosInstance: Services.Axios.instance) => services[key](params)(axiosInstance),
+      })) as Services.Provider.WrappedServiceFunction<
+        Services.ParamType<T[typeof key]>,
+        Services.Index.returnType<T[typeof key]>
+      >;
+    });
 
-      return result;
-    },
-    [],
+    servicesCache.set(services, result);
+    return result;
+  }, []);
+
+  const callServices: Services.Provider.WrappedServices<typeof PrepareServices> = useMemo(
+    () => createWrappedServices(prepareServicesRef.current),
+    [createWrappedServices],
   );
 
-  const callServices: Services.Provider.WrappedServices<typeof PrepareServices> = useMemo(() => {
-    return createWrappedServices(prepareServicesRef.current);
-  }, [createWrappedServices]);
-
-  // const callServices: Services.Provider.WrappedServices<typeof PrepareServices> = useMemo(() => {
-  //   const svc = prepareServicesRef.current;
-  //   return Object.entries(svc).reduce(
-  //     (acc, [key, fn]) => {
-  //       acc[key as keyof typeof svc] = (...args: any[]) => {
-  //         const [first, second] = args;
-  //         return {
-  //           key: second ? String(second) : `${String(key)}:${JSON.stringify(first)}`,
-  //           fetcher: axiosInstance => fn(first)(axiosInstance),
-  //         };
-  //       };
-  //       return acc;
-  //     },
-  //     {} as Services.Provider.WrappedServices<typeof PrepareServices>,
-  //   );
-  // }, []);
-
   const validateResult = useCallback((result: unknown, typedKey: string): [any, string?] => {
-    if (!Array.isArray(result) || result.length === 0 || result.length > 2 || (result.length === 2 && typeof result[1] !== 'string')) {
+    if (
+      !Array.isArray(result) ||
+      result.length === 0 ||
+      result.length > 2 ||
+      (result.length === 2 && typeof result[1] !== 'string')
+    ) {
       throw new InvalidArgumentError(`Les arguments pour le service << ${typedKey} >> ne sont pas autorisés.`);
     }
     return result as [unknown, string?];
@@ -70,7 +68,9 @@ export function ServiceProvider({ children }: { children: React.ReactNode }) {
     const svc = PrepareServices;
     return Object.entries(svc).reduce(
       (acc, [key]) => {
-        const createWrappedFn = <F extends (arg: any) => any>(typedKey: string): Services.useMutation.MutationService<F> & { defaultKey: string } => {
+        const createWrappedFn = <F extends (arg: any) => any>(
+          typedKey: string,
+        ): Services.useMutation.MutationService<F> & { defaultKey: string } => {
           const wrappedFn = ((...args: any[]): Services.useMutation.MutationDefinition => {
             const [first, second] = args;
             if (typeof first === 'function') {
@@ -100,9 +100,12 @@ export function ServiceProvider({ children }: { children: React.ReactNode }) {
     );
   }, [validateResult]);
 
+  const callServicesValue = useMemo(() => callServices, [callServices]);
+  const mutationServicesValue = useMemo(() => ({ mutationServices }), [mutationServices]);
+
   return (
-    <CallServicesContext.Provider value={callServices}>
-      <MutationServicesContext.Provider value={{ mutationServices }}>{children}</MutationServicesContext.Provider>
+    <CallServicesContext.Provider value={callServicesValue}>
+      <MutationServicesContext.Provider value={mutationServicesValue}>{children}</MutationServicesContext.Provider>
     </CallServicesContext.Provider>
   );
 }

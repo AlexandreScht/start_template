@@ -6,6 +6,7 @@ import schemaValidator from '@/validators';
 import { ZodError } from 'zod';
 import authMw from './auth';
 import { logging } from './logs';
+import { rateLimitMiddleware } from './rateLimit';
 import { transform } from './transform';
 
 export async function httpGateway<P extends ApiRequests.setRequest<any, any>>(
@@ -26,14 +27,11 @@ export async function httpGateway<P extends ApiRequests.setRequest<any, any>>(
       const middlewaresSet: Middlewares.httpGateway.MiddlewaresSet<typeof props> = {
         logs: lvl => logging(axios, lvl) as any,
         auth: role => authMw(role) as any,
+        limit: (key, identifier) => rateLimitMiddleware(key, identifier) as any,
         transform: (fn: (data: typeof props, transformers: any) => typeof props) => transform(fn, props),
       };
 
-      const results = await Promise.all(
-        middlewares(middlewaresSet).map(async result => {
-          return result instanceof Promise ? await result : result;
-        }),
-      );
+      const results = await Promise.all(middlewares(middlewaresSet).map(r => (r instanceof Function ? r(props) : r)));
 
       const transformedProps = results.find(result => result !== undefined);
       if (transformedProps) {

@@ -1,15 +1,24 @@
 'use client';
 
-import { useStore } from '@/hooks/StoreProvider';
+import { useListenerStore, useStore } from '@/hooks/StoreProvider';
 import { Input } from '@heroui/react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { LuUser } from 'react-icons/lu';
 import { MdOutlineNewLabel } from 'react-icons/md';
 
 export default function UserModal() {
   const { name, setName } = useStore(v => v.pseudo);
   const [value, setValue] = useState<string>('');
+  const { observer } = useListenerStore();
+
+  useEffect(() => {
+    const unsubscribe = observer('create_game', payload => {
+      console.log('Le bouton lancer la game a été cliqué !!!!', payload);
+    });
+
+    return unsubscribe;
+  }, [observer]);
 
   const handleChange = useCallback((v: string) => setValue(v), []);
   const handleConfirm = useCallback(() => setName(value), [setName, value]);

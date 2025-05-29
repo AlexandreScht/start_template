@@ -8,7 +8,10 @@ import { type AxiosInstance, type AxiosResponse, type InternalAxiosRequestConfig
  * @param axiosInstance The Axios instance to attach interceptors.
  * @param allowedLevels An array of allowed log levels. By default, all levels are shown.
  */
-export function logging(axiosInstance: AxiosInstance, allowedLevels: Middlewares.httpGateway.allowedLevel = ['info', 'warn', 'error']): void {
+export function logging(
+  axiosInstance: AxiosInstance,
+  allowedLevels: Middlewares.httpGateway.allowedLevel = ['info', 'warn', 'error'],
+): void {
   // Request interceptor
   axiosInstance.interceptors.request.use(
     (config: InternalAxiosRequestConfig<any>) => {

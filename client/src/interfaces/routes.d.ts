@@ -1,7 +1,9 @@
 import { type Socket } from 'socket.io-client';
-import { codeError } from './error';
 
-type QueryType<T> = T extends Record<string, string | number | boolean | unknown[]> ? T : Record<string, string | number | boolean | unknown[]>;
+type QueryType<T> =
+  T extends Record<string, string | number | boolean | unknown[]>
+    ? T
+    : Record<string, string | number | boolean | unknown[]>;
 
 type ParamsType<T> = T extends (string | number | boolean)[] ? T : (string | number | boolean)[];
 
