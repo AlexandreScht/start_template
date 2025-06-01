@@ -3,7 +3,7 @@ import type { Services } from '@/interfaces/services';
 import PrepareServices from '@/services';
 import { unstable_cache } from 'next/cache';
 import { v7 as uuid } from 'uuid';
-import AxiosInstance from './axiosIntance';
+import AxiosInstance from './axiosInstance';
 
 export default async function serverService<
   U extends Services.Config.ServerServiceOption = Services.Config.ServerServiceOption,

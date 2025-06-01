@@ -5,9 +5,10 @@ import { type Services } from '@/interfaces/services';
 import { parse } from 'cookie';
 import { cookies } from 'next/headers';
 
+const server_uri = process.env.NEXT_PUBLIC_SERVER_API as string;
 export default async function getSessionCookie(cookieName?: string) {
   try {
-    return cookies().get(cookieName ? cookieName : (env?.COOKIE as string))?.value;
+    return (await cookies()).get(cookieName ? cookieName : (env?.COOKIE as string))?.value;
   } catch (error) {
     return undefined;
   }
@@ -15,28 +16,28 @@ export default async function getSessionCookie(cookieName?: string) {
 
 export async function getRequestCookies(apiCookies: string[]): Promise<void> {
   try {
-    apiCookies.forEach((cookie: string) => {
+    const cookiesInstance = await cookies();
+    for (const cookie of apiCookies) {
       const parsedCookie = parse(cookie);
       const [cookieName, cookieValue] = Object.entries(parsedCookie)[0];
 
       if (parsedCookie && cookieName && cookieValue) {
         const sameSite = parsedCookie['SameSite']?.toLowerCase() as 'strict' | 'lax' | 'none';
-
         const expires = parsedCookie['Expires'] ? new Date(parsedCookie['Expires']) : undefined;
 
-        cookies().set({
+        cookiesInstance.set({
           name: cookieName,
           value: cookieValue,
           httpOnly: true,
           sameSite,
-          domain: new URL(env.SERVER_URI).hostname,
+          domain: new URL(server_uri).hostname,
           maxAge: parseInt(parsedCookie['Max-Age'] || serverConfig.maxAge),
           path: parsedCookie['Path'],
-          secure: env.SERVER_URI.startsWith('https'),
+          secure: server_uri.startsWith('https'),
           expires,
         });
       }
-    });
+    }
   } catch (error) {
     console.error('Error setting response cookies:', error);
   }
@@ -48,18 +49,14 @@ export async function getRequestCookies(apiCookies: string[]): Promise<void> {
 export async function setRequestCookies(): Promise<Services.Axios.Cookie[]> {
   try {
     return serializeCookies(
-      cookies()
+      (await cookies())
         .getAll()
-        .filter(cookie => !cookie.name.startsWith('next-auth.')),
+        .filter((cookie: { name: string; value: unknown }) => !cookie.name.startsWith('next-auth.')),
     );
   } catch (error) {
     console.error('Error retrieving server cookies:', error);
     return [];
   }
-}
-
-export async function getServerUri() {
-  return env.SERVER_URI;
 }
 
 export async function serializeCookies(cookies: { name: string; value: unknown }[]): Promise<Services.Axios.Cookie[]> {
@@ -74,10 +71,10 @@ export async function serializeCookies(cookies: { name: string; value: unknown }
         ? {}
         : {
             path: '/',
-            domain: new URL(env.SERVER_URI).hostname,
+            domain: new URL(server_uri).hostname,
             sameSite: 'strict',
           }),
-      secure: env.SERVER_URI.startsWith('https'),
+      secure: server_uri.startsWith('https'),
     };
   });
 }

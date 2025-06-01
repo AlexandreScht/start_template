@@ -12,6 +12,7 @@ export const Roles = {
 export const publicPaths: Array<string> = [
   router.login(),
   router.home(),
+  '/perf',
   // pages.password(),
   // pages.register(),
   // pages.unauthorized(),

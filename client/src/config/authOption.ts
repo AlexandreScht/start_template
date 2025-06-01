@@ -1,5 +1,5 @@
 import { ClientException } from '@/exceptions/errors';
-import AxiosInstance from '@/libs/axiosIntance';
+import AxiosInstance from '@/libs/axiosInstance';
 import routes from '@/router/client';
 import PrepareServices from '@/services';
 import { type NextAuthOptions } from 'next-auth';
@@ -8,9 +8,9 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { cookies } from 'next/headers';
 import env from '.';
 
-const deleteCookie = () => {
+const deleteCookie = async () => {
   if (process.env.COOKIE_NAME) {
-    cookies().set({
+    (await cookies()).set({
       name: process.env.COOKIE_NAME,
       value: '',
       expires: new Date(0),
@@ -127,7 +127,7 @@ const nextAuthOptions: NextAuthOptions = {
   },
   events: {
     async signOut() {
-      deleteCookie();
+      await deleteCookie();
     },
   },
 };

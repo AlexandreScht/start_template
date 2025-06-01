@@ -3,7 +3,8 @@
 import { InvalidArgumentError } from '@/exceptions/errors';
 import type { Services } from '@/interfaces/services';
 import PrepareServices from '@/services';
-import React, { createContext, useCallback, useMemo, useRef } from 'react';
+import type React from 'react';
+import { createContext, useCallback, useMemo, useRef } from 'react';
 
 export const CallServicesContext = createContext<Services.Provider.WrappedServices<typeof PrepareServices> | undefined>(
   undefined,
@@ -33,11 +34,26 @@ export function ServiceProvider({ children }: { children: React.ReactNode }) {
         Services.Index.returnType<T[K]>
       >;
     };
-    (Object.keys(services) as (keyof T)[]).forEach(key => {
-      result[key] = ((params: Services.ParamType<T[typeof key]>, override?: string) => ({
-        key: override ? String(override) : `${String(key)}:${JSON.stringify(params)}`,
-        fetcher: (axiosInstance: Services.Axios.instance) => services[key](params)(axiosInstance),
-      })) as Services.Provider.WrappedServiceFunction<
+
+    const serviceKeys = Object.keys(services) as (keyof T)[];
+
+    serviceKeys.forEach(key => {
+      const keyString = String(key);
+      result[key] = ((params: Services.ParamType<T[typeof key]>, override?: string) => {
+        let paramKey: string;
+        if (params === undefined || params === null) {
+          paramKey = 'undefined';
+        } else if (typeof params === 'string' || typeof params === 'number') {
+          paramKey = String(params);
+        } else {
+          paramKey = JSON.stringify(params);
+        }
+
+        return {
+          key: override ? String(override) : `${keyString}:${paramKey}`,
+          fetcher: (axiosInstance: Services.Axios.instance) => services[key](params)(axiosInstance),
+        };
+      }) as Services.Provider.WrappedServiceFunction<
         Services.ParamType<T[typeof key]>,
         Services.Index.returnType<T[typeof key]>
       >;

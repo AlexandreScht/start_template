@@ -1,11 +1,11 @@
 import env from '@/config';
-import { ExpiredSessionError, InvalidArgumentError } from '@/exceptions';
+import { ExpiredSessionError } from '@/exceptions';
 import { type Session } from '@/interfaces/session';
 import { decryptSessionApiKey } from '@/utils/token';
 import type { ctx } from '@interfaces/middlewares';
-import { createHmac } from 'crypto';
 import deepmerge from 'deepmerge';
 import type { NextFunction, Request, Response } from 'express';
+// import verifySignature from './verifySignature';
 
 const { COOKIE_NAME } = env;
 const getAuthorization = (req: Request) => {
@@ -74,6 +74,7 @@ const mw =
       },
     };
     try {
+      // await verifySignature(req);
       const Authorization = getAuthorization(req);
 
       if (Authorization) {

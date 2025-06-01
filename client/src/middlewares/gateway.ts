@@ -7,7 +7,7 @@ import { ZodError } from 'zod';
 import authMw from './auth';
 import { logging } from './logs';
 import { rateLimitMiddleware } from './rateLimit';
-import { transform } from './transform';
+import { defaultTransformers } from './transform';
 
 export async function httpGateway<P extends ApiRequests.setRequest<any, any>>(
   options: (props: Middlewares.httpGateway.RequestDataType<P>) => Middlewares.httpGateway.HttpGatewayConfig<P>,
@@ -15,8 +15,8 @@ export async function httpGateway<P extends ApiRequests.setRequest<any, any>>(
 ): Promise<Middlewares.httpGateway.DataFromRequest<P>> {
   try {
     const [axios, args] = deps;
-    const [props, revalidateArgs] = args;
-    const { validator, request, middlewares } = options(props);
+    const [props, revalidateArgs] = args || [];
+    const { validator, request, middlewares } = options(props as any);
 
     if (axios?.revalidate) {
       (axios as Services.Axios.revalidateInstance).revalidateArgs = revalidateArgs;
@@ -28,7 +28,14 @@ export async function httpGateway<P extends ApiRequests.setRequest<any, any>>(
         logs: lvl => logging(axios, lvl) as any,
         auth: role => authMw(role) as any,
         limit: (key, identifier) => rateLimitMiddleware(key, identifier) as any,
-        transform: (fn: (data: typeof props, transformers: any) => typeof props) => transform(fn, props),
+        transform: (fn: (data: typeof props, transformers: typeof defaultTransformers) => typeof props) => {
+          return (data: typeof props) => {
+            if (data) {
+              const transformed = fn(data, defaultTransformers);
+              Object.assign(data, transformed);
+            }
+          };
+        },
       };
 
       const results = await Promise.all(middlewares(middlewaresSet).map(r => (r instanceof Function ? r(props) : r)));

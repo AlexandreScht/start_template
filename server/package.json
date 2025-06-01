@@ -6,8 +6,11 @@
   "scripts": {
     "isolated-install": "pnpm -w install:server",
     "dev": "cross-env NODE_ENV=development nodemon",
+    "start": "node dist/src/server/index.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "generate:key": "node generatePairSync",
+    "build": "swc src -d dist --source-maps --copy-files",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
@@ -47,6 +50,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@swc/cli": "^0.7.7",
+    "@swc/core": "^1.11.29",
     "@types/compression": "^1.7.5",
     "@types/cookie-parser": "^1.4.8",
     "@types/cookie-signature": "^1.1.2",

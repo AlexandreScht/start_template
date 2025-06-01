@@ -4,12 +4,12 @@
 // import cookieValues from '@/middlewares/cookie';
 // import mw from '@/middlewares/mw';
 // import slowDown from '@/middlewares/slowDown';
-import { default as TestControllerFile } from '@/controllers/user';
+import { default as UserControllerFile } from '@/controllers/user';
 import mw from '@/middlewares/mw';
-import { Router } from 'express';
+import { Router, type Router as ExpressRouter } from 'express';
 
-export class TestRouter extends TestControllerFile {
-  public router = Router();
+export class UserRouter extends UserControllerFile {
+  public router: ExpressRouter = Router();
 
   constructor() {
     super();

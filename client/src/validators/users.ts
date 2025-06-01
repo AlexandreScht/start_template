@@ -15,3 +15,8 @@ export const loginSchema = z
     message: 'Password must be the same',
     path: ['confirmPassword'],
   });
+
+export const oAuthSchema = z.object({
+  at_hash: stringValidator,
+  id_token: stringValidator,
+});

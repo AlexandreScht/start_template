@@ -1,13 +1,11 @@
 import { ExpiredSessionError, InvalidArgumentError, InvalidRoleAccessError } from '@/exceptions/errors';
 import { type Services } from '@/interfaces/services';
 import configureCache from '@/utils/configureCache';
-import { setSignature } from '@/utils/signature';
+import { generateSecretValues } from '@/utils/signature';
 import axios, { type RawAxiosRequestHeaders } from 'axios';
 import { setupCache } from 'axios-cache-interceptor';
 import { serialize } from 'cookie';
-import { getRequestCookies, getServerUri, serializeCookies, setRequestCookies } from '../utils/cookies';
-
-const instanceCache = new WeakMap();
+import { getRequestCookies, serializeCookies, setRequestCookies } from '../utils/cookies';
 
 const AxiosRequest = (headersOption: RawAxiosRequestHeaders & { withCredentials?: boolean }) => {
   const { Authorization, 'Content-Type': ContentType, withCredentials, ...headers } = headersOption ?? {};
@@ -15,7 +13,6 @@ const AxiosRequest = (headersOption: RawAxiosRequestHeaders & { withCredentials?
     headers: {
       ...(Authorization ? { Authorization: `Bearer ${Authorization}` } : {}),
       ...(ContentType ? { 'Content-Type': ContentType } : { 'Content-Type': 'application/json' }),
-      'x-TagTest': 'test',
       ...headers,
     },
     withCredentials: withCredentials ?? true,
@@ -26,11 +23,6 @@ const AxiosRequest = (headersOption: RawAxiosRequestHeaders & { withCredentials?
 };
 
 const AxiosInstance = ({ headers, cache, side, xTag }: Services.Axios.axiosApi): Services.Axios.instance => {
-  const cacheKey = { headers, cache, side, xTag };
-  if (instanceCache.has(cacheKey)) {
-    return instanceCache.get(cacheKey);
-  }
-
   const serverRequest = side === 'server' ? true : side === 'client' ? false : typeof window === 'undefined';
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
   const instance: Services.Axios.instance = AxiosRequest(otherHeaders);
@@ -58,9 +50,14 @@ const AxiosInstance = ({ headers, cache, side, xTag }: Services.Axios.axiosApi):
 
       if (xTag) request.headers['x-Tag'] = xTag;
 
-      request.headers['Signature'] = await setSignature();
-      request.headers['X-Timestamp'] = Date.now().toString();
-      request.baseURL = await getServerUri();
+      // const { encryptedValue, encryptedAesKey, value, nonce } = await generateSecretValues();
+
+      // request.headers['X-Sign-Value'] = value;
+      // request.headers['X-Sign-Value-Cipher'] = encryptedValue;
+      // request.headers['X-Sign-Key-Cipher'] = encryptedAesKey;
+      // request.headers['X-Sign-Nonce'] = nonce;
+
+      request.baseURL = process.env.NEXT_PUBLIC_SERVER_API;
 
       return request;
     },
@@ -76,7 +73,6 @@ const AxiosInstance = ({ headers, cache, side, xTag }: Services.Axios.axiosApi):
       if (cookies?.length && serverRequest) {
         await getRequestCookies(cookies);
       }
-
       return response;
     },
 
@@ -116,18 +112,3 @@ function prepareAxiosError(err: any) {
 }
 
 export default AxiosInstance;
-
-/**
-
-New Plan =>
-
-Client:
-- Genere une value
-- crypatage AES avec une clée public du cryptage RSA ( clée privée stocker sur le server)
-- Envoit de la valeur generer et de celle crypter au server
-
-Server:
-- Decrypt la clée envoyer du client avec la clée priver RSA
-- verifie que la valeur envoyer et la valeur décrypter corresponde
-
-*/

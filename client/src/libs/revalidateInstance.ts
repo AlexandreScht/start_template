@@ -2,7 +2,7 @@ import { type Services } from '@/interfaces/services';
 import configureCache from '@/utils/configureCache';
 import { generateCacheKey } from '@/utils/serialize';
 import axios, { type AxiosResponse, type InternalAxiosRequestConfig } from 'axios';
-import { setupCache } from 'axios-cache-interceptor';
+import { type CacheRequestConfig, setupCache } from 'axios-cache-interceptor';
 import ServerMemory from './serverCache';
 // import CacheSingleton from './nodeCache';
 
@@ -11,13 +11,13 @@ const createRevalidateInstance = (cache?: Services.Config.serverCache): Services
     baseURL: '/rev_cache',
   }) as Services.Axios.revalidateInstance;
 
-  setupCache(instance, configureCache(cache as Services.Config.serverCache | undefined));
+  setupCache(instance as any, configureCache(cache as Services.Config.serverCache | undefined));
 
   instance.interceptors.request.use(async (request): Promise<InternalAxiosRequestConfig> => {
     const revalidateArgs = instance.revalidateArgs;
 
     const { url } = request as { url: string };
-    const cacheKey = generateCacheKey(request);
+    const cacheKey = generateCacheKey(request as CacheRequestConfig<unknown, unknown>);
 
     const hasParams = url.split('/').length - 1 > 3;
     const hasQuery = url.includes('?');

@@ -13,6 +13,7 @@
     "dev:server": "pnpm --filter server dev",
     "build:client": "pnpm --filter client build",
     "build:server": "pnpm --filter server build",
+    "build": "pnpm --filter server build && pnpm --filter client build",
     "start": "concurrently \"pnpm --filter client start\" \"pnpm --filter server start\"",
     "start:client": "pnpm --filter client start",
     "start:server": "pnpm --filter server start",

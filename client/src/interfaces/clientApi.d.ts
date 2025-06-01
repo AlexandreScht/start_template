@@ -14,4 +14,7 @@ declare namespace ApiRequests {
     type Login = setRequest<{ email: string; password: string; confirmPassword: string }, { payload: User.session }>;
     type oAuth = setRequest<{ at_hash: string; id_token: string }, { payload: User.session }>;
   }
+  namespace Perf {
+    type simple = setRequest<undefined, true>;
+  }
 }

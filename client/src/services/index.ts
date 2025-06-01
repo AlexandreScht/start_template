@@ -1,9 +1,9 @@
 import * as AuthServices from './auth';
-import { TestParamsService } from './users';
+import * as PerfServices from './perf';
 
 const PrepareServices = {
   //* test
-  testParams: TestParamsService,
+  ...PerfServices,
   ...AuthServices,
 };
 

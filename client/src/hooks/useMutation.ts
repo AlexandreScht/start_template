@@ -25,25 +25,29 @@ export function useMutation(
   const hasMutatedRef = useRef(false);
 
   const isExtendedWrappedOutput = useCallback(
-    (item: Services.useMutation.MutationDefinition): boolean => typeof item === 'object' && item !== null && 'key' in item,
+    (item: Services.useMutation.MutationDefinition): boolean =>
+      typeof item === 'object' && item !== null && 'key' in item,
     [],
   );
 
-  const setMutateOptions = useCallback((defaultOpt?: Services.Config.globalMutationOptions, options?: Services.Config.MutationOptions) => {
-    const { allowedMerge, ...cleanOptions } = options ?? {};
-    if (allowedMerge === false) {
-      return cleanOptions;
-    }
-    const { onMerge, ...cleanDefaultOpt } = defaultOpt ?? {};
-    switch (onMerge) {
-      case 'combined':
-        return { ...cleanDefaultOpt, ...cleanOptions };
-      case 'force':
-        return { ...cleanOptions, ...cleanDefaultOpt };
-      default:
-        return { ...cleanDefaultOpt, ...cleanOptions };
-    }
-  }, []);
+  const setMutateOptions = useCallback(
+    (defaultOpt?: Services.Config.globalMutationOptions, options?: Services.Config.MutationOptions) => {
+      const { allowedMerge, ...cleanOptions } = options ?? {};
+      if (allowedMerge === false) {
+        return cleanOptions;
+      }
+      const { onMerge, ...cleanDefaultOpt } = defaultOpt ?? {};
+      switch (onMerge) {
+        case 'combined':
+          return { ...cleanDefaultOpt, ...cleanOptions };
+        case 'force':
+          return { ...cleanOptions, ...cleanDefaultOpt };
+        default:
+          return { ...cleanDefaultOpt, ...cleanOptions };
+      }
+    },
+    [],
+  );
 
   const memoryAllowedMutation = useRef(new Map<string, boolean>());
 

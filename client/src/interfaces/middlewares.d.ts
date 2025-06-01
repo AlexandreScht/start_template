@@ -27,14 +27,7 @@ declare namespace Middlewares {
     export type MiddlewareHandler<Prop> = (data: Prop) => void | Promise<void>;
     type allowedLevel = Array<'info' | 'warn' | 'error'>;
 
-    // export type MiddlewaresSet<Prop> = {
-    //   logs: (levels?: allowedLevel) => void;
-    //   auth: (role?: User.role | Array<User.role>) => Promise<void>;
-    //   transform: (fn: (data: Prop, transformers: typeof defaultTransformers) => Prop) => (data: Prop) => void;
-    //   limit: (key: keyof typeof rateLimierConfig, identifier: string) => void;
-    // };
-
-    export type MiddlewaresSet<Prop> = {
+    export type MiddlewaresSet<Prop = undefined> = {
       logs: (lvl?: allowedLevel) => void;
       auth: (role?: User.role | User.role[]) => Promise<void>;
       transform: (fn: (data: Prop, t: typeof defaultTransformers) => Prop) => (data: Prop) => void;
@@ -45,8 +38,8 @@ declare namespace Middlewares {
       Req extends ApiRequests.setRequest<any, any> = ApiRequests.setRequest<any, unknown>,
     > {
       middlewares?: (
-        mw: MiddlewaresSet<RequestDataType<Req>>,
-      ) => Array<((data: RequestDataType<Req>) => void | Promise<void>) | void | Promise<void>>;
+        mw: MiddlewaresSet<RequestDataType<Req> | undefined>,
+      ) => Array<((data: RequestDataType<Req> | undefined) => void | Promise<void>) | void | Promise<void>>;
       validator?: (schemas: typeof schemaValidator) => unknown;
       request: (
         axios: Services.Axios.instance,
@@ -59,7 +52,7 @@ declare namespace Middlewares {
       [
         params: RequestDataType<P>,
         revalidateArgs?: ((v: ReturnParamType<P>) => ReturnParamType<P>) | ReturnParamType<P>,
-      ],
+      ]?,
     ];
   }
 

@@ -144,6 +144,7 @@ export namespace Services {
     export type CommonRequestHeadersList =
       | 'Accept'
       | 'Content-Length'
+      | 'Cache-Control'
       | 'User-Agent'
       | 'Content-Encoding'
       | 'Authorization';

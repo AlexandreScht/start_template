@@ -24,7 +24,7 @@ export const oAuth: ApiRequests.Auth.oAuth =
   async axios => {
     return await httpGateway<ApiRequests.Auth.oAuth>(
       ({ at_hash, id_token }) => ({
-        validator: schema => schema.loginSchema({ at_hash, id_token }),
+        validator: schema => schema.oAuthSchema({ at_hash, id_token }),
         request: axios => axios.post(router.login(), { at_hash, id_token }),
       }),
       [axios, props],

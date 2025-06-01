@@ -3,7 +3,7 @@
 import { ClientException } from '@/exceptions/errors';
 import { servicesErrors } from '@/exceptions/messagers';
 import type { Services } from '@/interfaces/services';
-import AxiosInstance from '@/libs/axiosIntance';
+import AxiosInstance from '@/libs/axiosInstance';
 import { useCallback, useContext, useMemo } from 'react';
 import useSWR, { type SWRResponse } from 'swr';
 import { CallServicesContext } from './ServiceProvider';

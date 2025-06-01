@@ -1,5 +1,6 @@
 import logsConfig from '@/config/logs';
 import { type WebSocket } from '@/interfaces/websocket';
+import RedisInstance from '@/libs/redis';
 import socket from '@/libs/socket';
 import env from '@config';
 import { ErrorMiddleware } from '@middlewares/error';
@@ -26,6 +27,15 @@ export default class App extends ApiRouter {
   public port: string | number;
   private server: http.Server;
   private io: WebSocket.wslServer;
+  private allowedHeaders: string[] = [
+    'Content-Type',
+    'Authorization',
+    'X-Sign-Value',
+    'X-Sign-Value-Cipher',
+    'x-Tag',
+    'X-Sign-Key-Cipher',
+    'X-Sign-Nonce',
+  ];
 
   constructor() {
     super();
@@ -60,7 +70,7 @@ export default class App extends ApiRouter {
         origin: ORIGIN,
         credentials: true,
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-        allowedHeaders: 'Content-Type,Authorization',
+        allowedHeaders: this.allowedHeaders,
       }),
     );
     this.app.use(hpp());
@@ -75,7 +85,7 @@ export default class App extends ApiRouter {
         origin: ORIGIN,
         credentials: true,
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-        allowedHeaders: 'Content-Type,Authorization',
+        allowedHeaders: this.allowedHeaders,
       }),
     );
   }
@@ -95,6 +105,9 @@ export default class App extends ApiRouter {
   private initializeStoredLibs() {
     // MemoryServerCache;
     // socket.getInstance(this.io);
+
+    // initialise redis
+    RedisInstance.getInstance();
   }
 
   private initializeAppRoutes() {

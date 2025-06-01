@@ -4,7 +4,14 @@ import { ServerException } from '@/exceptions';
 import { logger } from '@/utils/logger';
 import Redis, { type Redis as RedisClient } from 'ioredis';
 
-class RedisInstance {
+interface RedisSetOptions {
+  NX?: boolean; // équivaut à 'NX'
+  XX?: boolean; // équivaut à 'XX'
+  EX?: number; // secondes  -> 'EX'
+  PX?: number; // millisecondes -> 'PX'
+  GET?: boolean; // renvoyer l'ancienne valeur
+}
+export default class RedisInstance {
   private static instance: RedisInstance;
   protected redisClient: RedisClient;
 
@@ -44,8 +51,18 @@ class RedisInstance {
    * @param key La clé.
    * @param value La valeur à stocker.
    */
-  public async set<T>(key: string, value: T): Promise<void> {
-    await this.redisClient.set(key, JSON.stringify(value));
+  // 1) Sans options
+  public async set<T>(key: string, value: T, opts: RedisSetOptions = {}): Promise<'OK' | null | string> {
+    const args: (string | number)[] = [key, JSON.stringify(value)];
+
+    if (opts.EX !== undefined) args.push('EX', opts.EX);
+    if (opts.PX !== undefined) args.push('PX', opts.PX);
+    if (opts.NX) args.push('NX');
+    if (opts.XX) args.push('XX');
+    if (opts.GET) args.push('GET');
+
+    // @ts-expect-error -> variadic, ioredis accepte string[]
+    return this.redisClient.set(...(args as any));
   }
 
   /**
@@ -111,5 +128,3 @@ class RedisInstance {
     }
   }
 }
-
-export default RedisInstance.getInstance();

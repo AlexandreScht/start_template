@@ -2,7 +2,7 @@ import { ServerException } from '@/exceptions';
 import { logger } from '@/utils/logger';
 import { type ControllerMethods, type ExpressHandler } from '@interfaces/controllers';
 
-export default class TestControllerFile implements ControllerMethods<TestControllerFile> {
+export default class UserControllerFile implements ControllerMethods<UserControllerFile> {
   // private AccountService: AccountServiceFile;
 
   constructor() {

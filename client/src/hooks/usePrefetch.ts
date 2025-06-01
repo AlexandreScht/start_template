@@ -2,7 +2,7 @@
 
 import { ClientException } from '@/exceptions/errors';
 import type { Services } from '@/interfaces/services';
-import AxiosInstance from '@/libs/axiosIntance';
+import AxiosInstance from '@/libs/axiosInstance';
 import { useContext, useEffect, useMemo } from 'react';
 import { preload } from 'swr';
 import { CallServicesContext } from './ServiceProvider';

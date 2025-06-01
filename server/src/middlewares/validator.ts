@@ -1,5 +1,5 @@
 import { InvalidArgumentError, ServerException } from '@/exceptions';
-import { ctx, validators } from '@interfaces/middlewares';
+import { type ctx, type validators } from '@interfaces/middlewares';
 import type { Request } from 'express';
 import { z, ZodError, ZodObject } from 'zod';
 
@@ -38,6 +38,7 @@ const Validator = ({ body, params: iniParams, query: iniQuery, token: tokenShame
               try {
                 const arr = JSON.parse(req.params[paramKey]);
                 convertedParams[paramKey] = arr;
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
               } catch (error) {
                 convertedParams[paramKey] = req.params[paramKey]?.split(',');
               }
@@ -65,6 +66,7 @@ const Validator = ({ body, params: iniParams, query: iniQuery, token: tokenShame
               try {
                 const arr = JSON.parse(req.query[queryKey]);
                 convertedQueries[queryKey] = arr;
+                // eslint-disable-next-line @typescript-eslint/no-unused-vars
               } catch (error) {
                 convertedQueries[queryKey] = req.query[queryKey]?.split(',') || req.query[queryKey];
               }

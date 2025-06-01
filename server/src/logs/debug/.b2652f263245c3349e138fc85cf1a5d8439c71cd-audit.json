@@ -1,0 +1,25 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\debug\\.b2652f263245c3349e138fc85cf1a5d8439c71cd-audit.json",
+    "files": [
+        {
+            "date": 1748629427330,
+            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\debug\\2025-05-30.log",
+            "hash": "d140c3cf5124af1e43689832321e6558c7e132203301ec44d07356d5557be2a8"
+        },
+        {
+            "date": 1748643896853,
+            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\debug\\2025-05-31.log",
+            "hash": "d7b0c1787a23d6705746d4d58680be331d467885abfcf2cf65b235d1483762f1"
+        },
+        {
+            "date": 1748728829029,
+            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\debug\\2025-06-01.log",
+            "hash": "f73b18fbb7a055c7609bcd4ed11b7a80638cf2752f81cfbf93a3d26bb5c6ce21"
+        }
+    ],
+    "hashType": "sha256"
+}
