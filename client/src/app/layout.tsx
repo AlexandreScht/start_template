@@ -1,7 +1,7 @@
 import HeaderBar from '@/components/navigations/headerBar';
-import { ServiceProvider } from '@/hooks/ServiceProvider';
-import { StoreProvider } from '@/hooks/StoreProvider';
-import UiProviders from '@/hooks/UiProvider';
+import { ServiceProvider } from '@/hooks/providers/ServiceProvider';
+import { StoreProvider } from '@/hooks/providers/StoreProvider';
+import UiProviders from '@/hooks/providers/UiProvider';
 import '@/styles/global.css';
 import type { Metadata } from 'next';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';

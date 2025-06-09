@@ -1,7 +1,7 @@
 'use client';
 
 import { useService } from '@/hooks/useService';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 export default function Dashboard() {
   const [canFetch, setCanFetch] = useState<boolean>(true);

@@ -6,9 +6,7 @@ import type { Services } from '@/interfaces/services';
 import AxiosInstance from '@/libs/axiosInstance';
 import { useCallback, useContext, useMemo } from 'react';
 import useSWR, { type SWRResponse } from 'swr';
-import { CallServicesContext } from './ServiceProvider';
-
-const axiosInstanceCache = new Map<string, Services.Axios.instance>();
+import { CallServicesContext } from './providers/ServiceProvider';
 
 export function useService<U extends Services.Config.ServiceOption = Services.Config.ServiceOption, R = any>(
   selector: Services.Provider.ServiceSelector<R>,
@@ -20,19 +18,7 @@ export function useService<U extends Services.Config.ServiceOption = Services.Co
   }
   const { cache, headers, isDisabled } = options || {};
 
-  const axiosInstance = useMemo(() => {
-    const cacheKey = JSON.stringify(headers || {});
-
-    if (axiosInstanceCache.has(cacheKey)) {
-      return axiosInstanceCache.get(cacheKey)!;
-    }
-
-    const instance = AxiosInstance({ headers, side: 'client' });
-    axiosInstanceCache.set(cacheKey, instance);
-
-    setTimeout(() => axiosInstanceCache.delete(cacheKey), 300000); // 5 minutes
-    return instance;
-  }, [headers]);
+  const axiosInstance = useMemo(() => AxiosInstance({ headers, side: 'client' }), [headers]);
 
   const { key, fetcher } = useMemo(() => selector(callServices), [callServices, selector]);
   const swrKey = isDisabled ? null : key;

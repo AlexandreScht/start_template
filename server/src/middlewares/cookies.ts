@@ -1,9 +1,17 @@
 import { decryptSessionApiKey } from '@/utils/token';
 import { InvalidArgumentError, NotFoundError, ServerException } from '@exceptions';
-import { ctx } from '@interfaces/middlewares';
+import { type ctx } from '@interfaces/middlewares';
 import { TokenExpiredError } from 'jsonwebtoken';
 
-const cookies = ({ names, onlySigned = true, acceptError = false }: { names: string | string[]; onlySigned?: boolean; acceptError?: boolean }) => {
+const cookies = ({
+  names,
+  onlySigned = true,
+  acceptError = false,
+}: {
+  names: string | string[];
+  onlySigned?: boolean;
+  acceptError?: boolean;
+}) => {
   return async (ctx: ctx) => {
     const {
       next,
@@ -42,7 +50,8 @@ const cookies = ({ names, onlySigned = true, acceptError = false }: { names: str
       }, undefined);
 
       if (!foundedCookies) {
-        if (!acceptError) throw new NotFoundError("Votre code d'accès est introuvable. Veuillez refaire votre demande.");
+        if (!acceptError)
+          throw new NotFoundError("Votre code d'accès est introuvable. Veuillez refaire votre demande.");
         ctx.locals = { ...locals, cookie: {} };
       } else {
         ctx.locals = { ...locals, cookie: foundedCookies };

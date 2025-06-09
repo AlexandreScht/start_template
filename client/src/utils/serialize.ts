@@ -1,3 +1,4 @@
+import env from '@/config';
 import cacheConfig from '@/config/cache';
 import { type Services } from '@/interfaces/services';
 import { type CacheRequestConfig } from 'axios-cache-interceptor';
@@ -24,4 +25,20 @@ export async function setLifeTime(
   }
   const result = timeLife(request);
   return result instanceof Promise ? (await result) * isNodeCache : result * isNodeCache;
+}
+
+export function serializeCookies(cookies: Services.Axios.Cookie[]): Services.Axios.Cookie[] {
+  const isProd = env.BACKEND.startsWith('https');
+  return cookies.map(cookie => {
+    const { value, ...props } = cookie;
+    const CookieValue = typeof value === 'string' ? value : JSON.stringify(value);
+    return {
+      value: CookieValue,
+      httpOnly: true,
+      path: '/',
+      sameSite: isProd ? 'strict' : 'none',
+      secure: isProd,
+      ...props,
+    };
+  });
 }

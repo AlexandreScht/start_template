@@ -2,6 +2,8 @@ import { type Routes } from '@interfaces/routes';
 // import { AuthRouter } from '@routes/auth';
 import { Router } from 'express';
 import { PerfRouter } from './performance';
+import { AuthRouter } from './auth';
+import CallbackRouter from './callback';
 
 export default class ApiRouter implements Routes {
   public router: Router;
@@ -11,7 +13,8 @@ export default class ApiRouter implements Routes {
   }
 
   protected initializeRoutes() {
-    // this.router.use('/auth', new AuthRouter().getRouter());
+    this.router.use('/auth', new AuthRouter().getRouter());
+    this.router.use('/callback', new CallbackRouter().getRouter());
     this.router.use('/perf', new PerfRouter().getRouter());
     // this.router.use('/news', new ScrappingRouter().getRouter());
   }

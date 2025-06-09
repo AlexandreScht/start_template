@@ -133,14 +133,10 @@ export namespace Services {
       value: string;
       path?: string;
       domain?: string;
-      secure: boolean;
-      sameSite?: 'strict';
-      httpOnly: boolean;
+      sameSite?: 'strict' | 'none' | 'lax';
+      httpOnly?: boolean;
     }
-    export interface SetCookie {
-      name: string;
-      value: unknown;
-    }
+
     export type CommonRequestHeadersList =
       | 'Accept'
       | 'Content-Length'
@@ -161,7 +157,7 @@ export namespace Services {
           | 'application/json'
           | 'application/x-www-form-urlencoded'
           | 'application/octet-stream';
-        'Set-Cookies': SetCookie[];
+        'Set-Cookies': Cookie[];
         withCredentials: boolean;
       } & { [Key in CommonRequestHeadersList]: AxiosHeaderValue }
     >;

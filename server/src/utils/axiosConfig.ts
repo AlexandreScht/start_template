@@ -7,7 +7,13 @@ export class BitGetApiSigned {
   private readonly requestPath: string;
   private readonly data: Record<string, any>;
 
-  constructor(secretKey: string, timestamp: string, method: 'POST' | 'GET', requestPath: string, data?: Record<string, any>) {
+  constructor(
+    secretKey: string,
+    timestamp: string,
+    method: 'POST' | 'GET',
+    requestPath: string,
+    data?: Record<string, any>,
+  ) {
     this.secretKey = secretKey;
     this.timestamp = timestamp;
     this.method = method;

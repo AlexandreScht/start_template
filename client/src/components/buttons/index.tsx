@@ -1,6 +1,6 @@
 'use client';
 
-import { useListenerStore, useStore } from '@/hooks/StoreProvider';
+import { useListenerStore, useStore } from '@/hooks/providers/StoreProvider';
 import { Button } from '@heroui/react';
 
 export default function StartGame() {

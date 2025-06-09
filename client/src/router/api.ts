@@ -8,6 +8,9 @@ const apiRoutes = createRoutes({
     auth: {
       login: () => '/login',
     },
+    user: {
+      isAdmin: () => '/is-admin',
+    },
   },
 });
 

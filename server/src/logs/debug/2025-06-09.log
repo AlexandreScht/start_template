@@ -1,0 +1,55 @@
+2025-06-09 00:05:29 info: [0mGET /api/auth/google [0m-[0m - ms - -[0m
+2025-06-09 00:06:42 info: [0mOPTIONS /api/auth/google?_rsc=1mxmc [32m204[0m 0.432 ms - 0[0m
+2025-06-09 00:07:33 info: [0mGET /api/auth/google [0m-[0m - ms - -[0m
+2025-06-09 00:07:51 info: [0mGET /api/auth/google [0m-[0m - ms - -[0m
+2025-06-09 00:09:13 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-09 00:09:16 info: [0mGET /api/auth/google [0m-[0m - ms - -[0m
+2025-06-09 00:10:15 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-09 00:10:23 info: [0mGET /api/auth/google [0m-[0m - ms - -[0m
+2025-06-09 00:12:11 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-09 00:12:18 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-09 00:13:16 info: [0mGET /api/auth/google [0m-[0m - ms - -[0m
+2025-06-09 00:14:20 info: [0mGET /api/auth/google [0m-[0m - ms - -[0m
+2025-06-09 00:14:30 info: [0mGET /api/auth/google [0m-[0m - ms - -[0m
+2025-06-09 00:27:41 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-09 00:27:57 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-09 00:29:30 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-09 00:29:59 info: [0mGET /api/auth/google [31m500[0m 9.376 ms - 54[0m
+2025-06-09 00:30:00 info: [0mGET /favicon.ico [33m404[0m 1.375 ms - 72[0m
+2025-06-09 00:30:30 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-09 00:30:36 info: [0mGET /api/auth/google [31m500[0m 7.231 ms - 54[0m
+2025-06-09 00:30:36 info: [0mGET /favicon.ico [33m404[0m 0.991 ms - 72[0m
+2025-06-09 00:31:02 info: [0mGET /api/auth/google [31m500[0m 2.103 ms - 54[0m
+2025-06-09 00:31:02 info: [0mGET /favicon.ico [33m404[0m 0.866 ms - 72[0m
+2025-06-09 00:31:07 info: [0mGET /api/auth/google [31m500[0m 1.589 ms - 54[0m
+2025-06-09 00:31:08 info: [0mGET /favicon.ico [33m404[0m 0.669 ms - 72[0m
+2025-06-09 00:34:10 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-09 00:34:36 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-09 00:36:20 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-09 00:36:20 info: [0mGET /api/auth/google [31m500[0m 5.785 ms - 54[0m
+2025-06-09 00:36:21 info: [0mGET /favicon.ico [33m404[0m 1.593 ms - 72[0m
+2025-06-09 00:36:25 info: [0mGET /api/auth/google [31m500[0m 1.275 ms - 54[0m
+2025-06-09 00:36:25 info: [0mGET /favicon.ico [33m404[0m 1.164 ms - 72[0m
+2025-06-09 00:39:53 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-09 00:40:01 info: [0mGET /api/auth/google [36m302[0m 7.645 ms - 0[0m
+2025-06-09 00:40:49 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-09 00:40:51 info: [0mGET /api/auth/google [36m302[0m 4.906 ms - 0[0m
+2025-06-09 00:41:37 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-09 00:42:21 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-09 00:42:29 info: [0mGET /api/auth/google [36m302[0m 6.493 ms - 0[0m
+2025-06-09 00:42:47 info: [0mGET /api/auth/google [36m302[0m 1.154 ms - 0[0m

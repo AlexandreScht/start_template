@@ -5,7 +5,7 @@ import type { Services } from '@/interfaces/services';
 import type PrepareServices from '@/services';
 import { useCallback, useContext, useEffect, useMemo, useRef } from 'react';
 import { mutate } from 'swr';
-import { MutationServicesContext } from './ServiceProvider';
+import { MutationServicesContext } from './providers/ServiceProvider';
 
 export function useMutation(
   selector: (services: Services.useMutation.MutationServices<typeof PrepareServices>) => Array<any>,

@@ -1,6 +1,6 @@
 'use client';
 
-import { useListenerStore, useStore } from '@/hooks/StoreProvider';
+import { useListenerStore, useStore } from '@/hooks/providers/StoreProvider';
 import { Input } from '@heroui/react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useCallback, useEffect, useState } from 'react';

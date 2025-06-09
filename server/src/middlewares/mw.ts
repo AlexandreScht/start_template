@@ -1,20 +1,7 @@
-import env from '@/config';
-import { ExpiredSessionError } from '@/exceptions';
 import { type Session } from '@/interfaces/session';
-import { decryptSessionApiKey } from '@/utils/token';
 import type { ctx } from '@interfaces/middlewares';
 import deepmerge from 'deepmerge';
 import type { NextFunction, Request, Response } from 'express';
-// import verifySignature from './verifySignature';
-
-const { COOKIE_NAME } = env;
-const getAuthorization = (req: Request) => {
-  const coockie = req.signedCookies[COOKIE_NAME];
-
-  if (coockie) return coockie;
-
-  return null;
-};
 
 const mw =
   (middlewaresHandler: any[]) =>
@@ -25,6 +12,7 @@ const mw =
 
     const locals = {};
     const onErrors = [];
+    const onSuccess = [];
     const session: Partial<Session.TokenUser> = {};
     let handlerIndex = 0;
     const ctx: ctx = {
@@ -41,6 +29,18 @@ const mw =
       },
       set onError(newAction) {
         Object.assign(onErrors, deepmerge(onErrors, newAction));
+      },
+      get onSuccess() {
+        return onSuccess;
+      },
+      set onSuccess(newAction) {
+        Object.assign(onSuccess, deepmerge(onSuccess, newAction));
+      },
+      get onComplete() {
+        return onSuccess;
+      },
+      set onComplete(newAction) {
+        Object.assign(onSuccess, deepmerge(onSuccess, newAction));
       },
       get session() {
         return session;
@@ -74,18 +74,9 @@ const mw =
       },
     };
     try {
-      // await verifySignature(req);
-      const Authorization = getAuthorization(req);
+      if (req.user) ctx.session = req.user;
 
-      if (Authorization) {
-        const [err, user] = decryptSessionApiKey<Session.TokenUser>(Authorization);
-
-        if (err || !user) {
-          throw new ExpiredSessionError();
-        }
-
-        ctx.session = user;
-      }
+      if (req.method === 'GET') res.cookie('XSRF-TOKEN', req.csrfToken());
       await ctx.next();
     } catch (err) {
       console.log(err);

@@ -5,7 +5,7 @@ import type { Services } from '@/interfaces/services';
 import AxiosInstance from '@/libs/axiosInstance';
 import { useContext, useEffect, useMemo } from 'react';
 import { preload } from 'swr';
-import { CallServicesContext } from './ServiceProvider';
+import { CallServicesContext } from './providers/ServiceProvider';
 
 export function usePrefetch<U extends Services.Config.ServiceOption = Services.Config.ServiceOption, R = any>(
   selector: Services.Provider.ServiceSelector<R>,

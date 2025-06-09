@@ -1,10 +1,3 @@
-import { type ctx, type LocalsCTX } from './middlewares';
-
-export type ExpressHandler<T extends LocalsCTX = LocalsCTX> = (ctx: ctx<T>) => Promise<void>;
-export type ControllerMethods<T> = {
-  [K in keyof T]: ExpressHandler;
-};
-
 export interface ControllerWithParams<T extends string | object> {
   params: T extends 'id' ? { id: number } : T extends string ? { [key in T]: string } : T;
 }

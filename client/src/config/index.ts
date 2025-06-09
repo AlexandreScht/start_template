@@ -8,10 +8,9 @@ const env = cleanEnv(process.env, {
     default: 'development',
   }),
   PORT: port({ default: 3000 }),
-  SIGNATURE: str(),
-  COOKIE: str({ default: 'template_starter' }),
-  NEXTAUTH_URL: str({ default: 'http://localhost:3000/' }),
-  NEXTAUTH_SECRET: str(),
+  BACKEND: str({
+    default: 'http://localhost:3005',
+  }),
 });
 
 export default env;

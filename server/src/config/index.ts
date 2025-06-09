@@ -16,6 +16,9 @@ const env = cleanEnv(process.env, {
   REDIS_PORT: port({ default: 6379 }),
   SESSION_SECRET: str(),
   ORIGIN: url({ default: 'http://localhost:3000' }),
+  // Google oAuth2o
+  GOOGLE_CLIENT_ID: str(),
+  GOOGLE_CLIENT_SECRET: str(),
 });
 
 export default env;

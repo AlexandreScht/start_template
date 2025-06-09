@@ -1,21 +1,27 @@
 import { ExpiredSessionError, InvalidArgumentError, InvalidRoleAccessError } from '@/exceptions/errors';
 import { type Services } from '@/interfaces/services';
 import configureCache from '@/utils/configureCache';
-import { generateSecretValues } from '@/utils/signature';
+import { serializeCookies } from '@/utils/serialize';
 import axios, { type RawAxiosRequestHeaders } from 'axios';
 import { setupCache } from 'axios-cache-interceptor';
 import { serialize } from 'cookie';
-import { getRequestCookies, serializeCookies, setRequestCookies } from '../utils/cookies';
 
-const AxiosRequest = (headersOption: RawAxiosRequestHeaders & { withCredentials?: boolean }) => {
+const AxiosRequest = (
+  headersOption: RawAxiosRequestHeaders & { withCredentials?: boolean },
+  serverRequest: boolean,
+) => {
   const { Authorization, 'Content-Type': ContentType, withCredentials, ...headers } = headersOption ?? {};
   return axios.create({
+    baseURL: process.env.NEXT_PUBLIC_SERVER_API,
     headers: {
       ...(Authorization ? { Authorization: `Bearer ${Authorization}` } : {}),
       ...(ContentType ? { 'Content-Type': ContentType } : { 'Content-Type': 'application/json' }),
       ...headers,
     },
     withCredentials: withCredentials ?? true,
+    ...(withCredentials !== false && !serverRequest
+      ? { xsrfCookieName: 'XSRF-TOKEN', xsrfHeaderName: 'X-XSRF-TOKEN' }
+      : {}),
     maxRedirects: 3,
     timeout: 30000,
     validateStatus: status => status >= 200 && status < 300,
@@ -25,7 +31,7 @@ const AxiosRequest = (headersOption: RawAxiosRequestHeaders & { withCredentials?
 const AxiosInstance = ({ headers, cache, side, xTag }: Services.Axios.axiosApi): Services.Axios.instance => {
   const serverRequest = side === 'server' ? true : side === 'client' ? false : typeof window === 'undefined';
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
-  const instance: Services.Axios.instance = AxiosRequest(otherHeaders);
+  const instance: Services.Axios.instance = AxiosRequest(otherHeaders, serverRequest);
 
   if (serverRequest) {
     setupCache(instance as any, configureCache(cache as Services.Config.serverCache | undefined));
@@ -33,32 +39,18 @@ const AxiosInstance = ({ headers, cache, side, xTag }: Services.Axios.axiosApi):
 
   instance.interceptors.request.use(
     async request => {
-      if (serverRequest) {
-        const cookies = await setRequestCookies();
-        const mappedCookies = setCookies ? [...cookies, ...(await serializeCookies(setCookies))] : cookies;
-        const formattedCookies = mappedCookies
-          ?.map(cookie => {
+      if (serverRequest) request.headers['X-Internal-Request'] = '1';
+
+      if (setCookies?.length) {
+        request.headers['Cookie'] = serializeCookies(setCookies)
+          .map(cookie => {
             const { name, value, ...options } = cookie;
             return serialize(name, value, options);
           })
           .join('; ');
-
-        if (formattedCookies?.length) {
-          request.headers['Cookie'] = formattedCookies;
-        }
       }
 
-      if (xTag) request.headers['x-Tag'] = xTag;
-
-      // const { encryptedValue, encryptedAesKey, value, nonce } = await generateSecretValues();
-
-      // request.headers['X-Sign-Value'] = value;
-      // request.headers['X-Sign-Value-Cipher'] = encryptedValue;
-      // request.headers['X-Sign-Key-Cipher'] = encryptedAesKey;
-      // request.headers['X-Sign-Nonce'] = nonce;
-
-      request.baseURL = process.env.NEXT_PUBLIC_SERVER_API;
-
+      if (xTag) request.headers['X-Tag'] = xTag;
       return request;
     },
     error => {
@@ -68,14 +60,7 @@ const AxiosInstance = ({ headers, cache, side, xTag }: Services.Axios.axiosApi):
   );
 
   instance.interceptors.response.use(
-    async response => {
-      const cookies = response.headers['set-cookie'];
-      if (cookies?.length && serverRequest) {
-        await getRequestCookies(cookies);
-      }
-      return response;
-    },
-
+    async response => response,
     error => {
       prepareAxiosError(error);
       return Promise.reject(error);

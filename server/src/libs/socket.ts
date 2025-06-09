@@ -62,7 +62,10 @@ export default class SocketManager extends EventsList {
     try {
       if (!SocketManager.instance) {
         if (!io) {
-          throw new ServerException(500, 'SocketManager not initialized yet. Please provide the io parameter the first time.');
+          throw new ServerException(
+            500,
+            'SocketManager not initialized yet. Please provide the io parameter the first time.',
+          );
         }
         SocketManager.instance = new SocketManager(io);
       }
