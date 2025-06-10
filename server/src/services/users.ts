@@ -7,7 +7,7 @@ import type UsersTable from '@/types/models/public/Users';
 import { logger } from '@/utils/logger';
 import { type SelectQueryBuilder, type UpdateQueryBuilder } from 'kysely';
 import { Service } from 'typedi';
-import { v7 as uuid } from 'uuid';
+
 @Service()
 export default class UserServiceFile {
   async getUser<K extends keyof UsersTable = keyof UsersTable>(
