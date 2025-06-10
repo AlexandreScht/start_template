@@ -3,7 +3,7 @@ import { user_tester } from '@/config/list';
 import { InvalidArgumentError, InvalidCredentialsError, InvalidSessionError, ServerException } from '@/exceptions';
 import { type Session } from '@/interfaces/session';
 import { type Token } from '@/interfaces/token';
-import QueryBuilder from '@/libs/queryBuilder';
+import QueryBuilder from '@/services/query';
 import ApiServiceFile from '@/services/api';
 import AuthServiceFile from '@/services/auth';
 import MailerServiceFile from '@/services/mailer';

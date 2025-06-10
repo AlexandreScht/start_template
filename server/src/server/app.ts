@@ -24,7 +24,7 @@ import path from 'path';
 import 'reflect-metadata';
 import { Server } from 'socket.io';
 const { COOKIE_SECRET, ORIGIN, NODE_ENV, PORT } = env;
-import '@/config/passport';
+import '@/libs/passport';
 import { rateLimit } from '@/middlewares/limiter';
 const { format } = logsConfig;
 

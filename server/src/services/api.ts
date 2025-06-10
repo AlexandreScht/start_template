@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Service } from 'typedi';
 
 @Service()
-export default class ApiServiceFile {
+export default class ApiServiceClass {
   public async FetchRecaptchaIdentity(response: string) {
     try {
       const { data } = await axios.post(`https://www.google.com/recaptcha/api/siteverify`, null, {

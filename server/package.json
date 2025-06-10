@@ -31,6 +31,7 @@
     "@types/passport-google-oauth20": "^2.0.16",
     "@types/pg": "^8.15.4",
     "axios": "^1.7.9",
+    "bcryptjs": "^3.0.2",
     "bottleneck": "^2.19.5",
     "compression": "^1.7.5",
     "cookie": "^1.0.2",

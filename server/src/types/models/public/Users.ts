@@ -12,6 +12,7 @@ export default interface UsersTable {
   phone: string | null;
   validate: boolean;
   accessToken: string | null;
+  refreshToken: string | null;
   stripeCustomerId: string | null;
   isSubscribed: boolean;
   updated_at: Date;

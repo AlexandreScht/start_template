@@ -9,7 +9,7 @@ import { Service } from 'typedi';
 import { v4 as uuid } from 'uuid';
 
 @Service()
-export default class AuthServiceFile {
+export default class AuthServiceClass {
   public async register(
     data: {
       email: string;
@@ -27,13 +27,13 @@ export default class AuthServiceFile {
         return await trx
           .insertInto('users')
           .values({ ...data, password: hashedPassword, accessToken: uuid() })
-          .returning(['accessToken', 'id'])
+          .returning(['refreshToken', 'role', 'id'])
           .executeTakeFirstOrThrow();
       } else {
         return await trx
           .insertInto('users')
           .values({ ...data, validate: true })
-          .returning(['role', 'id'])
+          .returning(['refreshToken', 'role', 'id'])
           .executeTakeFirstOrThrow();
       }
     } catch (error) {
@@ -42,7 +42,10 @@ export default class AuthServiceFile {
     }
   }
 
-  public async login(user: UsersModel, password: string): Promise<Pick<UsersTable, 'id' | 'role' | 'validate' | 'firstName'>> {
+  public async login(
+    user: UsersModel,
+    password: string,
+  ): Promise<Pick<UsersTable, 'id' | 'role' | 'validate' | 'firstName'>> {
     const credentials = await user.checkPassword(password);
     if (!credentials) throw new InvalidCredentialsError('Email ou mot de passe incorrect !');
     return credentials;

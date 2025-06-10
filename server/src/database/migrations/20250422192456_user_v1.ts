@@ -14,6 +14,7 @@ export async function up(db: Kysely<any>): Promise<void> {
     .addColumn('phone', 'char')
     .addColumn('validate', 'boolean', col => col.notNull().defaultTo(false))
     .addColumn('accessToken', 'uuid')
+    .addColumn('refreshToken', 'uuid')
     .addColumn('stripeCustomerId', 'varchar')
     .addColumn('isSubscribed', 'boolean', col => col.notNull().defaultTo(false))
     .addColumn('updated_at', 'timestamp', col => col.defaultTo(sql`now()`).notNull())

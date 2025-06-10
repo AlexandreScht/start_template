@@ -9,7 +9,7 @@ import { Service } from 'typedi';
 import util from 'util';
 
 @Service()
-export default class MailerServiceFile {
+export default class MailerServiceClass {
   private transporter: nodemailer.Transporter;
   private template_dir: string = join(__dirname, '../templates');
   private support_mail: string = env.MAILER_SUPPORT;

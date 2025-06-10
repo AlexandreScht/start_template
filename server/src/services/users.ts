@@ -9,7 +9,7 @@ import { type SelectQueryBuilder, type UpdateQueryBuilder } from 'kysely';
 import { Service } from 'typedi';
 
 @Service()
-export default class UserServiceFile {
+export default class UserServiceClass {
   async getUser<K extends keyof UsersTable = keyof UsersTable>(
     props: Services.Users.findProps,
     returnFields?: readonly K[],
