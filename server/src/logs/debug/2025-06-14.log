@@ -1,0 +1,4 @@
+2025-06-14 22:51:36 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-14 22:51:38 info: [0mGET /api/auth/google [36m302[0m 34.072 ms - 0[0m
+2025-06-14 22:52:02 info: [0mGET /api/callback/google?state=QibGPCW5C9BNIpVGcpON1xdJ&code=4%2F0AUJR-x653TQ-WgA7oxzqnSahHiOuAiCq991wENFShEtmWJCoq5tKuT7X_kR63j8rA31ZhA&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=consent [36m302[0m 62.608 ms - 94[0m

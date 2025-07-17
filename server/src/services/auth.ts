@@ -1,12 +1,9 @@
-import { InvalidCredentialsError, ServicesError } from '@/exceptions';
-import type UsersModel from '@/models/users';
+import { ServicesError } from '@/exceptions';
 import type Database from '@/types/models/Database';
-import type UsersTable from '@/types/models/public/Users';
 import { logger } from '@/utils/logger';
 import { genSalt, hash } from 'bcryptjs';
 import { type Transaction } from 'kysely';
 import { Service } from 'typedi';
-import { v4 as uuid } from 'uuid';
 
 @Service()
 export default class AuthServiceClass {
@@ -14,40 +11,31 @@ export default class AuthServiceClass {
     data: {
       email: string;
       password?: string;
-      firstName: string;
-      lastName: string;
+      first_name: string;
+      last_name: string;
       phone?: string;
     },
     trx: Transaction<Database>,
   ) {
     try {
-      if ('password' in data) {
+      if (data.password) {
         const salt = await genSalt(10);
         const hashedPassword = await hash(data.password, salt);
         return await trx
           .insertInto('users')
-          .values({ ...data, password: hashedPassword, accessToken: uuid() })
-          .returning(['refreshToken', 'role', 'id'])
+          .values({ ...data, password: hashedPassword })
+          .returning(['role', 'id'])
           .executeTakeFirstOrThrow();
       } else {
         return await trx
           .insertInto('users')
           .values({ ...data, validate: true })
-          .returning(['refreshToken', 'role', 'id'])
+          .returning(['role', 'id'])
           .executeTakeFirstOrThrow();
       }
     } catch (error) {
       logger.error('AuthServiceFile.register => ', error);
       throw new ServicesError();
     }
-  }
-
-  public async login(
-    user: UsersModel,
-    password: string,
-  ): Promise<Pick<UsersTable, 'id' | 'role' | 'validate' | 'firstName'>> {
-    const credentials = await user.checkPassword(password);
-    if (!credentials) throw new InvalidCredentialsError('Email ou mot de passe incorrect !');
-    return credentials;
   }
 }

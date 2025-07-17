@@ -1,4 +1,5 @@
 {
+  "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "target": "es6",
     "downlevelIteration": true,
@@ -35,7 +36,8 @@
     ".next/types/**/*.ts",
     "tailwind.config.ts",
     "logger.ts",
-    "src/interfaces/.d.ts"
-, "../server/src/config/passport.ts"  ],
+    "src/interfaces/.d.ts",
+    "../server/src/config/passport.ts"
+  ],
   "exclude": ["node_modules", ".next"]
 }

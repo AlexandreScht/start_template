@@ -7,8 +7,11 @@
 // import Validator from '@/middlewares/validator';
 // import { stringValidator } from '@/utils/zodValidate';
 import AuthControllerFile from '@/controllers/auth';
+import captchaMiddleWare from '@/middlewares/captcha';
 import mw from '@/middlewares/mw';
+import slowDown from '@/middlewares/slowDown';
 import Validator from '@/middlewares/validator';
+import { loginSchema, registerSchema, validateAccountSchema } from '@/validators/auth.schema';
 import { Router, type Router as ExpressRouter } from 'express';
 import passport from 'passport';
 
@@ -22,11 +25,11 @@ export class AuthRouter extends AuthControllerFile {
 
   initializeRoutes() {
     this.router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'], session: true }));
-    // this.router.post(
-    //   '/login',
-    //   mw([Validator({ body: loginSchema }), captchaMiddleWare(), slowDown({ onError: 750 }), this.login]),
-    // );
-    // this.router.post('/register', mw([Validator({ body: registerSchema }), captchaMiddleWare(), this.register]));
+    this.router.post(
+      '/login',
+      mw([Validator(loginSchema), captchaMiddleWare(), slowDown({ onError: 750 }), this.login]),
+    );
+    this.router.post('/register', mw([Validator(registerSchema), captchaMiddleWare(), this.register]));
     // this.router.get('/askCode', mw([cookies({ names: 'access_cookie', acceptError: true }), this.askCode]));
     // this.router.patch(
     //   '/reset-password',
@@ -40,14 +43,7 @@ export class AuthRouter extends AuthControllerFile {
     //   '/reset-password/:email',
     //   mw([Validator({ params: z.object({ email: stringValidator }) }), this.askResetPassword]),
     // );
-    // this.router.patch(
-    //   '/validate-account/:code',
-    //   mw([
-    //     Validator({ params: askCodeSchema }),
-    //     cookies({ names: 'access_cookie', acceptError: true }),
-    //     this.validateAccount,
-    //   ]),
-    // );
+    this.router.patch('/validate-account', mw([Validator(validateAccountSchema), this.validateAccount]));
     // this.router.post('/register', mw([Validator({ body: registerSchema }), this.register]));
   }
 

@@ -1,0 +1,52 @@
+2025-06-15 00:45:46 error: UserServiceFile.getUser => la colonne « refresh_token » n'existe pas
+2025-06-15 00:45:46 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 00:46:06 error: UserServiceFile.getUser => la colonne « refresh_token » n'existe pas
+2025-06-15 00:46:06 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 11:25:13 error: UserServiceFile.getUser => la colonne « refresh_token » n'existe pas
+2025-06-15 11:25:13 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 11:28:41 error: UserServiceFile.getUser => la colonne « refresh_token » n'existe pas
+2025-06-15 11:28:41 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 11:29:47 error: AuthServiceFile.register =>  Illegal arguments: object, string
+2025-06-15 11:29:47 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:11:27 error: UserServiceFile.getUser => la colonne « refresh_token » n'existe pas
+2025-06-15 12:11:27 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:12:50 error: UserServiceFile.getUser => la colonne « refresh_token » n'existe pas
+2025-06-15 12:12:50 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:13:45 error: UserServiceFile.getUser => la colonne « refresh_token » n'existe pas
+2025-06-15 12:13:45 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:25:17 error: AuthServiceFile.register =>  Illegal arguments: object, string
+2025-06-15 12:25:17 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:27:25 error: AuthServiceFile.register =>  Illegal arguments: object, string
+2025-06-15 12:27:25 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:28:14 error: AuthServiceFile.register =>  Illegal arguments: object, string
+2025-06-15 12:28:14 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:29:04 error: AuthServiceFile.register =>  Illegal arguments: object, string
+2025-06-15 12:29:04 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:29:04 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:33:23 error: MailerService.sendMailAsync =>  Invalid login: 535 5.7.8 Error: authentication failed: (reason unavailable)
+2025-06-15 12:33:23 error: MailerService.Registration =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:33:23 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:33:23 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:42:40 error: MailerService.sendMailAsync =>  Mail command failed: 451 4.0.0 Invalid from
+2025-06-15 12:42:40 error: MailerService.Registration =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:42:40 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:42:40 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:45:16 error: MailerService.sendMailAsync =>  Mail command failed: 451 4.0.0 Invalid from
+2025-06-15 12:45:16 error: MailerService.Registration =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:45:16 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:45:16 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:46:03 error: MailerService.sendMailAsync =>  Mail command failed: 451 4.0.0 Invalid from
+2025-06-15 12:46:03 error: MailerService.Registration =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:46:03 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:46:03 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:57:38 error: MailerService.sendMailAsync =>  Mail command failed: 451 4.0.0 Invalid from
+2025-06-15 12:57:38 error: MailerService.Registration =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:57:38 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:57:38 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 13:03:19 error: MailerService.sendMailAsync =>  Mail command failed: 451 4.0.0 Invalid from
+2025-06-15 13:03:19 error: MailerService.Registration =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 13:03:19 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 13:03:19 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 13:03:26 error: AuthServiceFile.register =>  une valeur NULL viole la contrainte NOT NULL de la colonne « last_name » dans la relation « users »
+2025-06-15 13:03:26 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 13:03:26 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.

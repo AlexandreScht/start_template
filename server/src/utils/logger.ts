@@ -23,7 +23,7 @@ if (!isTestEnv) {
 const logFormat = winston.format.printf(({ timestamp, level, message }) => `${timestamp} ${level}: ${message}`);
 
 // Custom filter for log levels
-const filterOnly = level => {
+const filterOnly = (level: any) => {
   return winston.format(info => {
     return info.level === level ? info : false;
   })();
@@ -75,9 +75,10 @@ if (!isTestEnv) {
       format: winston.format.combine(
         winston.format.colorize(),
         winston.format(info => {
-          info[Symbol.for('message')] = `${chalk[info.level === 'sql' ? 'blueBright' : 'yellow']('-'.repeat(process.stdout.columns))} [${chalk[
-            info.level === 'sql' ? 'whiteBright' : 'red'
-          ](info.level)}] ${chalk[info.level === 'sql' ? 'cyanBright' : 'blueBright'](info.message)}`;
+          info[Symbol.for('message')] =
+            `${chalk[info.level === 'sql' ? 'blueBright' : 'yellow']('-'.repeat(process.stdout.columns))} [${chalk[
+              info.level === 'sql' ? 'whiteBright' : 'red'
+            ](info.level)}] ${chalk[info.level === 'sql' ? 'cyanBright' : 'blueBright'](info.message)}`;
 
           return info;
         })(),

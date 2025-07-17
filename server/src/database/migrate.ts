@@ -1,8 +1,8 @@
 #!/usr/bin/env ts-node
 
 import chalk from 'chalk';
-import { promises as fs } from 'fs';
-import { processDatabase } from 'kanel';
+import { promises as fs, readFileSync } from 'fs';
+import { type CompositeProperty, processDatabase } from 'kanel';
 import { kyselyTypeFilter, makeKyselyHook } from 'kanel-kysely';
 import { FileMigrationProvider, Kysely, Migrator, PostgresDialect } from 'kysely';
 import path from 'path';
@@ -82,7 +82,20 @@ export async function migrate(rollBack?: boolean) {
     console.debug(`   • ${chalk.magenta(migrationName)} → ${chalk.green(status)}`);
     console.debug(chalk.yellow('🡆 Génération du typage de la database'));
     const { originalStdout, originalStderr } = bindOutput();
+    const processedColumns = new Set();
+    const jsonbKeysCache = new Set();
     try {
+      const jsonbFilePath = path.resolve(__dirname, '../types/jsonb.d.ts');
+      const fileContent = readFileSync(jsonbFilePath, 'utf-8');
+      const keys = extractJsonbKeys(fileContent);
+      keys.forEach(key => {
+        jsonbKeysCache.add(key);
+      });
+
+      const isOptional = (property: CompositeProperty): boolean => {
+        return property?.isIdentity || property?.defaultValue;
+      };
+
       await processDatabase({
         enumStyle: 'type',
         connection: dbConfig,
@@ -91,37 +104,90 @@ export async function migrate(rollBack?: boolean) {
         outputPath: path.resolve(__dirname, '../types/models'),
         typeFilter: kyselyTypeFilter,
         preRenderHooks: [makeKyselyHook()],
+        getPropertyMetadata: property => {
+          if (property.type?.fullName === 'pg_catalog.jsonb') {
+            const tableName = (property as any).informationSchemaValue?.table_name || 'unknown';
+            const columnKey = `${tableName}.${property.name}`;
+
+            if (!processedColumns.has(columnKey)) {
+              processedColumns.add(columnKey);
+              const key = `${tableName}_${property.name}`;
+              return {
+                name: property.name,
+                typeOverride: jsonbKeysCache.has(key) ? `JSONB["${key}"] | object` : 'object',
+                nullableOverride: property.isNullable,
+                comment: property.comment ? [property.comment] : undefined,
+                optionalOverride: isOptional(property),
+              };
+            }
+          }
+
+          return {
+            name: property.name,
+            nullableOverride: property.isNullable,
+            comment: property.comment ? [property.comment] : undefined,
+            optionalOverride: isOptional(property),
+          };
+        },
+
         postRenderHooks: [
-          (filePath, lines) => {
+          (filePath: string, lines: string[]): string[] => {
             if (!filePath.endsWith('.ts')) return lines;
+            const processedLines: string[] = [];
 
-            return lines
-              .filter(
-                line =>
-                  !/import\s+type\s+\{[^}]*\b(ColumnType|Selectable|Insertable|Updateable)\b[^}]*\}\s+from\s+['"]kysely['"]/.test(
-                    line,
-                  ),
-              )
-              .map(line => {
-                if (/^export\s+type\s+\w+Id\s*=/.test(line)) {
-                  return line.replace(
-                    /^export\s+type\s+(\w+Id)\s*=\s*([^&]+)&\s*\{\s*__brand:[^}]+\};$/,
-                    'export type $1 = $2;',
-                  );
-                }
+            for (const line of lines) {
+              if (
+                /import\s+type\s+\{[^}]*\b(ColumnType|Selectable|Insertable|Updateable)\b[^}]*\}\s+from\s+['"]kysely['"]/.test(
+                  line,
+                )
+              ) {
+                continue;
+              }
 
-                if (/:?\s*ColumnType</.test(line)) {
-                  return line.replace(/ColumnType<\s*([^,>]+)[^>]*>/g, '$1');
-                }
+              let processedLine = line;
 
-                if (/^export\s+type\s+\w+\s*=\s*(Selectable|Insertable|Updateable)<.*>;$/.test(line)) {
-                  return '';
-                }
+              if (/^export\s+type\s+\w+Id\s*=/.test(processedLine)) {
+                processedLine = processedLine.replace(
+                  /^export\s+type\s+(\w+Id)\s*=\s*([^&]+)&\s*\{\s*__brand:[^}]+\};$/,
+                  'export type $1 = $2;',
+                );
+              }
 
-                return line;
-              })
+              if (/:?\s*ColumnType</.test(processedLine)) {
+                processedLine = processedLine.replace(/ColumnType<\s*([^,>]+)[^>]*>/g, '$1');
+              }
 
-              .filter(line => line.trim() !== '');
+              if (/^export\s+type\s+\w+\s*=\s*(Selectable|Insertable|Updateable)<.*>;$/.test(processedLine)) {
+                continue;
+              }
+
+              if (processedLine.includes('Date')) {
+                processedLine = processedLine.replace(/\bDate\b(?!\w)/g, 'Date | number | string');
+                processedLine = processedLine.replace(/(Date \| number \| string)( \| null)/g, '$1$2');
+              }
+
+              if (processedLine.trim() !== '') {
+                processedLines.push(processedLine);
+              }
+            }
+
+            const content = processedLines.join('\n');
+            const needsJSONBImport = /\bJSONB\b/.test(content);
+
+            const hasJSONBImport = processedLines.some(
+              line => line.includes('import') && line.includes('JSONB') && line.includes('../../../interfaces/models'),
+            );
+
+            const result: string[] = [];
+
+            if (needsJSONBImport && !hasJSONBImport) {
+              result.push(`import type { JSONB } from '../../jsonb';`);
+              result.push('');
+            }
+
+            result.push(...processedLines);
+
+            return result;
           },
         ],
       });
@@ -135,8 +201,32 @@ export async function migrate(rollBack?: boolean) {
       const msg = e instanceof Error ? e.message : String(e);
       console.error(chalk.red(`❌ Échec de la génération des types : ${msg}`));
       throw new Error();
+    } finally {
+      jsonbKeysCache.clear();
+      processedColumns.clear();
     }
   }
+}
+
+function extractJsonbKeys(fileContent: string): string[] {
+  const keys: string[] = [];
+  const interfaceMatch = fileContent.match(/interface\s+JSONB\s*\{([^}]+)\}/s);
+
+  if (interfaceMatch) {
+    const interfaceBody = interfaceMatch[1];
+    const propertyRegex =
+      /(?:^|\s+)(?:readonly\s+)?(?:"([^"]+)"|'([^']+)'|([a-zA-Z_$][a-zA-Z0-9_$]*))(?:\?)?:\s*[^;]+;/gm;
+
+    let match;
+    while ((match = propertyRegex.exec(interfaceBody)) !== null) {
+      const propertyName = match[1] || match[2] || match[3];
+      if (propertyName) {
+        keys.push(propertyName);
+      }
+    }
+  }
+
+  return keys;
 }
 
 // Point d’entrée

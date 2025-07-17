@@ -1,0 +1,82 @@
+2025-06-16 19:49:55 error: uncaughtException: (0 , withCriteria_1.WithSimpleAction) is not a function
+TypeError: (0 , withCriteria_1.WithSimpleAction) is not a function
+    at dbConnection.BaseModel (C:\Users\alexa\CodeVStudio\chessGame\server\src\database\pg.ts:48:28)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\chessGame\server\src\models\users.ts:6:52)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\chessGame\node_modules\.pnpm\ts-node@10.9.2_@swc+core@1._aa2170ea154de2f44cc6051b714e978d\node_modules\ts-node\src\index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\chessGame\node_modules\.pnpm\ts-node@10.9.2_@swc+core@1._aa2170ea154de2f44cc6051b714e978d\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+    at require (node:internal/modules/helpers:179:18)
+2025-06-16 20:07:09 error: uncaughtException: (0 , withCriteria_1.MixinAddons) is not a function
+TypeError: (0 , withCriteria_1.MixinAddons) is not a function
+    at dbConnection.BaseModel (C:\Users\alexa\CodeVStudio\chessGame\server\src\database\pg.ts:48:23)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\chessGame\server\src\models\users.ts:6:52)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\chessGame\node_modules\.pnpm\ts-node@10.9.2_@swc+core@1._aa2170ea154de2f44cc6051b714e978d\node_modules\ts-node\src\index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\chessGame\node_modules\.pnpm\ts-node@10.9.2_@swc+core@1._aa2170ea154de2f44cc6051b714e978d\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+    at require (node:internal/modules/helpers:179:18)
+2025-06-16 20:07:21 error: uncaughtException: (0 , withCriteria_1.MixinAddons) is not a function
+TypeError: (0 , withCriteria_1.MixinAddons) is not a function
+    at dbConnection.BaseModel (C:\Users\alexa\CodeVStudio\chessGame\server\src\database\pg.ts:48:23)
+    at Object.<anonymous> (C:\Users\alexa\CodeVStudio\chessGame\server\src\models\users.ts:6:52)
+    at Module._compile (node:internal/modules/cjs/loader:1358:14)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\chessGame\node_modules\.pnpm\ts-node@10.9.2_@swc+core@1._aa2170ea154de2f44cc6051b714e978d\node_modules\ts-node\src\index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\chessGame\node_modules\.pnpm\ts-node@10.9.2_@swc+core@1._aa2170ea154de2f44cc6051b714e978d\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)
+    at require (node:internal/modules/helpers:179:18)
+2025-06-16 20:19:49 error: uncaughtException: ⨯ Unable to compile TypeScript:
+[96msrc/plugins/withCriteria.ts[0m:[93m10[0m:[93m129[0m - [91merror[0m[90m TS1131: [0mProperty or signature expected.
+
+[7m10[0m   [C in keyof DB[TB]]: DB[TB][C] | [ComparisonOperatorExpression, DB[TB][C]] | ((qb: ColumnConditionBuilder<DB[TB][C]>) => any);;
+[7m  [0m [91m                                                                                                                                ~[0m
+[96msrc/plugins/withCriteria.ts[0m:[93m11[0m:[93m1[0m - [91merror[0m[90m TS1128: [0mDeclaration or statement expected.
+
+[7m11[0m }>;
+[7m  [0m [91m~[0m
+[96msrc/plugins/withCriteria.ts[0m:[93m11[0m:[93m2[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m11[0m }>;
+[7m  [0m [91m ~[0m
+[96msrc/plugins/withCriteria.ts[0m:[93m11[0m:[93m3[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m11[0m }>;
+[7m  [0m [91m  ~[0m
+
+TSError: ⨯ Unable to compile TypeScript:
+[96msrc/plugins/withCriteria.ts[0m:[93m10[0m:[93m129[0m - [91merror[0m[90m TS1131: [0mProperty or signature expected.
+
+[7m10[0m   [C in keyof DB[TB]]: DB[TB][C] | [ComparisonOperatorExpression, DB[TB][C]] | ((qb: ColumnConditionBuilder<DB[TB][C]>) => any);;
+[7m  [0m [91m                                                                                                                                ~[0m
+[96msrc/plugins/withCriteria.ts[0m:[93m11[0m:[93m1[0m - [91merror[0m[90m TS1128: [0mDeclaration or statement expected.
+
+[7m11[0m }>;
+[7m  [0m [91m~[0m
+[96msrc/plugins/withCriteria.ts[0m:[93m11[0m:[93m2[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m11[0m }>;
+[7m  [0m [91m ~[0m
+[96msrc/plugins/withCriteria.ts[0m:[93m11[0m:[93m3[0m - [91merror[0m[90m TS1109: [0mExpression expected.
+
+[7m11[0m }>;
+[7m  [0m [91m  ~[0m
+
+    at createTSError (C:\Users\alexa\CodeVStudio\chessGame\node_modules\.pnpm\ts-node@10.9.2_@swc+core@1._aa2170ea154de2f44cc6051b714e978d\node_modules\ts-node\src\index.ts:859:12)
+    at reportTSError (C:\Users\alexa\CodeVStudio\chessGame\node_modules\.pnpm\ts-node@10.9.2_@swc+core@1._aa2170ea154de2f44cc6051b714e978d\node_modules\ts-node\src\index.ts:863:19)
+    at C:\Users\alexa\CodeVStudio\chessGame\node_modules\.pnpm\ts-node@10.9.2_@swc+core@1._aa2170ea154de2f44cc6051b714e978d\node_modules\ts-node\src\index.ts:1379:34
+    at Object.compile (C:\Users\alexa\CodeVStudio\chessGame\node_modules\.pnpm\ts-node@10.9.2_@swc+core@1._aa2170ea154de2f44cc6051b714e978d\node_modules\ts-node\src\index.ts:1458:13)
+    at Module.m._compile (C:\Users\alexa\CodeVStudio\chessGame\node_modules\.pnpm\ts-node@10.9.2_@swc+core@1._aa2170ea154de2f44cc6051b714e978d\node_modules\ts-node\src\index.ts:1617:30)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1416:10)
+    at Object.require.extensions.<computed> [as .ts] (C:\Users\alexa\CodeVStudio\chessGame\node_modules\.pnpm\ts-node@10.9.2_@swc+core@1._aa2170ea154de2f44cc6051b714e978d\node_modules\ts-node\src\index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1208:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:1024:12)
+    at Module.require (node:internal/modules/cjs/loader:1233:19)

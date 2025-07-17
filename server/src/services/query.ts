@@ -1,5 +1,6 @@
 import dbInstance from '@/database/pg';
 import type Database from '@/types/models/Database';
+import { logger } from '@/utils/logger';
 import { type Transaction } from 'kysely';
 import { Service } from 'typedi';
 
@@ -14,9 +15,14 @@ export default class QueryBuilder {
     serviceFn: (trx: Transaction<Database>) => Promise<T>,
     logicFn: (result: T, trx: Transaction<Database>) => Promise<V>,
   ): Promise<V> {
-    return await this.db.transaction().execute(async trx => {
-      const result = await serviceFn(trx);
-      return logicFn(result, trx);
-    });
+    try {
+      return await this.db.transaction().execute(async trx => {
+        const result = await serviceFn(trx);
+        return logicFn(result, trx);
+      });
+    } catch (error) {
+      logger.error('QueryBuilderFile.transactionBuilder => ', error);
+      throw error;
+    }
   }
 }

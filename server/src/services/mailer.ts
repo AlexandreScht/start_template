@@ -15,7 +15,12 @@ export default class MailerServiceClass {
   private support_mail: string = env.MAILER_SUPPORT;
 
   constructor() {
-    this.transporter = nodemailer.createTransport(mailerConfig);
+    this.transporter = nodemailer.createTransport(
+      { ...mailerConfig },
+      {
+        from: env.MAILER_FROM,
+      },
+    );
   }
 
   private async sendMailAsync(mailOptions: nodemailer.SendMailOptions) {
@@ -31,8 +36,13 @@ export default class MailerServiceClass {
 
   async already_register(email: string) {
     try {
-      const confirmationEmail = fs.readFileSync(join(this.template_dir, 'already_register.html'), { encoding: 'utf-8' });
-      const htmlMailer = confirmationEmail.replace('{{support_MAIL}}', this.support_mail).replace('{{email}}', email);
+      const confirmationEmail = fs.readFileSync(join(this.template_dir, 'already_register.html'), {
+        encoding: 'utf-8',
+      });
+      const htmlMailer = confirmationEmail
+        .replace('{{support_MAIL}}', this.support_mail)
+        .replace('{{login_link}}', `${env.ORIGIN}/login}`)
+        .replace('{{reset_link}}', `${env.ORIGIN}/reset-link}`);
 
       const mailOptions = {
         to: email,
@@ -47,16 +57,42 @@ export default class MailerServiceClass {
     }
   }
 
-  async new_register(email: string, token: string) {
+  async new_register(email: string, token: string, code: string) {
     try {
+      if (!/^\d{4}$/.test(code)) {
+        throw new ServicesError('Code must be a 4-digit number');
+      }
       const confirmationEmail = fs.readFileSync(join(this.template_dir, 'new_register.html'), { encoding: 'utf-8' });
       const htmlMailer = confirmationEmail
         .replace('{{support_MAIL}}', this.support_mail)
-        .replace('{{link}}', `${env.ORIGIN}/confirm-account/${encodeURI(token)}`);
+        .replace('{{link}}', `${env.ORIGIN}/confirm-account/${encodeURIComponent(token)}`)
+        .replaceAll('{{code1}}', code[0])
+        .replaceAll('{{code2}}', code[1])
+        .replaceAll('{{code3}}', code[2])
+        .replaceAll('{{code4}}', code[3]);
 
       const mailOptions = {
         to: email,
-        subject: 'Veuillez valider votre compte',
+        subject: 'Terminez votre inscription en saisissant ce code',
+        html: htmlMailer,
+      } satisfies nodemailer.SendMailOptions;
+
+      await this.sendMailAsync(mailOptions);
+    } catch (error) {
+      logger.error('MailerService.Registration => ', error);
+      throw new ServicesError();
+    }
+  }
+  async new_confirmed_register(email: string) {
+    try {
+      const confirmationEmail = fs.readFileSync(join(this.template_dir, 'new_confirmed_register.html'), {
+        encoding: 'utf-8',
+      });
+      const htmlMailer = confirmationEmail.replace('{{support_MAIL}}', this.support_mail);
+
+      const mailOptions = {
+        to: email,
+        subject: 'Votre compte a bien été créé et est dès à présent actif sur notre site web.',
         html: htmlMailer,
       };
 

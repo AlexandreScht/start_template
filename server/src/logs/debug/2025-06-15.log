@@ -1,0 +1,196 @@
+2025-06-15 00:32:51 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 00:33:13 info: [0mGET /api/auth/google [36m302[0m 30.735 ms - 0[0m
+2025-06-15 00:33:20 info: [0mGET /api/callback/google?state=eXnykHtDjcBZnmRpc3NJLXkH&code=4%2F0AUJR-x7Br6IuJPiMgP44UYflnJ1i91pi9lZnzcktiSoJfgbuyFMy4EtE1yvzyw-z8fVxKg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=consent [36m302[0m 72.316 ms - 94[0m
+2025-06-15 00:42:40 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 00:43:38 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 00:44:28 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 00:45:32 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 00:45:34 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 00:45:41 info: [0mGET /api/auth/google [36m302[0m 27.508 ms - 0[0m
+2025-06-15 00:45:46 error: UserServiceFile.getUser => la colonne « refresh_token » n'existe pas
+2025-06-15 00:45:46 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 00:45:46 info: [0mGET /api/callback/google?code=4%2F0AUJR-x7LTkT_Xlzg6UGBVBXwsU7RYr8kuD2xpwaSmvG-0kyx2sxo9xfcGm5cBkFolw9CCg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=consent [36m302[0m 326.349 ms - 160[0m
+2025-06-15 00:46:03 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 00:46:04 info: [0mGET /api/auth/google [36m302[0m 60.542 ms - 0[0m
+2025-06-15 00:46:06 error: UserServiceFile.getUser => la colonne « refresh_token » n'existe pas
+2025-06-15 00:46:06 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 00:46:06 info: [0mGET /api/callback/google?code=4%2F0AUJR-x46JRiUW4SnFPH_BeTnl3pnb9aeiZT9Z2bPI05lzJILz0Dbp8yEVwfxPaiWkUai3g&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none [36m302[0m 210.986 ms - 160[0m
+2025-06-15 11:21:32 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 11:25:10 info: [0mGET /api/auth/google [36m302[0m 59.237 ms - 0[0m
+2025-06-15 11:25:13 error: UserServiceFile.getUser => la colonne « refresh_token » n'existe pas
+2025-06-15 11:25:13 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 11:25:13 info: [0mGET /api/callback/google?code=4%2F0AUJR-x5amvL5K45gzApQg-D2hsfV024-KI9--hrsqu5zc3bjztk3rHT5ch1g8QhiDgdTNg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&prompt=none [36m302[0m 306.084 ms - 160[0m
+2025-06-15 11:28:05 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 11:28:37 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 11:28:38 info: [0mGET /api/auth/google [36m302[0m 28.151 ms - 0[0m
+2025-06-15 11:28:41 error: UserServiceFile.getUser => la colonne « refresh_token » n'existe pas
+2025-06-15 11:28:41 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 11:28:41 info: [0mGET /api/callback/google?code=4%2F0AUJR-x6AEIcXE1zgAvkcNfnF7HaurcDOHJ78ihxfJBp4MgpvE6bAYh9t3FWAeW2Zx2ru-Q&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none [36m302[0m 240.401 ms - 160[0m
+2025-06-15 11:29:41 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 11:29:44 info: [0mGET /api/auth/google [36m302[0m 45.027 ms - 0[0m
+2025-06-15 11:29:47 error: AuthServiceFile.register =>  Illegal arguments: object, string
+2025-06-15 11:29:47 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 11:29:47 info: [0mGET /api/callback/google?code=4%2F0AUJR-x4cylb4k4WdzCqrsIXuLEEp4-wS-spdnNvSMm7fFq03b3LlAbiFJ4MgjsqgNuvzLg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=none [36m302[0m 216.014 ms - 160[0m
+2025-06-15 11:30:02 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 11:30:12 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:11:24 info: [0mGET /api/auth/google [36m302[0m 64.381 ms - 0[0m
+2025-06-15 12:11:27 error: UserServiceFile.getUser => la colonne « refresh_token » n'existe pas
+2025-06-15 12:11:27 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:11:27 info: [0mGET /api/callback/google?code=4%2F0AUJR-x4iq2ebXz4wV8vJfPvIPhguDgMjsRR9zw97VIRJPLNoLACpWHmxgG-LVdU1xY9VRQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&prompt=none [36m302[0m 324.607 ms - 160[0m
+2025-06-15 12:12:12 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:12:24 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:12:47 info: [0mGET /api/auth/google [36m302[0m 51.331 ms - 0[0m
+2025-06-15 12:12:50 error: UserServiceFile.getUser => la colonne « refresh_token » n'existe pas
+2025-06-15 12:12:50 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:12:50 info: [0mGET /api/callback/google?code=4%2F0AUJR-x7XWNXaqcfunyQpj6ScbVytCFg4NvijGWU4SjFPJ5S_YkpyqssGi3chzyBFsb9J2w&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none [36m302[0m 290.722 ms - 160[0m
+2025-06-15 12:13:36 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:13:42 info: [0mGET /api/auth/google [36m302[0m 71.277 ms - 0[0m
+2025-06-15 12:13:45 error: UserServiceFile.getUser => la colonne « refresh_token » n'existe pas
+2025-06-15 12:13:45 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:13:45 info: [0mGET /api/callback/google?code=4%2F0AUJR-x6HPeD8ueDke6_DdL8t4DpFyAq7tJWayK8noQNvp9mtg0-DV5yfRmgnB-7HScSH-A&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none [36m302[0m 234.165 ms - 160[0m
+2025-06-15 12:17:16 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:25:14 info: [0mGET /api/auth/google [36m302[0m 53.853 ms - 0[0m
+2025-06-15 12:25:17 error: AuthServiceFile.register =>  Illegal arguments: object, string
+2025-06-15 12:25:17 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:25:17 info: [0mGET /api/callback/google?code=4%2F0AUJR-x5v-FK9nmqGQaasbXFwwUQMsiKSxQHpLpLlUmV0E8UTf8rFis-RKCbbbW-CPu4lFQ&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=none [36m302[0m 317.469 ms - 160[0m
+2025-06-15 12:26:14 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:26:29 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:26:55 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:27:05 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:27:23 info: [0mGET /api/auth/google [36m302[0m 69.575 ms - 0[0m
+2025-06-15 12:27:25 error: AuthServiceFile.register =>  Illegal arguments: object, string
+2025-06-15 12:27:25 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:27:25 info: [0mGET /api/callback/google?code=4%2F0AUJR-x7nNLFOu8tmcyVWATYip0c1gElwAaFS9ugvdsriA4SE5o61uz_oT67WpHezbPaS5A&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=none [36m302[0m 287.729 ms - 160[0m
+2025-06-15 12:28:00 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:28:03 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:28:11 info: [0mGET /api/auth/google [36m302[0m 62.262 ms - 0[0m
+2025-06-15 12:28:14 error: AuthServiceFile.register =>  Illegal arguments: object, string
+2025-06-15 12:28:14 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:28:14 info: [0mGET /api/callback/google?code=4%2F0AUJR-x5cOc8ApLVOKr0uXAZof1O-qIi6GYh-hrAitnYbO-uVPtU6fEHTZZI7eKrQ0e2guQ&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=none [36m302[0m 275.805 ms - 160[0m
+2025-06-15 12:28:29 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:28:59 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:29:01 info: [0mGET /api/auth/google [36m302[0m 45.031 ms - 0[0m
+2025-06-15 12:29:04 error: AuthServiceFile.register =>  Illegal arguments: object, string
+2025-06-15 12:29:04 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:29:04 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:29:04 info: [0mGET /api/callback/google?code=4%2F0AUJR-x58vxzQAKwbsWKEQe80nUOCRkSpxlL5ndoXhg8jSVwrx6OaJG1yq4BJ7M2KuiWdUw&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=none [36m302[0m 273.569 ms - 160[0m
+2025-06-15 12:29:34 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:31:22 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:33:18 info: [0mGET /api/auth/google [36m302[0m 48.438 ms - 0[0m
+2025-06-15 12:33:23 error: MailerService.sendMailAsync =>  Invalid login: 535 5.7.8 Error: authentication failed: (reason unavailable)
+2025-06-15 12:33:23 error: MailerService.Registration =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:33:23 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:33:23 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:33:23 info: [0mGET /api/callback/google?code=4%2F0AUJR-x5niRYcTBpPAO6qzvV5D5Lu3HfGBzqTpU23kiIyOQxAo0fIwQoM1hCmX-l0YmK1Sw&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=none [36m302[0m 2756.594 ms - 160[0m
+2025-06-15 12:41:49 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:42:05 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:42:09 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:42:15 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:42:20 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:42:35 info: [0mGET /api/auth/google [36m302[0m 55.448 ms - 0[0m
+2025-06-15 12:42:40 error: MailerService.sendMailAsync =>  Mail command failed: 451 4.0.0 Invalid from
+2025-06-15 12:42:40 error: MailerService.Registration =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:42:40 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:42:40 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:42:40 info: [0mGET /api/callback/google?code=4%2F0AUJR-x4m22kCZwQ_JFQ5g4anr_z2A5MeBa6oXNFg1JvsVrjDbb5OCtbJwIBkJHDH-wYbQg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=none [36m302[0m 384.853 ms - 160[0m
+2025-06-15 12:43:37 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:45:04 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:45:09 info: [0mGET /api/auth/google [36m302[0m 41.887 ms - 0[0m
+2025-06-15 12:45:16 error: MailerService.sendMailAsync =>  Mail command failed: 451 4.0.0 Invalid from
+2025-06-15 12:45:16 error: MailerService.Registration =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:45:16 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:45:16 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:45:16 info: [0mGET /api/callback/google?code=4%2F0AUJR-x6YfvlBlc_0UTQadssnGn5Z1_PIJhfDw_cxZrBviJ0Xjy7IgbEqM_CYXABt65-zuw&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none [36m302[0m 477.982 ms - 160[0m
+2025-06-15 12:45:58 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:46:00 info: [0mGET /api/auth/google [36m302[0m 48.538 ms - 0[0m
+2025-06-15 12:46:03 error: MailerService.sendMailAsync =>  Mail command failed: 451 4.0.0 Invalid from
+2025-06-15 12:46:03 error: MailerService.Registration =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:46:03 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:46:03 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:46:03 info: [0mGET /api/callback/google?code=4%2F0AUJR-x6758lbIFay6IPf5Fu5QgNCz28GvNBEJ1wa6SMgo-b9Q-eUm47-zfB9lMhhCROZ5g&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=none [36m302[0m 377.313 ms - 160[0m
+2025-06-15 12:46:17 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:47:17 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:57:04 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:57:23 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:57:35 info: [0mGET /api/auth/google [36m302[0m 53.020 ms - 0[0m
+2025-06-15 12:57:38 error: MailerService.sendMailAsync =>  Mail command failed: 451 4.0.0 Invalid from
+2025-06-15 12:57:38 error: MailerService.Registration =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:57:38 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:57:38 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 12:57:38 info: [0mGET /api/callback/google?code=4%2F0AUJR-x44_N2T5NPTw-XL1HpcYp6qFzMHt3Q1T1iYNQbnxA5jYhTKHMiSk5ZhhyUUwvmnVg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none [36m302[0m 393.176 ms - 160[0m
+2025-06-15 12:58:06 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 12:59:31 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 13:00:30 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 13:01:05 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 13:01:29 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 13:02:10 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 13:03:07 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 13:03:14 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 13:03:16 info: [0mGET /api/auth/google [36m302[0m 51.608 ms - 0[0m
+2025-06-15 13:03:19 error: MailerService.sendMailAsync =>  Mail command failed: 451 4.0.0 Invalid from
+2025-06-15 13:03:19 error: MailerService.Registration =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 13:03:19 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 13:03:19 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 13:03:19 info: [0mGET /api/callback/google?code=4%2F0AUJR-x6RAuMJn0zlenvAwbzldJ65nlHYBG2Rl06MD4v3ymF2LvUE2DakBu-p83Er2urEZA&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none [36m302[0m 357.868 ms - 160[0m
+2025-06-15 13:03:21 info: [0mGET /api/auth/google [36m302[0m 53.207 ms - 0[0m
+2025-06-15 13:03:26 error: AuthServiceFile.register =>  une valeur NULL viole la contrainte NOT NULL de la colonne « last_name » dans la relation « users »
+2025-06-15 13:03:26 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 13:03:26 error: Passeport.GoogleStrategy error :  The internal service encountered an unexpected error. Please try again later.
+2025-06-15 13:03:26 info: [0mGET /api/callback/google?code=4%2F0AUJR-x6ld_mgxF3tOTR94QABo1hMQyS3rwUvWEjp8d6xBx_arCIhgc25JVJZv6rwET1KsQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=3&prompt=consent [36m302[0m 271.384 ms - 160[0m
+2025-06-15 13:04:20 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 13:04:48 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 13:04:52 info: [0mGET /api/auth/google [36m302[0m 44.291 ms - 0[0m
+2025-06-15 13:04:55 info: [0mGET /api/callback/google?code=4%2F0AUJR-x74F2x-Q9V0tVlZcRsMIiapZtTniEFypAdHiVnWUib0HX3wf2gvSN9lwZOzzRiR5g&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&prompt=none [36m302[0m 234.864 ms - 50[0m
+2025-06-15 13:05:47 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-06-15 13:26:53 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀

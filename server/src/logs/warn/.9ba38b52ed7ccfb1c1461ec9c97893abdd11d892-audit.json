@@ -6,39 +6,59 @@
     "auditLog": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\.9ba38b52ed7ccfb1c1461ec9c97893abdd11d892-audit.json",
     "files": [
         {
-            "date": 1748629427345,
-            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\2025-05-30.log",
-            "hash": "6c5d13fcbca33eca08910c91d15adbba0726930388ff11eeb0e6af55c211074a"
+            "date": 1749934295020,
+            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\2025-06-14.log",
+            "hash": "396030f3585554b9cc7e87a375cc7fdee617d3db79258a4853b79b6d5595d1df"
         },
         {
-            "date": 1748644035000,
-            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\2025-05-31.log",
-            "hash": "8ab1b0f248321a7c595f1709db208d10a3c44192700136b53d3c9ae106d8a961"
+            "date": 1749940370040,
+            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\2025-06-15.log",
+            "hash": "fceb9807962759c19a187e0f4285e4eb87f01a29da5110a900bc7e8a90bd105b"
         },
         {
-            "date": 1748729781212,
-            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\2025-06-01.log",
-            "hash": "d01d1f5e166b262f8edffe5a72b77c50f7c664128d2470ca5ad8bc04ff596372"
+            "date": 1750096040105,
+            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\2025-06-16.log",
+            "hash": "d820b9101452351b016fa114135c822b2fc8efa3886334f1ea8c22d4c51bc788"
         },
         {
-            "date": 1748903961194,
-            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\2025-06-03.log",
-            "hash": "72f067c4ac8ae302eb1ebe8be1de9a91b7880a6f8a3c87ad8acf88ad9bcc50c0"
+            "date": 1750113035647,
+            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\2025-06-17.log",
+            "hash": "306c29827437fae10fa38876b5811471032060e2a53b4b49e7a0390f872e9b0e"
         },
         {
-            "date": 1749247319919,
-            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\2025-06-07.log",
-            "hash": "53b97a6338331ac5c640f453da2b6d47bb1b0ee687a60e9149b1c481b18b1f18"
+            "date": 1750334561682,
+            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\2025-06-19.log",
+            "hash": "b0e48758828090074844840d65387525f1cd0c60bca5152fb555a71d89ae60c4"
         },
         {
-            "date": 1749414166870,
-            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\2025-06-08.log",
-            "hash": "f2adfbf88ff262fcd6fec55c39af8c85fe5ab329b84d68bc5705203aa1f76890"
+            "date": 1750787414214,
+            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\2025-06-24.log",
+            "hash": "2585f04e507ea42f85060beae4114b8c56d45dbede734a75ae9fc159bc40c4d4"
         },
         {
-            "date": 1749420552960,
-            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\2025-06-09.log",
-            "hash": "817f1cfb7e03cd661cb744af73cb53cb84e524e560a893302048b18eb288b535"
+            "date": 1751486051112,
+            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\2025-07-02.log",
+            "hash": "13853ef2b90ef0f4715fd7b7334ec497a70ad20c4fc52ad27ac7735263b52b44"
+        },
+        {
+            "date": 1751494184590,
+            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\2025-07-03.log",
+            "hash": "c8c06d943b46d42e3a48b9110a2ac331174cf12c49ed687ca557100792e55d1c"
+        },
+        {
+            "date": 1752529960805,
+            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\2025-07-14.log",
+            "hash": "67d1bcca4c625449bac94d546a877c76312109e243600d486f32b0644d80f343"
+        },
+        {
+            "date": 1752605673230,
+            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\2025-07-15.log",
+            "hash": "0590f895a64e356a19acd5bb3734f0b47868356a2c695da005f926ddce18328c"
+        },
+        {
+            "date": 1752623655597,
+            "name": "C:\\Users\\alexa\\CodeVStudio\\chessGame\\server\\src\\logs\\warn\\2025-07-16.log",
+            "hash": "f94e5b967d94fa5a9dc96ce64a5b14e840762054dd30a92609a0cf94400176a7"
         }
     ],
     "hashType": "sha256"

@@ -1,67 +1,64 @@
 import env from '@/config';
-import { user_tester } from '@/config/list';
-import { InvalidArgumentError, InvalidCredentialsError, InvalidSessionError, ServerException } from '@/exceptions';
+import { tester_user_allowed } from '@/config/users';
+import { InvalidAccessError, InvalidArgumentError, ServerException } from '@/exceptions';
 import { type Session } from '@/interfaces/session';
-import { type Token } from '@/interfaces/token';
-import QueryBuilder from '@/services/query';
-import ApiServiceFile from '@/services/api';
+import RedisInstance from '@/libs/redis';
+import UserModel from '@/models/users';
 import AuthServiceFile from '@/services/auth';
 import MailerServiceFile from '@/services/mailer';
-import UserServiceFile from '@/services/users';
+import QueryBuilder from '@/services/query';
 import { type authControllerType } from '@/types/controllers/auth';
-import createSessionCookie from '@/utils/createCookie';
+import { checkOtpCode, optCode } from '@/utils/generate';
 import { logger } from '@/utils/logger';
+import passport from 'passport';
 import Container from 'typedi';
-import { v4 as uuid } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 export default class AuthControllerFile {
-  private APIService: ApiServiceFile;
-  private AuthService: AuthServiceFile;
-  private UserService: UserServiceFile;
-  private MailerService: MailerServiceFile;
-  private queryBuilder: QueryBuilder;
+  private redisClient = RedisInstance.getInstance();
+  private AuthService = Container.get(AuthServiceFile);
+  private MailerService = Container.get(MailerServiceFile);
+  private queryBuilder = Container.get(QueryBuilder);
 
-  constructor() {
-    this.APIService = Container.get(ApiServiceFile);
-    this.UserService = Container.get(UserServiceFile);
-    this.MailerService = Container.get(MailerServiceFile);
-    this.AuthService = Container.get(AuthServiceFile);
-    this.queryBuilder = Container.get(QueryBuilder);
-  }
-
-  protected async register({
+  protected register = async ({
     locals: {
-      body: { email, password, firstName, lastName, phone },
+      body: { email, password, first_name, last_name, phone },
     },
     res,
     next,
-  }: authControllerType.register) {
+  }: authControllerType.register) => {
     try {
-      if (new URL(env.ORIGIN).hostname.startsWith('test.') && !user_tester.includes(email)) {
-        throw new InvalidCredentialsError('Only developer accounts can have access to this site.');
+      if (new URL(env.ORIGIN).hostname.startsWith('test.') && !tester_user_allowed.includes(email)) {
+        throw new InvalidAccessError('Only developer accounts can have access to this site.');
       }
+      const user = await UserModel.selectWhere(['id', 'validate'], { email }).executeTakeFirst();
 
-      const user = await this.UserService.getUser({ email }, ['id', 'accessToken', 'validate']);
+      const newUser = async (id: number) => {
+        const token = uuidv4();
+        const raw = JSON.stringify({ id, token });
+        const access_token = Buffer.from(raw).toString('base64');
+        const [access_code, code] = optCode(4, '15min');
+
+        await this.MailerService.new_register(email, access_token, code);
+        await this.redisClient.set(`register:${id}`, { access_token: token, access_code }, { EX: 15 * 60 });
+      };
 
       if (user) {
-        const { id, accessToken, validate } = user;
+        const { id, validate } = user;
         if (validate) {
           await this.MailerService.already_register(email);
           res.status(200).send('Please check your email to activate your account.');
           return;
         }
-        await this.MailerService.new_register(email, accessToken);
-        createSessionCookie<Token.cookieIdentifier>(res, { id, cookieName: 'new_register' }, '15m');
+        await newUser(id);
         res.status(200).send('Please check your email to activate your account.');
         return;
       }
 
       await this.queryBuilder.transactionBuilder(
-        trx => this.AuthService.register({ email, password, firstName, lastName, phone }, trx),
-        async ({ id, ...returningValues }) => {
-          if (!('accessToken' in returningValues) || !id) throw new InvalidArgumentError();
-          const { accessToken } = returningValues;
-          await this.MailerService.new_register(email, accessToken);
-          createSessionCookie<Token.cookieIdentifier>(res, { id, cookieName: 'new_register' }, '15m');
+        trx => this.AuthService.register({ email, password, first_name, last_name, phone }, trx),
+        async ({ id, role }) => {
+          if (!id || !role) throw new InvalidArgumentError();
+          await newUser(id);
         },
       );
       res.status(200).send('Please check your email to activate your account.');
@@ -71,81 +68,75 @@ export default class AuthControllerFile {
       }
       next(error);
     }
-  }
+  };
 
-  protected async login({
-    locals: {
-      body: { email, password },
-    },
-    res,
-    next,
-  }: authControllerType.login) {
+  protected login = async ({ req, res, next }: authControllerType.login) => {
     try {
-      if (new URL(env.ORIGIN).hostname.startsWith('test.') && !user_tester.includes(email)) {
-        throw new InvalidCredentialsError('Only developer accounts can have access to this site.');
-      }
+      return passport.authenticate('local', { session: true }, (err: Error, user: Session.TokenUser, info: any) => {
+        if (err || !user) {
+          const message = err?.message || info?.message || 'Authentification refusée';
+          return res.redirect(`${env.ORIGIN}/login?error=${encodeURIComponent(message || 'Session Error')}`);
+        }
 
-      const user = await this.UserService.getUserModel(email);
+        req.login(user, { session: true }, loginErr => {
+          if (loginErr) {
+            logger.error('Erreur lors de req.login:', loginErr);
+            return res.redirect(`${env.ORIGIN}/login?error=${encodeURIComponent(loginErr.message || 'Session Error')}`);
+          }
 
-      if (!user) {
-        throw new InvalidCredentialsError('Email ou mot de passe incorrect !');
-      }
-
-      const { id, role, validate, firstName } = await this.AuthService.login(user, password);
-
-      if (!validate) {
-        throw new InvalidSessionError(
-          'Please verify your email address by clicking the link sent to your email address before logging in.',
-        );
-      }
-
-      createSessionCookie<Session.userPayload>(
-        res,
-        { refreshToken: uuid(), sessionId: id, sessionRole: role, cookieName: env.COOKIE_NAME },
-        '31d',
-      );
-
-      res.status(200).send({ firstName, role });
+          return res.redirect(env.ORIGIN);
+        });
+      })(req, res, next);
     } catch (error) {
       if (!(error instanceof ServerException)) {
-        logger.error('AuthControllerFile.register => ', error);
+        logger.error('AuthControllerFile.login => ', error);
       }
       next(error);
+      return;
     }
-  }
+  };
 
-  protected async validateAccount({
+  protected validateAccount = async ({
     locals: {
-      params: { accessToken },
-      cookie: { new_register },
+      body: { access_code },
+      token: access_token,
     },
     res,
     next,
-  }: authControllerType.validAccount) {
+  }: authControllerType.validAccount) => {
     try {
-      if (!new_register || new_register?.expired)
-        throw new InvalidArgumentError('This link has expired. Please request a new one to continue.');
-      const { id } = new_register || {};
-      if (!id || !accessToken) {
+      if (!access_code || !access_token)
+        throw new InvalidArgumentError(
+          'Sorry, something went wrong. Please request a new verification link to continue.',
+        );
+      const { id, token } = JSON.parse(Buffer.from(decodeURIComponent(access_token), 'base64').toString('utf-8')) || {};
+
+      if (!id || !token)
+        throw new InvalidArgumentError(
+          'Sorry, something went wrong. Please request a new verification link to continue.',
+        );
+
+      const memory = await this.redisClient.get<{ access_token: string; access_code: string }>(`register:${id}`);
+
+      if (!memory) throw new InvalidArgumentError('This link has expired. Please request a new one to continue.');
+
+      if (memory.access_token !== token) {
         throw new InvalidArgumentError(
           'Sorry, something went wrong. Please request a new verification link to continue.',
         );
       }
 
-      const user = await this.UserService.updateUsers({ id, accessToken }, { accessToken: null, validate: true });
+      if (!checkOtpCode(memory.access_code, String(access_code))) {
+        throw new InvalidArgumentError('The code you entered is incorrect. Please try again.');
+      }
 
-      if (!user) {
+      const user = await UserModel.updateWhere({ validate: true }, { id }).executeTakeFirst();
+
+      if (!user.numUpdatedRows) {
         throw new InvalidArgumentError(
           'Sorry, something went wrong. If the issue persists, please contact support for assistance',
         );
       }
-
-      res.clearCookie('new_register', {
-        signed: true,
-        httpOnly: true,
-        domain: new URL(env.ORIGIN).hostname,
-        secure: env.ORIGIN.startsWith('https'),
-      });
       res.status(201).send(true);
     } catch (error) {
       if (!(error instanceof ServerException)) {
@@ -153,5 +144,5 @@ export default class AuthControllerFile {
       }
       next(error);
     }
-  }
+  };
 }

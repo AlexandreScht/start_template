@@ -1,5 +1,7 @@
 import dbConfig from '@/config/db';
+import { type Plugin } from '@/interfaces/plugins';
 import { AppDatabase } from '@/plugins';
+import { MixinAddons } from '@/plugins/mixins';
 import type DatabaseShape from '@/types/models/Database';
 import { logger } from '@/utils/logger';
 import { PostgresDialect, sql } from 'kysely';
@@ -40,7 +42,12 @@ class dbConnection {
   >(tableName: TableName, idColumn: IdColumn) {
     const Base = this.db.model(tableName, idColumn);
     const typedBase = Base as unknown as Model<DatabaseShape, TableName, IdColumn>;
-    return updatedAt<DatabaseShape, TableName, IdColumn, typeof typedBase>(typedBase, 'updated_at') as typeof Base;
+    const UpdateBase = updatedAt<DatabaseShape, TableName, IdColumn, typeof typedBase>(typedBase, 'updated_at');
+    const adaptedBase = UpdateBase as unknown as {
+      new (...args: any[]): any;
+    } & Plugin.MixinAddons.BaseModelInterface<DatabaseShape, TableName>;
+
+    return MixinAddons<DatabaseShape, TableName, typeof adaptedBase>(adaptedBase);
   }
 
   public static getInstance(): dbConnection {

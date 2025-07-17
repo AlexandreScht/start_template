@@ -11,8 +11,8 @@ const mw =
     }
 
     const locals = {};
-    const onErrors = [];
-    const onSuccess = [];
+    const onErrors: (() => Promise<void> | void)[] = [];
+    const onSuccess: (() => Promise<void> | void)[] = [];
     const session: Partial<Session.TokenUser> = {};
     let handlerIndex = 0;
     const ctx: ctx = {

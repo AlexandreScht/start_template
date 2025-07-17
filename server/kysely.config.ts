@@ -1,4 +1,11 @@
-import { CamelCasePlugin, DummyDriver, PostgresAdapter, PostgresDriver, PostgresIntrospector, PostgresQueryCompiler } from 'kysely';
+import {
+  CamelCasePlugin,
+  DummyDriver,
+  PostgresAdapter,
+  PostgresDriver,
+  PostgresIntrospector,
+  PostgresQueryCompiler,
+} from 'kysely';
 import { defineConfig, getKnexTimestampPrefix } from 'kysely-ctl';
 import { Pool } from 'pg';
 import dbConfig from './src/config/db.ts';

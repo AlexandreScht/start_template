@@ -19,6 +19,21 @@ const env = cleanEnv(process.env, {
   // Google oAuth2o
   GOOGLE_CLIENT_ID: str(),
   GOOGLE_CLIENT_SECRET: str(),
+  CAPTCHA_SECRET_KEY: str(),
+  // Mailer
+  MAILER_HOST: str(),
+  MAILER_PORT: port({ default: 587 }),
+  MAILER_USER: str(),
+  MAILER_PASSWORD: str(),
+  MAILER_FROM: str(),
+  MAILER_SUPPORT: str({ default: 'supprt-company@gmail.com' }),
+  // Database
+
+  DB_USER: str({ default: 'postgres' }),
+  DB_PASSWORD: str(),
+  DB_HOST: str({ default: 'localhost' }),
+  DB_PORT: port({ default: 5432 }),
+  DB_DATABASE: str(),
 });
 
 export default env;

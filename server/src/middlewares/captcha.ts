@@ -1,3 +1,4 @@
+import env from '@/config';
 import { type ctx } from '@/interfaces/middlewares';
 import ApiServiceFile from '@/services/api';
 import { logger } from '@/utils/logger';
@@ -7,6 +8,9 @@ import Container from 'typedi';
 export default function captchaMiddleWare() {
   const apiService = Container.get(ApiServiceFile);
   return async (ctx: ctx) => {
+    if (env.NODE_ENV === 'development') {
+      return ctx.next();
+    }
     const { next, locals } = ctx;
     try {
       const {

@@ -1,13 +1,13 @@
 import { type Controller } from '@/interfaces/controllers';
-import { type Token } from '@/interfaces/token';
+import { type Tokens } from '@/interfaces/tokens';
 
 declare namespace authControllerType {
   type register = Controller.methodsHandler<{
     body: {
       email: string;
       password: string;
-      firstName: string;
-      lastName: string;
+      first_name: string;
+      last_name: string;
       phone?: string;
     };
   }>;
@@ -20,7 +20,7 @@ declare namespace authControllerType {
   }>;
 
   type resetPassword = Controller.methodsHandler<{
-    cookie: { reset_access: Token.cookieIdentifier };
+    cookie: { reset_access: Tokens.Cookie.Identifier };
     body: {
       password: string;
     };
@@ -32,8 +32,8 @@ declare namespace authControllerType {
   }>;
 
   type validAccount = Controller.methodsHandler<{
-    params: { accessToken: string };
-    cookie: { new_register: Token.cookieIdentifier };
+    token: string;
+    body: { access_code: number };
   }>;
 
   type oAuth = Controller.methodsHandler<{

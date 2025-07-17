@@ -29,7 +29,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 <UiProviders>
                   <main className="flex min-h-screen w-full flex-col">
                     <HeaderBar />
-                    <div className="relative flex-1">{children}</div>
+                    <div className="relative flex-1 pt-20">{children}</div>
                   </main>
                 </UiProviders>
               </NextThemesProvider>

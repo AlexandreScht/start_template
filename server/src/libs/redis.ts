@@ -1,5 +1,4 @@
 import env from '@/config';
-import { SkipInTest } from '@/decorators/skipInTest';
 import { ServerException } from '@/exceptions';
 import { logger } from '@/utils/logger';
 import Redis, { type Redis as RedisClient } from 'ioredis';
@@ -31,12 +30,11 @@ export default class RedisInstance {
       throw new ServerException();
     });
 
-    this.redisClient.on(
-      'connect',
-      SkipInTest(() => {
+    this.redisClient.on('connect', () => {
+      if (process.env.NODE_ENV !== 'test') {
         console.info(`             Redis server port: ${this.redisClient.options.port}`);
-      })(),
-    );
+      }
+    });
   }
 
   public static getInstance(): RedisInstance {
@@ -52,8 +50,26 @@ export default class RedisInstance {
    * @param value La valeur à stocker.
    */
   // 1) Sans options
-  public async set<T>(key: string, value: T, opts: RedisSetOptions = {}): Promise<'OK' | null | string> {
+  public async set<T extends object>(key: string, value: T, opts: RedisSetOptions = {}): Promise<'OK' | null | string> {
     const args: (string | number)[] = [key, JSON.stringify(value)];
+
+    if (opts.EX !== undefined) args.push('EX', opts.EX);
+    if (opts.PX !== undefined) args.push('PX', opts.PX);
+    if (opts.NX) args.push('NX');
+    if (opts.XX) args.push('XX');
+    if (opts.GET) args.push('GET');
+
+    // @ts-expect-error -> variadic, ioredis accepte string[]
+    return this.redisClient.set(...(args as any));
+  }
+
+  public async update<T extends object>(
+    key: string,
+    value: T,
+    opts: RedisSetOptions = {},
+  ): Promise<'OK' | null | string> {
+    const previousValues = await this.get<T>(key);
+    const args: (string | number)[] = [key, JSON.stringify({ ...previousValues, ...value })];
 
     if (opts.EX !== undefined) args.push('EX', opts.EX);
     if (opts.PX !== undefined) args.push('PX', opts.PX);
@@ -70,7 +86,7 @@ export default class RedisInstance {
    * @param key La clé.
    * @returns La valeur de type T ou null si la clé n'existe pas.
    */
-  public async get<T>(key: string): Promise<T | null> {
+  public async get<T extends object>(key: string): Promise<T | null> {
     const data = await this.redisClient.get(key);
     return data ? (JSON.parse(data) as T) : null;
   }
@@ -100,7 +116,7 @@ export default class RedisInstance {
    * @param pattern Le pattern de recherche (ex: 'wss:*').
    * @returns Un tableau de valeurs de type T.
    */
-  public async getAll<T>(pattern: string, deleteAfter: boolean = false): Promise<T[]> {
+  public async getAll<T extends object>(pattern: string, deleteAfter: boolean = false): Promise<T[]> {
     let cursor = '0';
     const keys: string[] = [];
 

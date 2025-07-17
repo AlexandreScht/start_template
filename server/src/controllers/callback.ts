@@ -1,24 +1,22 @@
+import env from '@/config';
 import { ServerException } from '@/exceptions';
 import { logger } from '@/utils/logger';
+import type { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
-import env from '@/config';
-
 export default class CallbackControllerFile {
   constructor() {}
 
-  protected async google({ req, res, next }) {
+  protected async google({ req, res, next }: { req: Request; res: Response; next: NextFunction }) {
     try {
-      passport.authenticate('google', { session: false }, (err, user: any) => {
-        console.log({ user });
-
+      return passport.authenticate('google', { session: true }, (err, user: any) => {
         if (err || !user) {
           const message = err?.message || 'Authentification refusée';
           return res.redirect(`${env.ORIGIN}/login?error=${encodeURIComponent(message)}`);
         }
-        req.login(user, loginErr => {
+        req.login(user, { session: true }, loginErr => {
           if (loginErr) {
             logger.error('Erreur lors de req.login:', loginErr);
-            return res.redirect(`${env.ORIGIN}/login?error=${encodeURIComponent(loginErr)}`);
+            return res.redirect(`${env.ORIGIN}/login?error=${encodeURIComponent(loginErr.message || 'Session Error')}`);
           }
           return res.redirect(env.ORIGIN);
         });

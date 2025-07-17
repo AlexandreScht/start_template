@@ -1,0 +1,5 @@
+2025-07-03 01:43:20 error: Error running migration
+2025-07-03 01:44:28 debug: [object Set]
+2025-07-03 01:44:28 debug: 🎯 Applying custom type for profile in table: users (first time)
+2025-07-03 01:46:12 debug: users_profile
+2025-07-03 01:46:12 debug: 🎯 Applying custom type for profile in table: users (first time)

@@ -1,5 +1,4 @@
 import { type Services } from './services';
-import { type User } from './user';
 
 declare namespace ApiRequests {
   type setRequest<P, R> = (
@@ -11,8 +10,7 @@ declare namespace ApiRequests {
     type Params = setRequest<{ id: number }, { user: string }>;
   }
   namespace Auth {
-    type Login = setRequest<{ email: string; password: string; confirmPassword: string }, { payload: User.session }>;
-    type oAuth = setRequest<{ at_hash: string; id_token: string }, { payload: User.session }>;
+    type Login = setRequest<{ email: string; password: string }, void>;
   }
   namespace Perf {
     type simple = setRequest<undefined, true>;

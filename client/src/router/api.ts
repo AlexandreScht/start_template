@@ -7,6 +7,7 @@ const apiRoutes = createRoutes({
     },
     auth: {
       login: () => '/login',
+      google: () => '/google',
     },
     user: {
       isAdmin: () => '/is-admin',

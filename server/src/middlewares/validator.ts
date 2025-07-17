@@ -107,7 +107,7 @@ const Validator = ({ body, params: iniParams, query: iniQuery, token: tokenShame
           .join(' - ');
         throw new InvalidArgumentError(`Invalid type for keys: ${combinedErrorMessage}`);
       }
-      throw new ServerException(error.message);
+      throw new ServerException((error as any).message);
     }
   };
 };

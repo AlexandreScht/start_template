@@ -1,0 +1,780 @@
+2025-07-15 23:23:46 debug: id - defaultValue : nextval('users_id_seq'::regclass) /  isIdentity : false / comment : Identifiant unique de l'utilisateur / type [object Object]
+2025-07-15 23:23:46 debug: email - defaultValue : null /  isIdentity : false / comment : Adresse email de l'utilisateur (max 50 caractères) / type [object Object]
+2025-07-15 23:23:46 debug: password - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: first_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: last_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: role - defaultValue : 'member'::user_role /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: phone - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: validate - defaultValue : false /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: profile - defaultValue : null /  isIdentity : false / comment : Données de profil additionnelles au format JSON / type [object Object]
+2025-07-15 23:23:46 debug: stripe_customer_id - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: is_subscribe - defaultValue : false /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: updated_at - defaultValue : now() /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: created_at - defaultValue : now() /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: id - defaultValue : nextval('users_id_seq'::regclass) /  isIdentity : false / comment : Identifiant unique de l'utilisateur / type [object Object]
+2025-07-15 23:23:46 debug: email - defaultValue : null /  isIdentity : false / comment : Adresse email de l'utilisateur (max 50 caractères) / type [object Object]
+2025-07-15 23:23:46 debug: password - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: first_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: last_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: role - defaultValue : 'member'::user_role /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: phone - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: validate - defaultValue : false /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: profile - defaultValue : null /  isIdentity : false / comment : Données de profil additionnelles au format JSON / type [object Object]
+2025-07-15 23:23:46 debug: stripe_customer_id - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: is_subscribe - defaultValue : false /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: updated_at - defaultValue : now() /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: created_at - defaultValue : now() /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: id - defaultValue : nextval('users_id_seq'::regclass) /  isIdentity : false / comment : Identifiant unique de l'utilisateur / type [object Object]
+2025-07-15 23:23:46 debug: email - defaultValue : null /  isIdentity : false / comment : Adresse email de l'utilisateur (max 50 caractères) / type [object Object]
+2025-07-15 23:23:46 debug: password - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: first_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: last_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: role - defaultValue : 'member'::user_role /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: phone - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: validate - defaultValue : false /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: profile - defaultValue : null /  isIdentity : false / comment : Données de profil additionnelles au format JSON / type [object Object]
+2025-07-15 23:23:46 debug: stripe_customer_id - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: is_subscribe - defaultValue : false /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: updated_at - defaultValue : now() /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: created_at - defaultValue : now() /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: id - defaultValue : nextval('users_id_seq'::regclass) /  isIdentity : false / comment : Identifiant unique de l'utilisateur / type [object Object]
+2025-07-15 23:23:46 debug: id - defaultValue : nextval('users_id_seq'::regclass) /  isIdentity : false / comment : Identifiant unique de l'utilisateur / type [object Object]
+2025-07-15 23:23:46 debug: email - defaultValue : null /  isIdentity : false / comment : Adresse email de l'utilisateur (max 50 caractères) / type [object Object]
+2025-07-15 23:23:46 debug: id - defaultValue : nextval('users_id_seq'::regclass) /  isIdentity : false / comment : Identifiant unique de l'utilisateur / type [object Object]
+2025-07-15 23:23:46 debug: email - defaultValue : null /  isIdentity : false / comment : Adresse email de l'utilisateur (max 50 caractères) / type [object Object]
+2025-07-15 23:23:46 debug: password - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: id - defaultValue : nextval('users_id_seq'::regclass) /  isIdentity : false / comment : Identifiant unique de l'utilisateur / type [object Object]
+2025-07-15 23:23:46 debug: email - defaultValue : null /  isIdentity : false / comment : Adresse email de l'utilisateur (max 50 caractères) / type [object Object]
+2025-07-15 23:23:46 debug: password - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: first_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: id - defaultValue : nextval('users_id_seq'::regclass) /  isIdentity : false / comment : Identifiant unique de l'utilisateur / type [object Object]
+2025-07-15 23:23:46 debug: email - defaultValue : null /  isIdentity : false / comment : Adresse email de l'utilisateur (max 50 caractères) / type [object Object]
+2025-07-15 23:23:46 debug: password - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: first_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: last_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: id - defaultValue : nextval('users_id_seq'::regclass) /  isIdentity : false / comment : Identifiant unique de l'utilisateur / type [object Object]
+2025-07-15 23:23:46 debug: email - defaultValue : null /  isIdentity : false / comment : Adresse email de l'utilisateur (max 50 caractères) / type [object Object]
+2025-07-15 23:23:46 debug: password - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: first_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: last_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: role - defaultValue : 'member'::user_role /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: id - defaultValue : nextval('users_id_seq'::regclass) /  isIdentity : false / comment : Identifiant unique de l'utilisateur / type [object Object]
+2025-07-15 23:23:46 debug: email - defaultValue : null /  isIdentity : false / comment : Adresse email de l'utilisateur (max 50 caractères) / type [object Object]
+2025-07-15 23:23:46 debug: password - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: first_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: last_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: role - defaultValue : 'member'::user_role /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: phone - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: id - defaultValue : nextval('users_id_seq'::regclass) /  isIdentity : false / comment : Identifiant unique de l'utilisateur / type [object Object]
+2025-07-15 23:23:46 debug: email - defaultValue : null /  isIdentity : false / comment : Adresse email de l'utilisateur (max 50 caractères) / type [object Object]
+2025-07-15 23:23:46 debug: password - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: first_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: last_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: role - defaultValue : 'member'::user_role /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: phone - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: validate - defaultValue : false /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: id - defaultValue : nextval('users_id_seq'::regclass) /  isIdentity : false / comment : Identifiant unique de l'utilisateur / type [object Object]
+2025-07-15 23:23:46 debug: email - defaultValue : null /  isIdentity : false / comment : Adresse email de l'utilisateur (max 50 caractères) / type [object Object]
+2025-07-15 23:23:46 debug: password - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: first_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: last_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: role - defaultValue : 'member'::user_role /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: phone - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: validate - defaultValue : false /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: profile - defaultValue : null /  isIdentity : false / comment : Données de profil additionnelles au format JSON / type [object Object]
+2025-07-15 23:23:46 debug: id - defaultValue : nextval('users_id_seq'::regclass) /  isIdentity : false / comment : Identifiant unique de l'utilisateur / type [object Object]
+2025-07-15 23:23:46 debug: email - defaultValue : null /  isIdentity : false / comment : Adresse email de l'utilisateur (max 50 caractères) / type [object Object]
+2025-07-15 23:23:46 debug: password - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: first_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: last_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: role - defaultValue : 'member'::user_role /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: phone - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: validate - defaultValue : false /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: profile - defaultValue : null /  isIdentity : false / comment : Données de profil additionnelles au format JSON / type [object Object]
+2025-07-15 23:23:46 debug: stripe_customer_id - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: id - defaultValue : nextval('users_id_seq'::regclass) /  isIdentity : false / comment : Identifiant unique de l'utilisateur / type [object Object]
+2025-07-15 23:23:46 debug: email - defaultValue : null /  isIdentity : false / comment : Adresse email de l'utilisateur (max 50 caractères) / type [object Object]
+2025-07-15 23:23:46 debug: password - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: first_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: last_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: role - defaultValue : 'member'::user_role /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: phone - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: validate - defaultValue : false /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: profile - defaultValue : null /  isIdentity : false / comment : Données de profil additionnelles au format JSON / type [object Object]
+2025-07-15 23:23:46 debug: stripe_customer_id - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: is_subscribe - defaultValue : false /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: id - defaultValue : nextval('users_id_seq'::regclass) /  isIdentity : false / comment : Identifiant unique de l'utilisateur / type [object Object]
+2025-07-15 23:23:46 debug: email - defaultValue : null /  isIdentity : false / comment : Adresse email de l'utilisateur (max 50 caractères) / type [object Object]
+2025-07-15 23:23:46 debug: password - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: first_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: last_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: role - defaultValue : 'member'::user_role /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: phone - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: validate - defaultValue : false /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: profile - defaultValue : null /  isIdentity : false / comment : Données de profil additionnelles au format JSON / type [object Object]
+2025-07-15 23:23:46 debug: stripe_customer_id - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: is_subscribe - defaultValue : false /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: updated_at - defaultValue : now() /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: id - defaultValue : nextval('users_id_seq'::regclass) /  isIdentity : false / comment : Identifiant unique de l'utilisateur / type [object Object]
+2025-07-15 23:23:46 debug: email - defaultValue : null /  isIdentity : false / comment : Adresse email de l'utilisateur (max 50 caractères) / type [object Object]
+2025-07-15 23:23:46 debug: password - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: first_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: last_name - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: role - defaultValue : 'member'::user_role /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: phone - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: validate - defaultValue : false /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: profile - defaultValue : null /  isIdentity : false / comment : Données de profil additionnelles au format JSON / type [object Object]
+2025-07-15 23:23:46 debug: stripe_customer_id - defaultValue : null /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: is_subscribe - defaultValue : false /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: updated_at - defaultValue : now() /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:23:46 debug: created_at - defaultValue : now() /  isIdentity : false / comment : null / type [object Object]
+2025-07-15 23:37:52 debug:  ----------- id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.int4",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- email ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- password ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- first_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- last_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- role ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "public.user_role",
+  "kind": "enum"
+}
+2025-07-15 23:37:52 debug:  ----------- phone ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bpchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- validate ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bool",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- profile ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.jsonb",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- stripe_customer_id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- is_subscribe ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bool",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- updated_at ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.timestamp",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- created_at ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.timestamp",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.int4",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- email ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- password ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- first_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- last_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- role ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "public.user_role",
+  "kind": "enum"
+}
+2025-07-15 23:37:52 debug:  ----------- phone ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bpchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- validate ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bool",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- profile ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.jsonb",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- stripe_customer_id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- is_subscribe ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bool",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- updated_at ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.timestamp",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- created_at ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.timestamp",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.int4",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- email ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- password ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- first_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- last_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- role ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "public.user_role",
+  "kind": "enum"
+}
+2025-07-15 23:37:52 debug:  ----------- phone ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bpchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- validate ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bool",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- profile ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.jsonb",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- stripe_customer_id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- is_subscribe ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bool",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- updated_at ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.timestamp",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- created_at ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.timestamp",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.int4",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.int4",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- email ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.int4",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- email ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- password ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.int4",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- email ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- password ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- first_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.int4",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- email ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- password ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- first_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- last_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.int4",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- email ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- password ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- first_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- last_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- role ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "public.user_role",
+  "kind": "enum"
+}
+2025-07-15 23:37:52 debug:  ----------- id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.int4",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- email ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- password ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- first_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- last_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- role ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "public.user_role",
+  "kind": "enum"
+}
+2025-07-15 23:37:52 debug:  ----------- phone ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bpchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.int4",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- email ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- password ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- first_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- last_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- role ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "public.user_role",
+  "kind": "enum"
+}
+2025-07-15 23:37:52 debug:  ----------- phone ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bpchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- validate ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bool",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.int4",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- email ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- password ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- first_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- last_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- role ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "public.user_role",
+  "kind": "enum"
+}
+2025-07-15 23:37:52 debug:  ----------- phone ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bpchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- validate ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bool",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- profile ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.jsonb",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.int4",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- email ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- password ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- first_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- last_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- role ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "public.user_role",
+  "kind": "enum"
+}
+2025-07-15 23:37:52 debug:  ----------- phone ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bpchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- validate ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bool",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- profile ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.jsonb",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- stripe_customer_id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.int4",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- email ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- password ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- first_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- last_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- role ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "public.user_role",
+  "kind": "enum"
+}
+2025-07-15 23:37:52 debug:  ----------- phone ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bpchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- validate ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bool",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- profile ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.jsonb",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- stripe_customer_id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- is_subscribe ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bool",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.int4",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- email ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- password ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- first_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- last_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- role ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "public.user_role",
+  "kind": "enum"
+}
+2025-07-15 23:37:52 debug:  ----------- phone ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bpchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- validate ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bool",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- profile ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.jsonb",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- stripe_customer_id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- is_subscribe ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bool",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- updated_at ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.timestamp",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.int4",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- email ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- password ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- first_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- last_name ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- role ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "public.user_role",
+  "kind": "enum"
+}
+2025-07-15 23:37:52 debug:  ----------- phone ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bpchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- validate ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bool",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- profile ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.jsonb",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- stripe_customer_id ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.varchar",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- is_subscribe ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.bool",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- updated_at ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.timestamp",
+  "kind": "base"
+}
+2025-07-15 23:37:52 debug:  ----------- created_at ------------
+2025-07-15 23:37:52 debug: {
+  "fullName": "pg_catalog.timestamp",
+  "kind": "base"
+}

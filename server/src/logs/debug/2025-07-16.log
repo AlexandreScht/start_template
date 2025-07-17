@@ -1,0 +1,410 @@
+2025-07-16 01:54:21 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 01:56:45 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 01:56:52 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 01:58:15 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 01:58:28 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 01:58:40 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 01:59:19 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 01:59:27 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:00:00 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:00:09 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:01:37 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:02:20 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:02:32 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:02:47 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:07:40 info: [0mPOST /api/auth/register?email=ale [33m403[0m 174.660 ms - 30[0m
+2025-07-16 02:30:57 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:31:05 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:33:24 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:33:39 info: [0mPOST /api/auth/register?email=ale [0m-[0m - ms - -[0m
+2025-07-16 02:34:12 info: [0mPOST /api/auth/register [0m-[0m - ms - -[0m
+2025-07-16 02:34:22 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:34:25 info: [0mPOST /api/auth/register [33m422[0m 71.482 ms - 95[0m
+2025-07-16 02:34:47 error: AuthControllerFile.register =>  Cannot read properties of undefined (reading 'queryBuilder')
+2025-07-16 02:34:47 info: [0mPOST /api/auth/register [31m500[0m 102.716 ms - 72[0m
+2025-07-16 02:36:11 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:36:26 error: AuthControllerFile.register =>  Cannot read properties of undefined (reading 'queryBuilder')
+2025-07-16 02:36:26 info: [0mPOST /api/auth/register [31m500[0m 230.711 ms - 72[0m
+2025-07-16 02:36:52 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:37:13 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:37:19 error: AuthControllerFile.register =>  Cannot read properties of undefined (reading 'queryBuilder')
+2025-07-16 02:37:19 info: [0mPOST /api/auth/register [31m500[0m 65.327 ms - 72[0m
+2025-07-16 02:43:06 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:43:11 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:43:15 error: AuthControllerFile.register =>  Cannot read properties of undefined (reading 'queryBuilder')
+2025-07-16 02:43:15 info: [0mPOST /api/auth/register [31m500[0m 64.722 ms - 72[0m
+2025-07-16 02:50:57 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:51:07 error: AuthServiceFile.register =>  une valeur NULL viole la contrainte NOT NULL de la colonne « first_name » dans la relation « users »
+2025-07-16 02:51:07 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-07-16 02:51:07 info: [0mPOST /api/auth/register [31m505[0m 144.902 ms - 89[0m
+2025-07-16 02:51:22 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:51:28 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:52:23 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:52:43 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:52:54 error: MailerService.sendMailAsync =>  Mail command failed: 451 4.0.0 Invalid from
+2025-07-16 02:52:54 error: MailerService.Registration =>  The internal service encountered an unexpected error. Please try again later.
+2025-07-16 02:52:54 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-07-16 02:52:54 info: [0mPOST /api/auth/register [31m505[0m 360.821 ms - 89[0m
+2025-07-16 02:53:44 error: MailerService.sendMailAsync =>  Mail command failed: 451 4.0.0 Invalid from
+2025-07-16 02:53:44 error: MailerService.Registration =>  The internal service encountered an unexpected error. Please try again later.
+2025-07-16 02:53:44 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-07-16 02:53:44 info: [0mPOST /api/auth/register [31m505[0m 250.508 ms - 89[0m
+2025-07-16 02:55:28 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:55:37 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:55:49 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:55:55 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 02:55:58 error: MailerService.sendMailAsync =>  Mail command failed: 451 4.0.0 Invalid from
+2025-07-16 02:55:58 error: MailerService.Registration =>  The internal service encountered an unexpected error. Please try again later.
+2025-07-16 02:55:58 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-07-16 02:55:58 info: [0mPOST /api/auth/register [31m505[0m 283.855 ms - 89[0m
+2025-07-16 03:02:37 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 03:02:46 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 03:03:07 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 03:03:07 info: MailerService.constructor => Serveur SMTP prêt à envoyer des messages
+2025-07-16 03:03:57 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 03:03:57 info: MailerService.constructor => Serveur SMTP prêt à envoyer des messages
+2025-07-16 03:04:11 error: MailerService.sendMailAsync =>  Mail command failed: 451 4.0.0 Invalid from
+2025-07-16 03:04:11 error: MailerService.Registration =>  The internal service encountered an unexpected error. Please try again later.
+2025-07-16 03:04:11 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-07-16 03:04:11 info: [0mPOST /api/auth/register [31m505[0m 307.989 ms - 89[0m
+2025-07-16 03:05:54 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 03:05:54 info: MailerService.constructor => Serveur SMTP prêt à envoyer des messages
+2025-07-16 03:05:58 error: MailerService.sendMailAsync =>  Mail command failed: 451 4.0.0 Invalid from
+2025-07-16 03:05:58 error: MailerService.Registration =>  The internal service encountered an unexpected error. Please try again later.
+2025-07-16 03:05:58 error: QueryBuilderFile.transactionBuilder =>  The internal service encountered an unexpected error. Please try again later.
+2025-07-16 03:05:58 info: [0mPOST /api/auth/register [31m505[0m 258.568 ms - 89[0m
+2025-07-16 03:06:48 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 03:06:48 info: MailerService.constructor => Serveur SMTP prêt à envoyer des messages
+2025-07-16 03:07:07 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 03:07:07 info: MailerService.constructor => Serveur SMTP prêt à envoyer des messages
+2025-07-16 03:07:30 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 03:07:30 info: MailerService.constructor => Serveur SMTP prêt à envoyer des messages
+2025-07-16 03:08:07 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 03:08:07 info: MailerService.constructor => Serveur SMTP prêt à envoyer des messages
+2025-07-16 03:08:12 info: MailerService.sendMailAsync => Email envoyé
+2025-07-16 03:08:12 info: [0mPOST /api/auth/register [32m200[0m 489.432 ms - 49[0m
+2025-07-16 03:08:45 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 03:08:45 info: MailerService.constructor => Serveur SMTP prêt à envoyer des messages
+2025-07-16 03:12:35 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 03:12:35 info: MailerService.constructor => Serveur SMTP prêt à envoyer des messages
+2025-07-16 03:13:19 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 03:13:39 info: [0mPOST /api/auth/register [32m200[0m 430.108 ms - 49[0m
+2025-07-16 03:15:42 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:11:23 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:15:12 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:16:04 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:16:11 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:16:29 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:16:56 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:17:01 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:17:29 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:18:27 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:18:40 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:18:59 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:19:02 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:19:39 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:19:51 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:19:56 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:20:45 info: [0mPOST /api/auth/register [32m200[0m 503.401 ms - 49[0m
+2025-07-16 16:26:11 info: [0mPATCH /api/auth/validate-account [33m422[0m 54.031 ms - 85[0m
+2025-07-16 16:26:27 info: [0mPATCH /api/auth/validate-account [33m422[0m 52.613 ms - 64[0m
+2025-07-16 16:26:44 info: [0mPATCH /api/auth/validate-account [33m422[0m 52.035 ms - 64[0m
+2025-07-16 16:27:09 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:27:17 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:27:22 info: [0mPATCH /api/auth/validate-account [33m422[0m 57.198 ms - 64[0m
+2025-07-16 16:28:06 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:28:09 info: [0mPATCH /api/auth/validate-account [33m422[0m 71.906 ms - 64[0m
+2025-07-16 16:28:21 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:28:23 info: [0mPATCH /api/auth/validate-account [33m422[0m 83.752 ms - 64[0m
+2025-07-16 16:28:31 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:28:34 info: [0mPATCH /api/auth/validate-account [33m422[0m 39.475 ms - 64[0m
+2025-07-16 16:29:15 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:29:31 info: [0mPOST /api/auth/register [32m200[0m 503.701 ms - 49[0m
+2025-07-16 16:30:08 info: [0mPATCH /api/auth/validate-account [33m422[0m 56.151 ms - 64[0m
+2025-07-16 16:30:40 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:30:50 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:30:51 info: [0mPATCH /api/auth/validate-account [33m422[0m 55.735 ms - 64[0m
+2025-07-16 16:31:23 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:31:29 info: [0mPATCH /api/auth/validate-account [33m422[0m 72.464 ms - 64[0m
+2025-07-16 16:31:49 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:31:50 info: [0mPATCH /api/auth/validate-account [33m422[0m 72.818 ms - 64[0m
+2025-07-16 16:32:11 info: [0mPATCH /api/auth/validate-account [33m422[0m 52.904 ms - 64[0m
+2025-07-16 16:32:14 info: [0mPATCH /api/auth/validate-account [33m422[0m 55.833 ms - 64[0m
+2025-07-16 16:32:15 info: [0mPATCH /api/auth/validate-account [33m422[0m 54.233 ms - 64[0m
+2025-07-16 16:32:19 info: [0mPATCH /api/auth/validate-account [33m422[0m 38.492 ms - 64[0m
+2025-07-16 16:35:34 info: [0mPATCH /api/auth/validate-account [33m422[0m 52.866 ms - 64[0m
+2025-07-16 16:35:37 info: [0mPATCH /api/auth/validate-account [33m422[0m 52.204 ms - 64[0m
+2025-07-16 16:35:58 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:36:00 info: [0mPATCH /api/auth/validate-account [33m422[0m 71.120 ms - 64[0m
+2025-07-16 16:36:30 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:36:39 info: [0mPATCH /api/auth/validate-account [33m422[0m 74.891 ms - 64[0m
+2025-07-16 16:37:44 info: [0mPATCH /api/auth/validate-account [33m422[0m 58.287 ms - 72[0m
+2025-07-16 16:38:08 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:38:33 info: [0mPOST /api/auth/register [32m200[0m 453.362 ms - 49[0m
+2025-07-16 16:39:31 info: [0mPATCH /api/auth/validate-account [33m422[0m 55.463 ms - 72[0m
+2025-07-16 16:40:09 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:40:12 info: [0mPATCH /api/auth/validate-account [33m422[0m 56.455 ms - 72[0m
+2025-07-16 16:40:36 info: [0mPATCH /api/auth/validate-account [33m422[0m 57.235 ms - 64[0m
+2025-07-16 16:41:09 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:41:17 info: [0mPATCH /api/auth/validate-account [33m422[0m 53.915 ms - 64[0m
+2025-07-16 16:41:36 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:41:39 info: [0mPATCH /api/auth/validate-account [33m422[0m 70.248 ms - 64[0m
+2025-07-16 16:41:47 info: [0mPATCH /api/auth/validate-account [33m422[0m 51.487 ms - 64[0m
+2025-07-16 16:42:09 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:42:11 info: [0mPATCH /api/auth/validate-account [33m422[0m 82.175 ms - 64[0m
+2025-07-16 16:47:09 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:48:08 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 16:48:15 info: [0mPOST /api/auth/register [32m200[0m 436.108 ms - 49[0m
+2025-07-16 16:49:12 info: [0mPATCH /api/auth/validate-account [32m201[0m 103.406 ms - 4[0m
+2025-07-16 16:49:30 info: [0mPATCH /api/auth/validate-account [33m422[0m 53.059 ms - 92[0m
+2025-07-16 16:49:42 info: [0mPATCH /api/auth/validate-account [33m422[0m 54.950 ms - 64[0m
+2025-07-16 16:49:46 info: [0mPATCH /api/auth/validate-account [32m201[0m 101.753 ms - 4[0m
+2025-07-16 16:50:12 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 17:48:28 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 17:49:28 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 17:49:58 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 17:52:01 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 17:52:04 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 17:53:11 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:00:35 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:00:44 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:00:54 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:01:01 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:02:21 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:02:26 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:03:42 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:07:03 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:09:27 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:13:03 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:13:08 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:14:18 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:20:54 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:21:15 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:21:44 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:21:49 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:23:48 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:25:02 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:25:46 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:26:15 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:27:10 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:27:21 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:27:25 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:28:17 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:30:51 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:31:57 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:33:21 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:34:36 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:34:43 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:35:16 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:39:13 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:39:20 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 18:42:56 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:16:19 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:34:19 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:34:37 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:36:14 info: [0mPOST /api/auth/login [36m302[0m 425.358 ms - 43[0m
+2025-07-16 20:36:28 info: [0mPOST /api/auth/login [36m302[0m 160.527 ms - 43[0m
+2025-07-16 20:36:40 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:36:42 info: [0mPOST /api/auth/login [36m302[0m 133.433 ms - 43[0m
+2025-07-16 20:36:55 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:36:59 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:37:12 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:37:45 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:37:50 info: [0mPOST /api/auth/login [36m302[0m 133.114 ms - 43[0m
+2025-07-16 20:38:43 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:38:47 info: [0mPOST /api/auth/login [36m302[0m 135.594 ms - 43[0m
+2025-07-16 20:39:22 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:39:24 info: [0mPOST /api/auth/login [36m302[0m 138.408 ms - 43[0m
+2025-07-16 20:39:39 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:39:46 info: [0mPOST /api/auth/login [36m302[0m 147.755 ms - 43[0m
+2025-07-16 20:40:07 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:43:47 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:43:55 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:43:56 info: [0mPOST /api/auth/login [36m302[0m 117.747 ms - 43[0m
+2025-07-16 20:44:03 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:44:04 info: [0mPOST /api/auth/login [36m302[0m 166.246 ms - 43[0m
+2025-07-16 20:44:15 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:44:31 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:45:07 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:45:09 info: [0mPOST /api/auth/login [36m302[0m 145.674 ms - 43[0m
+2025-07-16 20:45:17 error: Passeport.LocalStrategy error :  Email ou mot de passe incorrect !
+2025-07-16 20:45:17 info: [0mPOST /api/auth/login [36m302[0m 122.510 ms - 101[0m
+2025-07-16 20:45:59 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:46:01 error: Passeport.LocalStrategy error :  Email ou mot de passe incorrect !
+2025-07-16 20:46:01 info: [0mPOST /api/auth/login [36m302[0m 136.800 ms - 101[0m
+2025-07-16 20:46:11 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:46:17 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:46:23 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:47:17 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:47:18 error: Passeport.LocalStrategy error :  Email ou mot de passe incorrect !
+2025-07-16 20:47:18 info: [0mPOST /api/auth/login [36m302[0m 170.095 ms - 101[0m
+2025-07-16 20:47:25 error: Passeport.LocalStrategy error :  Please verify your email address by clicking the link sent to your email address before logging in.
+2025-07-16 20:47:25 info: [0mPOST /api/auth/login [36m302[0m 119.404 ms - 187[0m
+2025-07-16 20:47:36 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:47:59 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:49:04 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:56:44 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 20:58:16 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 21:02:53 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 21:04:47 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 21:06:02 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 21:06:18 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 21:06:29 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 21:07:24 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 21:07:32 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀
+2025-07-16 21:07:34 info: ======= Version: development =======
+          🚀 server listening port: 3005 🚀

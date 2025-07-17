@@ -1,4 +1,4 @@
-import PerfControllerFile from '@/controllers/performance';
+import PerfControllerFile from '@/controllers/test';
 import mw from '@/middlewares/mw';
 import { Router, type Router as ExpressRouter } from 'express';
 

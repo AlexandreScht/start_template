@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express';
-import type { z, ZodNumber, ZodOptional, ZodString } from 'zod';
+import type { z } from 'zod';
 import { type Session } from './session';
 export type LocalsCTX =
   | {
@@ -7,7 +7,7 @@ export type LocalsCTX =
       params: Record<string, unknown>;
       query: Record<string, unknown>;
       cookie: Record<string, unknown>;
-      key: string;
+      token: string;
     }
   | Record<string, any>;
 
@@ -26,7 +26,7 @@ export interface validators {
   body?: z.ZodSchema<any>;
   params?: z.ZodSchema<any>;
   query?: z.ZodSchema<any>;
-  token?: ZodString | ZodNumber | ZodOptional<ZodString> | ZodOptional<ZodNumber>;
+  token?: any;
 }
 
 export interface slowDown {

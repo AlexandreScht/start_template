@@ -51,3 +51,11 @@ export class InvalidAccessError extends ServerException {
     super(403, message);
   }
 }
+
+export class ServicesError extends ServerException {
+  constructor(
+    message: string[] | string = 'The internal service encountered an unexpected error. Please try again later.',
+  ) {
+    super(505, message);
+  }
+}

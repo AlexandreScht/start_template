@@ -1,7 +1,10 @@
 import logsConfig from '@/config/logs';
 import { type WebSocket } from '@/interfaces/websocket';
 import RedisInstance from '@/libs/redis';
-import socket from '@/libs/socket';
+// import socket from '@/libs/socket';
+import dbInstance from '@/database/pg';
+import PassportLibs from '@/libs/passport';
+import { rateLimit } from '@/middlewares/limiter';
 import { csrfProtection } from '@/utils/crsf';
 import env from '@config';
 import { ErrorMiddleware } from '@middlewares/error';
@@ -24,13 +27,10 @@ import path from 'path';
 import 'reflect-metadata';
 import { Server } from 'socket.io';
 const { COOKIE_SECRET, ORIGIN, NODE_ENV, PORT } = env;
-import '@/libs/passport';
-import { rateLimit } from '@/middlewares/limiter';
 const { format } = logsConfig;
 
 export default class App extends ApiRouter {
   public app: express.Application;
-  public env: string;
   public port: string | number;
   private server: https.Server | http.Server;
   private productMode: boolean = ORIGIN.startsWith('https');
@@ -56,6 +56,7 @@ export default class App extends ApiRouter {
   }
 
   public async initialize() {
+    await this.connectToDatabase();
     this.initializeStoredLibs();
     this.initializeMiddlewares();
     this.initializeAppRoutes();
@@ -64,6 +65,10 @@ export default class App extends ApiRouter {
     if (this.productMode) {
       this.app.set('trust proxy', true);
     }
+  }
+
+  private async connectToDatabase() {
+    await dbInstance.dbConnection();
   }
 
   public listen() {
@@ -94,7 +99,7 @@ export default class App extends ApiRouter {
     this.app.use(rateLimit);
     this.app.use(
       session({
-        secret: process.env.SESSION_SECRET,
+        secret: env.SESSION_SECRET,
         name: '__Host-session.sid',
         resave: false,
         saveUninitialized: false,
@@ -112,7 +117,11 @@ export default class App extends ApiRouter {
       if (req.headers['x-internal-request'] === '1') {
         return next();
       }
-      csrfProtection(req, res, next);
+      if (NODE_ENV === 'production') {
+        csrfProtection(req, res, next);
+      } else {
+        next();
+      }
     });
 
     this.app.options(
@@ -143,6 +152,7 @@ export default class App extends ApiRouter {
     // socket.getInstance(this.io);
 
     // initialise redis
+    PassportLibs();
     RedisInstance.getInstance();
   }
 

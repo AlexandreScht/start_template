@@ -17,6 +17,7 @@ export default [
         sourceType: 'module',
       },
       globals: {
+        ...globals.jest,
         ...globals.node,
         ...globals.browser,
       },

@@ -10,21 +10,10 @@ export const login: ApiRequests.Auth.Login =
   (...props) =>
   async axios => {
     return await httpGateway<ApiRequests.Auth.Login>(
-      ({ email, password, confirmPassword }) => ({
-        validator: schema => schema.loginSchema({ email, password, confirmPassword }),
+      ({ email, password }) => ({
+        validator: schema => schema.loginSchema({ email, password }),
         request: axios => axios.post(router.login(), { email, password }),
         middlewares: mw => [mw.limit('auth', email)],
-      }),
-      [axios, props],
-    );
-  };
-
-export const oAuth: ApiRequests.Auth.oAuth =
-  (...props) =>
-  async axios => {
-    return await httpGateway<ApiRequests.Auth.oAuth>(
-      () => ({
-        request: axios => axios.post(router.login()),
       }),
       [axios, props],
     );
