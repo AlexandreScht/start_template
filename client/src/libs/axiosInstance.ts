@@ -33,12 +33,18 @@ const AxiosInstance = ({ headers, cache, side, xTag }: Services.Axios.axiosApi):
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
   const instance: Services.Axios.instance = AxiosRequest(otherHeaders, serverRequest);
 
+  // Configuration du cache
   if (serverRequest) {
+    // Côté serveur UNIQUEMENT : cache avec axios-cache-interceptor + LRU
+    // Utilisé pour : Réduire les appels répétés à l'API backend lors du SSR
+    // Note: Côté client, React Query gère le cache (pas besoin de setupCache)
     setupCache(instance as any, configureCache(cache as Services.Config.serverCache | undefined));
   }
+  // Côté client : PAS de cache axios car React Query le gère déjà via useQuery
 
   instance.interceptors.request.use(
     async request => {
+      // Marquer les requêtes serveur pour le backend
       if (serverRequest) request.headers['X-Internal-Request'] = '1';
 
       if (setCookies?.length) {
@@ -60,7 +66,14 @@ const AxiosInstance = ({ headers, cache, side, xTag }: Services.Axios.axiosApi):
   );
 
   instance.interceptors.response.use(
-    async response => response,
+    async response => {
+      // Log pour debug en dev (optionnel)
+      if (process.env.NODE_ENV === 'development' && serverRequest) {
+        const cacheStatus = (response as any).cached ? '⚡ CACHE HIT' : '🌐 API CALL';
+        console.log(`${cacheStatus} ${response.config.method?.toUpperCase()} ${response.config.url}`);
+      }
+      return response;
+    },
     error => {
       prepareAxiosError(error);
       return Promise.reject(error);
