@@ -16,5 +16,5 @@ export const simple: ApiRequests.Perf.simple = ((...args: any[]) => async (axios
   });
   
   // Retourner true comme spécifié dans le type
-  return true;
+  return "data fetched correctly";
 }) as ApiRequests.Perf.simple;

@@ -28,8 +28,8 @@ const AxiosRequest = (
   });
 };
 
-const AxiosInstance = ({ headers, cache, side, xTag }: Services.Axios.axiosApi): Services.Axios.instance => {
-  const serverRequest = side === 'server' ? true : side === 'client' ? false : typeof window === 'undefined';
+const AxiosInstance = ({ headers, cache, ssr, xTag }: Services.Axios.axiosApi): Services.Axios.instance => {
+  const serverRequest = ssr ?? typeof window === 'undefined';
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
   const instance: Services.Axios.instance = AxiosRequest(otherHeaders, serverRequest);
 

@@ -120,7 +120,7 @@ export namespace Services {
       headers?: axiosHeaders;
       cache?: Partial<SWRConfiguration> | Partial<CacheOptions>;
       xTag?: string;
-      side: 'server' | 'client';
+      ssr?: boolean;
     }
 
     export type instance = AxiosInstance & { revalidate?: boolean };

@@ -26,7 +26,7 @@ export default async function FetchServerSide({
 }) {
   const queryClient = new QueryClient(serviceOptions);
   const serviceEntries = Object.entries(services) as [string, BrandedServiceSelector | NonFunctionValue][];
-  const axiosInstance = AxiosInstance({ side: 'server' });
+  const axiosInstance = AxiosInstance({ ssr: true });
 
   await Promise.all(
     serviceEntries.map(([key, selectorOrValue]) => {

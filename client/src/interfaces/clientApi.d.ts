@@ -15,6 +15,6 @@ declare namespace ApiRequests {
     type Login = setRequest<{ email: string; password: string }, void>;
   }
   namespace Perf {
-    type simple = setRequest<undefined, true>;
+    type simple = setRequest<undefined, string>;
   }
 }

@@ -1,19 +1,14 @@
 'use client';
 
+import serviceSelector from '@/hooks/serviceSelector';
 // import { useQuery } from '@tanstack/react-query';
 
 import { useService } from '@/hooks/useService';
 
 export default function Demo() {
-  const { data, isLoading, error, isSuccess } = useService({
+  const { data, isLoading, error, isSuccess } = useService<string>({
     serviceKey: 'demoTest',
   });
-  // const { data, isLoading, error, isSuccess } = useQuery<boolean>({
-  //   queryKey: ['demoTest'],
-  //   queryFn: () => {
-  //     return true;
-  //   },
-  // });
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8">
@@ -71,7 +66,7 @@ export default function Demo() {
 
           {isSuccess && data && (
             <div className="rounded-lg bg-gray-50 p-4">
-              <pre className="max-h-96 overflow-auto text-sm text-gray-800">{JSON.stringify(data as any, null, 2)}</pre>
+              <pre className="max-h-96 overflow-auto text-sm text-gray-800">{data}</pre>
             </div>
           )}
         </div>
