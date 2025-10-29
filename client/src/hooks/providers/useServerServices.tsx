@@ -4,9 +4,9 @@ import AxiosInstance from '@/libs/axiosInstance';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import { type ReactNode } from 'react';
 
-type BrandedServiceSelector = {
+type BrandedServiceSelector<R = any> = {
   __brand: 'ServiceSelector';
-  fn: (axios: Services.Axios.instance) => Promise<any>;
+  fn: (axios: Services.Axios.instance) => Promise<R>;
 };
 type NotFunction<T> = T extends () => any ? never : T;
 type NonFunctionValue = NotFunction<string | number | boolean | Record<string, unknown> | unknown[] | null | undefined>;

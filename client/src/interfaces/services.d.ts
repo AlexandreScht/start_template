@@ -114,18 +114,18 @@ export namespace Services {
 
   export namespace Axios {
     export interface AxiosRevalidateResponse<T = any, D = any> extends AxiosResponse<T, D> {
-      xTags?: string[] | string;
+      cacheKeys?: string[] | string;
     }
     export interface axiosApi {
       headers?: axiosHeaders;
       cache?: Partial<SWRConfiguration> | Partial<CacheOptions>;
-      xTag?: string;
+      cacheKey?: string;
       ssr?: boolean;
     }
 
     export type instance = AxiosInstance & { revalidate?: boolean };
     export interface revalidateInstance extends instance {
-      xTags?: string[] | string;
+      cacheKeys?: string[] | string;
       revalidateArgs?: unknown | ((v?: unknown) => unknown);
     }
     export interface Cookie {
