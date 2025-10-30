@@ -1,6 +1,6 @@
 import { serviceOptions } from '@/config/services';
 import type { Services } from '@/interfaces/services';
-import AxiosInstance from '@/libs/axiosInstance';
+import AxiosInstance from '@/lib/axiosInstance';
 import { dehydrate, HydrationBoundary, QueryClient } from '@tanstack/react-query';
 import { type ReactNode } from 'react';
 

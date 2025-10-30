@@ -2,7 +2,7 @@ import { servicesErrors } from '@/exceptions/messagers';
 import type { Services } from '@/interfaces/services';
 import PrepareServices from '@/services';
 import { revalidateTag } from 'next/cache';
-import AxiosInstance from '../libs/axiosInstance';
+import AxiosInstance from '../lib/axiosInstance';
 
 /**
  * Fonction pour revalider le cache d'un service côté serveur

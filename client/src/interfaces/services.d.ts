@@ -1,6 +1,6 @@
 import type PrepareServices from '@/services';
 import { type AxiosInstance, type AxiosResponse } from 'axios';
-import type { CacheOptions, CacheRequestConfig } from 'axios-cache-interceptor';
+import type { AxiosCacheInstance, CacheOptions, CacheRequestConfig } from 'axios-cache-interceptor';
 import type { MutatorOptions, SWRConfiguration, SWRHook } from 'swr';
 
 export namespace Services {
@@ -109,6 +109,7 @@ export namespace Services {
       persist?: boolean;
       enabled?: CacheOptions['cachePredicate'];
       serverConfig?: CacheOptions['interpretHeader'];
+      allowedHeaders?: string[];
     }
   }
 
@@ -118,16 +119,12 @@ export namespace Services {
     }
     export interface axiosApi {
       headers?: axiosHeaders;
-      cache?: Partial<SWRConfiguration> | Partial<CacheOptions>;
+      cache?: Partial<SWRConfiguration> | Config.serverCache;
       cacheKey?: string;
       ssr?: boolean;
     }
 
-    export type instance = AxiosInstance & { revalidate?: boolean };
-    export interface revalidateInstance extends instance {
-      cacheKeys?: string[] | string;
-      revalidateArgs?: unknown | ((v?: unknown) => unknown);
-    }
+    export type instance = AxiosInstance | AxiosCacheInstance;
     export interface Cookie {
       name: string;
       value: string;

@@ -2,7 +2,7 @@
 
 import { ClientException } from '@/exceptions/errors';
 import type { Services } from '@/interfaces/services';
-import AxiosInstance from '@/libs/axiosInstance';
+import AxiosInstance from '@/lib/axiosInstance';
 import { useQuery, type UseQueryOptions } from '@tanstack/react-query';
 import { useMemo } from 'react';
 type BrandedServiceSelector<R = any> = {

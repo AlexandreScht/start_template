@@ -1,6 +1,7 @@
 import { generateCacheKey } from '@/utils/serialize';
 import { buildStorage, type CacheInstance } from 'axios-cache-interceptor';
 import ServerMemory from './serverCache';
+import { logger } from '@/utils/logger';
 
 /**
  * Configuration par défaut du cache axios-cache-interceptor pour le SSR
@@ -13,18 +14,9 @@ import ServerMemory from './serverCache';
  */
 export default function cacheDefaultConfig(): Partial<CacheInstance> {
   return {
-    // Stockage en mémoire avec LRU pour le serveur
     storage: buildStorage(ServerMemory),
-    
-    // Génération de clés de cache uniques basées sur la requête
     generateKey: req => generateCacheKey(req),
-    
-    // Logging pour le développement
-    debug: process.env.NODE_ENV === 'development' 
-      ? ({ id, msg, data }) => console.log(`[AXIOS-CACHE] ${id}: ${msg}`, data)
-      : undefined,
-    
-    // Interprétation des headers de cache personnalisés du backend
+    debug: ({ id, msg, data }) => logger.debug(`[AXIOS-CACHE] ${id}: ${msg}`, data),
     headerInterpreter: headers => {
       // Header personnalisé: X-Cache-Option
       // Format: { "cache": <durée en secondes>, "stale": <durée stale optionnelle> }

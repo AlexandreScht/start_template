@@ -15,13 +15,8 @@ export async function httpGateway<P extends ApiRequests.setRequest<any, any>>(
 ): Promise<Middlewares.httpGateway.DataFromRequest<P>> {
   try {
     const [axios, args] = deps;
-    const [props, revalidateArgs] = args || [];
+    const [props] = args || [];
     const { validator, request, middlewares } = options(props as any);
-
-    if (axios?.revalidate) {
-      (axios as Services.Axios.revalidateInstance).revalidateArgs = revalidateArgs;
-      return (await request(axios)) as any;
-    }
 
     if (middlewares) {
       const middlewaresSet: Middlewares.httpGateway.MiddlewaresSet<typeof props> = {

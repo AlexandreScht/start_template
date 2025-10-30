@@ -1,6 +1,7 @@
 import { ClientException } from '@/exceptions/errors';
 import type { Services } from '@/interfaces/services';
-import AxiosInstance from '@/libs/axiosInstance';
+import AxiosInstance from '@/lib/axiosInstance';
+import { getCustomCacheValue, hasCustomCacheValue } from '@/lib/serverCache';
 import { unstable_cache } from 'next/cache';
 
 type BrandedServiceSelector<R = any> = {
@@ -68,13 +69,22 @@ export async function useServerService<TData = any>(
   }
 
   try {
+    const customCacheKey = `${serviceKey}-value`;
+    
+    if (hasCustomCacheValue(customCacheKey)) {
+      const cachedData = getCustomCacheValue(customCacheKey);
+      
+      return {
+        data: cachedData as TData,
+        success: true,
+      };
+    }
+
     const { revalidate = 180, tags, ...axiosOptions } = options;
     const cacheTags = tags || [serviceKey];
 
-    // Utiliser unstable_cache de Next.js pour le cache serveur
     const cachedFn = unstable_cache(
       async () => {
-        // Créer l'instance Axios avec SSR activé et la clé de cache
         const axiosInstance = AxiosInstance({
           ssr: true,
           headers: axiosOptions?.headers,

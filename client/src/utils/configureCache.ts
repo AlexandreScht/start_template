@@ -1,6 +1,7 @@
 import cacheConfig from '@/config/cache';
 import { type Services } from '@/interfaces/services';
-import cacheDefaultConfig from '@/libs/cacheOption';
+import cacheDefaultConfig from '@/lib/cacheOption';
+import ServerMemory from '@/lib/serverCache';
 import { type CacheOptions, type CacheRequestConfig } from 'axios-cache-interceptor';
 import { setLifeTime } from './serialize';
 
@@ -26,9 +27,15 @@ export default function configureCache(cacheOptions?: Services.Config.serverCach
     serverConfig, 
     lifeTime: customTTL, 
     persist, 
-    enabled: cachePredicate, 
+    enabled: cachePredicate,
+    allowedHeaders,
     ...otherOptions 
   } = cacheOptions || {};
+
+  // Configuration des headers autorisés dans le cache
+  if (allowedHeaders && allowedHeaders.length > 0) {
+    ServerMemory.addAllowedHeaders(allowedHeaders);
+  }
 
   // Durées de vie du cache
   const { PERSIST_TIME_LIFE, DEFAULT_TIME_LIFE } = cacheConfig;
@@ -56,5 +63,6 @@ export default function configureCache(cacheOptions?: Services.Config.serverCach
     
     // Autres options personnalisées
     ...otherOptions,
+    location: 'server',
   } satisfies CacheOptions;
 }

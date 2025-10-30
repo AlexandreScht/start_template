@@ -1,33 +1,23 @@
-import { useServerService } from '@/hooks/useServerService';
-import serviceSelector from '@/hooks/serviceSelector';
 import SSRDemoClient from '@/components/SSRDemoClient';
-import { getServerCacheValue, hasServerCacheValue } from '@/lib/serverCache';
+import serviceSelector from '@/hooks/serviceSelector';
+import { useServerService } from '@/hooks/useServerService';
 
 export default async function SSRDemoPage() {
-  // Vérifier d'abord si on a une valeur mutée dans le cache serveur
-  const cacheKey = 'ssrdemo-simple-value';
-  let data: string | undefined;
-  let success = true;
-  let error: Error | undefined;
-
-  if (hasServerCacheValue(cacheKey)) {
-    // Utiliser la valeur mutée du cache
-    data = getServerCacheValue(cacheKey);
-    console.log('[SSR DEMO] Using mutated cache value:', data);
-  } else {
-    // Sinon, faire l'appel API normal
-    const result = await useServerService({
-      serviceKey: 'ssrdemo-simple',
-      fetcher: serviceSelector(v => v.simple()),
-      options: {
-        revalidate: 180, // 3 minutes
-        tags: ['ssrdemo'],
-      },
-    });
-    data = result.data;
-    success = result.success;
-    error = result.error;
-  }
+  // useServerService gère automatiquement :
+  // 1. Vérification du cache personnalisé (valeurs mutées) → ServerMemory
+  // 2. Si pas de cache personnalisé → unstable_cache (utilise ServerMemory via NextCacheHandler)
+  // 3. Si pas de cache Next.js → axios-cache-interceptor (utilise aussi ServerMemory)
+  // 4. Si pas de cache axios → Appel API
+  // 
+  // ⚡ TOUS les caches sont unifiés sur ServerMemory (QuickLRU)
+  const { data, success, error } = await useServerService({
+    serviceKey: 'ssrdemo-simple',
+    fetcher: serviceSelector(v => v.simple()),
+    options: {
+      revalidate: 180, // 3 minutes
+      tags: ['ssrdemo'],
+    },
+  });
 
   if (!success || error) {
     return (
@@ -98,8 +88,8 @@ export default async function SSRDemoPage() {
             <li className="flex items-start">
               <span className="mr-2">2️⃣</span>
               <span>
-                <strong>Cache Next.js :</strong> La réponse est mise en cache avec{' '}
-                <code className="rounded bg-gray-200 px-1">unstable_cache</code> (3 min)
+                <strong>Cache unifié :</strong> Next.js et Axios utilisent{' '}
+                <code className="rounded bg-gray-200 px-1">ServerMemory</code> (QuickLRU)
               </span>
             </li>
             <li className="flex items-start">

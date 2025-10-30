@@ -1,9 +1,10 @@
 import { ExpiredSessionError, InvalidArgumentError, InvalidRoleAccessError } from '@/exceptions/errors';
 import { type Services } from '@/interfaces/services';
 import configureCache from '@/utils/configureCache';
+import { logger } from '@/utils/logger';
 import { serializeCookies } from '@/utils/serialize';
-import axios, { type RawAxiosRequestHeaders } from 'axios';
-import { setupCache } from 'axios-cache-interceptor';
+import axios, { AxiosResponse, type AxiosInstance as AxiosInstanceType, type RawAxiosRequestHeaders } from 'axios';
+import { AxiosCacheInstance, CacheAxiosResponse, setupCache } from 'axios-cache-interceptor';
 import { serialize } from 'cookie';
 
 const AxiosRequest = (
@@ -31,20 +32,14 @@ const AxiosRequest = (
 const AxiosInstance = ({ headers, cache, ssr, cacheKey }: Services.Axios.axiosApi): Services.Axios.instance => {
   const serverRequest = ssr ?? typeof window === 'undefined';
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
-  const instance: Services.Axios.instance = AxiosRequest(otherHeaders, serverRequest);
+  let instance: AxiosInstanceType | AxiosCacheInstance = AxiosRequest(otherHeaders, serverRequest);
 
-  // Configuration du cache
-  if (serverRequest) {
-    // Côté serveur UNIQUEMENT : cache avec axios-cache-interceptor + LRU
-    // Utilisé pour : Réduire les appels répétés à l'API backend lors du SSR
-    // Note: Côté client, React Query gère le cache (pas besoin de setupCache)
-    setupCache(instance as any, configureCache(cache as Services.Config.serverCache | undefined));
+  if (serverRequest && (instance.defaults.method ?? 'GET').toUpperCase() === 'GET') {
+    instance = setupCache(instance, configureCache(cache as Services.Config.serverCache | undefined));
   }
-  // Côté client : PAS de cache axios car React Query le gère déjà via useQuery
 
   instance.interceptors.request.use(
     async request => {
-      // Marquer les requêtes serveur pour le backend
       if (serverRequest) request.headers['X-Internal-Request'] = '1';
 
       if (setCookies?.length) {
@@ -55,9 +50,6 @@ const AxiosInstance = ({ headers, cache, ssr, cacheKey }: Services.Axios.axiosAp
           })
           .join('; ');
       }
-
-      // Ajouter la clé de cache pour la revalidation Next.js
-      if (cacheKey) request.headers['X-Cache-Key'] = cacheKey;
       return request;
     },
     error => {
@@ -67,11 +59,10 @@ const AxiosInstance = ({ headers, cache, ssr, cacheKey }: Services.Axios.axiosAp
   );
 
   instance.interceptors.response.use(
-    async response => {
-      // Log pour debug en dev (optionnel)
-      if (process.env.NODE_ENV === 'development' && serverRequest) {
-        const cacheStatus = (response as any).cached ? '⚡ CACHE HIT' : '🌐 API CALL';
-        console.log(`${cacheStatus} ${response.config.method?.toUpperCase()} ${response.config.url}`);
+    async (response: AxiosResponse | CacheAxiosResponse) => {
+      if (serverRequest && 'cached' in response) {
+        const cacheStatus = response.cached ? '⚡ CACHE HIT' : '🌐 API CALL';
+        logger.info(`${cacheStatus} ${response.config.method?.toUpperCase()} ${response.config.url}`);
       }
       return response;
     },
@@ -81,7 +72,6 @@ const AxiosInstance = ({ headers, cache, ssr, cacheKey }: Services.Axios.axiosAp
     },
   );
 
-  instance.revalidate = false;
   return instance;
 };
 
