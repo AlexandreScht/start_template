@@ -1,6 +1,6 @@
 'use client';
 
-import { serviceOptions } from '@/config/services';
+import { clientCacheConfig } from '@/config/cache';
 import {
   QueryClient,
   QueryClientProvider,
@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 
 export function ServiceProvider({ children }: { children: React.ReactNode }) {
   const [queryClient] = useState(() =>
-    new QueryClient(serviceOptions)
+    new QueryClient(clientCacheConfig)
   );
 
   return (

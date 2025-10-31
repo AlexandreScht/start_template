@@ -2,7 +2,7 @@ import { createRoutes } from '.';
 
 const apiRoutes = createRoutes({
   api: {
-    perf: {
+    test: {
       simple: () => '/simple',
     },
     auth: {

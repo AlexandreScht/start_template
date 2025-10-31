@@ -1,9 +1,14 @@
-import { type CacheRequestConfig, type NotEmptyStorageValue } from 'axios-cache-interceptor';
+import { AxiosStorage, type EmptyStorageValue, type NotEmptyStorageValue } from 'axios-cache-interceptor';
 import QuickLRU from 'quick-lru';
+
+type CacheEntryWithTags = {
+  value: NotEmptyStorageValue;
+  tags: string[];
+};
 
 class ServerMemoryClass {
   private static instance: ServerMemoryClass;
-  private readonly lru: QuickLRU<string, NotEmptyStorageValue>;
+  private readonly lru: QuickLRU<string, CacheEntryWithTags>;
   private allowedHeaders: Set<string> = new Set([
     'content-type',
     'content-length',
@@ -21,21 +26,15 @@ class ServerMemoryClass {
     return ServerMemoryClass.instance;
   }
 
-  /**
-   * Configure les headers autorisés à être conservés dans le cache
-   */
   public setAllowedHeaders(headers: string[]): void {
     this.allowedHeaders = new Set(headers.map(h => h.toLowerCase()));
   }
 
-  /**
-   * Ajoute des headers supplémentaires à la liste des headers autorisés
-   */
   public addAllowedHeaders(headers: string[]): void {
     headers.forEach(h => this.allowedHeaders.add(h.toLowerCase()));
   }
 
-  public set = async (key: string, value: NotEmptyStorageValue) => {
+  public set: AxiosStorage["set"] = async (key, value, currentRequest) => {
     if (
       ((value?.data?.data && value.state === 'cached') || value.state === 'loading')
     ) {
@@ -49,28 +48,37 @@ class ServerMemoryClass {
         },
         {},
       );
+      
+      const tags: string[] = (currentRequest as any)?.__cacheTags || [];
+      
       this.lru.set(key, {
-        ...value,
-        data: {
-          ...(value?.data as any),
-          headers: filteredHeaders,
+        value: {
+          ...value,
+          data: {
+            ...(value?.data as any),
+            headers: filteredHeaders,
+          },
         },
+        tags,
       });
     }
   };
 
-  public find = async (key: string) => {
-    const value = this.lru.get(key);
+
+  public find: AxiosStorage["get"]  = async (key: string)=> {
+    const entry = this.lru.get(key);
     
-    // Vérifier si la valeur existe et si elle n'est pas expirée
+    if (!entry) return { state: 'empty', data: undefined } as EmptyStorageValue;
+    
+    const { value } = entry;
+    
     if (value && value.ttl !== undefined && value.ttl !== -1 && value.createdAt !== undefined) {
       const now = Date.now();
       const isExpired = now > value.createdAt + value.ttl;
       
       if (isExpired) {
-        // Supprimer l'entrée expirée
         this.lru.delete(key);
-        return undefined;
+        return { state: 'empty', data: undefined } as EmptyStorageValue;
       }
     }
     
@@ -78,8 +86,40 @@ class ServerMemoryClass {
   };
 
   get getAll() {
-    return Array.from(this.lru.entries());
+    return Array.from(this.lru.entries()).map(([key, entry]) => [key, entry.value] as const);
   }
+
+  public getByTags = (tags: string[]): Array<[string, NotEmptyStorageValue]> => {
+    const results: Array<[string, NotEmptyStorageValue]> = [];
+    
+    for (const [key, entry] of this.lru.entries()) {
+      const hasMatchingTag = tags.some(tag => entry.tags.includes(tag));
+      if (hasMatchingTag) {
+        results.push([key, entry.value]);
+      }
+    }
+    
+    return results;
+  };
+
+  public removeByTags = (tags: string[]): number => {
+    let deletedCount = 0;
+    const keysToDelete: string[] = [];
+    
+    for (const [key, entry] of this.lru.entries()) {
+      const hasMatchingTag = tags.some(tag => entry.tags.includes(tag));
+      if (hasMatchingTag) {
+        keysToDelete.push(key);
+      }
+    }
+    
+    keysToDelete.forEach(key => {
+      this.lru.delete(key);
+      deletedCount++;
+    });
+    
+    return deletedCount;
+  };
 
   public remove = (key: string) => {
     this.lru.delete(key);
@@ -93,80 +133,65 @@ class ServerMemoryClass {
     this.lru.clear();
   };
 
-  /**
-   * Met à jour la valeur d'une clé existante en préservant les options originales
-   * Le TTL est préservé mais le createdAt est réinitialisé au moment du mutate
-   */
-  public update = async <T>(key: string, newData: T) => {
-    const existingValue = await this.find(key);
-    
-    if (!existingValue) {
-      return undefined;
+  public update = async <T>(
+    options: { serviceKey?: string; tags?: string[] },
+    newData: T
+  ): Promise<NotEmptyStorageValue | Array<{ key: string; value: NotEmptyStorageValue }> | undefined> => {
+    const { serviceKey, tags } = options;
+
+    if (serviceKey) {
+      const entry = this.lru.get(serviceKey);
+      
+      if (!entry) {
+        return undefined;
+      }
+
+      const updatedValue = {
+        ...entry.value,
+        createdAt: Date.now(),
+        data: {
+          ...(entry.value.data as any),
+          data: newData,
+        },
+      } as NotEmptyStorageValue;
+
+      this.lru.set(serviceKey, {
+        value: updatedValue,
+        tags: entry.tags,
+      });
+      return updatedValue;
     }
 
-    // Créer une nouvelle valeur avec les mêmes options mais des données mises à jour
-    const updatedValue = {
-      ...existingValue,
-      createdAt: Date.now(), // Réinitialiser le moment de création
-      data: {
-        ...(existingValue.data as any),
-        data: newData,
-      },
-    } as NotEmptyStorageValue;
+    if (tags && tags.length > 0) {
+      const updatedEntries: Array<{ key: string; value: NotEmptyStorageValue }> = [];
+      
+      for (const [key, entry] of this.lru.entries()) {
+        const hasMatchingTag = tags.some(tag => entry.tags.includes(tag));
+        if (hasMatchingTag) {
+          const updatedValue = {
+            ...entry.value,
+            createdAt: Date.now(),
+            data: {
+              ...(entry.value.data as any),
+              data: newData,
+            },
+          } as NotEmptyStorageValue;
 
-    this.lru.set(key, updatedValue);
-    return updatedValue;
+          this.lru.set(key, {
+            value: updatedValue,
+            tags: entry.tags,
+          });
+
+          updatedEntries.push({ key, value: updatedValue });
+        }
+      }
+      
+      return updatedEntries;
+    }
+
+    return undefined;
   };
 }
 
 const ServerMemory = ServerMemoryClass.getInstance();
 export default ServerMemory;
-
-/**
- * Cache séparé pour les valeurs mutées par l'utilisateur
- * Utilise le même LRU mais avec un préfixe pour éviter les collisions
- */
-const CUSTOM_CACHE_PREFIX = '__custom_cache__';
-
-/**
- * Récupérer une valeur personnalisée du cache
- */
-export function getCustomCacheValue(key: string): any | undefined {
-  const cacheKey = `${CUSTOM_CACHE_PREFIX}${key}`;
-  const cached = ServerMemory.getAll.find(([k]) => k === cacheKey);
-  return cached ? cached[1]?.data?.data : undefined;
-}
-
-/**
- * Supprimer une valeur personnalisée du cache
- */
-export function deleteCustomCacheValue(key: string): void {
-  const cacheKey = `${CUSTOM_CACHE_PREFIX}${key}`;
-  ServerMemory.remove(cacheKey);
-  console.log(`[CUSTOM CACHE] Deleted ${key}`);
-}
-
-/**
- * Vérifier si une valeur personnalisée existe dans le cache
- */
-export function hasCustomCacheValue(key: string): boolean {
-  const cacheKey = `${CUSTOM_CACHE_PREFIX}${key}`;
-  return ServerMemory.getAll.some(([k]) => k === cacheKey);
-}
-
-/**
- * Mettre à jour une valeur personnalisée dans le cache
- * Préserve le TTL original mais réinitialise le createdAt
- */
-export async function updateCustomCacheValue(key: string, value: any): Promise<boolean> {
-  const cacheKey = `${CUSTOM_CACHE_PREFIX}${key}`;
-  const updated = await ServerMemory.update(cacheKey, value);
-  
-  if (updated) {
-    console.log(`[CUSTOM CACHE] Updated ${key}:`, value);
-    return true;
-  }
-  
-  console.warn(`[CUSTOM CACHE] Failed to update ${key}: entry not found`);
-  return false;
-}

@@ -1,20 +1,24 @@
 import { type ApiRequests } from '@/interfaces/clientApi';
+import apiRoutes from '@/router/api';
 
-// Fonction helper pour simuler un délai réseau
-const simulateNetworkDelay = (ms: number = 1000) => 
-  new Promise(resolve => setTimeout(resolve, ms));
+const {
+  api: { test: router },
+} = apiRoutes;
 
-// Service simple qui respecte le type setRequest<undefined, true>
-export const simple: ApiRequests.Perf.simple = ((...args: any[]) => async (axios) => {
-  // Simuler un délai réseau de 1 seconde
-  await simulateNetworkDelay(350);
-  
-  // Log pour debug (optionnel)
-  console.log('🚀 Service simple appelé', {
-    timestamp: new Date().toISOString(),
-    side: typeof window === 'undefined' ? 'server' : 'client',
-  });
-  
-  // Retourner true comme spécifié dans le type
-  return "data fetched correctly";
-}) as ApiRequests.Perf.simple;
+// Service simple qui fait une vraie requête HTTP pour tester le cache
+export const simple = () => async (axios) => {
+  try {
+    console.log('🚀 Service simple appelé', {
+      timestamp: new Date().toISOString(),
+      side: typeof window === 'undefined' ? 'server' : 'client',
+    });
+    
+    
+    const response = await axios.get(router.simple());
+    return response.data;
+    
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};

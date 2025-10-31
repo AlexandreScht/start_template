@@ -1,25 +1,20 @@
+import { logger } from '@/utils/logger';
 import { generateCacheKey } from '@/utils/serialize';
 import { buildStorage, type CacheInstance } from 'axios-cache-interceptor';
 import ServerMemory from './serverCache';
-import { logger } from '@/utils/logger';
 
-/**
- * Configuration par défaut du cache axios-cache-interceptor pour le SSR
- * 
- * Fonctionnalités :
- * - Stockage en mémoire serveur avec LRU
- * - Génération de clés de cache basée sur l'URL et les paramètres
- * - Interprétation des headers de cache personnalisés
- * - Logging en mode développement
- */
-export default function cacheDefaultConfig(): Partial<CacheInstance> {
+export default function cacheDefaultConfig(cacheKey?: string, tags?: string[]): Partial<CacheInstance> {
   return {
     storage: buildStorage(ServerMemory),
-    generateKey: req => generateCacheKey(req),
+    generateKey: req => {
+      if (cacheKey) {
+        (req as any).__cacheTags = tags || [];
+        return cacheKey;
+      }
+      return generateCacheKey(req);
+    },
     debug: ({ id, msg, data }) => logger.debug(`[AXIOS-CACHE] ${id}: ${msg}`, data),
     headerInterpreter: headers => {
-      // Header personnalisé: X-Cache-Option
-      // Format: { "cache": <durée en secondes>, "stale": <durée stale optionnelle> }
       if (headers && headers['x-cache-option']) {
         try {
           const option = JSON.parse(headers['x-cache-option']) as { 
@@ -27,14 +22,11 @@ export default function cacheDefaultConfig(): Partial<CacheInstance> {
             stale?: number;
           };
 
-          // Si cache < 1, ne pas mettre en cache
           if (option.cache < 1) {
             return 'dont cache';
           }
-
-          // Retourner les options de cache
           return {
-            cache: option.cache * 1000, // Convertir en millisecondes
+            cache: option.cache * 1000,
             ...(option.stale ? { stale: option.stale * 1000 } : {}),
           };
         } catch (error) {
@@ -43,11 +35,9 @@ export default function cacheDefaultConfig(): Partial<CacheInstance> {
         }
       }
       
-      // Pas de header de cache personnalisé, utiliser la config par défaut
       return 'not enough headers';
     },
     
-    // Map pour gérer les requêtes en attente (évite les doublons)
     waiting: new Map(),
   } satisfies Partial<CacheInstance>;
 }

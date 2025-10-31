@@ -1,5 +1,5 @@
 import { ExpiredSessionError, InvalidArgumentError, InvalidRoleAccessError } from '@/exceptions/errors';
-import { type Services } from '@/interfaces/services';
+import type { AxiosInstanceOptions } from '@/hooks/useServerService';
 import configureCache from '@/utils/configureCache';
 import { logger } from '@/utils/logger';
 import { serializeCookies } from '@/utils/serialize';
@@ -13,7 +13,7 @@ const AxiosRequest = (
 ) => {
   const { Authorization, 'Content-Type': ContentType, withCredentials, ...headers } = headersOption ?? {};
   return axios.create({
-    baseURL: process.env.NEXT_PUBLIC_SERVER_API,
+    baseURL: process.env.NEXT_PUBLIC_SERVER_API || "http://localhost:3000",
     headers: {
       ...(Authorization ? { Authorization: `Bearer ${Authorization}` } : {}),
       ...(ContentType ? { 'Content-Type': ContentType } : { 'Content-Type': 'application/json' }),
@@ -29,13 +29,13 @@ const AxiosRequest = (
   });
 };
 
-const AxiosInstance = ({ headers, cache, ssr, cacheKey }: Services.Axios.axiosApi): Services.Axios.instance => {
+const AxiosInstance = ({ headers, cache, ssr, cacheKey }: AxiosInstanceOptions): AxiosInstanceType | AxiosCacheInstance => {
   const serverRequest = ssr ?? typeof window === 'undefined';
   const { 'Set-Cookies': setCookies, ...otherHeaders } = headers ?? {};
   let instance: AxiosInstanceType | AxiosCacheInstance = AxiosRequest(otherHeaders, serverRequest);
 
   if (serverRequest && (instance.defaults.method ?? 'GET').toUpperCase() === 'GET') {
-    instance = setupCache(instance, configureCache(cache as Services.Config.serverCache | undefined));
+    instance = setupCache(instance, configureCache(cacheKey, cache));
   }
 
   instance.interceptors.request.use(
@@ -50,6 +50,7 @@ const AxiosInstance = ({ headers, cache, ssr, cacheKey }: Services.Axios.axiosAp
           })
           .join('; ');
       }
+      logger.info(`🚀 Request ${request.method?.toUpperCase()} ${request.url}`);
       return request;
     },
     error => {

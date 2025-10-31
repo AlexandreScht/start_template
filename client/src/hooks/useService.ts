@@ -38,8 +38,8 @@ export function useService<TFetcher extends BrandedServiceSelector>(params: {
   options?: UseServiceOptions<ExtractReturnType<TFetcher>>;
 }): ReturnType<typeof useQuery<ExtractReturnType<TFetcher>, Error, ExtractReturnType<TFetcher>, [string]>>;
 
+serviceKey?: string;
 export function useService<TData = unknown>(params: {
-  serviceKey?: string;
   fetcher?: never;
   options?: UseServiceOptions<TData>;
 }): ReturnType<typeof useQuery<TData, Error, TData, [string]>>;
